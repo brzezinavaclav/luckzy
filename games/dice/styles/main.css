@@ -1,0 +1,43 @@
+.wrap {
+    width: 454px;   /* 940px */
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.c_center {
+    width: 450px;
+    padding: 40px;
+    float: left;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.c_center .bet_type{
+    position: absolute;
+    left: -40px;
+    top: 0px;
+}
+.c_center .bet_type button{
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+.under_over_num{
+    height: 35px;
+    padding: 7px 12px;
+    font-size: 15px;
+    line-height: 1.42857;
+    color: rgb(111, 111, 111);
+    background-color: rgb(255, 255, 255);
+    background-image: none;
+    border: 1px solid rgb(204, 204, 204);
+    margin: 10px 0px;
+    top: 6px;
+    position: relative;
+}
+#b_bet{
+    display: none;
+}

@@ -1,0 +1,41 @@
+.st-stats {
+  background-color: rgba(255,255,255,0.85);
+}
+.st-switches a, .st-switches a:focus, .st-switches a:active {
+  background-color: rgba(0,0,0,0.6);
+}
+.st-switches a.active {
+  background-color: rgba(0,0,0,0.8);
+}
+.st-switchline {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.st-switches a.rulesB {
+  color: rgba(0,0,0,0.86);
+}
+.st-switches a.rulesB:hover {
+  color: rgba(0,0,0,0.75);
+}
+
+.closeLeft, .closeLeft:focus, .closeLeft:active {
+  color: rgba(0,0,0,0.7);
+}
+.closeLeft:hover {
+  color: rgba(0,0,0,0.9);
+}
+.wager {
+  background-color: rgba(255,255,255,0.95);
+}
+.leftbuttons button {
+  background-color: rgba(0,0,0,0.86);
+}
+.leftbuttons button:hover {
+  background-color: rgba(0,0,0,0.75);
+}
+.leftbuttons button.active {
+  background-color: rgba(0,0,0,0.75);
+}
+.leftblock {
+  background-color: rgba(255,255,255,0.9);
+}

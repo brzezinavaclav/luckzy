@@ -1,0 +1,138 @@
+#slots .control {
+    width: 730px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 0 0 15px 0 rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.75);
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    overflow: hidden;
+}
+#slots .slots {
+    width: 730px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0,0,0,0.1);
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+#slots .slots .slot {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.9);
+    width: 230px;
+    margin-left: 10px;
+    float: left;
+    height: 380px;
+    margin-top: 10px;
+    overflow-y: hidden;
+    padding: 85px 0;
+}
+
+#slots .autoBotCheck {        /* AUTOSPIN checkbox */
+    cursor: pointer;
+    cursor: hand;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    margin-left: 4px;
+    width: 30px;
+    background-color: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+#slots .autoBotCheck span {
+    color: rgba(255,255,255, 0.3);
+}
+#slots .autoBotButton:hover .autoBotCheck span {
+    color: rgba(255,255,255, 0.5);
+}
+#slots .autoBotButton:hover .autoBotCheck.bot_on span {
+    color: rgba(255,255,255, 1);
+}
+#slots .autoBotCheck.bot_on span {
+    color: rgba(255,255,255, 1);
+}
+
+#slots .resline {
+    height: 2px;
+    width: 230px;
+    background-color: #3f3f3f;
+    position: absolute;
+}
+#slots .spinbtn {
+    display: block;
+    float: left;
+    width: 300px;
+    text-align: center;
+    height: 60px;
+    line-height: 32px;
+    font-size: 20px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-weight: bold;
+}
+#slots .wager {
+    display: block;
+    float: left;
+    width: 430px;
+    border: none;
+    background-color: rgba(255,255,255,0.7);
+    height: 60px;
+    line-height: 60px;
+    color: #278C0B;
+    font-size: 16px;
+    padding-left: 100px;
+    padding-right: 200px;
+
+}
+#slots .ybtext {
+    position: absolute;
+    color: rgba(0,0,0,0.5);
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.bRegul button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(72, 153, 50, 0.7);
+    display: block;
+    float: left;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    cursor: hand;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 3px;
+    border: 1px solid rgba(72, 153, 50, 0.6);
+}
+.bRegul button:first-child {
+    font-size: 15px;
+    margin-left: 0;
+}
+.bRegul button:hover {
+    border: 1px solid rgba(72, 153, 50, 0.8);
+}

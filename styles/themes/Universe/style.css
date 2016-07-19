@@ -1,0 +1,18 @@
+.st-stats {
+  background-color: rgba(255,255,255,0.75);
+}
+.closeLeft, .closeLeft:focus, .closeLeft:active {
+  color: rgba(224,188,89,0.9);  
+}
+.closeLeft:hover {
+  color: rgba(224,188,89,1);  
+}
+.st-switches a.rulesB {
+  color: rgba(255,255,255,0.5);  
+}
+.st-switches a.rulesB:hover {
+  color: rgba(255,255,255,0.6);  
+}
+.wager {
+  background-color: rgba(255,255,255,0.9);
+}
