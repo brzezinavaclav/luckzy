@@ -1,0 +1,113 @@
+.jack_table{
+    width: 1100px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 10px solid rgba(0,0,0,0.1);
+    padding: 10px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: url('../images/pool_table.png');
+    position: relative;
+    background-clip: padding-box;
+}
+.control {
+    width: 1100px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 0 0 15px 0 rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.75);
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+}
+.bjinfo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-75px, -50px);
+}
+
+.ybtext {
+    position: absolute;
+    color: rgba(0,0,0,0.5);
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    right: 500px;
+}
+.bRegul{
+    position: absolute;
+    height: 40px;
+    margin-top: 10px;
+    right: 182px;
+}
+.bRegul button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(72, 153, 50, 0.7);
+    display: block;
+    float: left;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    cursor: hand;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 3px;
+    border: 1px solid rgba(72, 153, 50, 0.6);
+}
+.bRegul button:first-child {
+    font-size: 15px;
+    margin-left: 0;
+}
+.bRegul button:hover {
+    border: 1px solid rgba(72, 153, 50, 0.8);
+}
+.wager {
+    display: block;
+    float: right;
+    width: 400px;
+    border: none;
+    background-color: rgba(255,255,255,0.7);
+    height: 60px;
+    line-height: 60px;
+    color: #278C0B;
+    font-size: 16px;
+    padding-left: 110px;
+
+}
+.control .btn-primary{
+    text-align: center;
+    height: 60px;
+    line-height: 30px;
+    font-size: 20px;
+    float: left;
+    text-transform: uppercase;
+}
+.btn-primary.spinbtn {
+    display: block;
+    float: right;
+    width: 170px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-weight: bold;
+}

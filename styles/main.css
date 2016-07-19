@@ -122,7 +122,7 @@ a:focus,a:active {
 .heading {
   font-size: 15px;
   font-weight: bold;
-  color: #489932;
+  color: #000;
   padding: 10px;
   margin: -10px;
   margin-bottom: 3px;
@@ -464,4 +464,8 @@ footer{
 }
 .input-group-btn .btn-sm {
   padding: 9px 10px 8px 10px;
+}
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+  background-color: #419e27;
+  border-color: #419e27;
 }
