@@ -105,8 +105,9 @@ function newPlayer($wallet) {
   $alias='Player_';
   $alias_i=db_fetch_array(db_query("SELECT `autoalias_increment` AS `data` FROM `system` LIMIT 1"));
   $alias_i=$alias_i['data'];
+  $client_seed = random_num(8);
   db_query("UPDATE `system` SET `autoalias_increment`=`autoalias_increment`+1 LIMIT 1");
-  db_query("INSERT INTO `players` (`hash`,`alias`,`time_last_active`,`slots_seed`,`dice_seed`,`client_seed`) VALUES ('$hash','".$alias.$alias_i."',NOW(),'".serialize(generateServerSeed())."','".mt_rand(1000000, 1530494976)."','".random_num(8)."')");
+  db_query("INSERT INTO `players` (`hash`,`alias`,`time_last_active`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','".$alias.$alias_i."',NOW(),'".serialize(generateServerSeed())."','".mt_rand(1000000, 1530494976)."','".generateInitialShuffle($client_seed)."', '".$client_seed."')");
   header('Location: ./?unique='.$hash.'# Do Not Share This URL!');
   exit();
 }
@@ -223,15 +224,6 @@ function scan_dir($dir) {
 }
 
 
-
-
-
-
-
-
-
-
-
 /*________________________JACK_____________________________*/
 function card_value($card_val) {
   if ($card_val=='A') return 1;
@@ -289,7 +281,7 @@ function playerWon($player_id,$game_id,$wager,$d_deck,$regular_or_tie,$blackjack
 
   $gameData=db_fetch_array(db_query("SELECT * FROM `games` WHERE `id`=$game_id LIMIT 1"));
   /*$mysqlerr=db_error();*/
-
+  $player = db_fetch_array(db_query("SELECT `client_seed` FROM `users`  WHERE `id`=$player_id LIMIT 1"));
   $wager=$gameData['bet_amount'];
 
   $first_won_second_lose=false;
@@ -324,7 +316,7 @@ function playerWon($player_id,$game_id,$wager,$d_deck,$regular_or_tie,$blackjack
     $endGame=  ",`last_client_seed`=`client_seed`"
         .",`last_final_shuffle`='$final_shuffle'"
         .",`last_initial_shuffle`=`initial_shuffle`"
-        .",`initial_shuffle`='".generateInitialShuffle()."'";
+        .",`initial_shuffle`='".generateInitialShuffle($player['client_seed'])."'";
 
     db_query("UPDATE `games` SET `multiplier`=$multip WHERE `id`=$game_id LIMIT 1");
   }
@@ -354,7 +346,7 @@ function playerWon($player_id,$game_id,$wager,$d_deck,$regular_or_tie,$blackjack
 
 }
 
-function generateInitialShuffle() {
+function generateInitialShuffle($client_seed) {
   $settings=db_fetch_array(db_query("SELECT `number_of_decks` FROM `system` LIMIT 1"));
   $initial_shuffle=array();
   for ($i=0;$i<$settings['number_of_decks'];$i++) {
@@ -365,7 +357,7 @@ function generateInitialShuffle() {
     shuffle($initial_shuffle);
   }
   shuffle($initial_shuffle);
-  $initial_shuffle=cs_shuffle(mt_rand(),$initial_shuffle);
+  $initial_shuffle=cs_shuffle($client_seed,$initial_shuffle);
   return serialize(array('initial_array'=>$initial_shuffle,'random_string'=>generateHash(32)));
 }
 function listDeck() {

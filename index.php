@@ -68,16 +68,22 @@ include __DIR__.'/inc/start.php';
         <a class="navbar-brand logo" href="./"><?php echo $settings['title']; ?></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
+        <!--
+        <ul class="nav navbar-form navbar-right">
+          <button class="btn btn-primary" id="withdraw_btn">Withdraw</button>
+        </ul>
+        -->
         <ul class="nav navbar-nav navbar-right">
               <div class="bal_status">Balance: <span class="balance"><?php echo n_num($player['balance'], true); ?></span> <?php echo $settings['currency_sign']; ?></div>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="<?php if($game == 'blackjack') echo 'active'; ?>"><a href="javascript:select_game('blackjack')">Blackjack</a></li>
-          <li class="<?php if($game == 'dice') echo 'active'; ?>"><a href="javascript:select_game('dice')">Dice</a></li>
           <li class="<?php if($game == 'slots') echo 'active'; ?>"><a href="javascript:select_game('slots')">Slots</a></li>
+          <li class="<?php if($game == 'dice') echo 'active'; ?>"><a href="javascript:select_game('dice')">Dice</a></li>
           <li><a href="">Support</a></li>
           <li><a href="">More</a></li>
           <li><a href="">Account</a></li>
+          <!--<li><a href="">Login</a></li>-->
         </ul>
       </div>
     </div>
@@ -367,6 +373,11 @@ include __DIR__.'/inc/start.php';
           <h4 class="modal-title" id="mlabels-deposit">Deposit Funds</h4>
         </div>
         <div class="modal-body" style="text-align: center;">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Bitcoin</a></li>
+            <li role="presentation"><a href="#">Runescape 3</a></li>
+            <li role="presentation"><a href="#">Oldschool runescape</a></li>
+          </ul>
           Please send at least <b><?php echo n_num($settings['min_deposit']); ?></b> <?php echo $settings['currency_sign']; ?> to this address:
           <div class="addr-p" style="margin:15px;font-weight:bold;font-size:18px;"></div>
           <div class="addr-qr"></div>
@@ -388,6 +399,11 @@ include __DIR__.'/inc/start.php';
         </div>
         <div class="modal-body">
           <div class="m_alert"></div>
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Bitcoin</a></li>
+            <li role="presentation"><a href="#">Runescape 3</a></li>
+            <li role="presentation"><a href="#">Oldschool runescape</a></li>
+          </ul>
           <div class="form-group">
             <label for="input-address">Enter valid <?php echo $settings['currency_sign']; ?> address:</label>
             <input type="text" class="form-control" id="input-address">
@@ -421,98 +437,6 @@ include __DIR__.'/inc/start.php';
             <input type="text" class="captchaInput form-control"  id="input-captcha">
           </div>
           <a href="#" onclick="claim_bonus();" class="btn btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;">Claim</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="modals-rules" aria-labelledby="mlabels-rules" aria-hidden="true">
-    <div class="modal-dialog" style="width: 350px;">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="mlabels-rules">Game Rules</h4>
-        </div>
-        <div class="modal-body">
-          <div class="m_alert"></div>
-
-          <table class="table">
-            <tr>
-              <th colspan="2" style="border-top: none;">Payout Table</th>
-            </tr>
-            <tr style="display: none;">
-              <td><div style="float:left;height:30px;line-height:30px;width:20px;">3x</div><div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img1"></div></td>
-              <td>x<?php echo $settings['jackpot']; ?></td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img1"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img1"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img1"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x<?php echo $settings['jackpot']; ?></td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img2"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img2"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img2"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x600</td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img3"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img3"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img3"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x200</td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img4"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img4"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img4"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x50</td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img5"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img5"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img5"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x10</td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img6"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img6"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img6"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x5</td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img6"></div>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img6"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x2</td>
-            </tr>
-            <tr>
-              <td>
-                <div style="float:left;background-size:100%;width: 30px; height: 30px;" class="img6"></div>
-              </td>
-              <td style="line-height: 30px;font-weight:bold;">x1</td>
-            </tr>
-          </table>
-          <table class="table table-bordered">
-            <tr>
-              <td>Expexted return to player</td>
-              <th><?php echo round(100-house_edge(), 2); ?> %</th>
-            </tr>
-          </table>
-
-
         </div>
       </div>
     </div>

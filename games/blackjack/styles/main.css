@@ -37,9 +37,19 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-75px, -50px);
+    transform: translate(-100px, -50px);
+    width: 200px;
+    height: 100px;
 }
-
+.bjinfo-text {
+    font-family: 'casino';
+    font-size: 27px;
+    color: rgba(52,52,52,0.8);
+    text-decoration: overline;
+}
+.bjinfo-image{
+    text-align: center;
+}
 .ybtext {
     position: absolute;
     color: rgba(0,0,0,0.5);
@@ -110,4 +120,22 @@
     border-right: none;
     border-left: none;
     font-weight: bold;
+}
+.gamblingTable{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-67.5px, -165px);
+    z-index: 2;
+    text-align: center;
+}
+.cj-playerTable{
+    margin-top: 90px;
+    position: relative;
+}
+.cj-dealerTable{
+    position: relative;
+}
+.splitted td:first-of-type{
+    padding-right: 30px;
 }

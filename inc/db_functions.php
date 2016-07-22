@@ -14,7 +14,7 @@ function db_num_rows($q) {
 }
 function db_last_insert_id() {
   include __DIR__.'/db-conf.php';
-  $return = mysqli_last_insert_id($db);
+  $return = mysqli_insert_id($db);
   mysqli_close($db);
   return $return;
 }

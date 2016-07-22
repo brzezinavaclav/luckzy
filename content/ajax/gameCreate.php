@@ -1,19 +1,19 @@
 <?php
 /*
- *  © CoinJack 
+ *  © CoinJack
  *  Demo: http://www.btcircle.com/coinjack
  *  Please do not copy or redistribute.
- *  More licences we sell, more products we develop in the future.  
+ *  More licences we sell, more products we develop in the future.
 */
 
-
 error_reporting(0);
-header('X-Frame-Options: DENY'); 
+header('X-Frame-Options: DENY');
 
 $init=true;
-include '../../inc/db-conf.php';
-include '../../inc/wallet_driver.php';
-include '../../inc/functions.php';
+include __DIR__.'/../../inc/db-conf.php';
+include __DIR__.'/../../inc/wallet_driver.php';
+include __DIR__.'/../../inc/db_functions.php';
+include __DIR__.'/../../inc/functions.php';
 
 
 db_query('START TRANSACTION');
@@ -24,14 +24,13 @@ if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` 
 
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
 
-
 if (empty($_GET['wager']) || (double)$_GET['wager']<0) $wager=0; else $wager=(double)$_GET['wager'];
 
 $wbalance=walletRequest('getbalance');
 $max_wager=(double)$wbalance/$settings['bankroll_maxbet_ratio'];
 if ($wager>$max_wager) {
   echo json_encode(array('error'=>'yes','content'=>'too_big'));
-  exit();  
+  exit();
 }
 
 
@@ -47,14 +46,14 @@ if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `player`=$player[id] AN
 
 if ($wager>$player['balance']) {
   echo json_encode(array('error'=>'yes','content'=>'balance'));
-  exit();  
+  exit();
 }
 
 
 // ... AND THE SHOW MUST GO ON
 
 db_query("DELETE FROM `insurance_process` WHERE `player`=$player[id]");
-                                            
+
 
 db_query("UPDATE `players` SET `balance`=ROUND((`balance`-$wager),8) WHERE `id`=$player[id] LIMIT 1");
 
@@ -87,11 +86,6 @@ $cards=array(
 if (card_value($cards['player-1'][1])==card_value($cards['player-2'][1])) $accessable=2;
 else $accessable=1;
 
-
-
-
-
-
 $i_process='games';
 
 if ($cards['dealer-1'][1]=='A' && $settings['insurance']==1) $i_process='insurance_process';
@@ -102,29 +96,29 @@ db_query("INSERT INTO `$i_process` (`player`,`bet_amount`,`player_deck`,`dealer_
 
 if ($i_process=='games') {
 
-  $gameID=mysql_insert_id();
-  
-  
+  $gameID=db_last_insert_id();
+
+
   $dealerSums=getSums($dealer_deck);
   $playerSums=getSums($player_deck);
-  
+
   $data['winner']='-';
-    
+
   if (in_array(21,$dealerSums)) {
     $accessable=0;
     if (in_array(21,$playerSums)) {
       db_query("UPDATE `games` SET `ended`=1,`winner`='tie' WHERE `id`=$gameID LIMIT 1");
       $winner='tie';
       $data['winner']='tie';
-      playerWon($player['id'],$gameID,$wager,$dealer_deck,'tie',true,serialize($final_shuffle));    
+      playerWon($player['id'],$gameID,$wager,$dealer_deck,'tie',true,serialize($final_shuffle));
     }
     else {
       db_query("UPDATE `games` SET `ended`=1,`winner`='dealer' WHERE `id`=$gameID LIMIT 1");
       $winner='dealer';
       $data['winner']='dealer';
-      playerWon($player['id'],$gameID,$wager,$dealer_deck,'lose',true,serialize($final_shuffle));      
+      playerWon($player['id'],$gameID,$wager,$dealer_deck,'lose',true,serialize($final_shuffle));
     }
-  }  
+  }
   else if (in_array(21,$playerSums)) {
     db_query("UPDATE `games` SET `ended`=1,`winner`='player' WHERE `id`=$gameID LIMIT 1");
     $accessable=0;
@@ -138,26 +132,26 @@ if ($i_process=='games') {
     $winner='-';
     $dealerSums='-';
   }
-  
+
   if ($dealerSums!='-') $dealerSums=implode(',',$dealerSums);
   $playerSums=implode(',',$playerSums);
-  
+
   echo json_encode(array('error'=>'no','content'=>$cards,'insured'=>'no','sums'=>array('dealer'=>$dealerSums,'player'=>$playerSums),'wager'=>n_num($wager,true),'accessable'=>$accessable,'winner'=>$winner,'data'=>$data));
 
 
 }
 
 else {    // INSURANCE PROCESS
-  
+
   //$cards['player-2']='';
-  
+
   $playerSums=implode(',',getSums($player_deck));
   $dealerSums='1,11';
-  
+
   $cards['dealer-2'] = '';
-  
+
   $data=array('insurance'=>'yes');
-  
+
   echo json_encode(array('error'=>'no','content'=>$cards,'insured'=>'-','sums'=>array('dealer'=>$dealerSums,'player'=>$playerSums),'wager'=>n_num($wager,true),'data'=>$data));
 
 }

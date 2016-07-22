@@ -1,25 +1,40 @@
-decks = {};
-buttons = {
-    disableAll: function() {
-        $('.gameControllers').attr('disabled',true);
-        $('.gameControllers').addClass('btn-disabled');
-    },
-    enableAll: function() {
-        this.bet.enable();
-        this.hit.enable();
-        this.stand.enable();
-        this.double.enable();
-        this.split.enable();
-    },
-    bet: new _button($('.gameControllers.gC-5,.gameControllers.gC-6,.gameControllers.gC-7')),
-    hit: new _button($('.gameControllers.gC-1')),
-    stand: new _button($('.gameControllers.gC-2')),
-    double: new _button($('.gameControllers.gC-3')),
-    split: new _button($('.gameControllers.gC-4'))
-};
+$(document).ready(function () {
+    decks = {};
+    buttons = {
+        disableAll: function () {
+            $('.gameControllers').attr('disabled', true);
+            $('.gameControllers').addClass('btn-disabled');
+        },
+        enableAll: function () {
+            this.bet.enable();
+            this.hit.enable();
+            this.stand.enable();
+            this.double.enable();
+            this.split.enable();
+        },
+        bet: new _button($('.gameControllers.gC-5,.gameControllers.gC-6,.gameControllers.gC-7')),
+        hit: new _button($('.gameControllers.gC-1')),
+        stand: new _button($('.gameControllers.gC-2')),
+        double: new _button($('.gameControllers.gC-3')),
+        split: new _button($('.gameControllers.gC-4'))
+    };
 
-gl_balance = 0;
+});
 
+
+function tablePosition(){
+    $('.gamblingTable').css('transform', 'translate(-'+$('.gamblingTable').width()/2+'px, -185px)');
+}
+
+function sumPosition(){
+    if(decks.splitted){
+        $('#player_checksum_2').css('left', $('.cj-playerTable').width()+10+'px');
+    }
+    else{
+        $('#player_checksum').css('left', Number(($('.cj-playerTable').width() - $('.cj-playerTable .deck').width()) / 2 - $('#player_checksum').width()-20) + 'px');
+    }
+    $('#dealer_checksum').css('left', Number(($('.cj-dealerTable').width() - $('.cj-dealerTable .deck').width()) / 2 - $('#dealer_checksum').width()-20) + 'px');
+}
 
 function br_div() {
     var repaired=(parseFloat($(".betInput").val())/2).toFixed(8);
@@ -28,17 +43,6 @@ function br_div() {
 }
 function br_multip() {
     var repaired=(parseFloat($(".betInput").val())*2).toFixed(8);
-    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".betInput").val('0.00000000');
-    else $(".betInput").val(repaired);
-}
-
-function _betValUp() {
-    var repaired=(parseFloat($(".betInput").val())+1).toFixed(8);
-    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".betInput").val('0.00000000');
-    else $(".betInput").val(repaired);
-}
-function _betValDown() {
-    var repaired=(parseFloat($(".betInput").val())-1).toFixed(8);
     if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".betInput").val('0.00000000');
     else $(".betInput").val(repaired);
 }
@@ -52,10 +56,8 @@ function bet_error(con) {
     alert(con);
 }
 
-
 function gameAction(action) {
     buttons.disableAll();
-
     $.ajax({
         'url': './content/ajax/gameAction.php?_unique='+unique()+'&action='+action,
         'dataType': "json",
@@ -83,6 +85,7 @@ function gameUpdate(data) {
             data['splitted_cards']['card-1'][1],
             data['splitted_cards']['card-1'][2]
         );
+        tablePosition();
         decks.player_2.addCard(
             data['splitted_cards']['card-2'][0],
             data['splitted_cards']['card-2'][1],
@@ -95,6 +98,7 @@ function gameUpdate(data) {
                 if (data['winner']!='-' && data['winner']!='tie') ceremonial(true,'<b>WON</b>');
                 else if (data['winner']=='tie') ceremonial(true,'<b>TIE</b>');
             });
+        tablePosition();
     }
     if (typeof data['hitted_card-player_deck']!='undefined') {
         decks.player.addCard(
@@ -122,9 +126,8 @@ function gameUpdate(data) {
                 if (data['winner']=='dealer') ceremonial(false,'<b>LOSE</b>');
 
                 if (typeof data['re-stand']!='undefined' && data['winner']=='-') gameAction('stand');
-
-
             });
+        tablePosition();
     }
     if (typeof data['nextDeck']!='undefined' && data['nextDeck']=='yes') {
         if (typeof decks.player!='undefined') decks.player.removeMark();
@@ -150,6 +153,7 @@ function gameUpdate(data) {
 
 
             });
+        tablePosition();
     }
     if (typeof data['standed']!='undefined') {
         buttonsAccess(data['accessable']);
@@ -165,11 +169,22 @@ function gameUpdate(data) {
 function deck(_deckObj) {
 
     this.$deckObj = _deckObj;
-    this.$sumObj = $('<div class="deckSum"></div>')
-        .appendTo('body');
-
-    this.$markObj = $('<div class="deck_mark"><span class="glyphicon glyphicon-chevron-down"></span></div>')
-        .appendTo('body');
+    if(this.$deckObj.hasClass('deck-2')){
+        this.$sumObj = $('<div id="player_checksum_2" class="deckSum"></div>')
+            .appendTo('.cj-playerTable');
+        this.$markObj = $('<div class="deck_mark mark-2"><span class="glyphicon glyphicon-chevron-down"></span></div>')
+            .appendTo('.cj-playerTable');
+    }
+    else if (this.$deckObj.hasClass('player-deck')) {
+        this.$sumObj = $('<div id="player_checksum" class="deckSum"></div>')
+            .appendTo('.cj-playerTable');
+        this.$markObj = $('<div class="deck_mark"><span class="glyphicon glyphicon-chevron-down"></span></div>')
+            .appendTo('.cj-playerTable');
+    }
+    else{
+        this.$sumObj = $('<div id="dealer_checksum" class="deckSum"></div>')
+            .appendTo('.cj-dealerTable');
+    }
 
     this.addCard = function (suit,val,colour,done,quick) {
 
@@ -190,6 +205,7 @@ function deck(_deckObj) {
 
         $emptyOuter.append($newCard.clone().css('visibility','hidden'));
 
+        sumPosition();
         if (quick == 'quick') {
             $temp.css('top', $emptyOuter.offset().top);
             $emptyOuter.children().css('visibility','visible');
@@ -216,48 +232,27 @@ function deck(_deckObj) {
             if (cards[i][2]=='red') $newCard.addClass('red');
 
             $emptyOuter.append($newCard);
+            tablePosition();
+            sumPosition();
 
         }
-
-        original_width=$deck.width();
 
     };
 
     this.setSum = function (newsum) {
         var $sum=this.$sumObj;
-
         $sum.html(newsum);
         $sum.css('display','block');
+        sumPosition();
     };
 
-    this.sumPosition = function () {
-        var $sum=this.$sumObj;
-
-        var left=((this.$deckObj.offset().left) - ($sum.width() + 10) - 30);
-
-        if (this.$deckObj.hasClass('deck-second'))
-            left=((this.$deckObj.offset().left) + (this.$deckObj.width()) + 30);
-
-        $sum
-            .css('top', (this.$deckObj.offset().top) + margin($sum.height(),this.$deckObj.height()))
-            .css('left', left );
-
-    };
     this.setMark = function () {
         var $mark=this.$markObj;
-
-        deck_offset = this.$deckObj.offset();
-        deck_width = this.$deckObj.width();
-        deck_height = this.$deckObj.height();
-
-        var top = (deck_offset.top - 30);
-        var left = (deck_offset.left + margin($mark.width(),deck_width));
-
         $mark.css({
-            display: 'block',
-            left: left,
-            top: top
+            display: 'block'
         });
+        $('.deck_mark:not(.mark-2)').css('left', $('.player-deck').width()/2+'px');
+        $('.deck_mark.mark-2').css('left', ($('.cj-playerTable').width() - $('.deck-2').width()/2)+'px');
     };
     this.removeMark = function () {
         var $mark=this.$markObj;
@@ -272,17 +267,18 @@ function bet() {
     //ajax call (success: initGame())
     buttons.disableAll();
     $.ajax({
-        'url': './content/ajax/gameCreate.php?wager='+$('.betInput').val()+'&_unique='+unique(),
+        'url': './content/ajax/gameCreate.php?wager='+$('.wager').val()+'&_unique='+unique(),
         'dataType': "json",
         'success': function (data) {
             if (data['error']=='yes') {
                 buttons.bet.enable();
-                if (data['content']=='balance') bet_error('Your balance is too small. Please deposit.');
-                if (data['content']=='too_big') bet_error('We can not currently operate such big bets.');
+                if (data['content']=='balance') alert('Your balance is too small. Please deposit.');
+                if (data['content']=='too_big') alert('We can not currently operate such big bets.');
                 if (data['playing']) location.reload();
             }
             else {
                 initGame();
+                $('.gamblingTable').css('transform', 'translate(-72.5px, -185px)');
                 decks.player.addCard(
                     data['content']['player-1'][0],
                     data['content']['player-1'][1],
@@ -305,7 +301,6 @@ function bet() {
                                                 data['content']['dealer-2'][2]
                                                 ,function(){
                                                     buttonsAccess(data['accessable']);
-                                                    balRefresh();
                                                     decks.player.setSum(data['sums']['player']);
                                                     if (data['sums']['dealer']!='-') decks.dealer.setSum(data['sums']['dealer']);
 
@@ -319,7 +314,6 @@ function bet() {
                                         }
                                         else {
                                             buttonsAccess(data['accessable']);
-                                            balRefresh();
                                             decks.player.setSum(data['sums']['player']);
                                             decks.dealer.setSum(data['sums']['dealer']);
                                             insuranceQ();
@@ -360,8 +354,7 @@ function ceremonial(won,content) {
 
     $cermess.css({
         'display': 'block',
-        'top': margin($cermess.height(),$('.cj-rivalTables').height()),
-        'left': margin($cermess.width(),$('.cj-rivalTables').width())
+        'transform': 'translate(-'+$cermess.width()/2+'px, -15px)'
     });
 }
 
@@ -399,10 +392,9 @@ function initGame() {
     $('.deckSum').remove();
     $('.ceremonial').remove();
     $('.deck_mark').remove();
-
     decks = {
         dealer: new deck($('<div class="deck"></div>').appendTo('.cj-dealerTable')),
-        player: new deck($('<div class="deck"></div>').appendTo('.cj-playerTable'))
+        player: new deck($('<div class="deck player-deck"></div>').appendTo('.cj-playerTable'))
     };
     enablePerms();
 }
@@ -434,8 +426,8 @@ function playingOnInit() {
                         buttonsAccess(data['accessable']);
                         //decks.dealer.setSum(data['sums']['dealer']);
                         decks.player.setSum(data['sums']['player']);
-                        if (data['sums']['player2']!='-') decks.player_2.setSum(data['sums']['player2']);
                     }, 'quick');
+                tablePosition();
 
 
             }
@@ -446,6 +438,7 @@ function playingOnInit() {
                     data['player']['cards'][i][1],
                     data['player']['cards'][i][2], function(){}, 'quick'
                 );
+                tablePosition();
 
                 if (data['player']['cards2'] && i==1) splitPlayerDecks(function(){});
 
@@ -459,7 +452,11 @@ function playingOnInit() {
                         data['player']['cards2'][i][1],
                         data['player']['cards2'][i][2], function(){}, 'quick'
                     );
+                    tablePosition();
                 }
+                if (data['data']['mark']==1) decks.player.setMark();
+                if (data['data']['mark']==2) decks.player_2.setMark();
+                if (data['sums']['player2']!='-') decks.player_2.setSum(data['sums']['player2']);
 
             }
         }
@@ -491,6 +488,7 @@ function endedOnInit() {
                         if (data['winner']=='tie') ceremonial(true,'<b>TIE</b>');
                         if (data['winner']=='dealer') ceremonial(false,'<b>LOSE</b>');
                     }, 'quick');
+                tablePosition();
 
 
             }
@@ -501,6 +499,7 @@ function endedOnInit() {
                     data['player']['cards'][i][1],
                     data['player']['cards'][i][2], function(){}, 'quick'
                 );
+                tablePosition();
 
                 if (data['player']['cards2'] && i==1) splitPlayerDecks(function(){});
 
@@ -514,6 +513,7 @@ function endedOnInit() {
                         data['player']['cards2'][i][1],
                         data['player']['cards2'][i][2], function(){}, 'quick'
                     );
+                    tablePosition();
                 }
 
             }
@@ -604,5 +604,6 @@ function splitPlayerDecks(done_fc) {
         secCard_clone.remove();
         $secDeck.children().children().css('visibility','visible');
     });
+    tablePosition();
 
 }

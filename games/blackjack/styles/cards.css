@@ -1,11 +1,11 @@
 /* -- CoinCards - © 2014 Cointoli -- */
 @font-face {
   font-family: suit;
-	src: url('fonts/suit-regular.eot');
-	src: url('fonts/suit-regular.eot?#iefix') format('embedded-opentype'),
-			 url('fonts/suit-regular.woff') format('woff'),
-			 url('fonts/suit-regular.ttf') format('truetype'),
-			 url('fonts/suit-regular.svg#suit-regular') format('svg');
+	src: url('../fonts/suit-regular.eot');
+	src: url('../fonts/suit-regular.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/suit-regular.woff') format('woff'),
+			 url('../fonts/suit-regular.ttf') format('truetype'),
+			 url('../fonts/suit-regular.svg#suit-regular') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -52,7 +52,7 @@
   height: 129px;
   background-color: #EADDBE;
   z-index: 20;
-  background-image: url('imgs/yellow-notext.png');
+  background-image: url('../images/yellow-notext.png');
   background-position: center center;
   background-size: 60px;
   background-repeat: no-repeat;
@@ -83,6 +83,7 @@
   -webkit-border-radius: 2px;
   background-color: #2B2B2B;
   color: #DDDDBB;
+  top: 50px;
 }
 .ceremonial {
   position: absolute;
@@ -96,6 +97,8 @@
   -webkit-border-radius: 2px;
   background-color: #2B2B2B;
   color: #DDDDBB;
+  left: 50%;
+  top: 50%;
 }
 .deck_mark {
   position: absolute;
@@ -110,6 +113,7 @@
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+  top: -30px;
 }
 .deck_mark span {
   position: relative;

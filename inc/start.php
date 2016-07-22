@@ -28,7 +28,7 @@ if (empty($_GET['unique'])) {
     header('Location: ./?unique='.$_COOKIE['unique_S_'].'# Do Not Share This URL!');
     exit();  
   }
-  newPlayer($wallet);
+  else newPlayer($wallet);
 }
 else { // !empty($_GET['unique'])
   if (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['unique'])."' LIMIT 1"))!=0) {
@@ -44,7 +44,7 @@ else { // !empty($_GET['unique'])
 }
 
 if(!isset($_COOKIE['game'])){
-  setcookie('game', 'slots',(time()+60*60*24*365*5),'/');
+  setcookie('game', 'blackjack',(time()+60*60*24*365*5),'/');
   header('Location: ./');
 }
 $game = $_COOKIE['game'];
@@ -63,4 +63,16 @@ if ($settings['maintenance']) {
   exit();
 }
 
-?>
+
+
+$playingGame=false;
+$endedOnInit=false;
+
+
+if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=0 AND `player`=$player[id] LIMIT 1"))!=0)
+  $playingGame=true;
+
+
+if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=1 AND `player`=$player[id] AND `insurance_process`=1 LIMIT 1"))!=0)
+  $endedOnInit=true;
+
