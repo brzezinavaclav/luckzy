@@ -64,9 +64,14 @@ function __prepare() {
   });
 
 
+
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
+  imitateCRON();
+  setInterval(function(){
+    imitateCRON();
+  },1000);
 
 
   $('.wager').change(function(){

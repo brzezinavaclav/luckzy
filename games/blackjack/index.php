@@ -82,7 +82,7 @@ if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=1 AND `player`=
         </div>
         <div class="form-group">
             <label>Result:</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_result" value="<?php echo stringify_shuffle($player['last_final_shuffle']); ?>" disabled><br>
+            <input style="width: 100%;" type="text" id="_fair_l_result" value="<?php echo $player['last_final_shuffle']; ?>" disabled><br>
         </div>
 
     </div>

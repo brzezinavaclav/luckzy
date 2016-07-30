@@ -430,7 +430,7 @@ a:focus,a:active {
   border-bottom: 1px solid;
   background: inherit;
 }
-.navbar-first .navbar-nav > li > a.active:hover, .navbar-first .navbar-nav > li > a.active:focus{
+.navbar-first .navbar-nav > li > a.active:hover, .navbar-first .navbar-nav > li.active > a:focus{
   background-color: inherit;
 }
 .navbar-first.navbar .btn{
