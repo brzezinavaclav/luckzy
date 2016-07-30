@@ -10,6 +10,15 @@
 if (!isset($init)) exit();
 ?>
 <h1>Stats</h1>
+
+<div class="menu_ menu-horizontal">
+  <ul>
+    <li><a href="./" class="<?php if (!isset($_GET['g'])) echo 'active_'; ?>">All bets</a></li>
+    <li><a href="?g=dice" class="<?php if (isset($_GET['g']) && $_GET['g']=='dice') echo 'active_'; ?>">Dice</a></li>
+    <li><a href="?g=slots" class="<?php if (isset($_GET['g']) && $_GET['g']=='slots') echo 'active_'; ?>">Slots</a></li>
+    <li><a href="?g=blackjack" class="<?php if (isset($_GET['g']) && $_GET['g']=='blackjack') echo 'active_'; ?>">Blackjack</a></li>
+  </ul>
+</div>
 <table class="vypis_table">
   <tr class="vypis_table_obsah">
     <td>Number of bets:</td>

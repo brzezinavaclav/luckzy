@@ -21,7 +21,6 @@ if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` 
 
 $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
-validateAccess($player['id']);
 
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
 

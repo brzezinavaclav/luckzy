@@ -24,7 +24,7 @@ $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1
 
 if (ini_get('safe_mode')==false) set_time_limit(0);
 
-if (/**true) {//*/db_num_rows(db_query("SELECT * FROM `system` WHERE `id`=1 AND `deposits_last_round`<NOW()-INTERVAL $interval SECOND LIMIT 1"))==1) {
+if (db_num_rows(db_query("SELECT * FROM `system` WHERE `id`=1 AND `deposits_last_round`<NOW()-INTERVAL $interval SECOND LIMIT 1"))==1) {
   include __DIR__.'/../../inc/check_deposits.php';
   _checkDeposits();
 }

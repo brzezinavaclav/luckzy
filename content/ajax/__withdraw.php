@@ -22,7 +22,8 @@ mysql_query('START TRANSACTION');
 
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"))==0) exit();
 
-validateAccess($player['id']);
+
+if (!logged())exit();
 
 maintenance();
 

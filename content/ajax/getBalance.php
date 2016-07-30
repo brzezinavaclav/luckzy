@@ -21,7 +21,8 @@ $player=db_fetch_array(db_query("SELECT `balance`,`id` FROM `players` WHERE `has
 
 maintenance();
 
-validateAccess($player['id']);
+
+if (!logged())exit();
 
 echo json_encode(array('balance'=>n_num($player['balance'],true)));
 ?>

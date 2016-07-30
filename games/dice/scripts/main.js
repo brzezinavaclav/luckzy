@@ -76,7 +76,7 @@ function recountUnderOver() {
     else var chance_=parseFloat($("#betTb_chance").val()).toFixed(2);
     $("#under_over_num").html(parseFloat(chance_.toString().match(/^\d+(?:\.\d{0,2})?/)).toFixed(2));
 }
-var ajaxBetLock=false;
+ajaxBetLock=false;
 var lastBet=(Date.now()-500);
 function place(wager,multiplier,bot) {
     if ((ajaxBetLock==false && (Date.now())>(lastBet+500)) || bot==true) {
@@ -84,7 +84,7 @@ function place(wager,multiplier,bot) {
         lastBet=Date.now();
         $("#betBtn").html('Rolling');
         $.ajax({
-            'url': './content/ajax/spin.php?w='+wager+'&m='+multiplier+'&hl='+under_over+'&_unique='+unique(),
+            'url': './content/ajax/place.php?w='+wager+'&m='+multiplier+'&hl='+under_over+'&_unique='+unique(),
             'dataType': "json",
             'success': function(data) {
                 if (data['error']=='yes') {
@@ -97,6 +97,7 @@ function place(wager,multiplier,bot) {
                 else {
                     var result=data['result'];
                     var win_lose=data['win_lose'];
+                    fairUpdate(data['fair']);
                 }
                 $("#betBtn").html('Roll dice');
                 ajaxBetLock=false;

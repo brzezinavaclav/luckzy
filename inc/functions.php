@@ -6,7 +6,9 @@
  *  More licences we sell, more products we develop in the future.  
 */
 
-if (!isset($init)) exit();     
+if (!isset($init)) exit();
+
+session_start();
 
 function prot($hodnota,$max_delka=0) {
   $text=db_real_escape_string(strip_tags($hodnota));
@@ -29,7 +31,7 @@ function random_num($length) {
   return $return;
 }
 
-function generateServerSeed() {
+function generateSlotsSeed() {
 
   $server_seed = array(
     'wheel1' => getInitial(),
@@ -41,9 +43,8 @@ function generateServerSeed() {
   
   return $server_seed;
 }                             
-function seedExport($seed) {
+function slotsSeedExport($seed) {
   if(!empty($seed)) {
-    if(is_array(unserialize($seed))) {
       $seed = unserialize($seed);
       $return = 'wheel_1:[' . implode(',', $seed['wheel1']) . '],'
           . 'wheel_2:[' . implode(',', $seed['wheel2']) . '],'
@@ -51,11 +52,9 @@ function seedExport($seed) {
           . 'seed_num:[' . $seed['seed_num'] . '],'
           . 'salt:[' . $seed['salt'] . ']';
       return $return;
-    }
-    else return $seed;
   }
   else return '';
-}                                   
+}
 function getInitial() {
   
   $array = array();
@@ -99,17 +98,15 @@ function getInitial() {
   
 }
 
-function newPlayer($wallet) {
-  do $hash=generateHash(32);  
+function newPlayer() {
+  do $hash=generateHash(32);
   while (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='$hash' LIMIT 1"))!=0);
-  $alias='Player_';
-  $alias_i=db_fetch_array(db_query("SELECT `autoalias_increment` AS `data` FROM `system` LIMIT 1"));
-  $alias_i=$alias_i['data'];
+
   $client_seed = random_num(8);
-  db_query("UPDATE `system` SET `autoalias_increment`=`autoalias_increment`+1 LIMIT 1");
-  db_query("INSERT INTO `players` (`hash`,`alias`,`time_last_active`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','".$alias.$alias_i."',NOW(),'".serialize(generateServerSeed())."','".mt_rand(1000000, 1530494976)."','".generateInitialShuffle($client_seed)."', '".$client_seed."')");
-  header('Location: ./?unique='.$hash.'# Do Not Share This URL!');
-  exit();
+  db_query("INSERT INTO `players` (`hash`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','".serialize(generateSlotsSeed())."','".random_num(10)."','".generateInitialShuffle($client_seed)."', '".$client_seed."')");
+
+  setcookie('unique_S_',$hash,(time()+60*60*24),'/');
+  setcookie('unique_S_',$hash,(time()+60*60*24),'/');
 }
 
 function zkrat($str,$max,$iflonger) {
@@ -124,12 +121,9 @@ function n_num($num,$showall=false) {
   else return rtrim(rtrim($r,'0'),'.');
 }
 
-function validateAccess($player_id) {
-  $player=db_fetch_array(db_query("SELECT `password` FROM `players` WHERE `id`=$player_id LIMIT 1"));
-  session_start();
-  if ($player['password']!='' && (empty($_SESSION['granted']) || $_SESSION['granted']!='yes')) {
-    exit();
-  }
+function logged(){
+  if(isset($_SESSION['logged_']) && $_SESSION['logged_']==true) return true;
+  else return false;
 }
 
 function bbcode($str) {
@@ -207,22 +201,6 @@ function maintenance() {
   if ($settings['maintenance']) exit();
 
 }
-
-function scan_dir($dir) {
-    $ignored = array('.', '..', '.svn', '.htaccess');
-
-    $files = array();    
-    foreach (scandir($dir) as $file) {
-        if (in_array($file, $ignored)) continue;
-        $files[$file] = filemtime($dir . '/' . $file);
-    }
-
-    arsort($files);
-    $files = array_keys($files);
-
-    return ($files) ? array_reverse($files) : false;
-}
-
 
 /*________________________JACK_____________________________*/
 function card_value($card_val) {

@@ -37,7 +37,6 @@ if ($wager>$max_wager) {
 
 $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
-validateAccess($player['id']);
 
 if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `player`=$player[id] AND `ended`=0 LIMIT 1"))!=0) {
   echo json_encode(array('error'=>'yes','content'=>'playing'));

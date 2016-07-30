@@ -46,7 +46,7 @@ input:focus, select:focus {
   text-align: left;
 }
 .main {
-  width: 860px; 
+  width: 998px;
   margin-top: 5px; 
   overflow: hidden; 
   padding: 5px; 
@@ -88,16 +88,40 @@ input:focus, select:focus {
   border-bottom: 1px solid #7A7E90; 
   top: inherit; 
 }
-.menu_ ul a:hover { 
-  color: #4F556C; 
+.menu_ ul a:hover {
+  color: #4F556C;
 }
 .menu_ ul a.active_ {
   height: 36px;
   border-bottom: 3px solid #616372;
 }
+.menu_.menu-horizontal {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.menu_.menu-horizontal ul{
+  border-bottom: 1px solid #4F556C
+}
+.menu_.menu-horizontal ul li{
+  display: inline-block;
+  padding-bottom: 0px;
+}
+.menu_.menu-horizontal ul a{
+  border: 0px;
+  height: 40px;
+  border-radius: 2px 2px 0px 0px;
+  background: rgba(122,126,144,0.5);
+}
+.menu_.menu-horizontal ul a:hover, .menu_.menu-horizontal ul a:focus{
+  background: #7A7E90;
+  color: #edeef2;
+}
+.menu_.menu-horizontal ul a.active_{
+  background: #4F556C;
+}
 .obsah { 
   float: right; 
-  width: 700px; 
+  width: 845px;
   padding: 15px; 
   font-family: "Open Sans",sans-serif; 
   background-color: rgba(255, 255, 255, 0.5); 

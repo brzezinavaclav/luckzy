@@ -1,6 +1,6 @@
 <?php
 /*
- *  © CoinSlots 
+ *  ï¿½ CoinSlots 
  *  Demo: http://www.btcircle.com/coinslots
  *  Please do not copy or redistribute.
  *  More licences we sell, more products we develop in the future.  
@@ -19,7 +19,8 @@ if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` 
 
 $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
-validateAccess($player['id']);
+
+if (!logged())exit();
 
 maintenance();
 

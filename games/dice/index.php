@@ -130,3 +130,79 @@
 
     </div>
 </div>
+
+<div class="stats">
+    <div class="st-switches">
+        <a href="#" onclick="javascript:rules();return false;" class="rulesB tooltips" data-toggle="tooltip" data-placement="right" title="Game Rules"><span class="glyphicon glyphicon-info-sign"></span></a>
+        <a data-load="my_bets" href="#">MY BETS</a>
+        <a data-load="all_bets" href="#">ALL BETS</a>
+        <a data-load="high" href="#">HIGHEST WINS</a>
+    </div>
+    <div class="st-switchline"></div>
+    <div class="st-stats">
+        <table>
+            <thead>
+            <tr>
+                <td>BET ID</td>
+                <td>PLAYER</td>
+                <td>TIME</td>
+                <td>BET</td>
+                <td>SPIN</td>
+                <td>PAYOUT</td>
+                <td>PROFIT</td>
+            </tr>
+            </thead>
+            <tbody class="stats-my_bets"></tbody>
+            <tbody class="stats-all_bets"></tbody>
+            <tbody class="stats-high"></tbody>
+        </table>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+
+
+<div class="leftCon" id="lc-fair">
+
+    <div class="heading"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;&nbsp;&nbsp;Provably Fair</div>
+    <div class="content">
+
+        <div class="_heading _hfirst">Next Shuffle</div>
+        <div class="form-group">
+            <label>Server seed (Sha256):</label><br>
+            <input style="width: 100%;" type="text" id="_fair_server_seed" value="<?php echo hash('sha256',$player['dice_seed']); ?>" disabled><br>
+        </div>
+        <div class="form-group">
+            <label>Client seed:</label><br>
+            <div class="input-group">
+                <input class="rightact" type="text" id="_fair_client_seed" value="<?php echo $player['client_seed']; ?>">
+          <span class="input-group-btn">
+          <a href="#" class="btn btn-sm btn-primary" style="padding: 9px 13px 8px 13px">Save</a><br>
+          </span>
+            </div>
+        </div>
+
+        <div class="_heading">Last Shuffle</div>
+        <div class="form-group">
+            <label>Server seed (Sha256):</label><br>
+            <input style="width: 100%;" type="text" id="_fair_l_server_seed" value="<?php echo hash('sha256',$player['last_dice_seed']); ?>" disabled><br>
+        </div>
+        <div class="form-group">
+            <label>Server seed (plain):</label><br>
+            <input style="width: 100%;" type="text" id="_fair_l_server_seed_p" value="<?php echo $player['last_dice_seed']; ?>" disabled><br>
+        </div>
+        <div class="form-group">
+            <label>Client seed:</label><br>
+            <input style="width: 100%;" type="text" id="_fair_l_client_seed" value="<?php echo $player['last_client_seed']; ?>" disabled><br>
+        </div>
+        <div class="form-group">
+            <label>Result:</label><br>
+            <input style="width: 100%;" type="text" id="_fair_l_result" value="<?php echo $player['dice_last_result']; ?>" disabled><br>
+        </div>
+
+    </div>
+    <div class="footer"></div>
+
+</div>

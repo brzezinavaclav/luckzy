@@ -6,7 +6,6 @@
  *  More licences we sell, more products we develop in the future.  
 */
 
-
 error_reporting(0);
 header('X-Frame-Options: DENY'); 
 
@@ -15,12 +14,10 @@ include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/wallet_driver.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
-$game = $_COOKIE['game'];
 db_query('BEGIN TRANSACTION');
 
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"))==0) exit();
 
-validateAccess($player['id']);
 
 maintenance();
 
@@ -49,11 +46,10 @@ if ($wager > $max_wager) {
 }
 
 
-$server_seed = unserialize($player[$game.'_seed']);
+$server_seed = unserialize($player['slots_seed']);
 $client_seed = (int)$player['client_seed'];
 
 $r_win = 0; $r_lose = 0; $r_tie = 0;$multiplier = 0;$newSeed = 0; $newCSeed = 0; $result = '';
-if($game == 'slots') {
 
   $index = ($server_seed['seed_num'] + $client_seed) % 128;
 
@@ -86,30 +82,8 @@ if($game == 'slots') {
   else if ($multiplier > 1) $r_win = 1;
   else $r_tie = 1;
   //new seed
-  $newSeed    = serialize( generateServerSeed() );
+  $newSeed    = serialize( generateSlotsSeed());
   $newCSeed   = random_num(8);
-}
-else if($game == 'dice'){
-
-  $multiplier=round((double)$_GET['m'],2);
-  $under_over=(int)$_GET['hl'];
-
-  $chance['under']=floor((1/($multiplier/100)*((100-$settings['house_edge'])/100))*100)/100;
-  $chance['over']=100-$chance['under'];
-
-  $result = (double)(($server_seed + $client_seed) % 10000)/100;
-  if(($under_over==0 && $result<=$chance['under']) || ($under_over==1 && $result>=$chance['over'])) {
-    $win_lose = 1;
-  }
-  else{
-    $win_lose = 0;
-    $multiplier = 0;
-  }
-
-  //new seed
-  $newSeed    = mt_rand(1000000, 1530494976);
-  $newCSeed   = random_num(8);
-}
 
 $payout = $wager * $multiplier;
 $profit = ($wager * -1) + $payout;
@@ -153,22 +127,21 @@ if ($settings['inv_enable'] == 1 && $profit != 0) {
 
           
 db_query("UPDATE `players` SET `balance`=TRUNCATE(ROUND($newBalance,9),8),`t_bets`=`t_bets`+1,`t_wagered`=TRUNCATE(ROUND((`t_wagered`+$wager),9),8),`t_wins`=`t_wins`+$r_win,`t_profit`=TRUNCATE(ROUND((`t_profit`+$profit),9),8) WHERE `id`=$player[id] LIMIT 1");
-db_query("INSERT INTO `spins` (`player`,`bet_amount`,`server_seed`,`client_seed`,`result`,`multiplier`,`payout`, `game`) VALUES ($player[id],$wager,'".$player[$game.'_seed']."','$client_seed','".$result."',$multiplier,$payout, '".$game."')");
+db_query("INSERT INTO `spins` (`player`,`bet_amount`,`server_seed`,`client_seed`,`result`,`multiplier`,`payout`, `game`) VALUES ($player[id],$wager,'".$player['slots_seed']."','$client_seed','".$result."',$multiplier,$payout, 'slots')");
 db_query("UPDATE `system` SET `t_bets`=`t_bets`+1,`t_wagered`=TRUNCATE(ROUND((`t_wagered`+$wager),9),8),`t_wins`=`t_wins`+$r_win,`t_loses`=`t_loses`+$r_lose,`t_ties`=`t_ties`+$r_tie,`t_player_profit`=TRUNCATE(ROUND((`t_player_profit`+$profit),9),8) LIMIT 1");
 
 
-db_query("UPDATE `players` SET `last_".$game."_seed`=`".$game."_seed`,`".$game."_seed`='$newSeed',`last_client_seed`=`client_seed`,`client_seed`='$newCSeed',`last_".$game."_result`='$result' WHERE `id`=$player[id] LIMIT 1");
+db_query("UPDATE `players` SET `last_slots_seed`=`slots_seed`,`slots_seed`='$newSeed',`last_client_seed`=`client_seed`,`client_seed`='$newCSeed',`slots_last_result`='$result' WHERE `id`=$player[id] LIMIT 1");
 
-if($game == 'slots') {
   echo json_encode(array(
       'error' => 'no',
       'result' => $result,
       'fair' => array(
 
-          'newSeed' => hash('sha256', seedExport($newSeed)),
+          'newSeed' => hash('sha256', slotsSeedExport($newSeed)),
           'newCSeed' => $newCSeed,
-          'lastSeed_sha256' => hash('sha256', seedExport($player['slots_seed'])),
-          'lastSeed' => seedExport($player['slots_seed']),
+          'lastSeed_sha256' => hash('sha256', slotsSeedExport($player['slots_seed'])),
+          'lastSeed' => slotsSeedExport($player['slots_seed']),
           'lastCSeed' => $client_seed,
           'lastResult' => "$result1,$result2,$result3"
 
@@ -181,24 +154,5 @@ if($game == 'slots') {
       'index' => $index
 
   ));
-}
-else if($game == 'dice'){
-  echo json_encode(array(
-      'result'=>$result,
-      'win_lose' => $win_lose,
-      'profit'=> $profit,
-      'fair'  =>  array(
-
-          'newSeed'           => hash( 'sha256', seedExport($newSeed) ),
-          'newCSeed'          => $newCSeed,
-          'lastSeed_sha256'   => hash( 'sha256', seedExport($player['dice_seed']) ),
-          'lastSeed'          => seedExport( $player['dice_seed'] ),
-          'lastCSeed'         => $client_seed,
-          'lastResult'        => "$result"
-
-      ),
-  ));
-}
-
 
 db_query('COMMIT TRANSACTION');

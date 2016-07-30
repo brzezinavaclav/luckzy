@@ -122,7 +122,7 @@ function spin(data) {
     ];
     //timing.sort( function(a,b) {return a-b} );       // uncomment for ordering
 
-    lock.fair = data['fair'];
+    fairUpdate(data['fair']);
     lock.started();
 
     spinWheel(1,data['items']['wheel1'],data['index'],timing[0]);
@@ -131,16 +131,6 @@ function spin(data) {
 
 }
 
-function fairUpdate(data) {
-
-    $('#_fair_server_seed').val(data['newSeed']);
-    $('#_fair_client_seed').val(data['newCSeed']);
-    $('#_fair_l_server_seed').val(data['lastSeed_sha256']);
-    $('#_fair_l_server_seed_p').val(data['lastSeed']);
-    $('#_fair_l_client_seed').val(data['lastCSeed']);
-    $('#_fair_l_result').val(data['lastResult']);
-
-}
 
 (function($){
 

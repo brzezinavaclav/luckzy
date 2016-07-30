@@ -8,37 +8,31 @@
 
 if (!isset($init)) exit();
 
-
-session_start();
-error_reporting(E_ALL & ~E_NOTICE);
-
-$conf_c = false;
-include __DIR__.'/db-conf.php';
-if ($conf_c == false) {
-  header('Location: ./install/');
-  exit();
-}
 include __DIR__.'/wallet_driver.php';
+include __DIR__.'/db-conf.php';
 include __DIR__.'/db_functions.php';
 include __DIR__.'/functions.php';
 
+error_reporting(E_ALL & ~E_NOTICE);
 
-if (empty($_GET['unique'])) {
-  if (!empty($_COOKIE['unique_S_']) && db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_COOKIE['unique_S_'])."' LIMIT 1"))!=0) {
-    header('Location: ./?unique='.$_COOKIE['unique_S_'].'# Do Not Share This URL!');
-    exit();  
-  }
-  else newPlayer($wallet);
+
+if (!isset($conf_c)) {
+  header('Location: ./install/');
+  exit();
 }
-else { // !empty($_GET['unique'])
-  if (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['unique'])."' LIMIT 1"))!=0) {
-    $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['unique'])."' LIMIT 1"));
-    $unique=prot($_GET['unique']);
-    setcookie('unique_S_',prot($_GET['unique']),(time()+60*60*24*365*5),'/');  
-  }
-  else {
-    setcookie('unique_S_',false,(time()-10000),'/');
-    header('Location: ./');    
+
+if (logged()) {
+  $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']));
+  $unique = $player['hash'];
+}
+
+else {
+  if (!empty($_COOKIE['unique_S_']) && db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='" . $_COOKIE['unique_S_'] . "' LIMIT 1")) != 0) {
+    $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='" . $_COOKIE['unique_S_'] . "' LIMIT 1"));
+    $unique = $_COOKIE['unique_S_'];
+  } else {
+    newPlayer();
+    header('Location: ./');
     exit();
   }
 }
@@ -48,31 +42,10 @@ if(!isset($_COOKIE['game'])){
   header('Location: ./');
 }
 $game = $_COOKIE['game'];
-
-
 $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
 
-
-if ($player['password']!='' && (empty($_SESSION['granted']) || $_SESSION['granted']!='yes')) {  
-  include __DIR__.'/unlockAccess.php';
-  exit();
-}
 
 if ($settings['maintenance']) {
   include __DIR__.'/maintenance.php';
   exit();
 }
-
-
-
-$playingGame=false;
-$endedOnInit=false;
-
-
-if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=0 AND `player`=$player[id] LIMIT 1"))!=0)
-  $playingGame=true;
-
-
-if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=1 AND `player`=$player[id] AND `insurance_process`=1 LIMIT 1"))!=0)
-  $endedOnInit=true;
-

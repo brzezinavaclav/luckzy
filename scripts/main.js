@@ -1,18 +1,24 @@
+var ajaxBetLock;
 $(document).ready(function (){
   __prepare();
 });
 function __prepare() {
 
-  window.location.href = './?unique='+unique()+'# Do Not Share This URL!';
-  
+  $(function() {
+    var target;
+    if(location.href.split("?")[1]){
+      target = location.href.split("?")[1];
+    }
+    else target = get_active_game();
+    $('.navbar-first .navbar-nav > li > a[href^="?' + target + '"]').addClass('active');
+  });
+
   $('.leftbuttons button').each(function(){
     $(this).tooltip();
   });
   $('.tooltips').each(function(){
     $(this).tooltip();
   });
-
-  
   
   $('.chat-input').keypress(function(e){
     if (e.which == 13) chatSend();
@@ -29,7 +35,6 @@ function __prepare() {
 
   setLeftbarH();
   setInterval(function(){
-
     setLeftbarH();
   },100);
   
@@ -62,10 +67,6 @@ function __prepare() {
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
-  imitateCRON();
-  setInterval(function(){
-    imitateCRON();
-  },1000);
 
 
   $('.wager').change(function(){
@@ -781,9 +782,7 @@ var bot = {
     
   }
   
-}
-
-
+};
 
 function rules() {
   $('#modals-rules').modal('show');
@@ -792,4 +791,81 @@ function rules() {
 function select_game(game) {
   $.cookie('game', game);
   window.location = "./";
+}
+
+function login() {
+  $.ajax({
+    'url': './content/ajax/login.php',
+    'dataType': "json",
+    'method': 'POST',
+    'data': {username: $('#modals-login #username').val(), passwd: $('#modals-login #passwd').val(), totp: $('#modals-login #totp').val()},
+    'success': function(data) {
+      if(data['error'] == 'no') {
+        if(data['2f_1']){
+          $('#2facode').fadeIn();
+        }
+        else window.location = "./";
+      }
+      else m_alert('danger',data['message']);
+    }
+  });
+}
+
+$('#modals-login').on('show.bs.modal',function(){
+  $('#2facode').hide();
+});
+
+function register() {
+  $.ajax({
+    'url': './content/ajax/register.php',
+    'dataType': "json",
+    'method': 'POST',
+    'data': {username: $('#modals-sign #username').val(), passwd: $('#modals-sign #passwd').val(), re_passwd: $('#modals-sign #re_passwd').val()},
+    'success': function(data) {
+        if(data['error'] == 'no') {
+          m_alert('success', 'You\'ve been signed up successfully');
+          $('#modals-sign #username').val('');
+          $('#modals-sign #passwd').val('');
+          $('#modals-sign #re_passwd').val('');
+        }
+        else m_alert('danger',data['message']);
+    }
+  });
+}
+
+function logout(){
+  $.ajax({
+    'url': './content/ajax/login.php?logout',
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no') window.location = "./";
+    }
+  });
+}
+
+function pair(token, user_id) {
+  $.ajax({
+    'url': "./content/ajax/pair.php?newtoken="+token+"&totp="+$("#totp").val()+"&id="+user_id,
+    'dataType': "json",
+    'success': function(data) {
+      if (data['success']=='no') alert("One-time GA code check wasn't successful. Please, try again.");
+      else window.location='./account.php';
+    }
+  });
+}
+
+function m_alert(status, message){
+  $('.modal.in .m_alert').html('<div class="alert alert-dismissable alert-'+status+'"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+message+'</div>').fadeIn();
+}
+
+
+
+function fairUpdate(data) {
+  $('#_fair_server_seed').val(data['newSeed']);
+  $('#_fair_client_seed').val(data['newCSeed']);
+  $('#_fair_l_server_seed').val(data['lastSeed_sha256']);
+  $('#_fair_l_server_seed_p').val(data['lastSeed']);
+  $('#_fair_l_client_seed').val(data['lastCSeed']);
+  $('#_fair_l_result').val(data['lastResult']);
+
 }
