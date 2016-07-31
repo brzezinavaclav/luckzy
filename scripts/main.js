@@ -27,8 +27,6 @@ function __prepare() {
   
   setInterval(function(){
     chatUpdate();
-  },500);
-  setInterval(function(){
     stats.update();
   },500);
   stats.update();
@@ -37,6 +35,21 @@ function __prepare() {
   setInterval(function(){
     setLeftbarH();
   },100);
+
+
+  setInterval(function(){
+    $.ajax({'url':'./content/ajax/refreshSession.php'});
+  },10000);
+  imitateCRON();
+  setInterval(function(){
+    imitateCRON();
+    balanceUpdate();
+  },1000);
+
+  investUpdate();
+  setInterval(function(){
+    investUpdate();
+  }, 5000);
   
   $('.st-switches a').each(function(){
     $(this).click(function(e){
@@ -65,13 +78,6 @@ function __prepare() {
 
 
 
-  setInterval(function(){
-    $.ajax({'url':'./content/ajax/refreshSession.php'});
-  },10000);
-  imitateCRON();
-  setInterval(function(){
-    imitateCRON();
-  },1000);
 
 
   $('.wager').change(function(){
@@ -96,20 +102,7 @@ function __prepare() {
     });
   
   });
-  
-  investUpdate();
-  statsUpdate();
-  setInterval(function(){
-  
-    investUpdate();
-    statsUpdate();
-  
-  }, 5000);
-  setInterval(function(){
-  
-    balanceUpdate();
-  
-  }, 1000);
+
   
   
   $('#deposit_btn').click(function(){

@@ -41,9 +41,6 @@ $(document).ready(function(){
             $item.insertAfter($wheel.children().eq( (ii*order)+plus ));
         }
 
-
-
-
         $wheel.css('margin-top', ($wheel.height() *-1) );
 
         var itemTop = $wheel.children('.item1').eq(-1).offset().top;
@@ -58,6 +55,11 @@ $(document).ready(function(){
     }
 
 });
+
+statsUpdate();
+setInterval(function(){
+    statsUpdate();
+}, 5000);
 
 
 function spinWheel(wheel, items, index, dur ) {

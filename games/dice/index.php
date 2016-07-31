@@ -158,51 +158,5 @@
         </table>
     </div>
 </div>
-
 <footer>
-
 </footer>
-
-
-<div class="leftCon" id="lc-fair">
-
-    <div class="heading"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;&nbsp;&nbsp;Provably Fair</div>
-    <div class="content">
-
-        <div class="_heading _hfirst">Next Shuffle</div>
-        <div class="form-group">
-            <label>Server seed (Sha256):</label><br>
-            <input style="width: 100%;" type="text" id="_fair_server_seed" value="<?php echo hash('sha256',$player['dice_seed']); ?>" disabled><br>
-        </div>
-        <div class="form-group">
-            <label>Client seed:</label><br>
-            <div class="input-group">
-                <input class="rightact" type="text" id="_fair_client_seed" value="<?php echo $player['client_seed']; ?>">
-          <span class="input-group-btn">
-          <a href="#" class="btn btn-sm btn-primary" style="padding: 9px 13px 8px 13px">Save</a><br>
-          </span>
-            </div>
-        </div>
-
-        <div class="_heading">Last Shuffle</div>
-        <div class="form-group">
-            <label>Server seed (Sha256):</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_server_seed" value="<?php echo hash('sha256',$player['last_dice_seed']); ?>" disabled><br>
-        </div>
-        <div class="form-group">
-            <label>Server seed (plain):</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_server_seed_p" value="<?php echo $player['last_dice_seed']; ?>" disabled><br>
-        </div>
-        <div class="form-group">
-            <label>Client seed:</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_client_seed" value="<?php echo $player['last_client_seed']; ?>" disabled><br>
-        </div>
-        <div class="form-group">
-            <label>Result:</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_result" value="<?php echo $player['dice_last_result']; ?>" disabled><br>
-        </div>
-
-    </div>
-    <div class="footer"></div>
-
-</div>

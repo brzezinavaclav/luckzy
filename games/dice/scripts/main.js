@@ -24,6 +24,11 @@ $(document).ready(function () {
     });
 });
 
+statsUpdate();
+setInterval(function(){
+    statsUpdate();
+}, 5000);
+
 function singleRoll(){
     place($('#bt_wager').val(), $('#betTb_multiplier').val(), false);
 }

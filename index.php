@@ -51,7 +51,7 @@ include __DIR__.'/inc/start.php';
     return '<?php echo $settings['url']; ?>';
   }
   function get_active_game(){
-    return '<?php echo $game; ?>';
+    return '<?php echo $_COOKIE['game']; ?>';
   }
 </script>
 </head>
@@ -78,9 +78,9 @@ include __DIR__.'/inc/start.php';
         </ul>
       <?php endif; ?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="?blackjack" onclick="javascript:select_game('blackjack')">Blackjack</a></li>
-        <li><a href="?slots" onclick="javascript:select_game('slots')">Slots</a></li>
-        <li><a href="?dice" onclick="javascript:select_game('dice')">Dice</a></li>
+        <li><a href="?blackjack">Blackjack</a></li>
+        <li><a href="?slots">Slots</a></li>
+        <li><a href="?dice">Dice</a></li>
         <li><a href="?support">Support</a></li>
         <li><a href="?more">More</a></li>
         <?php if(logged()): ?>
@@ -105,7 +105,9 @@ include __DIR__.'/inc/start.php';
       <?php if(logged()): ?>
         <a class="chat-icon" onclick="javascript:leftCon('chat');"><span class="glyphicon glyphicon-comment"></span></a>
       <?php endif; ?>
-      <a class="navbar-brand">You are playing: <?php echo $game; ?></a>
+      <?php if(game()): ?>
+      <a class="navbar-brand">You are playing: <?php echo game(); ?></a>
+      <?php endif; ?>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="navbar-form navbar-right">
@@ -124,13 +126,12 @@ include __DIR__.'/inc/start.php';
   </div>
 </div>
 <?php
-if(isset($_GET['account'])) {
+if($page == 'blackjack' || $page == 'slots' || $page == 'dice') include 'game.php';
+else if($page == 'account'){
   if(logged()) include 'account.php';
   else header("Location: ./");
 }
-else if(isset($_GET['support'])) include 'support.php';
-else if(isset($_GET['more'])) include 'more.php';
-else include 'game.php';
+else include $page.'.php';
 include __DIR__.'/inc/end.php';
 ?>
 <div class="modal fade" id="modals-deposit" aria-labelledby="mlabels-deposit" aria-hidden="true">
