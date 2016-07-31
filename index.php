@@ -51,7 +51,7 @@ include __DIR__.'/inc/start.php';
     return '<?php echo $settings['url']; ?>';
   }
   function get_active_game(){
-    return '<?php echo $_COOKIE['game']; ?>';
+    return '<?php echo $game; ?>';
   }
 </script>
 </head>
@@ -105,8 +105,8 @@ include __DIR__.'/inc/start.php';
       <?php if(logged()): ?>
         <a class="chat-icon" onclick="javascript:leftCon('chat');"><span class="glyphicon glyphicon-comment"></span></a>
       <?php endif; ?>
-      <?php if(game()): ?>
-      <a class="navbar-brand">You are playing: <?php echo game(); ?></a>
+      <?php if($game): ?>
+      <a class="navbar-brand">You are playing: <?php echo $game; ?></a>
       <?php endif; ?>
     </div>
     <div id="navbar" class="navbar-collapse collapse">

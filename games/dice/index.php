@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#" onclick="singleRoll();" id="roll_btn" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;">Roll dice</a>
+            <a onclick="singleRoll();" id="roll_btn" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;">Roll dice</a>
         </div>
 
     </div>

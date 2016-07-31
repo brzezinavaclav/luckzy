@@ -277,8 +277,10 @@ function getSums($deck)
 
 function stringify_shuffle($shuffle)
 {
-    $cards = unserialize($shuffle);
-    return implode(';', $cards['initial_array']) . ';random-string-' . $cards['random_string'];
+    if(!empty($shuffle)) {
+        $cards = unserialize($shuffle);
+        return implode(';', $cards['initial_array']) . ';random-string-' . $cards['random_string'];
+    }
 }
 
 function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blackjack, $final_shuffle = '')

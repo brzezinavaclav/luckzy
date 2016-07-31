@@ -15,7 +15,7 @@ include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
-$game = $_COOKIE['game'];
+$game = $_GET['game'];
 
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
 

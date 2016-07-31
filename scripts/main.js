@@ -40,10 +40,10 @@ function __prepare() {
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
-  imitateCRON();
+  //imitateCRON();
   setInterval(function(){
-    imitateCRON();
-    balanceUpdate();
+    //imitateCRON();
+    //balanceUpdate();
   },1000);
 
   investUpdate();
@@ -152,7 +152,6 @@ function spinLock() {
 
     });
 
-    fairUpdate(this.fair);
     investUpdate();
     balanceUpdate();
 
@@ -165,7 +164,6 @@ function spinLock() {
     this.locked = true;
   };
 
-  this.fair;
 
 }
 
@@ -573,7 +571,7 @@ var stats = {
   
     $.ajax({
       
-      'url': './content/ajax/stats_load.php?_unique='+unique()+'&last=' + last1 + ',' + last2 + ',' + last3,
+      'url': './content/ajax/stats_load.php?_unique='+unique()+'&last=' + last1 + ',' + last2 + ',' + last3 + '&game='+get_active_game(),
       'dataType': "json",
       'success': function (data) {
         
@@ -865,5 +863,4 @@ function fairUpdate(data) {
   $('#_fair_l_server_seed_p').val(data['lastSeed']);
   $('#_fair_l_client_seed').val(data['lastCSeed']);
   $('#_fair_l_result').val(data['lastResult']);
-
 }

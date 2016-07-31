@@ -46,8 +46,8 @@ $url = $_SERVER["REQUEST_URI"];
 $page = parse_url($url, PHP_URL_QUERY);
 if(empty($page)) $page = 'blackjack';
 
-if($page == 'blackjack' || $page == 'slots' || $page == 'dice')  $_COOKIE['game'] = $page;
-else $_COOKIE['game'] = false;
+if($page == 'blackjack' || $page == 'slots' || $page == 'dice')  $game = $page;
+else $game = false;
 
 
 $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
