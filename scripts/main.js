@@ -83,10 +83,10 @@ $(document).ready(function (){
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
-  //imitateCRON();
+  imitateCRON();
   setInterval(function(){
-    //imitateCRON();
-    //balanceUpdate();
+    imitateCRON();
+    balanceUpdate();
   },1000);
 
 
