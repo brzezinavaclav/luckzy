@@ -24,7 +24,7 @@
     <div class="content">
         <div class="_heading _hfirst">Your Stats</div>
         <div class="form-group">
-            <label>Total spins</label><br>
+            <label>Total bets</label><br>
             <span class="statsData_y_spins"></span>
         </div>
         <div class="form-group">
@@ -33,7 +33,7 @@
         </div>
         <div class="_heading _hfirst">Global Stats</div>
         <div class="form-group">
-            <label>Total spins</label><br>
+            <label>Total bets</label><br>
             <span class="statsData_g_spins"></span>
         </div>
         <div class="form-group">
@@ -97,12 +97,12 @@
         <div class="_heading _hfirst">Next Shuffle</div>
         <div class="form-group">
             <label>Server seed (Sha256):</label><br>
-            <input style="width: 100%;" type="text" id="_fair_server_seed" value="<?php echo hash('sha256',$server_seed); ?>" disabled><br>
+            <input style="width: 100%;" type="text" class="_fair_server_seed" value="<?php echo hash('sha256',$server_seed); ?>" disabled><br>
         </div>
         <div class="form-group">
             <label>Client seed:</label><br>
             <div class="input-group">
-                <input class="rightact" type="text" id="_fair_client_seed" value="<?php echo $client_seed; ?>">
+                <input type="text" class="_fair_client_seed rightact" value="<?php echo $client_seed; ?>">
           <span class="input-group-btn">
           <a href="#" class="btn btn-sm btn-primary" style="padding: 9px 13px 8px 13px">Save</a><br>
           </span>
@@ -111,19 +111,19 @@
         <div class="_heading">Last Shuffle</div>
         <div class="form-group">
             <label>Server seed (Sha256):</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_server_seed" value="<?php if(!empty($last_server_seed)) echo hash('sha256',$last_server_seed); ?>" disabled><br>
+            <input style="width: 100%;" type="text" class="_fair_l_server_seed" value="<?php if(!empty($last_server_seed)) echo hash('sha256',$last_server_seed); ?>" disabled><br>
         </div>
         <div class="form-group">
             <label>Server seed (plain):</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_server_seed_p" value="<?php echo $last_server_seed; ?>" disabled><br>
+            <input style="width: 100%;" type="text" class="_fair_l_server_seed_p" value="<?php echo $last_server_seed; ?>" disabled><br>
         </div>
         <div class="form-group">
             <label>Client seed:</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_client_seed" value="<?php echo $last_client_seed; ?>" disabled><br>
+            <input style="width: 100%;" type="text" class="_fair_l_client_seed" value="<?php echo $last_client_seed; ?>" disabled><br>
         </div>
         <div class="form-group">
             <label>Result:</label><br>
-            <input style="width: 100%;" type="text" id="_fair_l_result" value="<?php echo $last_result; ?>" disabled><br>
+            <input style="width: 100%;" type="text" class="_fair_l_result" value="<?php echo $last_result; ?>" disabled><br>
         </div>
     </div>
     <div class="footer"></div>

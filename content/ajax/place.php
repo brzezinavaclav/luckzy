@@ -64,7 +64,7 @@ if ($wager > $max_wager) {
   }
 
   //new seed
-  $newSeed    = random_num(10);
+  $newSeed    = random_num(8);
   $newCSeed   = random_num(8);
 
 

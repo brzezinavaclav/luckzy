@@ -111,7 +111,7 @@ function newPlayer()
     while (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='$hash' LIMIT 1")) != 0);
 
     $client_seed = random_num(8);
-    db_query("INSERT INTO `players` (`hash`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','" . serialize(generateSlotsSeed()) . "','" . random_num(10) . "','" . generateInitialShuffle($client_seed) . "', '" . $client_seed . "')");
+    db_query("INSERT INTO `players` (`hash`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','" . serialize(generateSlotsSeed()) . "','" . random_num(8) . "','" . generateInitialShuffle($client_seed) . "', '" . $client_seed . "')");
 
     setcookie('unique_S_', $hash, (time() + 60 * 60 * 24), '/');
     setcookie('unique_S_', $hash, (time() + 60 * 60 * 24), '/');
@@ -134,7 +134,7 @@ function n_num($num, $showall = false)
 
 function logged()
 {
-    if (isset($_SESSION['logged_']) && $_SESSION['logged_'] == true) return true;
+    if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) return true;
     else return false;
 }
 
@@ -348,7 +348,7 @@ function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blac
         $t_bets -= 1;
         $t_wagered = $wager * -1;
     } else
-        db_query("UPDATE `system` SET `t_wagered`=`t_wagered`+$t_wagered,`t_bets`=`t_bets`+$t_bets,`t_wins`=`t_wins`+$t_wins,`t_player_profit`=ROUND((`t_player_profit`+" . ($wager * $multip) . "),8) WHERE `id`=1 LIMIT 1");
+        db_query("UPDATE `system` SET `jack_wagered`=`jack_wagered`+$t_wagered,`jack_bets`=`jack_bets`+$t_bets,`jack_wins`=`jack_wins`+$t_wins,`t_player_profit`=ROUND((`t_player_profit`+" . ($wager * $multip) . "),8) WHERE `id`=1 LIMIT 1");
 
 }
 
@@ -414,4 +414,57 @@ function cs_shuffle($client_seed, $deck)
     srand(mt_rand());  //D/$final_deck[]='♠_8_black';$final_deck[]='♠_8_black';$final_deck[]='♠_J_black';$final_deck[]='♠_2_black';$final_deck[]='♠_3_black';$final_deck[]='♠_A_black';$final_deck[]='♠_4_black';$final_deck=array_reverse($final_deck);
 
     return $final_deck;
+}
+
+
+
+
+function get_count($player = '', $filter = '')
+{
+    $where = '';
+    if($player != '') $where .= "WHERE `player`='$player'";
+    if($player == '' && $filter != '') $where .= "WHERE ";
+    else $where .= " AND ";
+    if($filter == 'wins') $where .= "`multiplier` > 1";
+    else if($filter == 'losses') $where .= "`multiplier` < 1";
+    else if($filter == 'ties') $where.= "`multiplier` = 1";
+    $pocet = 0;
+    if (isset($_GET['g']) && $_GET['g'] == 'blackjack') {
+        $pocet += db_num_rows(db_query("SELECT `id` FROM `games` $where"));
+    } else if (isset($_GET['g'])) {
+        if($where != '') $where .= " AND `game`='" . $_GET['g'] . "'";
+        else $where = "WHERE `game`='" . $_GET['g'] . "'";
+        $pocet += db_num_rows(db_query("SELECT `id` FROM `spins` $where"));
+    } else {
+        $pocet += db_num_rows(db_query("SELECT `id` FROM `spins` $where"));
+        $pocet += db_num_rows(db_query("SELECT `id` FROM `games` $where"));
+    }
+    return $pocet;
+}
+function get_wagered($player = ''){
+    if($player != '') $where = "WHERE `player`='$player'";
+    $soucet = 0;
+    if (isset($_GET['g']) && $_GET['g'] == 'blackjack') {
+        $q = db_query("SELECT `bet_amount` FROM `games` $where");
+        while($row = db_fetch_array($q)){
+            $soucet += $row['bet_amount'];
+        }
+    }
+    else if (isset($_GET['g'])) {
+        $q = db_query("SELECT `bet_amount` FROM `spins` $where");
+        while($row = db_fetch_array($q)){
+            $soucet += $row['bet_amount'];
+        }
+    }
+    else {
+        $q = db_query("SELECT `bet_amount` FROM `spins` $where");
+        while($row = db_fetch_array($q)){
+            $soucet += $row['bet_amount'];
+        }
+        $q = db_query("SELECT `bet_amount` FROM `games` $where");
+        while($row = db_fetch_array($q)){
+            $soucet += $row['bet_amount'];
+        }
+    }
+    return $soucet;
 }

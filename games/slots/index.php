@@ -126,7 +126,7 @@
                 <td>PLAYER</td>
                 <td>TIME</td>
                 <td>BET</td>
-                <td>SPIN</td>
+                <td>RESULT</td>
                 <td>PAYOUT</td>
                 <td>PROFIT</td>
             </tr>

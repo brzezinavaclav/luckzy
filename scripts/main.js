@@ -1,130 +1,4 @@
-var ajaxBetLock;
-$(document).ready(function (){
-  __prepare();
-});
-function __prepare() {
-
-  $(function() {
-    var target;
-    if(location.href.split("?")[1]){
-      target = location.href.split("?")[1];
-    }
-    else target = get_active_game();
-    $('.navbar-first .navbar-nav > li > a[href^="?' + target + '"]').addClass('active');
-  });
-
-  $('.leftbuttons button').each(function(){
-    $(this).tooltip();
-  });
-  $('.tooltips').each(function(){
-    $(this).tooltip();
-  });
-  
-  $('.chat-input').keypress(function(e){
-    if (e.which == 13) chatSend();
-  });
-
-  
-  setInterval(function(){
-    chatUpdate();
-    stats.update();
-  },500);
-  stats.update();
-
-  setLeftbarH();
-  setInterval(function(){
-    setLeftbarH();
-  },100);
-
-
-  setInterval(function(){
-    $.ajax({'url':'./content/ajax/refreshSession.php'});
-  },10000);
-  //imitateCRON();
-  setInterval(function(){
-    //imitateCRON();
-    //balanceUpdate();
-  },1000);
-
-  investUpdate();
-  setInterval(function(){
-    investUpdate();
-  }, 5000);
-  
-  $('.st-switches a').each(function(){
-    $(this).click(function(e){
-      
-      if ($(this).hasClass('rulesB')) return;
-      
-      e.preventDefault();
-      $('.st-switches a.active').removeClass('active');
-      $(this).addClass('active');
-      
-      stats.go( $(this).attr('data-load') );
-      
-    });
-  });
-  $('.st-switches a').eq(1).click();
-  
-
-
-  $('.leftbuttons button').each(function(){
-    $(this).click(function(e){
-      e.preventDefault();
-      $('.leftbuttons button.active').removeClass('active');
-      $(this).addClass('active');
-    });
-  });
-
-
-
-
-
-  $('.wager').change(function(){
-    formatWager();
-  });
-  
-  
-  
-  $('.clientseedsave').click(function(e){
-  
-    e.preventDefault();
-  
-    var input = $('#_fair_client_seed');
-    
-    $.ajax({
-      'url': './content/ajax/saveClientSeed.php?_unique='+unique()+'&seed='+input.val(),
-      'dataType': 'json',
-      'success': function(data) {
-        input.val(data['repaired']);
-        alert(data['content']);
-      }
-    });
-  
-  });
-
-  
-  
-  $('#deposit_btn').click(function(){
-    $('#modals-deposit').modal('show');
-    _genNewAddress();
-  });
-  $('#withdraw_btn').click(function(){
-    $('#modals-withdraw').modal();
-  });
-  $('#faucet_btn').click(function(){
-    $('#modals-faucet').modal();
-  });
-
-  $('.modal').on('show.bs.modal',function(){
-    $('.m_alert').hide();      
-  });
-
-  $('.captchadiv').click();
-  
-
-}
-
+var ajaxBetLock = false;
 
 function spinLock() {
   this.spinning = 0;
@@ -143,7 +17,6 @@ function spinLock() {
 
   this.unlock = function () {
     this.locked = false;
-
     $('.st-stats table tbody tr[data-hidden=1]').each(function(){
 
       if ($(this).parent().hasClass('reversed')) $(this).parent().removeClass('reversed');
@@ -152,22 +25,131 @@ function spinLock() {
 
     });
 
+    fairUpdate(this.fair);
     investUpdate();
-    balanceUpdate();
 
     if (bot.on) bet();
 
   };
 
-  this.started = function () {
-    this.spinning = 3;
+  this.started = function (spins) {
+    if(!spins) spins = 1;
+    this.spinning = spins;
     this.locked = true;
   };
 
+  this.fair;
 
 }
 
 var lock = new spinLock();
+
+$(document).ready(function (){
+
+  $(function() {
+    var target;
+    if(location.href.split("?")[1]){
+      target = location.href.split("?")[1];
+    }
+    else target = get_active_game();
+    $('.navbar-first .navbar-nav > li > a[href^="?' + target + '"]').addClass('active');
+  });
+
+  $('.leftbuttons button').each(function(){
+    $(this).tooltip();
+  });
+  $('.tooltips').each(function(){
+    $(this).tooltip();
+  });
+
+
+  $('.chat-input').keypress(function(e){
+    if (e.which == 13) chatSend();
+  });
+
+
+
+  chatUpdate();
+  setInterval(function(){
+    chatUpdate();
+  },500);
+
+  setLeftbarH();
+  setInterval(function(){
+    setLeftbarH();
+  },100);
+
+
+  setInterval(function(){
+    $.ajax({'url':'./content/ajax/refreshSession.php'});
+  },10000);
+  //imitateCRON();
+  setInterval(function(){
+    //imitateCRON();
+    //balanceUpdate();
+  },1000);
+
+
+  $('.st-switches a').each(function(){
+    $(this).click(function(e){
+
+      if ($(this).hasClass('rulesB')) return;
+
+      e.preventDefault();
+      $('.st-switches a.active').removeClass('active');
+      $(this).addClass('active');
+
+      stats.go( $(this).attr('data-load') );
+
+    });
+  });
+  $('.st-switches a').eq(1).click();
+
+
+
+  $('.leftbuttons button').each(function(){
+    $(this).click(function(e){
+      e.preventDefault();
+      $('.leftbuttons button.active').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+
+
+  $('.wager').change(function(){
+    formatWager();
+  });
+
+  $('.clientseedsave').click(function(e){
+
+    e.preventDefault();
+
+    var input = $('#_fair_client_seed');
+
+    $.ajax({
+      'url': './content/ajax/saveClientSeed.php?_unique='+unique()+'&seed='+input.val(),
+      'dataType': 'json',
+      'success': function(data) {
+        input.val(data['repaired']);
+        alert(data['content']);
+      }
+    });
+
+  });
+
+  $('#modals-deposit').on('show.bs.modal',function(){
+    _genNewAddress();
+  });
+  $('#faucet_btn').click(function(){
+    $('#modals-faucet').modal();
+  });
+
+  $('.modal').on('show.bs.modal',function(){
+    $('.m_alert').hide();
+  });
+
+  $('.captchadiv').click();
+});
 
 function _withdraw() {
   $.ajax({
@@ -288,17 +270,6 @@ function setLeftbarH() {
   
 }
 
-function setStatsH() {
-  $('.st-stats').height('inherit');
-  if ($('.st-stats').offset().top + $('.st-stats').outerHeight() <= $(window).height()) {
-    
-    $('.st-stats').height($(window).height() - ($('.st-stats').offset().top + 40) );
-    
-  }
-}
-
-
-
 var chatReceiveUpdates = false;
 var chatUpdating = false;
 
@@ -317,8 +288,6 @@ function chatSend() {
     }
   });
 }
-
-
 
 function chatUpdate(first) {
 
@@ -366,8 +335,6 @@ function chatUpdate(first) {
     }
   });
 }
-
-
 function leftbox() {
 
   var self = this;
@@ -431,12 +398,12 @@ function leftbox() {
       });
 
     }
-  }
+  };
 
   self.width = 260;
   self.$obj = function() {
     return $('.leftblock');
-  }
+  };
   self.scrollbar = function() {
 
     chatUpdate();
@@ -475,7 +442,7 @@ function leftbox() {
       }
     });
 
-  }
+  };
 
   self.scrolled = false;
   self.first = true;
@@ -578,7 +545,7 @@ var stats = {
         $.each(data['stats'],function(name,val){
 
           if (!$(val['contents']).length && !stats.st[name] .$obj().children().length)
-            stats.st[name] .$obj() .prepend( '<tr class="noBetsMessage"><td colspan="7">We are sorry, but there are currently no bets to show.</td></tr>' );
+            stats.st[name] .$obj() .prepend( '<tr class="noBetsMessage"><td colspan="8">We are sorry, but there are currently no bets to show.</td></tr>' );
           else {
             
             $($(val['contents']).get().reverse()).each(function(){
@@ -626,17 +593,7 @@ var stats = {
     stats.st['high'] .$obj() .children() .slice(30).remove();
   }  
   
-}
-
-
-
-
-
-
-
-
-
-
+};
 
 function saveAlias() {
   $.ajax({
@@ -724,7 +681,7 @@ function divest() {
   });    
 }
 function investUpdate() {
-  if (lock.locked) return;
+  if (ajaxBetLock) return;
 
 
   $.ajax({
@@ -782,11 +739,6 @@ var bot = {
 
 function rules() {
   $('#modals-rules').modal('show');
-}
-
-function select_game(game) {
-  $.cookie('game', game);
-  window.location = "./";
 }
 
 function login() {
@@ -854,13 +806,11 @@ function m_alert(status, message){
   $('.modal.in .m_alert').html('<div class="alert alert-dismissable alert-'+status+'"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+message+'</div>').fadeIn();
 }
 
-
-
 function fairUpdate(data) {
-  $('#_fair_server_seed').val(data['newSeed']);
-  $('#_fair_client_seed').val(data['newCSeed']);
-  $('#_fair_l_server_seed').val(data['lastSeed_sha256']);
-  $('#_fair_l_server_seed_p').val(data['lastSeed']);
-  $('#_fair_l_client_seed').val(data['lastCSeed']);
-  $('#_fair_l_result').val(data['lastResult']);
+  $('._fair_server_seed').val(data['newSeed']);
+  $('._fair_client_seed').val(data['newCSeed']);
+  $('._fair_l_server_seed').val(data['lastSeed_sha256']);
+  $('._fair_l_server_seed_p').val(data['lastSeed']);
+  $('._fair_l_client_seed').val(data['lastCSeed']);
+  $('._fair_l_result').val(data['lastResult']);
 }

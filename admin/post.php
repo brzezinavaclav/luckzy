@@ -26,6 +26,15 @@ if (isset($init) && $logged==true) {
     
     db_query("UPDATE `system` SET `giveaway`=$giveaway,`giveaway_amount`=".(double)$_POST['giveaway_amount'].",`giveaway_freq`=".(int)$_POST['giveaway_freq'].",`chat_enable`=$chat_enable,`inv_enable`=$inv_enable,`inv_min`=".max(0,(double)$_POST['inv_min']).",`inv_perc`=".max(0,min((int)$_POST['inv_perc'],100))." LIMIT 1");
   }
+    if (isset($_POST['currencies_form'])) {
+        $btc_rate=$_POST['btc_rate'];
+        $rns3_rate=$_POST['rns3_rate'];
+        $orns_rate=$_POST['orns_rate'];
+        $orns_enable=(isset($_POST['orns_enable']))?1:0;
+        $rns3_enable=(isset($_POST['rns3_enable']))?1:0;
+
+        db_query("UPDATE `system` SET `btc_rate`=$btc_rate,`rns3_rate`=$rns3_rate,`orns_rate`=$orns_rate,`orns`=$orns_enable,`rns3`=$rns3_enable LIMIT 1");
+    }
   if (isset($_POST['jackpot'])) {
     $j = min((int)$_POST['jackpot'], 12339);
     $j = max($j, 1);

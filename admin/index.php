@@ -49,7 +49,7 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
       }
       $(document).ready(function(){
         setInterval(function(){
-          imitateCRON();
+          //imitateCRON();
         },1000);
       });
       function imitateCRON() {
@@ -119,12 +119,12 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
               <li><a href="./"<?php if (!isset($_GET['p']) || (isset($_GET['p']) && $_GET['p']=='home')) echo ' class="active_"'; ?>>Stats</a></li>
               <li><a href="./?p=players"<?php if (isset($_GET['p']) && $_GET['p']=='players') echo ' class="active_"'; ?>>Players</a></li>
               <li><a href="./?p=bets"<?php if (isset($_GET['p']) && $_GET['p']=='bets') echo ' class="active_"'; ?>>Bets</a></li>          
-              <li><a href="./?p=wallet"<?php if (isset($_GET['p']) && $_GET['p']=='wallet') echo ' class="active_"'; ?>>Wallet</a></li>
+              <li><a href="./?p=wallet"<?php if (isset($_GET['p']) && $_GET['p']=='wallet') echo ' class="active_"'; ?>>BTC Wallet</a></li>
               <li><a href="./?p=news"<?php if (isset($_GET['p']) && $_GET['p']=='news') echo ' class="active_"'; ?>>News</a></li>
               <li><a href="./?p=admins"<?php if (isset($_GET['p']) && $_GET['p']=='admins') echo ' class="active_"'; ?>>Admins</a></li>
               <li><a href="./?p=addons"<?php if (isset($_GET['p']) && $_GET['p']=='addons') echo ' class="active_"'; ?>>Addons</a></li>
               <li><a href="./?p=configs"<?php if (isset($_GET['p']) && $_GET['p']=='configs') echo ' class="active_"'; ?>>Configuration</a></li>          
-              <li><a href="./?p=appearance"<?php if (isset($_GET['p']) && $_GET['p']=='appearance') echo ' class="active_"'; ?>>Appearance</a></li>          
+              <li><a href="./?p=currencies"<?php if (isset($_GET['p']) && $_GET['p']=='currencies') echo ' class="active_"'; ?>>Currencies</a></li>
               <li><p align="center"><small><small><strong><strong>- THIS ACCOUNT -</strong></strong></small></small></p></li>
               <li><a href="./?p=set_ga"<?php if (isset($_GET['p']) && $_GET['p']=='set_ga') echo ' class="active_"'; ?>>Security</a></li>          
               <li><a href="./?p=logs"<?php if (isset($_GET['p']) && $_GET['p']=='logs') echo ' class="active_"'; ?>>Access Log</a></li>          

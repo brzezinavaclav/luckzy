@@ -22,6 +22,19 @@ $(document).ready(function () {
 });
 
 
+investUpdate();
+statsUpdate();
+setInterval(function(){
+    investUpdate();
+    statsUpdate();
+}, 5000);
+
+setInterval(function(){
+    stats.update();
+},500);
+stats.update();
+
+
 function tablePosition(){
     $('.gamblingTable').css('transform', 'translate(-'+$('.gamblingTable').width()/2+'px, -185px)');
 }

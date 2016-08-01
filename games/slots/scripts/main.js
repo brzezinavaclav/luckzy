@@ -56,11 +56,18 @@ $(document).ready(function(){
 
 });
 
+
+investUpdate();
 statsUpdate();
 setInterval(function(){
+    investUpdate();
     statsUpdate();
 }, 5000);
 
+setInterval(function(){
+    stats.update();
+},500);
+stats.update();
 
 function spinWheel(wheel, items, index, dur ) {
 
@@ -103,9 +110,7 @@ function spinWheel(wheel, items, index, dur ) {
     $wheel.animate({'margin-top': "-="+30},500,'swing',function(){
         $wheel.animate({'margin-top': "+="+posun},dur,'easeOutCirc',function(){
             $wheel.children('.oldItems').remove();
-
             lock.finished();
-
         });
 
     });
@@ -124,12 +129,13 @@ function spin(data) {
     ];
     //timing.sort( function(a,b) {return a-b} );       // uncomment for ordering
 
-    fairUpdate(data['fair']);
-    lock.started();
+    lock.fair = data['fair'];
+    lock.started(3);
 
     spinWheel(1,data['items']['wheel1'],data['index'],timing[0]);
     spinWheel(2,data['items']['wheel2'],data['index'],timing[1]);
     spinWheel(3,data['items']['wheel3'],data['index'],timing[2]);
+
 
 }
 
@@ -160,14 +166,9 @@ function spin(data) {
 })(jQuery);
 
 
-
-var ajaxBetLock = false;
-
 function bet() {
     if (lock.locked || ajaxBetLock) return;
-
     ajaxBetLock = true;
-
     $.ajax({
         'url': "./content/ajax/spin.php?_unique="+unique()+"&w="+$('.wager').val(),
         'dataType': "json",

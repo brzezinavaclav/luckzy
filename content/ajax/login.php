@@ -15,7 +15,7 @@ include '../../inc/db_functions.php';
 include '../../inc/functions.php';
 
 if (isset($_GET['logout'])) {
-  $_SESSION['logged_']=false;
+  $_SESSION['logged']=false;
   echo json_encode(array('error' => 'no'));
   setcookie('unique_S_', '', time() - 3600, '/');
   exit();
@@ -28,14 +28,14 @@ if (!empty($_POST['username']) && !empty($_POST['passwd'])) {
         include '../../inc/ga_class.php';
         $verify = Google2FA::verify_key($user['ga_token'], $_POST['totp'], 0);
         if ($verify == true) {
-          $_SESSION['logged_'] = true;
+          $_SESSION['logged'] = true;
           $_SESSION['user_id'] = $user['id'];
           echo json_encode(array('error' => 'no'));
           exit();
         }
       }
       if ($user['ga_token'] == '') {
-        $_SESSION['logged_'] = true;
+        $_SESSION['logged'] = true;
         $_SESSION['user_id'] = $user['id'];
         echo json_encode(array('error' => 'no'));
         exit();

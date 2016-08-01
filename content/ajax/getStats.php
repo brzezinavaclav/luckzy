@@ -23,26 +23,19 @@ $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_
 
 maintenance();
 
-$settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
-
-
-$t_wagered = $settings['t_wagered'];
-$p_wagered = $player['t_wagered'];
-
-
 
 echo  json_encode(array(
                       
           'global' => array(
           
-            'spins'     =>  '<b>'.db_num_rows(db_query("SELECT `id` FROM `spins` WHERE `bet_amount`!=0")).'</b>',
-            'wagered'   =>  '<b>'.n_num($t_wagered, true).'</b> '.$settings['currency_sign']
+            'spins'     =>  '<b>'.get_count().'</b>',
+            'wagered'   =>  '<b>'.get_wagered().'</b> Coins'
           
           ),
           'player' => array(
 
-            'spins'     =>  '<b>'.db_num_rows(db_query("SELECT `id` FROM `spins` WHERE `player`=$player[id]")).'</b>',
-            'wagered'   =>  '<b>'.n_num($p_wagered, true).'</b> '.$settings['currency_sign']
+            'spins'     =>  '<b>'.get_count($player[id]).'</b>',
+            'wagered'   =>  '<b>'.get_wagered($player[id]).'</b> Coins'
           
           )
       

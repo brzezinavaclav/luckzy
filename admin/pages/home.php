@@ -22,27 +22,27 @@ if (!isset($init)) exit();
 <table class="vypis_table">
   <tr class="vypis_table_obsah">
     <td>Number of bets:</td>
-    <td><b><?php echo $settings['t_bets']; ?></b></td>
+    <td><b><?php echo get_count(); ?></b></td>
   </tr>
   <tr class="vypis_table_obsah">
     <td>Total wagered:</td>
-    <td><b><?php echo sprintf("%.8f",$settings['t_wagered']); ?></b> <?php echo $settings['currency_sign']; ?></td>
+    <td><b><?php echo get_wagered(); ?></b> Coins</td>
   </tr>
   <tr class="vypis_table_obsah">
     <td style="color: green;">Wins:</td>
-    <td style="color: green;"><b><?php echo $settings['t_wins']; ?></b></td>
+    <td style="color: green;"><b><?php echo get_count('','wins'); ?></b></td>
   </tr>
   <tr class="vypis_table_obsah">
     <td>Ties:</td>
-    <td><b><?php echo $settings['t_ties']; ?></b></td>
+    <td><b><?php echo get_count('','ties'); ?></b></td>
   </tr>
   <tr class="vypis_table_obsah">
     <td style="color: #d10000;">Losses:</td>
-    <td style="color: #d10000;"><b><?php echo ($settings['t_loses']); ?></b></td>
+    <td style="color: #d10000;"><b><?php echo get_count('','losses'); ?></b></td>
   </tr>
   <tr class="vypis_table_obsah">
     <td style="color: #a06d00;">W/L ratio:</td>
-    <td style="color: #a06d00;"><b><?php if (($settings['t_loses'])>0) echo sprintf("%.3f",$settings['t_wins']/($settings['t_loses'])); else echo 0; ?></b></td>
+    <td style="color: #a06d00;"><b><?php echo get_count('','wins')/ get_count('','losses') ?></b></td>
   </tr>
 </table>
 <?php if ($settings['inv_enable']==1) { ?>

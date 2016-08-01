@@ -1,7 +1,7 @@
 <?php
 /*
- *  © CoinSlots
- *  Demo: http://www.btcircle.com/coinslots
+ *  © Coinslots
+ *  Demo: http://www.btcircle.com/Coinslots
  *  Please do not copy or redistribute.
  *  More licences we sell, more products we develop in the future.
 */
@@ -26,7 +26,7 @@ include __DIR__.'/inc/start.php';
 <script type="text/javascript" src="./scripts/jquery.js"></script>
 <script type="text/javascript" src="./scripts/jquery.cookie.js"></script>
 <script type="text/javascript" src="./scripts/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./scripts/bootstrap.js"></script>
+<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="./scripts/qrlib.js"></script>
 <script type="text/javascript" src="./scripts/mcs.min.js"></script>
 <script type="text/javascript" src="./scripts/sha256.js"></script>
@@ -36,7 +36,7 @@ include __DIR__.'/inc/start.php';
     return '<?php echo $unique; ?>';
   }
   function cursig() {
-    return '<?php echo $settings['currency_sign']; ?>';
+    return 'Coins';
   }
   function giveaway_freq() {
     return '<?php echo $settings['giveaway_freq']; ?>';
@@ -70,7 +70,7 @@ include __DIR__.'/inc/start.php';
     <div id="navbar" class="navbar-collapse collapse">
       <?php if(logged()): ?>
         <ul class="nav navbar-nav navbar-right">
-          <div class="bal_status">Balance: <span class="balance"><?php echo n_num($player['balance'], true); ?></span> <?php echo $settings['currency_sign']; ?></div>
+          <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?></span></div>
         </ul>
       <?php else: ?>
         <ul class="nav navbar-form navbar-right">
@@ -112,8 +112,8 @@ include __DIR__.'/inc/start.php';
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="navbar-form navbar-right">
         <?php if(logged()): ?>
-        <button class="btn btn-primary" id="withdraw_btn">Withdraw</button>
-        <button class="btn btn-primary" id="deposit_btn">Deposit</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modals-withdraw">Withdraw</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modals-deposit">Deposit</button>
         <?php if ($settings['giveaway']) : ?>
           <button class="btn btn-primary" id="faucet_btn">Faucet</button>
         <?php endif;endif; ?>
@@ -142,19 +142,33 @@ include __DIR__.'/inc/end.php';
         <h4 class="modal-title" id="mlabels-deposit">Deposit Funds</h4>
       </div>
       <div class="modal-body" style="text-align: center;">
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#">Bitcoin</a></li>
-          <li role="presentation"><a href="#">Runescape 3</a></li>
-          <li role="presentation"><a href="#">Oldschool runescape</a></li>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a aria-controls="d_btc" role="tab" href="#d_btc" data-toggle="tab">Bitcoin</a></li>
+          <?php if($settings['rns3']): ?>
+            <li role="presentation"><a aria-controls="d_rns3" href="#d_rns3" role="tab" data-toggle="tab">Runescape 3</a></li>
+          <?php endif; if($settings['orns']):?>
+            <li role="presentation"><a aria-controls="d_orns" href="#d_orns" role="tab" data-toggle="tab">Oldschool runescape</a></li>
+          <?php endif; ?>
         </ul>
-        Please send at least <b><?php echo n_num($settings['min_deposit']); ?></b> <?php echo $settings['currency_sign']; ?> to this address:
-        <div class="addr-p" style="margin:15px;font-weight:bold;font-size:18px;"></div>
-        <div class="addr-qr"></div>
-        <div class="alert alert-infoo" style="margin: 15px;"><big><b><i>This address is only for a single use. If you want to deposit multiple times, you should generate new address.</i></b></big></div>
-        <div style="margin-bottom:15px;">
-          <a href="#" class="gray_a" onclick="javascript:_genNewAddress();return false;">New Address</a> <span class="color: lightgray">·</span> <a href="#" class="gray_a pendingbutton" cj-opened="no" onclick="javascript:clickPending();return false;">Show Pending</a>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="d_btc">
+            Please send at least <b><?php echo n_num($settings['min_deposit']); ?></b> BTC to this address:
+            <br><small><i>(1BTC = <?php echo $settings['btc_rate']; ?> Coins)</i></small>
+            <div class="addr-p" style="margin:15px;font-weight:bold;font-size:18px;"></div>
+            <div class="addr-qr"></div>
+            <div class="alert alert-infoo" style="margin: 15px;"><big><b><i>This address is only for a single use. If you want to deposit multiple times, you should generate new address.</i></b></big></div>
+            <div style="margin-bottom:15px;">
+              <a href="#" class="gray_a" onclick="javascript:_genNewAddress();return false;">New Address</a> <span class="color: lightgray">·</span> <a href="#" class="gray_a pendingbutton" cj-opened="no" onclick="javascript:clickPending();return false;">Show Pending</a>
+            </div>
+            <div class="pendingDeposits" style="display:none;"></div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="d_rns3">
+            (1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)
+          </div>
+          <div role="tabpanel" class="tab-pane" id="d_orns">
+            (1 Oldschool Runescape = <?php echo $settings['orns_rate']; ?> Coins)
+          </div>
         </div>
-        <div class="pendingDeposits" style="display:none;"></div>
       </div>
     </div>
   </div>
@@ -168,23 +182,36 @@ include __DIR__.'/inc/end.php';
       </div>
       <div class="modal-body">
         <div class="m_alert"></div>
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#">Bitcoin</a></li>
-          <li role="presentation"><a href="#">Runescape 3</a></li>
-          <li role="presentation"><a href="#">Oldschool runescape</a></li>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a aria-controls="w_btc" role="tab" href="#w_btc" data-toggle="tab">Bitcoin</a></li>
+          <?php if($settings['rns3']): ?>
+            <li role="presentation"><a aria-controls="w_rns3" href="#w_rns3" role="tab" data-toggle="tab">Runescape 3</a></li>
+          <?php endif; if($settings['orns']):?>
+            <li role="presentation"><a aria-controls="w_orns" href="#w_orns" role="tab" data-toggle="tab">Oldschool runescape</a></li>
+          <?php endif; ?>
         </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="w_btc">
         <div class="form-group">
-          <label for="input-address">Enter valid <?php echo $settings['currency_sign']; ?> address:</label>
+          <label for="input-address">Enter valid Coins address:</label>
           <input type="text" class="form-control" id="input-address">
         </div>
         <div class="form-group">
-          <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']).' '.$settings['currency_sign']; ?>):</label>
+          <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
           <input type="text" class="form-control" id="input-am" style="width:150px;">
           <small>
-            Balance: <span class="balance" style="font-weight: bold;"><?php echo n_num($player['balance'],true); ?></span> <?php echo $settings['currency_sign']; ?>
+            Balance: <span class="balance" style="font-weight: bold;"><?php echo n_num($player['balance'],true); ?></span> Coins
           </small>
         </div>
         <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="javascript:_withdraw();">Withdraw</button>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="w_rns3">
+            adad
+          </div>
+          <div role="tabpanel" class="tab-pane" id="w_orns">
+            dada
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -194,12 +221,12 @@ include __DIR__.'/inc/end.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="mlabels-faucet">Get free coins</h4>
+        <h4 class="modal-title" id="mlabels-faucet">Get free Coins</h4>
       </div>
       <div class="modal-body">
         <div class="m_alert"></div>
         <p>Giveaway Amount</p>
-        <?php echo '<b>'.n_num($settings['giveaway_amount'],true).'</b> '.$settings['currency_sign']; ?>
+        <?php echo '<b>'.n_num($settings['giveaway_amount'],true).'</b> Coins'; ?>
         <div class="form-group">
           <label>Enter text from image</label><br>
           <a class="captchadiv" href="#" onclick="javascript:$(this).children().remove().clone().appendTo($(this));return false;" data-toggle="tooltip" data-placement="top" title="Click to refresh"><img src="./content/captcha/genImage.php"></a>

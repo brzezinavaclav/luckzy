@@ -247,7 +247,9 @@ a:focus,a:active {
   background-color: rgb(255,255,255);
   padding-top: 40px;
   height: 100%;
-  min-height: 250px;
+  min-height: 240px;
+  max-height: 760px;
+  overflow-y: hidden;
 }
 .st-stats table {
   margin-top: -80px;

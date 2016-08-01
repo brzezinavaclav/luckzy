@@ -24,10 +24,18 @@ $(document).ready(function () {
     });
 });
 
+
+investUpdate();
 statsUpdate();
 setInterval(function(){
+    investUpdate();
     statsUpdate();
 }, 5000);
+
+setInterval(function(){
+    stats.update();
+},500);
+stats.update();
 
 function singleRoll(){
     place($('#bt_wager').val(), $('#betTb_multiplier').val(), false);
@@ -81,17 +89,18 @@ function recountUnderOver() {
     else var chance_=parseFloat($("#betTb_chance").val()).toFixed(2);
     $("#under_over_num").html(parseFloat(chance_.toString().match(/^\d+(?:\.\d{0,2})?/)).toFixed(2));
 }
-ajaxBetLock=false;
 var lastBet=(Date.now()-500);
 function place(wager,multiplier,bot) {
-    if ((ajaxBetLock==false && (Date.now())>(lastBet+500)) || bot==true) {
-        ajaxBetLock=true;
+    if ((!ajaxBetLock && !lock.locked && (Date.now())>(lastBet+500)) || bot==true) {
         lastBet=Date.now();
         $("#betBtn").html('Rolling');
+        ajaxBetLock=true;
         $.ajax({
             'url': './content/ajax/place.php?w='+wager+'&m='+multiplier+'&hl='+under_over+'&_unique='+unique(),
             'dataType': "json",
             'success': function(data) {
+                ajaxBetLock=false;
+
                 if (data['error']=='yes') {
                     if (data['data']=='too_small') alert('Error: Your bet is too small.');
                     if (data['data']=='invalid_bet') alert('Error: Your balance is too small for this bet.');
@@ -102,10 +111,13 @@ function place(wager,multiplier,bot) {
                 else {
                     var result=data['result'];
                     var win_lose=data['win_lose'];
-                    fairUpdate(data['fair']);
+                    lock.fair = data['fair'];
+                    lock.started();
                 }
                 $("#betBtn").html('Roll dice');
-                ajaxBetLock=false;
+                lock.finished();
+                lock.finished();
+                lock.finished();
 
                 if (bot==true && data['error']=='no') {
                     setTimeout(function(){

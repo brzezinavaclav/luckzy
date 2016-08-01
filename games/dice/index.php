@@ -127,8 +127,7 @@
             </div>
             <a onclick="singleRoll();" id="roll_btn" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;">Roll dice</a>
         </div>
-
-    </div>
+</div>
 </div>
 
 <div class="stats">
@@ -147,7 +146,7 @@
                 <td>PLAYER</td>
                 <td>TIME</td>
                 <td>BET</td>
-                <td>SPIN</td>
+                <td>RESULT</td>
                 <td>PAYOUT</td>
                 <td>PROFIT</td>
             </tr>
