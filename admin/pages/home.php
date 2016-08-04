@@ -10,7 +10,11 @@
 if (!isset($init)) exit();
 ?>
 <h1>Stats</h1>
-
+<style>
+  td:first-of-type{
+    width: 219px;
+  }
+</style>
 <div class="menu_ menu-horizontal">
   <ul>
     <li><a href="./" class="<?php if (!isset($_GET['g'])) echo 'active_'; ?>">All bets</a></li>
@@ -19,6 +23,8 @@ if (!isset($init)) exit();
     <li><a href="?g=blackjack" class="<?php if (isset($_GET['g']) && $_GET['g']=='blackjack') echo 'active_'; ?>">Blackjack</a></li>
   </ul>
 </div>
+<fieldset>
+<legend>Beting Stats</legend>
 <table class="vypis_table">
   <tr class="vypis_table_obsah">
     <td>Number of bets:</td>
@@ -45,8 +51,47 @@ if (!isset($init)) exit();
     <td style="color: #a06d00;"><b><?php echo get_count('','wins')/ get_count('','losses') ?></b></td>
   </tr>
 </table>
+</fieldset>
+  <fieldset style="margin-top: 10px;">
+    <legend>House edge</legend>
+<table class="vypis_table">
+  <tr class="vypis_table_head">
+    <th>Period</th>
+    <th>Real house edge</th>
+    <th>Profit</th>
+  </tr>
+  <tr>
+    <td>Last hour</td>
+    <?php real_edge("1 HOUR"); ?>
+  </tr>
+  <tr>
+    <td>Last 24h</td>
+    <?php real_edge("24 HOUR"); ?>
+  </tr>
+  <tr>
+    <td>Last 7d</td>
+    <?php real_edge("7 DAY"); ?>
+  </tr>
+  <tr>
+    <td>Last 30d</td>
+    <?php real_edge("30 DAY"); ?>
+  </tr>
+  <tr>
+    <td>Last 6m</td>
+    <?php real_edge("6 MONTH"); ?>
+  </tr>
+  <tr>
+    <td>Last 12m</td>
+    <?php real_edge("12 MONTH"); ?>
+  </tr>
+  <tr>
+    <td>Since start</td>
+    <?php real_edge(); ?>
+  </tr>
+</table>
+</fieldset>
 <?php if ($settings['inv_enable']==1) { ?>
-  <fieldset style="margin-top: 7px;">
+  <fieldset style="margin-top: 10px;">
     <legend>Invest Stats</legend>
     <table class="vypis_table" style="width: 50%;">
       <tr class="vypis_table_obsah">
@@ -72,46 +117,3 @@ if (!isset($init)) exit();
     </table>
   </fieldset>
 <?php } ?>
-<br><br>
-<table class="vypis_table">
-  <tr class="vypis_table_head">
-    <th>Period</th>
-    <th>Real house edge</th>
-    <th>Profit</th>
-  </tr>
-  <tr>
-    <td>Last hour</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins` WHERE `time`>NOW()-INTERVAL 1 HOUR")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-  <tr>
-    <td>Last 24h</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins` WHERE `time`>NOW()-INTERVAL 24 HOUR")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-  <tr>
-    <td>Last 7d</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins` WHERE `time`>NOW()-INTERVAL 7 DAY")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-  <tr>
-    <td>Last 30d</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins` WHERE `time`>NOW()-INTERVAL 30 DAY")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-  <tr>
-    <td>Last 6m</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins` WHERE `time`>NOW()-INTERVAL 6 MONTH")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-  <tr>
-    <td>Last 12m</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins` WHERE `time`>NOW()-INTERVAL 12 MONTH")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-  <tr>
-    <td>Since start</td>
-    <td><?php $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` FROM `spins`")); $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span>':'<span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span>'; ?></td>
-    <td><?php echo ($this_q['total_profit']>=0)?'<span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span>':'<span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span>'; ?></td>
-  </tr>
-</table>

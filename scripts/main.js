@@ -62,12 +62,13 @@ $(document).ready(function (){
     $(this).tooltip();
   });
 
-
   $('.chat-input').keypress(function(e){
-    if (e.which == 13) chatSend();
+    if (e.which == 13) chatSend($(this).val());
   });
 
-
+  $(".wager").click(function () {
+    $(this).select();
+  });
 
   chatUpdate();
   setInterval(function(){
@@ -148,36 +149,48 @@ $(document).ready(function (){
     $('.m_alert').hide();
   });
 
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('.m_alert').hide();
+  });
+
   $('.captchadiv').click();
 });
 
-function _withdraw() {
+function withdraw(currency) {
+  var amount = $('#w_'+currency+'_amount').val();
   $.ajax({
-    'url': './content/ajax/__withdraw.php?_unique='+unique()+'&valid_addr='+$('#input-address').val()+'&amount='+$('#input-am').val(),
+    'url': './content/ajax/withdraw.php?_unique='+unique()+'&valid_addr='+$('#w_btc_address').val()+'&amount='+amount+'&c='+currency,
     'dataType': "json",
     'success': function (data) {
-      if (data['error']=='yes') {
-        $('.m_alert').hide();
-        $('.m_alert').html('<div class="alert alert-dismissable alert-warning"><button type="button" class="close" data-dismiss="alert">×</button><b>Error!</b> '+data['content']+'</div>');
-        $('.m_alert').slideDown();
+      if(currency == 'btc') {
+        if (data['error']=='yes') {
+          m_alert('danger','<b>Error!</b> '+data['message']);
+        }
+        else if (data['error'] == 'half') {
+          m_alert('info', '<b>Withdrawal request has been placed.</b>');
+        }
+        else {
+          m_alert('success', 'Processed. TXID: <b>' + data['txid'] + '</b>');
+          balanceUpdate();
+        }
       }
-      else if (data['error'] == 'half') {
-        $('.m_alert').hide();
-        $('.m_alert').html('<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><b>Withdrawal request has been placed.</b></div>');
-        $('.m_alert').slideDown();
+      else{
+        if (data['error']=='yes') {
+          m_alert('danger','<b>Error!</b> '+data['message']);
+        }
+        else {
+          m_alert('info', 'Your withdraw ID: <b>' + data['id'] + '</b>');
+          balanceUpdate();
+        }
       }
-      else {
-        $('.m_alert').hide();
-        $('.m_alert').html('<div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">×</button><b>Processed.</b><br>TXID: <small>'+data['content']+'</small></div>');
-        $('.m_alert').slideDown();
-      }
+      $('#w_'+currency+'_amount').val()
     }
   });
 }
 
 function _genNewAddress() {
   $.ajax({
-    'url': './content/ajax/getAddress.php?_unique='+unique(),
+    'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c=btc',
     'dataType': "json",
     'success': function (data) {
       $('.addr-p').html(data['confirmed']);
@@ -218,7 +231,8 @@ function balanceUpdate() {
     'success': function (data) {
         
       $('.balance').each(function(){
-        $(this).text(data['balance']);
+        $(this).text(data['balance'] + ' Coins');
+        $(this).text(data['balance'] + ' Coins');
       });
         
     }
@@ -227,24 +241,20 @@ function balanceUpdate() {
 
 
 function wagerDiv() {
-  var repaired=(parseFloat($(".wager").val())/2).toFixed(8);
-  if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".wager").val('0.00000000');
-  else $(".wager").val(repaired);
+  var repaired=$(".wager").val();
+  $(".wager").val(repaired);
 }
 function wagerMultip() {
-  var repaired=(parseFloat($(".wager").val())*2).toFixed(8);
-  if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".wager").val('0.00000000');
-  else $(".wager").val(repaired);
+  var repaired=$(".wager").val();
+  $(".wager").val(repaired);
 }
 function wagerMax() {
   $(".wager").val($(".balance").html()).change();
-  formatWager();  
 }
 
 function formatWager() {
-  var repaired=parseFloat($(".wager").val()).toFixed(8);
-  if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".wager").val('0.00000000');
-  else $(".wager").val(repaired);
+  var repaired=$(".wager").val();
+  $(".wager").val(repaired);
 }
 
 
@@ -274,8 +284,8 @@ var chatReceiveUpdates = false;
 var chatUpdating = false;
 
 
-function chatSend() {
-  var dataToSend = encodeURIComponent($('.chat-input').val());
+function chatSend(val) {
+  var dataToSend = encodeURIComponent(val);
   $.ajax({
     'url': './content/ajax/chatSend.php?_unique='+unique()+'&data='+dataToSend,
     'dataType': "json",
@@ -754,7 +764,10 @@ function login() {
         }
         else window.location = "./";
       }
-      else m_alert('danger',data['message']);
+      else {
+        if (data['message'] == 'Wrong verification key') $('#totp').val('');
+        m_alert('danger',data['message']);
+      }
     }
   });
 }
@@ -813,4 +826,17 @@ function fairUpdate(data) {
   $('._fair_l_server_seed_p').val(data['lastSeed']);
   $('._fair_l_client_seed').val(data['lastCSeed']);
   $('._fair_l_result').val(data['lastResult']);
+}
+
+function deposit(currency){
+  var amount = $('#d_'+currency+'_amount').val();
+  $.ajax({
+    'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c='+currency+'&amount='+amount,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'yes') m_alert('danger', data['message']);
+      else m_alert('info','Your deposit ID: <b>'+ data['confirmed'] + '</b>');
+      $('#d_'+currency+'_amount').val('');
+    }
+  });
 }

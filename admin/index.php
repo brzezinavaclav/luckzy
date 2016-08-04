@@ -49,7 +49,7 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
       }
       $(document).ready(function(){
         setInterval(function(){
-          imitateCRON();
+          //imitateCRON();
         },1000);
       });
       function imitateCRON() {
@@ -125,6 +125,8 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
               <li><a href="./?p=addons"<?php if (isset($_GET['p']) && $_GET['p']=='addons') echo ' class="active_"'; ?>>Addons</a></li>
               <li><a href="./?p=configs"<?php if (isset($_GET['p']) && $_GET['p']=='configs') echo ' class="active_"'; ?>>Configuration</a></li>          
               <li><a href="./?p=currencies"<?php if (isset($_GET['p']) && $_GET['p']=='currencies') echo ' class="active_"'; ?>>Currencies</a></li>
+              <li><a href="./?p=withdrawals"<?php if (isset($_GET['p']) && $_GET['p']=='withdrawals') echo ' class="active_"'; ?>>Withdrawals</a></li>
+              <li><a href="./?p=deposits"<?php if (isset($_GET['p']) && $_GET['p']=='deposits') echo ' class="active_"'; ?>>Deposits</a></li>
               <li><p align="center"><small><small><strong><strong>- THIS ACCOUNT -</strong></strong></small></small></p></li>
               <li><a href="./?p=set_ga"<?php if (isset($_GET['p']) && $_GET['p']=='set_ga') echo ' class="active_"'; ?>>Security</a></li>          
               <li><a href="./?p=logs"<?php if (isset($_GET['p']) && $_GET['p']=='logs') echo ' class="active_"'; ?>>Access Log</a></li>          

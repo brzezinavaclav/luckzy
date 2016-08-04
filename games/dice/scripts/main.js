@@ -57,23 +57,23 @@ function inverse() {
     }
 }
 function clickdouble() {
-    $("#bt_wager").val((parseFloat($("#bt_wager").val())*2).toFixed(8)).change();
+    $("#bt_wager").val(($("#bt_wager").val())*2).change();
 }
 function clickmax() {
     $("#bt_wager").val($(".balance").html()).change();
 }
 function maxProfit() {
-    var newval = parseFloat($("#bt_wager").val())*(10000*(1-(1/100)));
+    var newval = $("#bt_wager").val()*(10000*(1-(1/100)));
     $("#bt_profit").val(newval).change();
 }
 
 function recountProfit() {
-    var payout=parseFloat($("#betTb_multiplier").val());
-    var wager=parseFloat($("#bt_wager").val());
-    $("#bt_profit").val(parseFloat((Math.round(((wager*payout)-wager)*1000000000)/1000000000).toFixed(9).toString().match(/^\d+(?:\.\d{0,8})?/)).toFixed(8));
+    var payout=$("#betTb_multiplier").val();
+    var wager=$("#bt_wager").val();
+    $("#bt_profit").val((Math.round(((wager*payout)-wager)*1000000000)/1000000000).toString().match(/^\d+(?:\.\d{0,8})?/));
 }
 function recountPayout() {
-    var chance=parseFloat($("#betTb_chance").val()).toFixed(2);
+    var chance=$("#betTb_chance").val();
     var payout=(1/(chance/100)*((100-house_edge)/100));
     $("#betTb_multiplier").val(parseFloat(payout.toString().match(/^\d+(?:\.\d{0,2})?/)).toFixed(2));
     recountUnderOver();
@@ -115,9 +115,8 @@ function place(wager,multiplier,bot) {
                     lock.started();
                 }
                 $("#betBtn").html('Roll dice');
-                lock.finished();
-                lock.finished();
-                lock.finished();
+                lock.finished(3);
+                balanceUpdate();
 
                 if (bot==true && data['error']=='no') {
                     setTimeout(function(){

@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label>Bet amount</label>
                         <div class="input-group">
-                            <input type="text" id="bt_wager" class="form-control" value="0.00000000">
+                            <input type="text" id="bt_wager" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                             <span class="input-group-btn">
                                 <a class="btn btn-primary" onclick="clickdouble();">2x</a>
                             </span>
@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label>Profit on win</label>
                         <div class="input-group">
-                            <input type="text" id="bt_profit" class="form-control" value="0.00000000">
+                            <input type="text" id="bt_profit" class="form-control" value="0">
                             <span class="input-group-btn">
                                     <a class="btn btn-primary" onclick="maxProfit();">Max</a>
                             </span>
@@ -77,7 +77,7 @@
                         </div>
                         <input id="bt_rolls_bB" type="text" class="form-control" value="100">
                             <label style="padding: 10px 0px 9px;">Base bet</label>
-                            <input id="bt_wager_bB" type="text" class="form-control" value="0.00000000">
+                            <input id="bt_wager_bB" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                         </div>
                 </div>
                 <div class="col-md-4">
@@ -93,13 +93,13 @@
                                 <input name="bB_on_loss" id="bB_loss" value="increase" type="radio">Increase bet by
                             </label>
                         </div>
-                        <input id="bB_loss_increase_by" type="text" class="form-control" value="0.00000000">
+                        <input id="bB_loss_increase_by" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" checked>Max lose
                             </label>
                         </div>
-                        <input id="bB_max_loss_val" type="text" class="form-control" value="0.00000000">
+                        <input id="bB_max_loss_val" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -115,13 +115,13 @@
                                 <input name="bB_on_win" id="bB_win" value="increase" type="radio" checked>Increase bet by
                             </label>
                         </div>
-                        <input id="bB_win_increase_by" type="text" class="form-control" value="0.00000000">
+                        <input id="bB_win_increase_by" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" checked>Max profit
                             </label>
                         </div>
-                        <input id="bB_max_win_val" type="text" class="form-control" value="0.00000000">
+                        <input id="bB_max_win_val" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                     </div>
                 </div>
             </div>

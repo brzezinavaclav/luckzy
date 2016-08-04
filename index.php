@@ -70,7 +70,7 @@ include __DIR__.'/inc/start.php';
     <div id="navbar" class="navbar-collapse collapse">
       <?php if(logged()): ?>
         <ul class="nav navbar-nav navbar-right">
-          <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?></span></div>
+          <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?> Coins</span></div>
         </ul>
       <?php else: ?>
         <ul class="nav navbar-form navbar-right">
@@ -141,7 +141,7 @@ include __DIR__.'/inc/end.php';
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="mlabels-deposit">Deposit Funds</h4>
       </div>
-      <div class="modal-body" style="text-align: center;">
+      <div class="modal-body">
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a aria-controls="d_btc" role="tab" href="#d_btc" data-toggle="tab">Bitcoin</a></li>
           <?php if($settings['rns3']): ?>
@@ -151,8 +151,8 @@ include __DIR__.'/inc/end.php';
           <?php endif; ?>
         </ul>
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="d_btc">
-            Please send at least <b><?php echo n_num($settings['min_deposit']); ?></b> BTC to this address:
+          <div role="tabpanel" class="tab-pane active" id="d_btc" style="text-align: center;">
+            Please send at least <b><?php echo n_num($settings['btc_min_deposit']); ?></b> BTC to this address:
             <br><small><i>(1BTC = <?php echo $settings['btc_rate']; ?> Coins)</i></small>
             <div class="addr-p" style="margin:15px;font-weight:bold;font-size:18px;"></div>
             <div class="addr-qr"></div>
@@ -163,10 +163,22 @@ include __DIR__.'/inc/end.php';
             <div class="pendingDeposits" style="display:none;"></div>
           </div>
           <div role="tabpanel" class="tab-pane" id="d_rns3">
-            (1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)
+            <div class="m_alert"></div>
+            <div class="form-group">
+              <label for="input-am">Enter amount (min. <?php echo n_num($settings['rns3_min_deposit']); ?> Runescape 3):</label>
+              <input type="text" class="form-control" id="d_rns3_amount" onkeydown="if (event.keyCode == 13) deposit('rns3');;">
+              <small><i>(1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)</i></small>
+            </div>
+            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="deposit('rns3');">Deposit</button>
           </div>
           <div role="tabpanel" class="tab-pane" id="d_orns">
-            (1 Oldschool Runescape = <?php echo $settings['orns_rate']; ?> Coins)
+            <div class="m_alert"></div>
+            <div class="form-group">
+              <label for="input-am">Enter amount (min. <?php echo n_num($settings['orns_min_deposit']); ?> Oldschool runescape):</label>
+              <input type="text" class="form-control" id="d_orns_amount" onkeydown="if (event.keyCode == 13) deposit('orns');">
+              <small><i>(1 Oldschool runescape = <?php echo $settings['orns_rate']; ?> Coins)</i></small>
+            </div>
+            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="deposit('orns');">Deposit</button>
           </div>
         </div>
       </div>
@@ -193,23 +205,33 @@ include __DIR__.'/inc/end.php';
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="w_btc">
         <div class="form-group">
-          <label for="input-address">Enter valid Coins address:</label>
-          <input type="text" class="form-control" id="input-address">
+          <label for="input-address">Enter valid BTC address:</label>
+          <input type="text" class="form-control" id="w_btc_address">
         </div>
         <div class="form-group">
           <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
-          <input type="text" class="form-control" id="input-am" style="width:150px;">
+          <input type="text" class="form-control" id="w_btc_amount" style="width:150px;" onkeydown="if (event.keyCode == 13) withdraw();">
           <small>
-            Balance: <span class="balance" style="font-weight: bold;"><?php echo n_num($player['balance'],true); ?></span> Coins
+            Balance: <span class="balance" style="font-weight: bold;"><?php echo $player['balance']; ?> Coins</span>
           </small>
         </div>
-        <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="javascript:_withdraw();">Withdraw</button>
+        <button class="btn btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('btc');">Withdraw</button>
           </div>
           <div role="tabpanel" class="tab-pane" id="w_rns3">
-            adad
+            <div class="form-group">
+              <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
+              <input type="text" class="form-control" id="w_rns3_amount">
+              <small><i>(1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)</i></small>
+            </div>
+            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('rns3');">Withdraw</button>
           </div>
           <div role="tabpanel" class="tab-pane" id="w_orns">
-            dada
+            <div class="form-group">
+              <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
+              <input type="text" class="form-control" id="w_orns_amount">
+              <small><i>(1 Oldschool runescape = <?php echo $settings['orns_rate']; ?> Coins)</i></small>
+            </div>
+            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('orns');">Withdraw</button>
           </div>
         </div>
       </div>
@@ -298,7 +320,7 @@ include __DIR__.'/inc/end.php';
   <div class="heading"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;&nbsp;Chat</div>
   <div class="content"></div>
   <div class="footer">
-    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send">
+    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send" >
     <div style="height: 5px;"></div>
   </div>
 </div>

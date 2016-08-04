@@ -13,7 +13,7 @@
            --><button onclick="bot.toggle();" data-toggle="tooltip" data-placement="top" title="AutoSpin" class="tooltips autoBotButton"><div class="autoBotCheck"><span class="glyphicon glyphicon-ok"></span></div></button>
         </div>
         <div class="ybtext">Your Bet:</div>
-        <input type="text" class="wager" value="0.00000000">
+        <input type="text" class="wager" value="0" <?php if(!logged()) echo 'disabled'; ?>>
         <a class="spinbtn btn btn-primary" onclick="javascript:bet();return false;">SPIN</a>
     </div>
 

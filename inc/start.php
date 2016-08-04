@@ -37,6 +37,15 @@ else {
   }
 }
 
+
+$playingGame=false;
+$endedOnInit=false;
+if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=0 AND `player`=$player[id] LIMIT 1"))!=0)
+  $playingGame=true;
+if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=1 AND `player`=$player[id] AND `insurance_process`=1 LIMIT 1"))!=0)
+  $endedOnInit=true;
+
+
 if(!isset($_COOKIE['game'])){
   setcookie('game', 'blackjack',(time()+60*60*24*365*5),'/');
   header('Location: ./');
@@ -54,8 +63,6 @@ $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1
 
 $client_seed = $player['client_seed'];
 $last_client_seed = $player['last_client_seed'];
-$server_seed;
-$last_server_seed;
 
 if($game == "dice"){
   $server_seed = $player['dice_seed'];

@@ -15,14 +15,13 @@ include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
-if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
+if (!logged())exit();
 
 $player=db_fetch_array(db_query("SELECT `balance`,`id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
 maintenance();
 
 
-if (!logged())exit();
 
-echo json_encode(array('balance'=>n_num($player['balance'],true)));
+echo json_encode(array('balance'=>$player['balance']));
 ?>

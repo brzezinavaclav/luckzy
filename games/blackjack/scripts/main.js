@@ -48,23 +48,20 @@ function sumPosition(){
     }
     $('#dealer_checksum').css('left', Number(($('.cj-dealerTable').width() - $('.cj-dealerTable .deck').width()) / 2 - $('#dealer_checksum').width()-20) + 'px');
 }
-
 function br_div() {
-    var repaired=(parseFloat($(".betInput").val())/2).toFixed(8);
-    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".betInput").val('0.00000000');
-    else $(".betInput").val(repaired);
+    var repaired=$(".betInput").val()/2;
+    $(".betInput").val(repaired);
 }
 function br_multip() {
-    var repaired=(parseFloat($(".betInput").val())*2).toFixed(8);
-    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".betInput").val('0.00000000');
-    else $(".betInput").val(repaired);
+    var repaired=$(".betInput").val()*2;
+    $(".betInput").val(repaired);
 }
+/*
 function _betChanged() {
-    var repaired=parseFloat($(".betInput").val()).toFixed(8);
-    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".betInput").val('0.00000000');
+    var repaired=$(".betInput").val();
     else $(".betInput").val(repaired);
 }
-
+ */
 function bet_error(con) {
     alert(con);
 }
@@ -111,6 +108,7 @@ function gameUpdate(data) {
 
                 if (data['winner']!='-' && data['winner']!='tie') ceremonial(true,'<b>WON</b>');
                 else if (data['winner']=='tie') ceremonial(true,'<b>TIE</b>');
+                balanceUpdate();
             });
         tablePosition();
     }
@@ -125,6 +123,7 @@ function gameUpdate(data) {
                 if (data['dealer_new']!='-') decks.dealer.revealCards(data['dealer_new']);
                 if (data['dealer_sum']!='-') decks.dealer.setSum(data['dealer_sum']);
                 if (data['winner']=='player') {
+                    balanceUpdate();
 
                     $pldeck=decks.player.$deckObj;
                     card1=$pldeck.children().eq(0).find('.value').html();
@@ -138,6 +137,7 @@ function gameUpdate(data) {
                 }
                 if (data['winner']=='tie') ceremonial(true,'<b>TIE</b>');
                 if (data['winner']=='dealer') ceremonial(false,'<b>LOSE</b>');
+                balanceUpdate();
 
                 if (typeof data['re-stand']!='undefined' && data['winner']=='-') gameAction('stand');
             });
@@ -161,6 +161,7 @@ function gameUpdate(data) {
                 if (data['winner']=='player') ceremonial(true,'<b>WON</b>');
                 if (data['winner']=='tie') ceremonial(true,'<b>TIE</b>');
                 if (data['winner']=='dealer') ceremonial(false,'<b>LOSE</b>');
+                balanceUpdate();
 
                 if (typeof data['re-stand']!='undefined' && data['winner']=='-') gameAction('stand');
 
@@ -176,6 +177,7 @@ function gameUpdate(data) {
         if (data['winner']=='player') ceremonial(true,'<b>WON</b>');
         if (data['winner']=='tie') ceremonial(true,'<b>TIE</b>');
         if (data['winner']=='dealer') ceremonial(false,'<b>LOSE</b>');
+        balanceUpdate();
 
     }
 }

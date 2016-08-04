@@ -483,3 +483,13 @@ footer{
 .nav > li > a {
   padding: 6px 15px;
 }
+.g_insurance{
+  left: 50%;
+  position: relative;
+  transform: translateX(-200px);
+  display: none;
+}
+.g_ins_question{
+  float: left;
+  padding: 20px 40px;
+}

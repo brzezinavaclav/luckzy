@@ -33,6 +33,10 @@ if (!empty($_POST['username']) && !empty($_POST['passwd'])) {
           echo json_encode(array('error' => 'no'));
           exit();
         }
+        else {
+          echo json_encode(array('error' => 'yes', 'message' => 'Wrong verification key'));
+          exit();
+        }
       }
       if ($user['ga_token'] == '') {
         $_SESSION['logged'] = true;
@@ -43,7 +47,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd'])) {
       echo json_encode(array('error' => 'no', '2f_1' => 'yes'));
       exit();
     }
-    else echo json_encode(array('error' => 'yes', 'message' => 'Some of the field are empty'));
+    else echo json_encode(array('error' => 'yes', 'message' => 'Username or password is incorrect'));
 }
 else echo json_encode(array('error' => 'yes', 'message' => 'Some of the field are empty'));
 ?>

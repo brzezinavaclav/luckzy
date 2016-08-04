@@ -11,57 +11,6 @@ if (!isset($init)) exit();
 
 
 $perPage=20;
-  
-
-
-
-
-
-
-
-
-
-if (!empty($_GET['approveTX']) || !empty($_GET['denyTX'])) {
-    
-  if (!empty($_GET['approveTX'])) $m = 'approve';
-  else $m = 'deny';
-    
-  $id = ($m == 'approve') ? (int)$_GET['approveTX'] : (int)$_GET['denyTX'];
-    
-  $tx_q = db_query("SELECT * FROM `withdrawals` WHERE `id`=$id LIMIT 1");
-    
-  if (db_num_rows($tx_q) != 0) {
-    
-    $tx = db_fetch_array($tx_q);
-      
-    db_query("DELETE FROM `withdrawals` WHERE `id`=$tx[id] LIMIT 1");
-      
-    if ($m == 'deny') {
-      db_query("UPDATE `players` SET `balance`=TRUNCATE(ROUND(`balance`+$tx[amount],9),8) WHERE `id`=$tx[player_id] LIMIT 1");
-      
-      echo '<div class="zprava zpravagreen"><b>Success:</b> Withdrawal rejected.</div>';      
-    }
-    else {
-
-      $amount = (double)$tx['amount'] * 1;
-        
-      $txid = walletRequest('sendtoaddress', array($tx['address'], $amount) );
-
-      echo '<div class="zprava zpravagreen"><b>Success:</b> Withdrawal approved.<br>Transaction ID: <i>'.$txid.'</i></div>';
-        
-      db_query("INSERT INTO `transactions` (`player_id`,`amount`,`txid`) VALUES ($tx[player_id],($amount*-1),'$txid')"); 
-    } 
-  }   
-} 
-
-
-
-
-
-
-
-
-
 
 
 $page=1;
@@ -156,25 +105,25 @@ if ($page==1) {
       
         <?php
         
-        $penquery_ = db_query("SELECT * FROM `withdrawals`");
+        $penquery_ = db_query("SELECT * FROM `withdrawals` WHERE `withdrawned`=0");
         
         while ($tx = db_fetch_array($penquery_)) {
-          if (db_num_rows(db_query("SELECT `alias` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"))!=0)
-            $player=db_fetch_array(db_query("SELECT `alias` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"));
-          else $player['alias']='[unknown]';
+          if (db_num_rows(db_query("SELECT `username` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"))!=0)
+            $player=db_fetch_array(db_query("SELECT `username` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"));
+          else $player['username']='[unknown]';
     
           $amount=n_num($tx['amount'],true);
           
           echo '<tr class="vypis_table_obsah">';
           echo '<td><small><small>'.str_replace(' ','<br>',$tx['time']).'</small></small></td>';
-          echo '<td><small>'.$player['alias'].'</small></td>';
+          echo '<td><small>'.$player['username'].'</small></td>';
           echo '<td><small>'.$amount.'</small></td>';
           echo '<td><small><small>'.$tx['address'].'</small></small></td>';
-          echo '<td><a title="Approve" href="#" onclick="javascript:wr_approve('.$tx['id'].');return false;"><span class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;<a title="Disapprove (return money to player)" href="#" onclick="javascript:wr_deny('.$tx['id'].');return false;"><span class="glyphicon glyphicon-remove"></a></td>';
+          echo '<td><a title="Approve" href="#" onclick="wr_approve('.$tx['id'].');"><span class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;<a title="Disapprove (return money to player)" href="#" onclick="wr_deny('.$tx['id'].');"><span class="glyphicon glyphicon-remove"></a></td>';
           echo '</tr>';
           
         }
-        if (!db_num_rows($penquery_)) echo '<tr><td colspan="5"><i><small>No pending deposits.</small></i></td></tr>';
+        if (!db_num_rows($penquery_)) echo '<tr><td colspan="5"><i><small>No pending withdraws.</small></i></td></tr>';
         ?>
       </table>
     </fieldset>
@@ -232,9 +181,9 @@ if ($page==1) {
   
     <?php
     while ($tx=db_fetch_array($query_)) {
-      if (db_num_rows(db_query("SELECT `alias` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"))!=0)
-        $player=db_fetch_array(db_query("SELECT `alias` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"));
-      else $player['alias']='[unknown]';
+      if (db_num_rows(db_query("SELECT `username` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"))!=0)
+        $player=db_fetch_array(db_query("SELECT `username` FROM `players` WHERE `id`=$tx[player_id] LIMIT 1"));
+      else $player['username']='[unknown]';
 
       $amount=n_num($tx['amount'],true);
       if ($amount>0) {
@@ -245,7 +194,7 @@ if ($page==1) {
       
       echo '<tr class="vypis_table_obsah">';
       echo '<td><small><small>'.str_replace(' ','<br>',$tx['time']).'</small></small></td>';
-      echo '<td><small>'.$player['alias'].'</small></td>';
+      echo '<td><small>'.$player['username'].'</small></td>';
       echo '<td class="'.$am_class.'"><small>'.$amount.'</small></td>';
       echo '<td><small><small>'.$tx['txid'].'</small></small></td>';
       echo '</tr>';

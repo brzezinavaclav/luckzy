@@ -26,9 +26,7 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
 
 if (empty($_GET['wager']) || (double)$_GET['wager']<0) $wager=0; else $wager=(double)$_GET['wager'];
 
-$wbalance=walletRequest('getbalance');
-$max_wager=(double)$wbalance/$settings['bankroll_maxbet_ratio'];
-if ($wager>$max_wager) {
+if ($wager>$settings['bankroll_maxbet_ratio']) {
   echo json_encode(array('error'=>'yes','content'=>'too_big'));
   exit();
 }
@@ -54,7 +52,7 @@ if ($wager>$player['balance']) {
 db_query("DELETE FROM `insurance_process` WHERE `player`=$player[id]");
 
 
-db_query("UPDATE `players` SET `balance`=ROUND((`balance`-$wager),8) WHERE `id`=$player[id] LIMIT 1");
+db_query("UPDATE `players` SET `balance`=(`balance`-$wager) WHERE `id`=$player[id] LIMIT 1");
 
 
 $initial_shuffle=unserialize($player['initial_shuffle']);
@@ -155,10 +153,6 @@ else {    // INSURANCE PROCESS
 
 }
 
-
-
-db_query("UPDATE `system` SET `t_bets`=`t_bets`+1,`t_wagered`=ROUND((`t_wagered`+$wager),8),`t_player_profit`=ROUND((`t_player_profit`-".($wager)."),8) WHERE `id`=1 LIMIT 1");
-db_query("UPDATE `players` SET `t_bets`=`t_bets`+1,`t_wagered`=ROUND((`t_wagered`+$wager),8) WHERE `id`=$player[id] LIMIT 1");
 
 
 db_query('COMMIT');

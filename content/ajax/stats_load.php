@@ -98,7 +98,7 @@ foreach ( $stats as $key => $load ) {
     $stats[$key]['contents'].= '<td>'.$row['id'].'</td>';
     $stats[$key]['contents'].= '<td>'.$username.'</td>';
     $stats[$key]['contents'].= '<td>'.date('H:i', strtotime($row['time'])).'</td>';
-    $stats[$key]['contents'].= '<td>'.sprintf("%.8f",$row['bet_amount']).'</td>';
+    $stats[$key]['contents'].= '<td>'.$row['bet_amount'].' Coins</td>';
     if($game == 'blackjack') $stats[$key]['contents'].=  '<td>'.get_cards($row['player_deck']).'</td><td>'.get_cards($row['dealer_deck']).'</td>';
     else $stats[$key]['contents'].= '<td>'.$spin.'</td>';
     $stats[$key]['contents'].= '<td>x'.$row['multiplier'].'</td>';

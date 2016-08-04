@@ -185,23 +185,18 @@ function getSpin($multip)
 
 function profit($profit)
 {
-
-    $plus = '+';
     if ($profit < 0) {
         $class = 'loss';
-        $plus = '';
     } else if ($profit > 0) $class = 'win';
     else $class = 'neutral';
 
-    return '<span class="profit-' . $class . '"><span class="st-plus">' . $plus . '</span>' . sprintf("%.8f", $profit) . '</span>';
+    return '<span class="profit-' . $class . '"><span class="st-plus"></span>' . $profit . ' Coins</span>';
 
 }
 
 function house_edge()
 {
-
     $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1"));
-
     $p_return = 3.57627869
         + 6.95228577
         + 2.38418579
@@ -209,9 +204,7 @@ function house_edge()
         + 8.56804848
         + 29.59871292
         + 42.60420799;
-
     $p_return += 0.00000381 * $settings['jackpot'] * 100;
-
     return 100 - $p_return;
 
 }
@@ -332,23 +325,7 @@ function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blac
     if ($regular_or_tie == 'tie') {
         if ($settings['tie_dealerwon'] != 1) $multip = 1;
     }
-    db_query("UPDATE `players` SET "
-
-        . "`balance`=ROUND((`balance`+" . ($wager * $multip) . "),9)"
-        . $endGame
-        . " WHERE `id`=$player_id LIMIT 1");
-
-    $t_wins = 0;
-    $t_bets = 0;
-    $t_wagered = 0;
-    if ($regular_or_tie == 'regular') {
-        $t_wins = 1;
-    }
-    if ($regular_or_tie == 'tie') {
-        $t_bets -= 1;
-        $t_wagered = $wager * -1;
-    } else
-        db_query("UPDATE `system` SET `jack_wagered`=`jack_wagered`+$t_wagered,`jack_bets`=`jack_bets`+$t_bets,`jack_wins`=`jack_wins`+$t_wins,`t_player_profit`=ROUND((`t_player_profit`+" . ($wager * $multip) . "),8) WHERE `id`=1 LIMIT 1");
+    db_query("UPDATE `players` SET `balance`=`balance`+" . ($wager * $multip) . " $endGame WHERE `id`=$player_id LIMIT 1");
 
 }
 
@@ -423,25 +400,29 @@ function get_count($player = '', $filter = '')
 {
     $where = '';
     if($player != '') $where .= "WHERE `player`='$player'";
-    if($player == '' && $filter != '') $where .= "WHERE ";
-    else $where .= " AND ";
+    else if($player == '' && $filter != '') $where .= "WHERE ";
+
     if($filter == 'wins') $where .= "`multiplier` > 1";
     else if($filter == 'losses') $where .= "`multiplier` < 1";
     else if($filter == 'ties') $where.= "`multiplier` = 1";
+
     $pocet = 0;
     if (isset($_GET['g']) && $_GET['g'] == 'blackjack') {
         $pocet += db_num_rows(db_query("SELECT `id` FROM `games` $where"));
-    } else if (isset($_GET['g'])) {
+    }
+    else if (isset($_GET['g'])) {
         if($where != '') $where .= " AND `game`='" . $_GET['g'] . "'";
         else $where = "WHERE `game`='" . $_GET['g'] . "'";
         $pocet += db_num_rows(db_query("SELECT `id` FROM `spins` $where"));
-    } else {
+    }
+    else {
         $pocet += db_num_rows(db_query("SELECT `id` FROM `spins` $where"));
         $pocet += db_num_rows(db_query("SELECT `id` FROM `games` $where"));
     }
     return $pocet;
 }
 function get_wagered($player = ''){
+    $where = '';
     if($player != '') $where = "WHERE `player`='$player'";
     $soucet = 0;
     if (isset($_GET['g']) && $_GET['g'] == 'blackjack') {
@@ -451,6 +432,8 @@ function get_wagered($player = ''){
         }
     }
     else if (isset($_GET['g'])) {
+        if($where != '') $where .= " AND `game`='" . $_GET['g'] . "'";
+        else $where = "WHERE `game`='" . $_GET['g'] . "'";
         $q = db_query("SELECT `bet_amount` FROM `spins` $where");
         while($row = db_fetch_array($q)){
             $soucet += $row['bet_amount'];
@@ -467,4 +450,27 @@ function get_wagered($player = ''){
         }
     }
     return $soucet;
+}
+
+function real_edge($period = ''){
+    $where = "";
+    $from = "FROM `spins`";
+    if($period != '') $where .= "WHERE `time`>NOW()-INTERVAL ".$period;
+    if(isset($_GET['g'])) {
+        if($where == '') $where .= "WHERE ";
+        else $where .= " AND ";
+        if($_GET['g'] == 'blackjack'){
+            $from = "FROM `games`";
+            $where .= "`ended`=1 AND `winner`!='tie'";
+        }
+        else $where .= "`game`='" . $_GET['g'] . "'";
+        $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` $from $where"));
+    }
+    else{
+        $this_q=db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` $from $where"));
+        $from = "FROM `games`";
+        array_merge($this_q, db_fetch_array(db_query("SELECT SUM(-1*((`bet_amount`*`multiplier`)-`bet_amount`)) AS `total_profit`,SUM(`bet_amount`) AS `total_wager` $from $where")));
+    }
+    $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<td><span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span></td>':'<td><span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span></td>';
+    echo ($this_q['total_profit']>=0)?'<td><span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span></td>':'<td><span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span></td>';
 }

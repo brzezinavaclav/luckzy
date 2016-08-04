@@ -31,16 +31,13 @@ if (!isset($_GET['w']) || (double)$_GET['w']<0 || (double)$_GET['w']>$player['ba
   exit();
 }
 
-
 $wager = (double)$_GET['w'];
 if ($wager < $settings['min_bet'] && $wager != 0) {
   echo json_encode(array('error' => 'Your bet is too small'));
   exit();
 }
 
-$wbalance = walletRequest('getbalance');
-$max_wager = (double)$wbalance/$settings['bankroll_maxbet_ratio'];
-if ($wager > $max_wager) {
+if ($wager > $settings['bankroll_maxbet_ratio']) {
   echo json_encode(array('error' => 'Your bet is too big'));
   exit();
 }
@@ -109,9 +106,8 @@ if ($settings['inv_enable'] == 1 && $profit != 0) {
 }
 
 
-db_query("UPDATE `players` SET `balance`=TRUNCATE(ROUND($newBalance,9),8),`t_bets`=`t_bets`+1,`t_wagered`=TRUNCATE(ROUND((`t_wagered`+$wager),9),8),`t_wins`=`t_wins`+$r_win,`t_profit`=TRUNCATE(ROUND((`t_profit`+$profit),9),8) WHERE `id`=$player[id] LIMIT 1");
+db_query("UPDATE `players` SET `balance`=$newBalance WHERE `id`=$player[id] LIMIT 1");
 db_query("INSERT INTO `spins` (`player`,`bet_amount`,`server_seed`,`client_seed`,`result`,`multiplier`,`payout`, `game`) VALUES ($player[id],$wager,'".$player['dice_seed']."','$client_seed','".$result."',$multiplier,$payout, 'dice')");
-db_query("UPDATE `system` SET `t_bets`=`t_bets`+1,`t_wagered`=TRUNCATE(ROUND((`t_wagered`+$wager),9),8),`t_wins`=`t_wins`+$r_win,`t_loses`=`t_loses`+$r_lose,`t_ties`=`t_ties`+$r_tie,`t_player_profit`=TRUNCATE(ROUND((`t_player_profit`+$profit),9),8) LIMIT 1");
 
 
 db_query("UPDATE `players` SET `last_dice_seed`=`dice_seed`,`dice_seed`='$newSeed',`last_client_seed`=`client_seed`,`client_seed`='$newCSeed',`dice_last_result`='$result' WHERE `id`=$player[id] LIMIT 1");

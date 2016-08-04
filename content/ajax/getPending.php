@@ -28,7 +28,7 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
 
 $pendings='<table class="table table-striped" style="text-align: left;">';
 $pendings.='<tr><th>Amount ('.$settings['currency_sign'].')</th><th>Confirmations Left</th></tr>';
-$searcher=db_query("SELECT * FROM `deposits` WHERE `player_id`=$player[id] AND `received`!=0");
+$searcher=db_query("SELECT * FROM `deposits` WHERE `player_id`=$player[id] AND `received`=1 AND `confirmed`=0 AND `currency`='btc'");
 if (db_num_rows($searcher)==0) $pendings.='<tr><td colspan="2"><i>No pending deposits</i></td></tr>';
 while ($dp=db_fetch_array($searcher)) {
   $mins_left=$settings['min_confirmations']-$dp['confirmations'];

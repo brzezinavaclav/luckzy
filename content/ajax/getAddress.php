@@ -17,17 +17,15 @@ include __DIR__.'/../../inc/wallet_driver.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
+maintenance();
 if(!logged()) exit();
 
-if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
 $player=db_fetch_array(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
 
-maintenance();
 
 $new_addr=walletRequest('getnewaddress');
-if (!db_query("INSERT INTO `deposits` (`player_id`,`address`) VALUES ($player[id],'$new_addr')"))
+if (!db_query("INSERT INTO `deposits` (`player_id`,`address`,`currency`, `ip`) VALUES ($player[id],'$new_addr', 'btc', '".$_SERVER['REMOTE_ADDR']."')"))
   $new_addr='ERROR GENERATING ADDRESS';
 
 echo json_encode(array('confirmed'=>$new_addr));
-?>

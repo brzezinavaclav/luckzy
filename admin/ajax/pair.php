@@ -1,22 +1,21 @@
 <?php
 /*
- *  © CoinSlots 
+ *  ï¿½ CoinSlots 
  *  Demo: http://www.btcircle.com/coinslots
  *  Please do not copy or redistribute.
  *  More licences we sell, more products we develop in the future.  
 */
 
 
-header('X-Frame-Options: DENY'); 
-
-session_start();
-if (!isset($_SESSION['logged_']) || $_SESSION['logged_']!==true) exit();
+header('X-Frame-Options: DENY');
 
 $init=true;
 include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 include __DIR__.'/../ga_class.php';
+
+if (!isset($_SESSION['logged_']) || $_SESSION['logged_']!==true) exit();
 
 if (empty($_GET['newtoken']) || empty($_GET['totp']) || empty($_GET['id'])) exit();
 

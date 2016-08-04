@@ -111,6 +111,7 @@ function spinWheel(wheel, items, index, dur ) {
         $wheel.animate({'margin-top': "+="+posun},dur,'easeOutCirc',function(){
             $wheel.children('.oldItems').remove();
             lock.finished();
+            balanceUpdate();
         });
 
     });

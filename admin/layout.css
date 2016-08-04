@@ -111,6 +111,8 @@ input:focus, select:focus {
   height: 40px;
   border-radius: 2px 2px 0px 0px;
   background: rgba(122,126,144,0.5);
+  width: auto;
+  padding: 0px 15px;
 }
 .menu_.menu-horizontal ul a:hover, .menu_.menu-horizontal ul a:focus{
   background: #7A7E90;
