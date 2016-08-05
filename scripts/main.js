@@ -45,15 +45,14 @@ function spinLock() {
 var lock = new spinLock();
 
 $(document).ready(function (){
-
-  $(function() {
-    var target;
-    if(location.href.split("?")[1]){
-      target = location.href.split("?")[1];
+  var selected = false;
+  $('.navbar-first .navbar-nav > li > a').each(function (){
+    if(location.href.indexOf($(this).attr('href')) != -1){
+      $(this).addClass('active');
+      selected = true;
     }
-    else target = get_active_game();
-    $('.navbar-first .navbar-nav > li > a[href^="?' + target + '"]').addClass('active');
   });
+  if(!selected) $('.navbar-first .navbar-nav > li > a[href^="?blackjack"]').addClass('active');
 
   $('.leftbuttons button').each(function(){
     $(this).tooltip();
@@ -80,7 +79,6 @@ $(document).ready(function (){
     setLeftbarH();
   },100);
 
-
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
@@ -88,6 +86,7 @@ $(document).ready(function (){
   setInterval(function(){
     imitateCRON();
     balanceUpdate();
+    won_last();
   },1000);
 
 
@@ -586,11 +585,8 @@ var stats = {
             
            
         });
-
         stats.updating = false;
-        
       }
-      
     });
   
   },
@@ -598,9 +594,9 @@ var stats = {
   updating : false,
   
   limit : function() {
-    stats.st['my_bets'] .$obj() .children() .slice(30).remove();
-    stats.st['all_bets'] .$obj() .children() .slice(30).remove();
-    stats.st['high'] .$obj() .children() .slice(30).remove();
+    stats.st['my_bets'] .$obj() .children() .slice(20).remove();
+    stats.st['all_bets'] .$obj() .children() .slice(20).remove();
+    stats.st['high'] .$obj() .children() .slice(20).remove();
   }  
   
 };
@@ -668,7 +664,8 @@ function claim_bonus() {
   });
 }
 function invest() {
-  var amount = $('#input-invest').val();
+  alert($('.leftblock #lc-invest.leftCon #input-invest').val());
+  var amount = $('.leftblock #input-invest').val();
   $.ajax({
     'url': './content/ajax/inv_invest.php?_unique='+unique()+'&amount='+amount,
     'dataType': "json",
@@ -680,7 +677,7 @@ function invest() {
   });
 }
 function divest() {
-  var amount = $('#input-divest').val();
+  var amount = $('.leftblock #input-divest').val();
   $.ajax({
     'url': './content/ajax/inv_divest.php?_unique='+unique()+'&amount='+amount,
     'dataType': "json",
@@ -837,6 +834,19 @@ function deposit(currency){
       if(data['error'] == 'yes') m_alert('danger', data['message']);
       else m_alert('info','Your deposit ID: <b>'+ data['confirmed'] + '</b>');
       $('#d_'+currency+'_amount').val('');
+    }
+  });
+}
+
+function won_last() {
+  $.ajax({
+    'url': "./content/ajax/won_last.php",
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+       $('#won_last').html('Won last 24h: '+data['won_last']+' Coins');
+       $('#biggest').html('Biggest win: '+data['biggest']+' Coins');
+      }
     }
   });
 }

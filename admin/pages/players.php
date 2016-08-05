@@ -24,7 +24,8 @@ if (!isset($init)) exit();
   $(document).ready(function(){
     $('#players_table').DataTable( {
       columnDefs: [
-        { "orderable": false, "targets": 4}
+        { "orderable": false, "targets": 4},
+        { "searchable": false, "targets": 4}
       ]
     } );
   });

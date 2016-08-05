@@ -42,7 +42,8 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
     $(document).ready(function(){
         $('#deposits_table').DataTable( {
             columnDefs: [
-                { "orderable": false, "targets": 6}
+                { "orderable": false, "targets": 6},
+                { "searchable": false, "targets": 6}
             ]
         } );
     });

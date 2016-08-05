@@ -61,7 +61,8 @@ $query = db_query("SELECT * FROM `withdrawals` $where ORDER BY `time` DESC");
     $(document).ready(function(){
         $('#withdrawals_table').DataTable( {
             columnDefs: [
-                { "orderable": false, "targets": 6}
+                { "orderable": false, "targets": 6},
+                { "searchable": false, "targets": 6}
             ]
         } );
     });

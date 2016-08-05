@@ -89,7 +89,7 @@ if ($settings['inv_enable'] == 1 && $profit != 0) {
 
   $cas_profit = $profit*-1;
 
-  $inv_invest = db_fetch_array(mysql_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0"));
+  $inv_invest = db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0"));
   $inv_invest = $inv_invest['sum'];
   $cas_invest = ($sFreeBalance - $inv_invest);
 

@@ -19,8 +19,12 @@ $(document).ready(function () {
     $('#betTb_chance').change(function () {
         recountPayout();
     });
-    $('#bt_profit').change(function () {
+    $('#bt_wager').change(function () {
         recountProfit();
+    });
+    $('#bt_profit').change(function () {
+        recountChance();
+        recountPayout();
     });
 });
 
@@ -41,7 +45,6 @@ function singleRoll(){
     place($('#bt_wager').val(), $('#betTb_multiplier').val(), false);
 }
 
-var house_edge = 1;
 
 var under_over=0;
 function inverse() {
@@ -74,13 +77,13 @@ function recountProfit() {
 }
 function recountPayout() {
     var chance=$("#betTb_chance").val();
-    var payout=(1/(chance/100)*((100-house_edge)/100));
+    var payout=(1/(chance/100)*((100-dice_edge())/100));
     $("#betTb_multiplier").val(parseFloat(payout.toString().match(/^\d+(?:\.\d{0,2})?/)).toFixed(2));
     recountUnderOver();
 }
 function recountChance() {
     var payout=parseFloat($("#betTb_multiplier").val());
-    var chance=(1/(payout/100)*((100-house_edge)/100));
+    var chance=(1/(payout/100)*((100-dice_edge())/100));
     $("#betTb_chance").val(parseFloat((Math.round(chance*1000000000)/1000000000).toString().match(/^\d+(?:\.\d{0,2})?/)).toFixed(2));
     recountUnderOver();
 }

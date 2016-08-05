@@ -44,11 +44,11 @@ include __DIR__.'/inc/start.php';
   function min_inv() {
     return '<?php echo $settings['inv_min']; ?>';
   }
-  function default_theme() {
-    return '<?php echo $settings['active_theme']; ?>';
-  }
   function get_site_url(){
     return '<?php echo $settings['url']; ?>';
+  }
+  function dice_edge(){
+    return '<?php echo $settings['house_edge']; ?>';
   }
   function get_active_game(){
     return '<?php echo $game; ?>';
@@ -119,8 +119,8 @@ include __DIR__.'/inc/start.php';
         <?php endif;endif; ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a>Won last 24h: </a></li>
-        <li><a>Biggest win: </a></li>
+        <li><a id="won_last">Won last 24h: <?php echo last_won('1 DAY'); ?> Coins</a></li>
+        <li><a id="biggest">Biggest win: <?php echo biggest_win(); ?> Coins</a></li>
       </ul>
     </div>
   </div>
@@ -248,7 +248,7 @@ include __DIR__.'/inc/end.php';
       <div class="modal-body">
         <div class="m_alert"></div>
         <p>Giveaway Amount</p>
-        <?php echo '<b>'.n_num($settings['giveaway_amount'],true).'</b> Coins'; ?>
+        <?php echo '<b>'.$settings['giveaway_amount'].'</b> Coins'; ?>
         <div class="form-group">
           <label>Enter text from image</label><br>
           <a class="captchadiv" href="#" onclick="javascript:$(this).children().remove().clone().appendTo($(this));return false;" data-toggle="tooltip" data-placement="top" title="Click to refresh"><img src="./content/captcha/genImage.php"></a>

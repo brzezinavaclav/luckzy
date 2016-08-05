@@ -7,7 +7,6 @@
 */
 
 
-error_reporting(0);
 header('X-Frame-Options: DENY'); 
 
 $init=true;
@@ -28,26 +27,19 @@ $insrow=db_fetch_array(db_query("SELECT * FROM `insurance_process` WHERE `player
 
 if (empty($_GET['ans']) || $_GET['ans']!=1) $insured_=false; else $insured_=true;
 
-$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
-
 $insured=false;
 if ($insrow['bet_amount']!=0 && $player['balance']>=($insrow['bet_amount']/2) && $insured_==true) {
-  if (db_query("UPDATE `players` SET `balance`=ROUND((`balance`-($insrow[bet_amount]/2)),8) WHERE `id`=$player[id] LIMIT 1"))
+  if (db_query("UPDATE `players` SET `balance`=`balance`-".($insrow['bet_amount']/2)." WHERE `id`=$player[id] LIMIT 1"))
     $insured=true;
 }
 
 $tmp_table_s=generateHash(6);
 
-db_query("CREATE TEMPORARY TABLE `temp_table_$tmp_table_s` ENGINE=InnoDB
-             SELECT * FROM `insurance_process` WHERE `id`=$insrow[id];
-            ");
 
 db_query("UPDATE `temp_table_$tmp_table_s` SET `id`=NULL");
-db_query("INSERT INTO `games` SELECT * FROM `temp_table_$tmp_table_s`");
+db_query("INSERT INTO `games` (`player`,`player_deck`,`player_deck_stand`,`player_deck_2`,`player_deck_2_stand`,`dealer_deck`,`ended`,`bet_amount`,`winner`,`multiplier`,`time`,`initial_shuffle`,`client_seed`,`final_shuffle`,`used_cards`,`accessable_actions`,`canhit`,`insurance_process`,`note`) VALUES('".$insrow['player']."','".$insrow['player_deck']."','".$insrow['player_deck_stand']."','".$insrow['player_deck_2']."','".$insrow['player_deck_2_stand']."','".$insrow['dealer_deck']."','".$insrow['ended']."','".$insrow['bet_amount']."','".$insrow['winner']."','".$insrow['multiplier']."','".$insrow['time']."','".$insrow['initial_shuffle']."','".$insrow['client_seed']."','".$insrow['final_shuffle']."','".$insrow['used_cards']."','".$insrow['accessable_actions']."','".$insrow['canhit']."','".$insrow['insurance_process']."','".$insrow['note']."')");
 
 $gameID=db_last_insert_id();
-
-db_query("DROP TABLE `temp_table_$tmp_table_s`");
 db_query("DELETE FROM `insurance_process` WHERE `id`=$insrow[id] LIMIT 1");
   
 $wager=$insrow['bet_amount'];
@@ -70,7 +62,7 @@ if (in_array(21,$dealerSums)) {
     $data['winner']='tie';
     playerWon($player['id'],$gameID,$wager,$dealer_deck,'tie',true,serialize($final_shuffle));
     if ($insured)
-      db_query("UPDATE `players` SET `balance`=ROUND((`balance`+$wager),8) WHERE `id`=$player[id] LIMIT 1");
+      db_query("UPDATE `players` SET `balance`=`balance`+$wager WHERE `id`=$player[id] LIMIT 1");
   }
   else {    
     db_query("UPDATE `games` SET `ended`=1,`winner`='dealer' WHERE `id`=$gameID LIMIT 1");
@@ -78,7 +70,7 @@ if (in_array(21,$dealerSums)) {
     $data['winner']='dealer';
     playerWon($player['id'],$gameID,$wager,$dealer_deck,'lose',true,serialize($final_shuffle));
     if ($insured)
-      db_query("UPDATE `players` SET `balance`=ROUND((`balance`+$wager),8) WHERE `id`=$player[id] LIMIT 1");
+      db_query("UPDATE `players` SET `balance`=`balance`+$wager WHERE `id`=$player[id] LIMIT 1");
   }
 }  
 else if (in_array(21,$playerSums)) {
@@ -97,7 +89,6 @@ else {
 }
   
 if ($gameended) {
-  db_query("UPDATE `games` SET `insurance_process`=0 WHERE `player`=$player[id]");
   db_query("UPDATE `games` SET `insurance_process`=1 WHERE `id`=$gameID");
 }
 

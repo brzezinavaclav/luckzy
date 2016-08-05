@@ -93,8 +93,8 @@ db_query("INSERT INTO `$i_process` (`player`,`bet_amount`,`player_deck`,`dealer_
 
 if ($i_process=='games') {
 
-  $gameID=db_last_insert_id();
-
+  $id = db_fetch_array(db_query("SELECT `id` FROM `games` ORDER BY `id` DESC LIMIT 1"));
+  $gameID=$id['id'];
 
   $dealerSums=getSums($dealer_deck);
   $playerSums=getSums($player_deck);
@@ -114,6 +114,15 @@ if ($i_process=='games') {
       $winner='dealer';
       $data['winner']='dealer';
       playerWon($player['id'],$gameID,$wager,$dealer_deck,'lose',true,serialize($final_shuffle));
+      $fair=db_fetch_array(db_query("SELECT `client_seed`, `last_client_seed`, `initial_shuffle`, `last_initial_shuffle`, `last_final_shuffle` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+      $data['fair'] = array(
+          'newSeed'           => hash( 'sha256', stringify_shuffle($fair['initial_shuffle']) ),
+          'newCSeed'          => $fair['client_seed'],
+          'lastSeed_sha256'   => hash( 'sha256', stringify_shuffle($fair['last_initial_shuffle'] )),
+          'lastSeed'          => stringify_shuffle($fair['last_initial_shuffle']),
+          'lastCSeed'         => $fair['last_client_seed'],
+          'lastResult'        => stringify_shuffle($fair['last_final_shuffle'])
+      );
     }
   }
   else if (in_array(21,$playerSums)) {
@@ -122,6 +131,15 @@ if ($i_process=='games') {
     $winner='player';
     $data['winner']='player';
     playerWon($player['id'],$gameID,$wager,$dealer_deck,'regular',true,serialize($final_shuffle));
+    $fair=db_fetch_array(db_query("SELECT `client_seed`, `last_client_seed`, `initial_shuffle`, `last_initial_shuffle`, `last_final_shuffle` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+    $data['fair'] = array(
+        'newSeed'           => hash( 'sha256', stringify_shuffle($fair['initial_shuffle']) ),
+        'newCSeed'          => $fair['client_seed'],
+        'lastSeed_sha256'   => hash( 'sha256', stringify_shuffle($fair['last_initial_shuffle'] )),
+        'lastSeed'          => stringify_shuffle($fair['last_initial_shuffle']),
+        'lastCSeed'         => $fair['last_client_seed'],
+        'lastResult'        => stringify_shuffle($fair['last_final_shuffle'])
+    );
   }
   else {
     $cards['dealer-2'][0]='-';

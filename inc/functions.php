@@ -474,3 +474,25 @@ function real_edge($period = ''){
     $h_e_['h_e']=($this_q['total_wager']!=0)?(($this_q['total_profit']/$this_q['total_wager'])*100):0; echo ($h_e_['h_e']>=0)?'<td><span style="color: green;">+'.sprintf("%.5f",$h_e_['h_e']).'%</span></td>':'<td><span style="color: #d10000;">'.sprintf("%.5f",$h_e_['h_e']).'%</span></td>';
     echo ($this_q['total_profit']>=0)?'<td><span style="color: green;">+'.sprintf("%.8f",$this_q['total_profit']).'</span></td>':'<td><span style="color: #d10000;">'.sprintf("%.8f",$this_q['total_profit']).'</span></td>';
 }
+
+function last_won($interval){
+    $soucet = 0;
+    $q = db_query("SELECT `payout` FROM `spins` WHERE `time` > NOW() - INTERVAL $interval");
+    while($row = db_fetch_array($q)){
+        $soucet += $row['payout'];
+    }
+    $q = db_query("SELECT `bet_amount`, `multiplier` FROM `games` WHERE `time` > NOW() - INTERVAL $interval");
+    while($row = db_fetch_array($q)){
+        $soucet += $row['bet_amount']*$row['multiplier'];
+    }
+    return $soucet;
+}
+
+function biggest_win($interval = ''){
+    $where = '';
+    if(!empty($interval)) $where = "WHERE `time` > NOW() - INTERVAL ".$interval;
+    $biggest = db_fetch_array(db_query("SELECT `payout` FROM `spins` $where ORDER BY `payout` DESC LIMIT 1"));
+    $biggest_game = db_fetch_array(db_query("SELECT `bet_amount`*`multiplier` AS `payout` FROM `games` $where ORDER BY `payout` DESC LIMIT 1"));
+    $biggest_game['payout'] > $biggest['payout'] ? $biggest = $biggest_game['payout']: $biggest = $biggest['payout'];
+    return $biggest;
+}

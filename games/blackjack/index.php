@@ -31,8 +31,8 @@
     </div>
     <div class="g_insurance">
         <div class="g_ins_question">Insure?</div>
-        <a href="#" class="btn btn-primary gameControllers first__" onclick="javascript:insure(1);return false;">YES</a>
-        <a href="#" class="btn btn-primary gameControllers" onclick="javascript:insure(0);return false;">NO</a>
+        <a href="#" class="btn btn-primary gameControllers first__" onclick="insure(1);return false;">YES</a>
+        <a href="#" class="btn btn-primary gameControllers" onclick="insure(0);return false;">NO</a>
     </div>
     <div class="betAmount">
         <div class="bRegul">

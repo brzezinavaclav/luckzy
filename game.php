@@ -61,7 +61,7 @@
         <div class="form-group">
             <label>Invest funds:</label><br>
             <div class="input-group">
-                <input type="text" class="rightact" value="0.00000000" id="input-invest">
+                <input type="text" class="rightact" value="0" id="input-invest">
           <span class="input-group-btn">
             <a href="#" onclick="invest();" class="btn btn-sm btn-primary">Invest</a>
           </span>
@@ -70,7 +70,7 @@
         <div class="form-group">
             <label>Divest funds:</label><br>
             <div class="input-group">
-                <input type="text" class="rightact" value="0.00000000" id="input-divest">
+                <input type="text" class="rightact" value="0" id="input-divest">
           <span class="input-group-btn">
           <a href="#" onclick="javascript:divest();return false;" class="btn btn-sm btn-primary">Divest</a>
           </span>

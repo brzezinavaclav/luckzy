@@ -206,7 +206,7 @@ a:focus,a:active {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   background-color: rgba(0,0,0,0.6);
-  color: #ddd;
+  color: #fff;
   text-decoration: none;
 }
 .st-switches a:last-child {
@@ -217,7 +217,6 @@ a:focus,a:active {
 }
 .st-switches a.active {
   background-color: #333333;
-  color: #fff;
 }
 .st-switches a.rulesB {
   position: absolute;
@@ -246,10 +245,7 @@ a:focus,a:active {
   width: 100%;
   background-color: rgb(255,255,255);
   padding-top: 40px;
-  height: 100%;
   min-height: 240px;
-  max-height: 760px;
-  overflow-y: hidden;
 }
 .st-stats table {
   margin-top: -80px;
@@ -270,7 +266,7 @@ a:focus,a:active {
 .st-stats table tbody {
   display: none;
 }
-.st-stats table tbody tr {  
+.st-stats table tbody tr {
   height: 40px;
   color: black;
 }
