@@ -56,18 +56,22 @@ $address = '';
 
     $withdrawned = 0;
     if($_GET['c'] == 'btc') {
+      $rate = $settings['btc_rate'];
       if (!$settings['withdrawal_mode']) {
         $withdrawned = 1;
-        $txid = walletRequest('sendtoaddress', array($_GET['valid_addr'], $amount / $settings['btc_rate']));
-        db_query("INSERT INTO `transactions` (`player_id`,`amount`,`txid`) VALUES ($player[id]," . (0 - $amount / $settings['btc_rate']) . ",'$txid')");
+        $txid = walletRequest('sendtoaddress', array($_GET['valid_addr'], $amount / $rate));
+        db_query("INSERT INTO `transactions` (`player_id`,`amount`,`txid`) VALUES ($player[id]," . (0 - $amount / $rate) . ",'$txid')");
         echo json_encode(array('error'=>'no', 'txid'=>$txid));
       }
       else echo json_encode(array('error'=>'half'));
     }
+    else{
+    $currency = db_fetch_array(db_query("SELECT `rate`, `instructions` FROM `currencies` WHERE `id`='".$_GET['c']."' LIMIT 1"));
+    $rate = $currency['rate'];
+    }
+    db_query("INSERT INTO `withdrawals` (`player_id`,`amount`,`coins_amount`,`currency`,`address`,`withdrawned`) VALUES ($player[id]," . $amount / $rate . ",$amount,'".prot($_GET['c'])."','$address', $withdrawned)");
 
-    db_query("INSERT INTO `withdrawals` (`player_id`,`amount`,`coins_amount`,`currency`,`address`,`withdrawned`) VALUES ($player[id]," . $amount / $settings[$_GET['c'].'_rate'] . ",$amount,'".prot($_GET['c'])."','$address', $withdrawned)");
-
-    if($_GET['c'] != 'btc') echo json_encode(array('error'=>'no', 'id'=>$address));
+    if($_GET['c'] != 'btc') echo json_encode(array('error'=>'no', 'id'=>$address, 'instructions' => $currency['instructions']));
 
 
 db_query('COMMIT');

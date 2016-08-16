@@ -496,3 +496,34 @@ function biggest_win($interval = ''){
     $biggest_game['payout'] > $biggest['payout'] ? $biggest = $biggest_game['payout']: $biggest = $biggest['payout'];
     return $biggest;
 }
+
+function get_deposits()
+{
+    $deposits = '';
+    $query = db_query("SELECT * FROM `deposits` WHERE `confirmed`=1");
+    while ($row = db_fetch_array($query)) {
+        if ($row['currency'] == 'btc') {
+            $name = 'Bitcoin';
+        } else {
+            $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='" . $row['currency'] . "' LIMIT 1"));
+            $name = $currency['currency'];
+        }
+        $deposits .= '<tr><td>' . $name . '</td><td>' . $row['amount'] . '</td><td>' . $row['coins_amount'] . '</td><td>' . $row['address'] . '</td></tr>';
+    }
+    return $deposits;
+}
+function get_withdrawals()
+{
+    $withdrawals = '';
+    $query = db_query("SELECT * FROM `withdrawals` WHERE `withdrawned`=1");
+    while ($row = db_fetch_array($query)) {
+        if ($row['currency'] == 'btc') {
+            $name = 'Bitcoin';
+        } else {
+            $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='" . $row['currency'] . "' LIMIT 1"));
+            $name = $currency['currency'];
+        }
+        $withdrawals .= '<tr><td>' . $name . '</td><td>' . $row['amount'] . '</td><td>' . $row['coins_amount'] . '</td><td>' . $row['address'] . '</td></tr>';
+    }
+    return $withdrawals;
+}

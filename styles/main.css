@@ -146,21 +146,18 @@ a:focus,a:active {
 }
 
 .chat-message {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
   margin: 0 5px;
   margin-bottom: 10px;
   padding: 1px;
   padding-top: 0;
   overflow: hidden;
-  background-color: rgba(0,0,0,0.4);
+  color: #474C6C;
+  background-color: white;
 }
 .chat-m-user {
   font-size: 12px;
   float: left;
   padding: 0 10px;
-  color: white;
   font-weight: bold;
   width: 70%;
   height: 30px;
@@ -170,24 +167,16 @@ a:focus,a:active {
   float: right;
   font-size: 10px;
   padding: 0 10px;
-  color: rgb(200,200,200);
   width: 30%;
   text-align: right;
   height: 30px;
   line-height: 30px;
 }
 .chat-m-text {
-  padding: 9px;
+  padding: 4px 9px;
   display: block;
   font-size: 12px;
   clear: both;
-  background-color: rgba(255,255,255,0.9);
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
 }
 .stats {
   text-align: center;
@@ -488,4 +477,33 @@ footer{
 .g_ins_question{
   float: left;
   padding: 20px 40px;
+}
+
+.p_alert{
+  position: fixed;
+  z-index: 9999999;
+  bottom: 15px;
+  right: 10px;
+  margin: 0;
+}
+.tab-pane .table th{
+  border-top: none;
+}
+#lc-chat .heading{
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border-bottom: 1px solid rgba(71,76,108,0.4);
+  padding: 20px 25px;
+  color: #474C6C;
+}
+#lc-chat .footer{
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border-top: 1px solid rgba(71,76,108,0.4);
+}
+.chat-input{
+  border: 1px solid rgba(71,76,108,0.4);
+  color: #474C6C;
 }

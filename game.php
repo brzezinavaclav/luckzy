@@ -41,7 +41,6 @@
             <span class="statsData_g_wagered"></span>
         </div>
     </div>
-    <div class="footer"></div>
 </div>
 <div class="leftCon" id="lc-invest">
     <div class="heading"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;&nbsp;&nbsp;Invest</div>
@@ -77,7 +76,6 @@
             </div>
         </div>
     </div>
-    <div class="footer"></div>
 </div>
 <div class="leftCon" id="lc-news">
     <div class="heading"><span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;&nbsp;&nbsp;News</div>
@@ -126,5 +124,4 @@
             <input style="width: 100%;" type="text" class="_fair_l_result" value="<?php echo $last_result; ?>" disabled><br>
         </div>
     </div>
-    <div class="footer"></div>
 </div>

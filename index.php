@@ -35,9 +35,6 @@ include __DIR__.'/inc/start.php';
   function unique() {
     return '<?php echo $unique; ?>';
   }
-  function cursig() {
-    return 'Coins';
-  }
   function giveaway_freq() {
     return '<?php echo $settings['giveaway_freq']; ?>';
   }
@@ -56,6 +53,8 @@ include __DIR__.'/inc/start.php';
 </script>
 </head>
 <body>
+  <?php echo $p_alert; ?>
+</div>
 <div class="navbar navbar-default navbar-fixed-top navbar-first">
   <div class="container">
     <div class="navbar-header">
@@ -78,13 +77,13 @@ include __DIR__.'/inc/start.php';
         </ul>
       <?php endif; ?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="?blackjack">Blackjack</a></li>
-        <li><a href="?slots">Slots</a></li>
-        <li><a href="?dice">Dice</a></li>
-        <li><a href="?support">Support</a></li>
-        <li><a href="?more">More</a></li>
+        <li><a href="?p=blackjack">Blackjack</a></li>
+        <li><a href="?p=slots">Slots</a></li>
+        <li><a href="?p=dice">Dice</a></li>
+        <li><a href="?p=support">Support</a></li>
+        <li><a href="?p=more">More</a></li>
         <?php if(logged()): ?>
-          <li><a href="?account">Account</a></li>
+          <li><a href="?p=account">Account</a></li>
           <li><a onclick="logout()">Sign out</a></li>
         <?php else: ?>
           <li><a data-toggle="modal" data-target="#modals-login">Login</a></li>
@@ -114,6 +113,7 @@ include __DIR__.'/inc/start.php';
         <?php if(logged()): ?>
           <button class="btn btn-primary" data-toggle="modal" data-target="#modals-withdraw">Withdraw</button>
           <button class="btn btn-primary" data-toggle="modal" data-target="#modals-deposit">Deposit</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modals-transactions">Transactions</button>
         <?php if ($settings['giveaway']) : ?>
           <button class="btn btn-primary" id="faucet_btn">Faucet</button>
         <?php endif;endif; ?>
@@ -126,13 +126,10 @@ include __DIR__.'/inc/start.php';
   </div>
 </div>
 <?php
-if($page == 'blackjack' || $page == 'slots' || $page == 'dice') include 'game.php';
-else if($page == 'account'){
-  if(logged()) include 'account.php';
-  else header("Location: ./");
-}
+if($game != false) include 'game.php';
 else include $page.'.php';
 include __DIR__.'/inc/end.php';
+if(logged()):
 ?>
 <div class="modal fade" id="modals-deposit" aria-labelledby="mlabels-deposit" aria-hidden="true">
   <div class="modal-dialog">
@@ -142,13 +139,16 @@ include __DIR__.'/inc/end.php';
         <h4 class="modal-title" id="mlabels-deposit">Deposit Funds</h4>
       </div>
       <div class="modal-body">
+        <div class="m_alert"></div>
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a aria-controls="d_btc" role="tab" href="#d_btc" data-toggle="tab">Bitcoin</a></li>
-          <?php if($settings['rns3']): ?>
-            <li role="presentation"><a aria-controls="d_rns3" href="#d_rns3" role="tab" data-toggle="tab">Runescape 3</a></li>
-          <?php endif; if($settings['orns']):?>
-            <li role="presentation"><a aria-controls="d_orns" href="#d_orns" role="tab" data-toggle="tab">Oldschool runescape</a></li>
-          <?php endif; ?>
+          <?php
+          $query=db_query("SELECT * FROM `currencies`");
+          while ($row=db_fetch_array($query)) :
+            if($row['enabled']):
+              ?>
+              <li role="presentation"><a aria-controls="d_<?php echo $row['id']; ?>" href="#d_<?php echo $row['id']; ?>" role="tab" data-toggle="tab"><?php echo $row['currency']; ?></a></li>
+            <?php endif;endwhile; ?>
         </ul>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="d_btc" style="text-align: center;">
@@ -162,24 +162,20 @@ include __DIR__.'/inc/end.php';
             </div>
             <div class="pendingDeposits" style="display:none;"></div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="d_rns3">
-            <div class="m_alert"></div>
-            <div class="form-group">
-              <label for="input-am">Enter amount (min. <?php echo n_num($settings['rns3_min_deposit']); ?> Runescape 3):</label>
-              <input type="text" class="form-control" id="d_rns3_amount" onkeydown="if (event.keyCode == 13) deposit('rns3');;">
-              <small><i>(1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)</i></small>
-            </div>
-            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="deposit('rns3');">Deposit</button>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="d_orns">
-            <div class="m_alert"></div>
-            <div class="form-group">
-              <label for="input-am">Enter amount (min. <?php echo n_num($settings['orns_min_deposit']); ?> Oldschool runescape):</label>
-              <input type="text" class="form-control" id="d_orns_amount" onkeydown="if (event.keyCode == 13) deposit('orns');">
-              <small><i>(1 Oldschool runescape = <?php echo $settings['orns_rate']; ?> Coins)</i></small>
-            </div>
-            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="deposit('orns');">Deposit</button>
-          </div>
+          <?php
+          $query=db_query("SELECT * FROM `currencies`");
+          while ($row=db_fetch_array($query)) :
+            if($row['enabled']):
+              ?>
+              <div role="tabpanel" class="tab-pane" id="d_<?php echo $row['id']; ?>">
+                <div class="form-group">
+                  <label for="input-am">Enter the amount of coins you want to deposit (min. <?php echo $row['min_deposit'] . ' ' . $row['currency']; ?>):</label>
+                  <input type="text" class="form-control" id="d_amount_<?php echo $row['id']; ?>" onkeydown="if (event.keyCode == 13) deposit('<?php echo $row['id']; ?>');">
+                  <small><i>(1 <?php echo $row['currency']; ?> = <?php echo $row['rate']; ?> Coins)</i></small>
+                </div>
+                <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="deposit('<?php echo $row['id']; ?>');">Deposit</button>
+              </div>
+            <?php endif;endwhile; ?>
         </div>
       </div>
     </div>
@@ -190,17 +186,19 @@ include __DIR__.'/inc/end.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="mlabels-withdraw">Withdraw Funds</h4>
+        <h4 class="modal-title" id="mlabels-withdraw">Withdraw Funds - Your Coin Balance: <?php echo $player['balance']; ?></h4>
       </div>
       <div class="modal-body">
         <div class="m_alert"></div>
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a aria-controls="w_btc" role="tab" href="#w_btc" data-toggle="tab">Bitcoin</a></li>
-          <?php if($settings['rns3']): ?>
-            <li role="presentation"><a aria-controls="w_rns3" href="#w_rns3" role="tab" data-toggle="tab">Runescape 3</a></li>
-          <?php endif; if($settings['orns']):?>
-            <li role="presentation"><a aria-controls="w_orns" href="#w_orns" role="tab" data-toggle="tab">Oldschool runescape</a></li>
-          <?php endif; ?>
+          <?php
+          $query=db_query("SELECT * FROM `currencies`");
+          while ($row=db_fetch_array($query)) :
+            if($row['enabled']):
+          ?>
+            <li role="presentation"><a aria-controls="w_<?php echo $row['id']; ?>" href="#w_<?php echo $row['id']; ?>" role="tab" data-toggle="tab"><?php echo $row['currency']; ?></a></li>
+          <?php endif;endwhile; ?>
         </ul>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="w_btc">
@@ -209,30 +207,24 @@ include __DIR__.'/inc/end.php';
           <input type="text" class="form-control" id="w_btc_address">
         </div>
         <div class="form-group">
-          <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
-          <input type="text" class="form-control" id="w_btc_amount" style="width:150px;" onkeydown="if (event.keyCode == 13) withdraw();">
-          <small>
-            Balance: <span class="balance" style="font-weight: bold;"><?php echo $player['balance']; ?> Coins</span>
-          </small>
+          <label for="input-am">Enter the amount of coins you want to withdraw (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
+          <input type="text" class="form-control" id="w_amount_btc" style="width:150px;" onkeydown="if (event.keyCode == 13) withdraw('btc');">
         </div>
         <button class="btn btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('btc');">Withdraw</button>
           </div>
-          <div role="tabpanel" class="tab-pane" id="w_rns3">
-            <div class="form-group">
-              <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
-              <input type="text" class="form-control" id="w_rns3_amount">
-              <small><i>(1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)</i></small>
-            </div>
-            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('rns3');">Withdraw</button>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="w_orns">
-            <div class="form-group">
-              <label for="input-am">Enter amount (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
-              <input type="text" class="form-control" id="w_orns_amount">
-              <small><i>(1 Oldschool runescape = <?php echo $settings['orns_rate']; ?> Coins)</i></small>
-            </div>
-            <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('orns');">Withdraw</button>
-          </div>
+          <?php
+          $query=db_query("SELECT * FROM `currencies`");
+          while ($row=db_fetch_array($query)) :
+            if($row['enabled']):
+              ?>
+              <div role="tabpanel" class="tab-pane" id="w_<?php echo $row['id']; ?>">
+                <div class="form-group">
+                  <label for="input-am">Enter the amount of coins you want to withdraw (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
+                  <input type="text" class="form-control" id="w_amount_<?php echo $row['id']; ?>" onkeydown="if (event.keyCode == 13) withdraw('<?php echo $row['id']; ?>');">
+                </div>
+                <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="withdraw('<?php echo $row['id']; ?>');">Withdraw</button>
+              </div>
+            <?php endif;endwhile; ?>
         </div>
       </div>
     </div>
@@ -259,6 +251,46 @@ include __DIR__.'/inc/end.php';
     </div>
   </div>
 </div>
+  <div class="modal fade" id="modals-transactions" aria-labelledby="modals-transactions" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="mlabels-transactions">Transaction history</h4>
+        </div>
+        <div class="modal-body">
+          <div class="m_alert"></div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a aria-controls="deposits" role="tab" href="#deposits" data-toggle="tab">Deposits</a></li>
+            <li role="presentation"><a aria-controls="withdrawals" role="tab" href="#withdrawals" data-toggle="tab">Withdrawals</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="deposits">
+              <table class="table table-stripped">
+                <thead>
+                <tr><th>Currency</th><th>Amount</th><th>Coins</th><th>Address/ID</th></tr>
+                </thead>
+                <tbody>
+                <?php echo get_deposits();?>
+                </tbody>
+              </table>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="withdrawals">
+              <table class="table table-stripped">
+                <thead>
+                  <tr><th>Currency</th><th>Amount</th><th>Coins</th><th>Address/ID</th></tr>
+                </thead>
+                <tbody>
+                  <?php echo get_withdrawals();?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php else: ?>
 <div class="modal fade" id="modals-login" aria-labelledby="mlabels-login" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -301,23 +333,28 @@ include __DIR__.'/inc/end.php';
           <input id="username" type="text" class="form-control">
         </div>
         <div class="form-group">
+          <label for="input-email">Email:</label>
+          <input id="email" type="text" class="form-control">
+        </div>
+        <div class="form-group">
           <label for="input-password">Password</label>
           <input id="passwd" type="password" class="form-control">
         </div>
         <div class="form-group">
           <label for="input-password">Re-type password</label>
-          <input id="re_passwd" type="password" class="form-control">
+          <input id="re_passwd" type="password" class="form-control" onkeydown="if (event.keyCode == 13) register();">
         </div>
         <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="register();">Sign up</button>
       </div>
     </div>
   </div>
 </div>
+<?php endif; ?>
 <div class="leftblock"></div>
 
 <div class="leftCon" id="lc-chat">
 
-  <div class="heading"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;&nbsp;Chat</div>
+  <div class="heading"><span class="glyphicon glyphicon-align-left"></span> <span class="glyphicon glyphicon-user" style="padding: 0px 10px"></span> <span>English</span></div>
   <div class="content"></div>
   <div class="footer">
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send" >

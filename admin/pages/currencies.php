@@ -9,11 +9,25 @@
 
 if (!isset($init)) exit();
 
-if (isset($_POST['currencies_form']))
+if (isset($_POST['currencies_form']) || isset($_POST['new_currency']))
     echo '<div class="zprava zpravagreen"><b>Success!</b> Data was successfuly saved.</div>';
 
 ?>
+<script>
+    function delete_currency(id){
+        if (confirm('Do you really want to delete this currency?')) {
+            $.ajax({
+                'url': 'ajax/delete_currency.php?currency='+id,
+                'dataType': "json",
+                'success': function() {
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>
 <h1>Currencies</h1>
+<a href="./?p=add_currency">Add new</a>
 <style>
     td:first-of-type{
         width: 219px;
@@ -36,11 +50,11 @@ if (isset($_POST['currencies_form']))
         </tr>
         <tr>
             <td>Minimal deposit:</td>
-            <td><input type="text" name="btc_min_deposit" value="<?php echo $settings['btc_min_deposit']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Amount in <?php echo $settings['currency_sign']; ?>."><span class="glyphicon glyphicon-question-sign"></span></a></td>
+            <td><input type="text" name="btc_min_deposit" value="<?php echo $settings['btc_min_deposit']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Amount in Coins"><span class="glyphicon glyphicon-question-sign"></span></a></td>
         </tr>
         <tr>
             <td>Required confirmations:</td>
-            <td><input type="text" name="min_confirmations" value="<?php echo $settings['min_confirmations']; ?>"></td>
+            <td><input type="text" name="min_confirmations" value="<?php echo $settings['min_confirmations']; ?>"> <a href="#" style="color: #4F556C;" title="Minimum number of bitcoin transaction confirmations"><span class="glyphicon glyphicon-question-sign"></span></a></td>
         </tr>
         <tr>
             <td>Withdraw approval:</td>
@@ -49,7 +63,7 @@ if (isset($_POST['currencies_form']))
                     <option value="0"<?php if (!$settings['withdrawal_mode']) echo ' selected="selected"'; ?>>Automatic</option>
                     <option value="1"<?php if ($settings['withdrawal_mode']) echo ' selected="selected"'; ?>>Manual</option>
                 </select>
-                <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="When set to manual, each player's withdraw request must be approved in administration (Wallet section)."><span class="glyphicon glyphicon-question-sign"></span></a>
+                <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="When set to manual, each player's withdraw request must be approved in administration"><span class="glyphicon glyphicon-question-sign"></span></a>
             </td>
         </tr>
         <tr>
@@ -58,43 +72,43 @@ if (isset($_POST['currencies_form']))
         </tr>
     </table>
 </fieldset>
-<fieldset style="margin-top: 10px">
-    <legend>Runescape 3</legend>
-    <table style="border: 0; border-collapse: collapse;">
-        <tr>
-            <td style="padding-bottom: 10px;">
-                <input type="checkbox" value="1"<?php if ($settings['rns3']==1) echo ' checked="checked"'; ?> id="rns3_chckbx" name="rns3_enable">
-                <label for="rns3_chckbx" class="chckbxLabel">Enable</label>
-            </td>
-        </tr>
-        <tr>
-            <td>Conversion rate: </td>
-            <td><input type="text" name="rns3_rate" value="<?php echo $settings['rns3_rate']; ?>"> (1 Runescape 3 = <?php echo $settings['rns3_rate']; ?> Coins)</td>
-        </tr>
-        <tr>
-            <td>Minimal deposit:</td>
-            <td><input type="text" name="rns3_min_deposit" value="<?php echo $settings['rns3_min_deposit']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Amount in <?php echo $settings['currency_sign']; ?>."><span class="glyphicon glyphicon-question-sign"></span></a></td>
-        </tr>
-    </table>
-</fieldset>
-<fieldset style="margin-top: 10px">
-    <legend>Oldschool runescape</legend>
-    <table style="border: 0; border-collapse: collapse;">
-        <tr>
-            <td style="padding-bottom: 10px;">
-                <input type="checkbox" value="1"<?php if ($settings['orns']==1) echo ' checked="checked"'; ?> id="orns_chckbx" name="orns_enable">
-                <label for="orns_chckbx" class="chckbxLabel">Enable</label>
-            </td>
-        </tr>
-        <tr>
-            <td>Conversion rate:</td>
-            <td><input type="text" name="orns_rate" value="<?php echo $settings['orns_rate']; ?>"> (1 Oldschool runescape = <?php echo $settings['orns_rate']; ?> Coins)</td>
-        </tr>
-        <tr>
-            <td>Minimal deposit:</td>
-            <td><input type="text" name="orns_min_deposit" value="<?php echo $settings['orns_min_deposit']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Amount in <?php echo $settings['currency_sign']; ?>."><span class="glyphicon glyphicon-question-sign"></span></a></td>
-        </tr>
-    </table>
-</fieldset>
+
+<?php
+    $query=db_query("SELECT * FROM `currencies`");
+    while ($row=db_fetch_array($query)) {
+        ?>
+            <fieldset style="margin-top: 10px">
+                <legend><?php echo $row['currency']; ?></legend>
+                <table style="border: 0; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding-bottom: 10px;">
+                            <input type="checkbox" value="1"<?php if ($row['enabled'] == 1) echo ' checked="checked"'; ?> name="<?php echo $row['id']; ?>_enabled" id="<?php echo $row['id']; ?>_enabled">
+                            <label for="<?php echo $row['id']; ?>_enabled" class="chckbxLabel">Enable</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name: </td>
+                        <td><input name="<?php echo $row['id']; ?>_name" type="text"  value="<?php echo $row['currency']; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Conversion rate: </td>
+                        <td><input name="<?php echo $row['id']; ?>_rate" type="text"  value="<?php echo $row['rate']; ?>"> <a href="#" style="color: #4F556C;" title="(1 Runescape 3 = <?php echo $row['rate']; ?> Coins)"><span class="glyphicon glyphicon-question-sign"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td>Minimal deposit:</td>
+                        <td><input name="<?php echo $row['id']; ?>_min_deposit" type="text"  value="<?php echo $row['min_deposit']; ?>"> <a href="#" style="color: #4F556C;" title="Amount in Coins"><span class="glyphicon glyphicon-question-sign"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td>Instructions:</td>
+                        <td style="position: relative">
+                            <textarea style="margin-right: 5px" name="<?php echo $row['id']; ?>_instructions" rows="10"><?php echo $row['instructions']; ?></textarea> <a href="#" style="color: #4F556C; position: absolute;  top: 2px;" title="Instructions for for finishing transaction"><span class="glyphicon glyphicon-question-sign"></span></a>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2"><a href="javascript:delete_currency(<?php echo $row['id'];?>);">Delete</a></td></tr>
+                </table>
+            </fieldset>
+        <?php
+    }
+?>
 <input type="submit" value="Save" style="margin-top: 10px;margin-left: auto;margin-right: auto;">
 </form>

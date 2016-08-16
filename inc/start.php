@@ -52,12 +52,20 @@ if(!isset($_COOKIE['game'])){
 }
 
 $url = $_SERVER["REQUEST_URI"];
-$page = parse_url($url, PHP_URL_QUERY);
+$page = $_GET['p'];
 if(empty($page)) $page = 'blackjack';
 
 if($page == 'blackjack' || $page == 'slots' || $page == 'dice')  $game = $page;
 else $game = false;
 
+if(isset($_GET['verify']) && !empty($_GET['verify'])){
+  $result = db_query("UPDATE `players` SET state = 'activeted' WHERE `activation_hash`='" . $_GET['verify']. "'");
+  if(!empty($result)) {
+    $p_alert = '<div class="alert p_alert alert-success alert-dismissable fade in">Your account has been activated.<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>';
+  } else {
+    $p_alert = '<div class="alert p_alert alert-danger alert-dismissable fade in">Problem in account activation.<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>';
+  }
+};
 
 $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
 

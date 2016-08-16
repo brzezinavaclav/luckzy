@@ -32,6 +32,7 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./favicon.ico">
     <link type="text/css" rel="stylesheet" href="../styles/bootstrap-coingames-glyphonly.css">
+    <link type="text/css" rel="stylesheet" href="../styles/lightbox.min.css">
     <link rel="stylesheet" type="text/css" href="./layout.css">
     <script type="text/javascript" src="../scripts/jquery.js"></script>
     <script type="text/javascript" src="../scripts/bootstrap.js"></script>
@@ -138,4 +139,5 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="../scripts/lightbox.min.js"></script>
 </html>

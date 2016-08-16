@@ -16,8 +16,7 @@ include __DIR__.'/../../inc/functions.php';
 
 if (!isset($_SESSION['logged_']) || $_SESSION['logged_']!==true) exit();
 
-if (empty($_GET['_player']) || empty($_GET['a']) || empty($_GET['h']) || !is_numeric($_GET['b']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `id`='".prot($_GET['_player'])."' LIMIT 1"))==0) exit();
+if (empty($_GET['_player']) || empty($_GET['s']) || empty($_GET['e']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `id`='".prot($_GET['_player'])."' LIMIT 1"))==0) exit();
 
-db_query("UPDATE `players` SET `hash`='".prot($_GET['h'])."',`balance`=$_GET[b],`alias`='".prot($_GET['a'])."' WHERE `id`='".prot($_GET['_player'])."' LIMIT 1");
+db_query("UPDATE `players` SET `email`='".prot($_GET['e'])."',`state`='".$_GET['s']."' WHERE `id`='".prot($_GET['_player'])."' LIMIT 1");
 echo json_encode(array('error'=>'no'));
-?>

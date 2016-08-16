@@ -41,7 +41,7 @@ if (!empty($warnStatus)) {
       </tr>
       <tr>
         <td>Minimal bet:</td>
-        <td><input type="text" name="min_bet" value="<?php echo $settings['min_bet']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Amount in <?php echo $settings['currency_sign']; ?>."><span class="glyphicon glyphicon-question-sign"></span></a></td>
+        <td><input type="text" name="min_bet" value="<?php echo $settings['min_bet']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Amount in Coins"><span class="glyphicon glyphicon-question-sign"></span></a></td>
       </tr>
       <tr>
         <td>Minimal withdrawal:</td>

@@ -66,7 +66,7 @@ function clickmax() {
     $("#bt_wager").val($(".balance").html()).change();
 }
 function maxProfit() {
-    var newval = $("#bt_wager").val()*(10000*(1-(1/100)));
+    var newval = $("#bt_wager").val()*(10000*(dice_edge()-(1/100)));
     $("#bt_profit").val(newval).change();
 }
 

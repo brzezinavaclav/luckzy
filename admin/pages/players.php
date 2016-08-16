@@ -9,7 +9,7 @@
 
 if (!isset($init)) exit();
 
-  $query_=db_query("SELECT `id`,`username`,`balance`,`time_last_active`,`lastip` FROM `players` WHERE `password`!='' ORDER BY `time_created` DESC");
+  $query_=db_query("SELECT `id`,`username`,`balance`,`time_last_active`,`lastip`,`email`,`state` FROM `players` WHERE `password`!='' ORDER BY `time_created` DESC");
 
 ?>
 
@@ -44,22 +44,20 @@ if (!isset($init)) exit();
       });
     }
   }
-  function edit_player(p_id,r_id,p_b,p_a,p_h) {
-    var p_alias=prompt('Username:',p_a);
-    if (p_alias==null) return false;
-    var p_hash=prompt('Hash:',p_h);
-    if (p_hash==null) return false;
-    var p_bal=prompt('Balance:',p_b);
-    if (p_bal==null && typeof(p_bal)!='string') return false;
-    if (p_alias!='' && p_hash!='' && p_alias!=null && p_hash!=null && p_bal!=null) {
+  function edit_player(p_id,r_id,p_e,p_s) {
+    var p_email=prompt('Email:',p_e);
+    if (p_email==null) return false;
+    var p_state=prompt('Status:',p_s);
+    if (p_state==null) return false;
+
+    if (p_email!='' && p_state!='') {
       $.ajax({
-        'url': 'ajax/edit_player.php?_player='+p_id+'&a='+p_alias+'&h='+p_hash+'&b='+p_bal,
+        'url': 'ajax/edit_player.php?_player='+p_id+'&s='+p_state+'&e='+p_email,
         'dataType': "json",
-        'success': function(data) {
-          $("tr#"+r_id+" td.p__ali").html('<small>'+p_alias+'</small>');
-          $("tr#"+r_id+" td.p__hash").html('<small><small>'+p_hash+'</small></small>');
-          $("tr#"+r_id+" td.p__bal").html('<small><b>'+p_bal+'</b> Coins</small>');
-          $("tr#"+r_id+" a#edit_karos").attr('onclick',"javascript:edit_player("+p_id+",'"+r_id+"','"+p_bal+"','"+p_alias+"','"+p_hash+"');return false;");
+        'success': function() {
+          $("tr#"+r_id+" td.p__mail").html('<small>'+p_email+'</small>');
+          $("tr#"+r_id+" td.p__state").html('<small>'+p_state+'</small>');
+          $("tr#"+r_id+" a#edit_karos").attr('onclick',"javascript:edit_player("+p_id+",'"+r_id+"'"+p_email+"','"+p_state+"');return false;");
           message('success','Player has been updated.');
         }
       });
@@ -72,7 +70,9 @@ if (!isset($init)) exit();
   <tr class="vypis_table_head">
     <th>ID</th>
     <th>Username</th>
+    <th>Email</th>
     <th>Balance</th>
+    <th>Status</th>
     <th>Last Access</th>
     <th>Manage</th>
   </tr>
@@ -84,10 +84,12 @@ if (!isset($init)) exit();
     $row['lastip']=($row['lastip']=='')?'[unknown]':$row['lastip'];
     echo '<tr class="vypis_table_obsah" id="row'.$row_.'">';
     echo '<td><small>'.$row['id'].'</small></td>';
-    echo '<td class="p__ali"><small>'.$row['username'].'</small></td>';
-    echo '<td class="p__bal"><small><b>'.$row['balance'].'</b> Coins</small></td>';
+    echo '<td><small>'.$row['username'].'</small></td>';
+    echo '<td class="p__mail"><small>'.$row['email'].'</small></td>';
+    echo '<td><small><b>'.$row['balance'].'</b> Coins</small></td>';
+    echo '<td class="p__state"><small>'.$row['state'].'</small></td>';
     echo '<td><small><small>'.$row['time_last_active'].'<br><b>IP:</b> '.$row['lastip'].'</small></small></td>';
-    echo '<td><a href="#" onclick="javascript:delete_player('.$row['id'].',\'row'.$row_.'\');return false;" title="Delete Player"><img src="./imgs/cross.png" style="width: 16px;"></a>&nbsp;<a href="#" onclick="javascript:edit_player('.$row['id'].',\'row'.$row_.'\',\''.$row['balance'].'\',\''.$row['username'].'\',\''.$row['hash'].'\');return false;" title="Edit Player" id="edit_karos"><img src="./imgs/edit.png" style="width: 16px;"></a></td>';
+    echo '<td><a href="#" onclick="javascript:delete_player('.$row['id'].',\'row'.$row_.'\');return false;" title="Delete Player"><img src="./imgs/cross.png" style="width: 16px;"></a>&nbsp;<a href="#" onclick="javascript:edit_player('.$row['id'].',\'row'.$row_.'\',\''.$row['email'].'\',\''.$row['state'].'\');return false;" title="Edit Player" id="edit_karos"><img src="./imgs/edit.png" style="width: 16px;"></a></td>';
     echo '</tr>'."\n";
     $row_++;
   }

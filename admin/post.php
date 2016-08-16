@@ -28,19 +28,25 @@ if (isset($init) && $logged==true) {
     db_query("UPDATE `system` SET `giveaway`=$giveaway,`giveaway_amount`=".(double)$_POST['giveaway_amount'].",`giveaway_freq`=".(int)$_POST['giveaway_freq'].",`chat_enable`=$chat_enable,`inv_enable`=$inv_enable,`inv_min`=".max(0,(double)$_POST['inv_min']).",`inv_perc`=".max(0,min((int)$_POST['inv_perc'],100))." LIMIT 1");
   }
     if (isset($_POST['currencies_form'])) {
+
+        $query=db_query("SELECT * FROM `currencies`");
+        while ($row=db_fetch_array($query)) {
+            $currency = $row['id'];
+            $enable=(isset($_POST[$currency.'_enabled']))?1:0;
+            db_query("UPDATE `currencies` SET `currency`='".$_POST[$currency.'_name']."', `enabled`=$enable, `rate`=".$_POST[$currency.'_rate'].", `min_deposit`=".$_POST[$currency.'_min_deposit'].", `instructions`='".$_POST[$currency.'_instructions']."'  WHERE `id`=".$row['id']." LIMIT 1");
+        }
+
         $btc_rate=$_POST['btc_rate'];
-        $rns3_rate=$_POST['rns3_rate'];
-        $orns_rate=$_POST['orns_rate'];
-        $orns_enable=(isset($_POST['orns_enable']))?1:0;
-        $rns3_enable=(isset($_POST['rns3_enable']))?1:0;
         $w_mode = (isset($_POST['w_mode']) && $_POST['w_mode']) ? 1 : 0;
         $min_confirmations = $_POST['min_confirmations'];
         $btc_min_deposit = $_POST['btc_min_deposit'];
-        $rns3_min_deposit = $_POST['rns3_min_deposit'];
-        $orns_min_deposit = $_POST['orns_min_deposit'];
-
         walletRequest('settxfee',array(round((double)$_POST['txfee'],8)));
-        db_query("UPDATE `system` SET `btc_rate`=$btc_rate,`rns3_rate`=$rns3_rate,`orns_rate`=$orns_rate,`orns`=$orns_enable,`rns3`=$rns3_enable,`min_confirmations`=$min_confirmations,`withdrawal_mode`=$w_mode,`btc_min_deposit`=$btc_min_deposit,`rns3_min_deposit`=$rns3_min_deposit,`orns_min_deposit`=$orns_min_deposit LIMIT 1");
+        db_query("UPDATE `system` SET `btc_rate`=$btc_rate,`min_confirmations`=$min_confirmations,`withdrawal_mode`=$w_mode,`btc_min_deposit`=$btc_min_deposit LIMIT 1");
+    }
+
+    if (isset($_POST['new_currency'])) {
+        $enable=(isset($_POST['enabled']))?1:0;
+        db_query("INSERT INTO `currencies` (`currency`, `enabled`, `rate`, `min_deposit`,`instructions`) VALUES('".$_POST['currency']."', $enable, ".$_POST['rate'].", ".$_POST['min_deposit'].", '".$_POST['instructions']."')");
     }
 
   if (isset($_POST['theme'])) {

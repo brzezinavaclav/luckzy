@@ -5,6 +5,7 @@
  *  Please do not copy or redistribute.
  *  More licences we sell, more products we develop in the future.
 */
+if(!logged()) header("Location: ./");
 include __DIR__.'/inc/ga_class.php';
 ?>
 <div class="page">

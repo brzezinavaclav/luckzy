@@ -27,7 +27,7 @@ if (!empty($_GET['confirmDP']) || !empty($_GET['deleteDP'])) {
     }
 }
 
-if(isset($_GET['c'])) $where .= " AND `currency`='".$_GET['c']."'";
+if(isset($_GET['c'])) $where = " AND `currency`='".$_GET['c']."'";
 $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `time_generated`");
 
 ?>
@@ -39,13 +39,35 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
     }
 </style>
 <script>
+    var id;
     $(document).ready(function(){
         $('#deposits_table').DataTable( {
             columnDefs: [
                 { "orderable": false, "targets": 6},
                 { "searchable": false, "targets": 6}
-            ]
+            ],
+            "order": [[ 0, "desc" ]]
         } );
+        $('#screenshot').change(function(){
+            var formData = new FormData();
+            for(var i = 0; i <  $(this).get(0).files.length; i++){
+                formData.append('file[]', $(this).get(0).files[i]);
+            }
+            $.ajax({
+                url: "ajax/upload_screenshot.php?tid="+id,
+                type: "POST",
+                data:  formData,
+                dataType: "json",
+                contentType: false, 
+                cache: false,
+                processData:false,
+                success: function(data){
+                    if(data['error'] == 'no'){
+                        location.reload();
+                    }
+                }
+            });
+        });
     });
     function dp_confirm(tid) {
         location.href = './?p=deposits&confirmDP=' + tid;
@@ -54,14 +76,24 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
         if (!confirm('Do you really want to erase this record?')) return;
         location.href = './?p=deposits&deleteDP=' + tid;
     }
+    function upload_screenshot(tid){
+        id = tid;
+        $('#screenshot').trigger('click');
+    }
 </script>
 <h1>Deposits</h1>
 <div class="menu_ menu-horizontal">
     <ul>
         <li><a href="?p=deposits" class="<?php if (!isset($_GET['c']) || empty($_GET['c'])) echo 'active_'; ?>">All currencies</a></li>
         <li><a href="?p=deposits&c=btc" class="<?php if (isset($_GET['c']) && $_GET['c']=='btc') echo 'active_'; ?>">Bitcoin</a></li>
-        <li><a href="?p=deposits&c=rns3" class="<?php if (isset($_GET['c']) && $_GET['c']=='rns3') echo 'active_'; ?>">Runescape 3</a></li>
-        <li><a href="?p=deposits&c=orns" class="<?php if (isset($_GET['c']) && $_GET['c']=='orns') echo 'active_'; ?>">Oldschool runescape</a></li>
+
+
+        <?php
+        $currencies=db_query("SELECT * FROM `currencies`");
+        while ($row=db_fetch_array($currencies)) : ?>
+            <li><a href="?p=deposits&c=<?php echo $row['id']; ?>" class="<?php if (isset($_GET['c']) && $_GET['c']== $row['id']) echo 'active_'; ?>"><?php echo $row['currency']; ?></a></li>
+        <?php endwhile; ?>
+
     </ul>
 </div>
 <div class="zprava" style="margin-top: 20px;">
@@ -72,6 +104,7 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
             <th>Player</th>
             <th>Currency</th>
             <th>Amount</th>
+            <th>Coins</th>
             <th><?php if(isset($_GET['c']) && $_GET['c'] == 'btc') echo'Address'; elseif(!isset($_GET['c'])) echo 'Address/ID'; else echo 'Deposit ID'; ?></th>
             <th>Status</th>
             <th>Action</th>
@@ -85,6 +118,7 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
             else $player['username']='[unknown]';
 
                 if($dp['currency'] == 'btc'){
+                    $name = 'Bitcoin';
                     if($dp['confirmed'] == 1){
                         $status = 'Confirmed';
                         $actions = '<a title="Delete" href="#" onclick="dp_delete('.$dp['id'].');"><span class="glyphicon glyphicon-trash"></a>';
@@ -92,21 +126,35 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
                     else $status = 'Waiting for confirmation';
                 }
                 else {
+                    $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='".$dp['currency']."' LIMIT 1"));
+                    $name = $currency['currency'];
+                    $screenshots = db_query("SELECT * FROM `screenshots` WHERE `tid`=".$dp['id']);
+                    if(db_num_rows($screenshots) == 0){
+                        $actions = '<a style="margin-right: 10px" title="Upload screenshot" href="#" onclick="upload_screenshot('.$dp['id'].')"><span class="glyphicon glyphicon-upload"></a>';
+                    }
+                    else {
+                        $screenshot = db_fetch_array($screenshots);
+                        $actions = '<a style="margin-right: 10px" title="View screenshots" data-title="'.$screenshot['name'].'" href="'.$screenshot['path'].'" data-lightbox="'.$dp['id'].'"><span class="glyphicon glyphicon-camera"></a>';
+                        while ($screenshot = db_fetch_array($screenshots)) {
+                                $actions .= '<a href="'.$screenshot['path'].'" data-title="'.$screenshot['name'].'" data-lightbox="'.$dp['id'].'"></a>';
+                        }
+                    }
                     if($dp['confirmed'] == 1) {
                         $status = 'Confirmed';
-                        $actions = '<a title="Delete" href="#" onclick="dp_delete('.$dp['id'].');"><span class="glyphicon glyphicon-trash"></a>';
+                        $actions .= '<a title="Delete" href="#" onclick="dp_delete('.$dp['id'].');"><span class="glyphicon glyphicon-trash"></a>';
                     }
                     else{
                         $status = 'Initiated';
-                        $actions = '<a title="Confirm" href="#" onclick="dp_confirm('.$dp['id'].');"><span class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;<a title="Delete" href="#" onclick="dp_delete('.$dp['id'].');"><span class="glyphicon glyphicon-trash"></a>';
+                        $actions .= '<a style="margin-right: 10px" title="Confirm" href="#" onclick="dp_confirm('.$dp['id'].');"><span class="glyphicon glyphicon-ok"></a><a title="Delete" href="#" onclick="dp_delete('.$dp['id'].');"><span class="glyphicon glyphicon-trash"></a>';
                     }
                 }
 
             echo '<tr class="vypis_table_obsah">';
             echo '<td><small><small>'.str_replace(' ','<br>',$dp['time_generated']).'</small></small></td>';
             echo '<td><small>'.$player['username'].'</small></td>';
-            echo '<td><small>'.$dp['currency'].'</small></td>';
+            echo '<td><small>'.$name.'</small></td>';
             echo '<td><small>'.$dp['amount'].'</small></td>';
+            echo '<td><small>'.$dp['coins_amount'].'</small></td>';
             echo '<td><small><small>'.$dp['address'].'</small></small></td>';
             echo '<td><small>'.$status.'</small></td>';
             echo '<td>'.$actions.'</td>';
@@ -114,6 +162,7 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
         }
         if (!db_num_rows($query)) echo '<tr><td colspan="5"><i><small>No deposits.</small></i></td></tr>';
         ?>
+        <input type="file" id="screenshot" multiple style="display: none">
         </tbody>
     </table>
 </div>

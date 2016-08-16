@@ -52,7 +52,7 @@ $(document).ready(function (){
       selected = true;
     }
   });
-  if(!selected) $('.navbar-first .navbar-nav > li > a[href^="?blackjack"]').addClass('active');
+  if(!selected) $('.navbar-first .navbar-nav > li > a[href^="?p=blackjack"]').addClass('active');
 
   $('.leftbuttons button').each(function(){
     $(this).tooltip();
@@ -87,6 +87,7 @@ $(document).ready(function (){
     imitateCRON();
     balanceUpdate();
     won_last();
+    get_transactions();
   },1000);
 
 
@@ -156,7 +157,7 @@ $(document).ready(function (){
 });
 
 function withdraw(currency) {
-  var amount = $('#w_'+currency+'_amount').val();
+  var amount = $('#w_amount_'+currency).val();
   $.ajax({
     'url': './content/ajax/withdraw.php?_unique='+unique()+'&valid_addr='+$('#w_btc_address').val()+'&amount='+amount+'&c='+currency,
     'dataType': "json",
@@ -178,7 +179,7 @@ function withdraw(currency) {
           m_alert('danger','<b>Error!</b> '+data['message']);
         }
         else {
-          m_alert('info', 'Your withdraw ID: <b>' + data['id'] + '</b>');
+          m_alert('info', '<h4>Trade instructions</h4><p>'+data['instructions']+'</p>Your withdraw ID: <b>' + data['id'] + '</b>');
           balanceUpdate();
         }
       }
@@ -274,7 +275,7 @@ function setLeftbarH() {
   leftbox.$obj().height( $(window).height() - 130 );
   $('.leftCon').each(function(){
     var footer = $(this).children('.footer').outerHeight();
-    $(this).children('.content').css('height', parseInt($(window).height()) - 130 - 41 - footer );
+    $(this).children('.content').css('height', parseInt($(window).height()) - 130 - 62 - footer );
   });
   
 }
@@ -671,7 +672,7 @@ function invest() {
     'dataType': "json",
     'success': function (data) {
       if (data['error']=='yes') alert('Invalid amount!');
-      if (data['error']=='min') alert('Minimum amount is '+min_inv()+' '+cursig());
+      if (data['error']=='min') alert('Minimum amount is '+min_inv()+' Coins');
       if (data['error']=='no') investUpdate();
     }
   });
@@ -778,10 +779,10 @@ function register() {
     'url': './content/ajax/register.php',
     'dataType': "json",
     'method': 'POST',
-    'data': {username: $('#modals-sign #username').val(), passwd: $('#modals-sign #passwd').val(), re_passwd: $('#modals-sign #re_passwd').val()},
+    'data': {username: $('#modals-sign #username').val(), passwd: $('#modals-sign #passwd').val(), re_passwd: $('#modals-sign #re_passwd').val(), email: $('#modals-sign #email').val()},
     'success': function(data) {
         if(data['error'] == 'no') {
-          m_alert('success', 'You\'ve been signed up successfully');
+          m_alert('success', 'Verification link was send to your email');
           $('#modals-sign #username').val('');
           $('#modals-sign #passwd').val('');
           $('#modals-sign #re_passwd').val('');
@@ -826,14 +827,23 @@ function fairUpdate(data) {
 }
 
 function deposit(currency){
-  var amount = $('#d_'+currency+'_amount').val();
+  var amount = $('#d_amount_'+currency).val();
   $.ajax({
     'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c='+currency+'&amount='+amount,
     'dataType': "json",
     'success': function(data) {
-      if(data['error'] == 'yes') m_alert('danger', data['message']);
-      else m_alert('info','Your deposit ID: <b>'+ data['confirmed'] + '</b>');
-      $('#d_'+currency+'_amount').val('');
+        if (data['error']=='yes') {
+          m_alert('danger','<b>Error!</b> '+data['message']);
+        }
+        else {
+          if(currency == 'btc') {
+            m_alert('success', 'Your deposit ID: <b>' + data['confirmed'] + '</b>');
+          }
+          else {
+            m_alert('info', '<h4>Trade instructions</h4><p>'+data['instructions']+'</p><p>Your deposit ID: <b>' + data['confirmed'] + '</b></p>');
+          }
+        }
+      $('#d_amount_'+currency).val('');
     }
   });
 }
@@ -846,6 +856,19 @@ function won_last() {
       if(data['error'] == 'no'){
        $('#won_last').html('Won last 24h: '+data['won_last']+' Coins');
        $('#biggest').html('Biggest win: '+data['biggest']+' Coins');
+      }
+    }
+  });
+}
+
+function get_transactions(){
+  $.ajax({
+    'url': "./content/ajax/get_transactions.php",
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        $('#deposits tbody').html(data['deposits']);
+        $('#withdrawals tbody').html(data['withdrawals']);
       }
     }
   });

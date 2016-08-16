@@ -63,7 +63,8 @@ $query = db_query("SELECT * FROM `withdrawals` $where ORDER BY `time` DESC");
             columnDefs: [
                 { "orderable": false, "targets": 6},
                 { "searchable": false, "targets": 6}
-            ]
+            ],
+            "order": [[ 0, "desc" ]]
         } );
     });
 
@@ -82,15 +83,16 @@ $query = db_query("SELECT * FROM `withdrawals` $where ORDER BY `time` DESC");
 <h1>Withdrawals</h1>
 <div class="menu_ menu-horizontal">
     <ul>
-        <li><a href="?p=withdrawals" class="<?php if (!isset($_GET['c']) || empty($_GET['c'])) echo 'active_'; ?>">All
-                currencies</a></li>
-        <li><a href="?p=withdrawals&c=btc"
-               class="<?php if (isset($_GET['c']) && $_GET['c'] == 'btc') echo 'active_'; ?>">Bitcoin</a></li>
-        <li><a href="?p=withdrawals&c=rns3"
-               class="<?php if (isset($_GET['c']) && $_GET['c'] == 'rns3') echo 'active_'; ?>">Runescape 3</a></li>
-        <li><a href="?p=withdrawals&c=orns"
-               class="<?php if (isset($_GET['c']) && $_GET['c'] == 'orns') echo 'active_'; ?>">Oldschool runescape</a>
-        </li>
+        <li><a href="?p=withdrawals" class="<?php if (!isset($_GET['c']) || empty($_GET['c'])) echo 'active_'; ?>">All currencies</a></li>
+        <li><a href="?p=withdrawals&c=btc" class="<?php if (isset($_GET['c']) && $_GET['c'] == 'btc') echo 'active_'; ?>">Bitcoin</a></li>
+
+
+        <?php
+        $currencies=db_query("SELECT * FROM `currencies`");
+        while ($row=db_fetch_array($currencies)) : ?>
+            <li><a href="?p=withdrawals&c=<?php echo $row['id']; ?>" class="<?php if (isset($_GET['c']) && $_GET['c']== $row['id']) echo 'active_'; ?>"><?php echo $row['currency']; ?></a></li>
+        <?php endwhile; ?>
+
     </ul>
 </div>
 <div class="zprava" style="margin-top: 20px;">
@@ -101,6 +103,7 @@ $query = db_query("SELECT * FROM `withdrawals` $where ORDER BY `time` DESC");
             <th>Player</th>
             <th>Currency</th>
             <th>Amount</th>
+            <th>Coins</th>
             <th>Address/ID</th>
             <th>Status</th>
             <th>Action</th>
@@ -122,11 +125,20 @@ $query = db_query("SELECT * FROM `withdrawals` $where ORDER BY `time` DESC");
                 $actions = '<a title="Approve" href="#" onclick="wr_approve(' . $tx['id'] . ');"><span class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;<a title="Disapprove (return coins to player)" href="#" onclick="wr_deny(' . $tx['id'] . ');"><span class="glyphicon glyphicon-remove"></a>';
             }
 
+        if($tx['currency'] == 'btc') {
+            $name = 'Bitcoin';
+        }
+        else{
+            $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='".$tx['currency']."' LIMIT 1"));
+            $name = $currency['currency'];
+        }
+
             echo '<tr class="vypis_table_obsah">';
             echo '<td><small><small>' . str_replace(' ', '<br>', $tx['time']) . '</small></small></td>';
             echo '<td><small>' . $player['username'] . '</small></td>';
-            echo '<td><small>' . $tx['currency'] . '</small></td>';
+            echo '<td><small>' . $name . '</small></td>';
             echo '<td><small>' . $tx['amount'] . '</small></td>';
+            echo '<td><small>' . $tx['coins_amount'] . '</small></td>';
             echo '<td><small><small>' . $tx['address'] . '</small></small></td>';
             echo '<td><small>' . $status . '</small></td>';
             echo '<td>' . $actions . '</td>';
