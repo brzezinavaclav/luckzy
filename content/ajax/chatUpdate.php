@@ -30,10 +30,13 @@ else {
 }
 
 $content='';
-if($_COOKIE['pm']) $where = "AND `sender`=".$player['id']." AND `for`=".$_COOKIE['chat_room'];
+if($_COOKIE['pm']) {
+  $where = "AND (`sender`=" . $player['id'] . " AND `for`=" . $_COOKIE['chat_room'] . " OR `sender`=" . $_COOKIE['chat_room'] . " AND `for`=" . $player['id'].")";
+  db_query("UPDATE `chat` SET `displayed`=1 WHERE `for`=".$player['id']." AND `sender`=".$_COOKIE['chat_room']);
+}
 else $where = "AND `for` IS NULL AND `room`=".$_COOKIE['chat_room'];
 
-$messages=db_query("SELECT * FROM `chat` WHERE `id`>$lastid $where ORDER BY `time` DESC,`id` DESC LIMIT $limit");
+$messages=db_query("SELECT * FROM `chat` WHERE (`id`>$lastid) $where ORDER BY `time` DESC,`id` DESC LIMIT $limit");
 $messages_array=array();
 
 while ($message=db_fetch_array($messages)) {

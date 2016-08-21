@@ -434,28 +434,19 @@ if (logged()):
             href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span>
     </div>
     <div class="content">
-        <div>Public chat rooms</div>
+        <h5><b>Public chat rooms</b></h5>
         <div><a href="javascript:select_room(0,0)">Global</div>
         </a>
         <?php
-        $query = db_query("SELECT * FROM `chat_rooms` WHERE `id` != 0 AND `private`=0");
+        $query = db_query("SELECT * FROM `chat_rooms` WHERE `id` != 0");
         while ($row = db_fetch_array($query)):
             ?>
             <div><a href="javascript:select_room(<?php echo $row['id'] ?>,0)"><?php echo $row['name'] ?></div></a>
         <?php endwhile; ?>
-        <div>Private messages</div>
-        <?php
-        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=" . $player['id'] . " AND `relation`=1");
-        if ($query != false) {
-            while ($row = db_fetch_array($query)) {
-                $message = db_num_rows(db_query("SELECT `id` FROM `chat` WHERE `sender`=" . $player['id'] . " AND `for`=" . $row['friend'] . " OR `sender`=" . $row['friend'] . " AND `for`=" . $player['id'] . " LIMIT 1"));
-                if($message !=0){
-                    $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " LIMIT 1"));
-                    echo '<a href="javascript:select_room('. $row['friend'] .', 1)">'.$friend['username'].'</a>';
-                }
-            }
-        }
-        ?>
+        <h5><b>Private messages</b></h5>
+        <div id="pms">
+            <?php echo get_pms(); ?>
+        </div>
         <div><a href="javascript:select_room(<?php echo $row['id'] ?>)"><?php echo $row['name'] ?></div>
         </a>
     </div>

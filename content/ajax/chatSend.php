@@ -49,8 +49,10 @@ if ($alone) {
   exit();
 }
 
+if($_COOKIE['pm']) $where = "for";
+else $where = "room";
 
-db_query("INSERT INTO `chat` (`sender`,`content`,`room`) VALUES ($player[id],'".substr(prot($_GET['data']),0,200)."',".$_COOKIE['chat_room'].")");
+db_query("INSERT INTO `chat` (`sender`,`content`,`$where`) VALUES ($player[id],'".substr(prot($_GET['data']),0,200)."',".$_COOKIE['chat_room'].")");
 
 echo json_encode(array('error'=>'no'));
 ?>

@@ -89,6 +89,7 @@ $(document).ready(function (){
     won_last();
     get_transactions();
     get_friends();
+    get_pms();
   },1000);
 
 
@@ -910,6 +911,18 @@ function get_friends(){
         $('.online_friends').html(data['inline_friends']);
         $('.offline_friends').html(data['offline_friends']);
         $('.ignored_friends').html(data['ignored_friends']);
+      }
+    }
+  });
+}
+
+function get_pms(){
+  $.ajax({
+    'url': "./content/ajax/getPms.php",
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        $('#pms').html(data['pms']);
       }
     }
   });
