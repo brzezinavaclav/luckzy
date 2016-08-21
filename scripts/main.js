@@ -908,9 +908,12 @@ function get_friends(){
         $('.friend_count').html(data['friend_count']);
         $('.online_count').html(data['online_count']);
         $('.offline_count').html(data['offline_count']);
+        $('.ignored_count').html(data['ignored_count']);
+        $('.requests_count').html(data['requests_count']);
         $('.online_friends').html(data['inline_friends']);
         $('.offline_friends').html(data['offline_friends']);
         $('.ignored_friends').html(data['ignored_friends']);
+        $('.friend_requests').html(data['friend_requests']);
       }
     }
   });

@@ -602,7 +602,7 @@ function count_friends($type = null){
             $where = "AND `time_last_active` > NOW() - INTERVAL 10 MINUTE AND `chat_status`=1";
         }
         elseif($type === 0){
-            $type = "AND `relation`=0";
+            $type = "AND `relation`=1";
             $where = "AND `time_last_active` < NOW() - INTERVAL 10 MINUTE OR `chat_status`=0";
         }
         else{
