@@ -49,7 +49,7 @@ if (!empty($_COOKIE['chat_room'])){
 }
 else{
   setcookie('chat_room', 0,(time()+60*60*24*365*5),'/');
-  $chat_room = 'General';
+  $chat_room = 'Global';
 }
 
 $playingGame=false;
