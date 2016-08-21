@@ -16,6 +16,11 @@
     <div class="game" id="<?php echo $page; ?>">
         <?php include './games/'.$page.'/index.php'; ?>
     </div>
+
+    <footer>
+        &copy; <?php echo date("Y"); ?> Luckzy
+    </footer>
+
 </div>
 
 <!--  BLOCKS HIDDEN BY DEFAULT  -->

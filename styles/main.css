@@ -451,9 +451,12 @@ a:focus,a:active {
 .game{
   margin-top: 70px;
 }
-footer{
-  padding: 20px 0px;
+footer {
+  padding: 12px 0px;
   background-color: #333;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
 }
 .input-group-btn .btn-sm {
   padding: 9px 10px 8px 10px;

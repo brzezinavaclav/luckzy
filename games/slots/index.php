@@ -137,6 +137,3 @@
         </table>
     </div>
 </div>
-
-<footer>
-</footer>
