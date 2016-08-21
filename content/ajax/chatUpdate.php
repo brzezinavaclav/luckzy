@@ -6,7 +6,7 @@
  *  More licences we sell, more products we develop in the future.  
 */
 
-
+error_reporting(0);
 header('X-Frame-Options: DENY'); 
 
 $init=true;
@@ -30,8 +30,8 @@ else {
 }
 
 $content='';
-
-$where = "AND `room`=".$_COOKIE['chat_room'];
+if($_COOKIE['pm']) $where = "AND `sender`=".$player['id']." AND `for`=".$_COOKIE['chat_room'];
+else $where = "AND `for` IS NULL AND `room`=".$_COOKIE['chat_room'];
 
 $messages=db_query("SELECT * FROM `chat` WHERE `id`>$lastid $where ORDER BY `time` DESC,`id` DESC LIMIT $limit");
 $messages_array=array();

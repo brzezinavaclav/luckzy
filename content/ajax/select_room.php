@@ -17,10 +17,15 @@ include __DIR__.'/../../inc/functions.php';
 
 if (!logged())exit();
 maintenance();
-
-
-$chat_room = db_fetch_array(db_query("SELECT `name` FROM `chat_rooms` WHERE `id`=".prot($_GET['id'])." LIMIT 1"));
-$chat_room = $chat_room['name'];
-setcookie('chat_room', prot($_GET['id']),(time()+60*60*24*365*5),'/');
-
+$chat_room = '';
+if($_GET['pm'] == 1){
+    $friend = db_fetch_array(db_query("SELECT `username` FROM `players` WHERE `id`=" . prot($_GET['id']) . " LIMIT 1"));
+    $chat_room = $friend['username'];
+}
+else {
+    $chat_room = db_fetch_array(db_query("SELECT `name` FROM `chat_rooms` WHERE `id`=" . prot($_GET['id']) . " LIMIT 1"));
+    $chat_room = $chat_room['name'];
+}
+setcookie('chat_room', prot($_GET['id']), (time() + 60 * 60 * 24 * 365 * 5), '/');
+setcookie('pm', prot($_GET['pm']), (time() + 60 * 60 * 24 * 365 * 5), '/');
 echo json_encode(array('error'=>'no', 'name'=> $chat_room));

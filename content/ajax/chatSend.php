@@ -6,7 +6,7 @@
  *  More licences we sell, more products we develop in the future.  
 */
 
-
+error_reporting(0);
 header('X-Frame-Options: DENY'); 
 
 $init=true;

@@ -885,9 +885,9 @@ function get_transactions(){
   });
 }
 
-function select_room(room){
+function select_room(id, pm){
   $.ajax({
-    'url': "./content/ajax/select_room.php?id="+room,
+    'url': "./content/ajax/select_room.php?id="+id+'&pm='+pm,
     'dataType': "json",
     'success': function(data) {
       if(data['error'] == 'no'){
@@ -952,17 +952,6 @@ function ignore_friend(friend){
 }
 
 function remove_friend(friend){
-  $.ajax({
-    'url': "./content/ajax/removeFriend.php?friend="+friend,
-    'dataType': "json",
-    'success': function(data) {
-      if(data['error'] == 'no'){
-      }
-    }
-  });
-}
-
-function sendPM(friend){
   $.ajax({
     'url': "./content/ajax/removeFriend.php?friend="+friend,
     'dataType': "json",
