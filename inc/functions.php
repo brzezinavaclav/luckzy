@@ -527,3 +527,98 @@ function get_withdrawals()
     }
     return $withdrawals;
 }
+
+function get_friends($type){
+    $friends = '';
+    $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']." LIMIT 1"));
+    if ($type === -1){
+        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=".$player['id']." AND `relation`=0");
+        if($query != false){
+            while ($row = db_fetch_array($query)) {
+                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " LIMIT 1"));
+                if($friend != false) $friends .= '<div>'.$friend['username'].'<a href="javascript:remove_friend('.$row['friend'].')"><span class="glyphicon glyphicon-trash"></span></a></div>';
+            }
+            if(!empty($friends)) return $friends;
+            else return 'No ignored friends';
+        }
+    }
+    elseif($type === 10){
+        $query = db_query("SELECT * FROM `player_relations` WHERE `friend`=".$player['id']." AND `relation`=1 AND `state`=0");
+        if($query != false){
+            while ($row = db_fetch_array($query)) {
+                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " LIMIT 1"));
+                if($friend != false) {
+                    $friends .= '<div>'.$friend['username'].'<a href="javascript:approve_friend('.$row['friend'].')"><span class="glyphicon glyphicon-ok"></span></a><a href="javascript:ignore_friend('.$row['friend'].')"><span class="glyphicon glyphicon-remove"></span></a></div>';
+                }
+            }
+        }
+        if(!empty($friends)) return $friends;
+        else return 'No friend requests';
+    }
+    else{
+        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=".$player['id']." AND `relation`=1");
+        if($query != false){
+            while ($row = db_fetch_array($query)) {
+                if ($type === 1) $where = "AND `time_last_active` > NOW()-INTERVAL 10 MINUTE AND `chat_status`=1";
+                elseif($type === 0) $where = "AND `time_last_active` < NOW()-INTERVAL 10 MINUTE OR `chat_status`=0";
+                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " $where LIMIT 1"));
+                if($friend != false) {
+                    $friends .= '<div>';
+                    $friends .= $friend['username'];
+                    if(!$row['state']) $friends .= ' <small>(Request sent)</small>';
+                    if ($type === 1) $friends .= '<a href="javascript:sendPM('.$row['friend'].')"><span class="glyphicon glyphicon-envelope"></span></a>';
+                    $friends .= '<a href="javascript:ignore_friend('.$row['friend'].')"><span class="glyphicon glyphicon-remove"></span></a><a href="javascript:remove_friend('.$row['friend'].')"><span class="glyphicon glyphicon-trash"></span></a>';
+                    $friends .= '</div>';
+                }
+            }
+            if(!empty($friends)) return $friends;
+            else{
+                if($type === 1) return 'No online friends';
+                elseif($type === 0) return 'No offline friends';
+            }
+        }
+    }
+}
+
+function count_friends($type = null){
+    $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']." LIMIT 1"));
+    if ($type === -1){
+        $query = db_query("SELECT `player` FROM `player_relations` WHERE `player`=".$player['id']." AND `relation`=0");
+        if($query != false){
+            $count = db_num_rows($query);
+            return $count;
+        }
+        else return 0;
+    }
+    elseif($type === 10){
+        $query = db_query("SELECT * FROM `player_relations` WHERE `friend`=".$player['id']." AND `relation`=1 AND `state`=0");
+        if($query != false){
+            $count = db_num_rows($query);
+            return $count;
+        }
+        else return 0;
+    }
+    else{
+        if ($type === 1){
+            $type = "AND `relation`=1";
+            $where = "AND `time_last_active` > NOW() - INTERVAL 10 MINUTE AND `chat_status`=1";
+        }
+        elseif($type === 0){
+            $type = "AND `relation`=0";
+            $where = "AND `time_last_active` < NOW() - INTERVAL 10 MINUTE OR `chat_status`=0";
+        }
+        else{
+            $type = "";
+            $where = "";
+        }
+        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=".$player['id']." $type");
+        $count = 0;
+        if($query != false){
+            while ($row = db_fetch_array($query)) {
+                $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " $where LIMIT 1"));
+            }
+            return $count;
+        }
+        else return 0;
+    }
+}

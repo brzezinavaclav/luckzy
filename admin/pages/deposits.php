@@ -30,6 +30,7 @@ if (!empty($_GET['confirmDP']) || !empty($_GET['deleteDP'])) {
 if(isset($_GET['c'])) $where = " AND `currency`='".$_GET['c']."'";
 $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `time_generated`");
 
+if(isset($_GET['uploaded'])) echo '<div class="zprava zpravagreen"><b>Success!</b> Data was successfuly saved.</div>';
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
@@ -57,18 +58,41 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
                 url: "ajax/upload_screenshot.php?tid="+id,
                 type: "POST",
                 data:  formData,
+                xhr: function() {
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload){
+                        myXhr.upload.addEventListener('progress',progress, false);
+                    }
+                    return myXhr;
+                },
                 dataType: "json",
                 contentType: false, 
                 cache: false,
                 processData:false,
                 success: function(data){
                     if(data['error'] == 'no'){
-                        location.reload();
+                        window.location.href = '?p=deposits&uploaded';
                     }
                 }
             });
         });
     });
+
+    function progress(e){
+
+        if(e.lengthComputable){
+            var max = e.total;
+            var current = e.loaded;
+
+            var Percentage = (current * 100)/max;
+            $('#row_'+id+' .shots').html('<small>'+Percentage+' %</small>');
+
+
+            if(Percentage >= 100)
+            {
+            }
+        }
+    }
     function dp_confirm(tid) {
         location.href = './?p=deposits&confirmDP=' + tid;
     }
@@ -106,6 +130,7 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
             <th>Amount</th>
             <th>Coins</th>
             <th><?php if(isset($_GET['c']) && $_GET['c'] == 'btc') echo'Address'; elseif(!isset($_GET['c'])) echo 'Address/ID'; else echo 'Deposit ID'; ?></th>
+            <th>Screens</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -113,6 +138,7 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
         <tbody>
         <?php
         while ($dp = db_fetch_array($query)) {
+            $shots = '';
             if (db_num_rows(db_query("SELECT `username` FROM `players` WHERE `id`=$dp[player_id] LIMIT 1"))!=0)
                 $player=db_fetch_array(db_query("SELECT `username` FROM `players` WHERE `id`=$dp[player_id] LIMIT 1"));
             else $player['username']='[unknown]';
@@ -128,15 +154,13 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
                 else {
                     $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='".$dp['currency']."' LIMIT 1"));
                     $name = $currency['currency'];
+
+                    $actions = '<a style="margin-right: 10px" title="Upload screenshot" href="#" onclick="upload_screenshot('.$dp['id'].')"><span class="glyphicon glyphicon-upload"></a>';
+
                     $screenshots = db_query("SELECT * FROM `screenshots` WHERE `tid`=".$dp['id']);
-                    if(db_num_rows($screenshots) == 0){
-                        $actions = '<a style="margin-right: 10px" title="Upload screenshot" href="#" onclick="upload_screenshot('.$dp['id'].')"><span class="glyphicon glyphicon-upload"></a>';
-                    }
-                    else {
-                        $screenshot = db_fetch_array($screenshots);
-                        $actions = '<a style="margin-right: 10px" title="View screenshots" data-title="'.$screenshot['name'].'" href="'.$screenshot['path'].'" data-lightbox="'.$dp['id'].'"><span class="glyphicon glyphicon-camera"></a>';
+                    if(db_num_rows($screenshots) != 0){
                         while ($screenshot = db_fetch_array($screenshots)) {
-                                $actions .= '<a href="'.$screenshot['path'].'" data-title="'.$screenshot['name'].'" data-lightbox="'.$dp['id'].'"></a>';
+                                $shots .= '<a style="margin-right: 10px" data-title="'.$screenshot['name'].'" href="'.$screenshot['path'].'" data-lightbox="'.$dp['id'].'"><img src="'.$screenshot['path'].'" height="10" width="10"></a>';
                         }
                     }
                     if($dp['confirmed'] == 1) {
@@ -149,13 +173,14 @@ $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `ti
                     }
                 }
 
-            echo '<tr class="vypis_table_obsah">';
+            echo '<tr class="vypis_table_obsah" id="row_'.$dp['id'].'">';
             echo '<td><small><small>'.str_replace(' ','<br>',$dp['time_generated']).'</small></small></td>';
             echo '<td><small>'.$player['username'].'</small></td>';
             echo '<td><small>'.$name.'</small></td>';
             echo '<td><small>'.$dp['amount'].'</small></td>';
             echo '<td><small>'.$dp['coins_amount'].'</small></td>';
             echo '<td><small><small>'.$dp['address'].'</small></small></td>';
+            echo '<td class="shots">'.$shots.'</td>';
             echo '<td><small>'.$status.'</small></td>';
             echo '<td>'.$actions.'</td>';
             echo '</tr>';

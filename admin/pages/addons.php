@@ -13,6 +13,28 @@ if (isset($_POST['addons_form']))
     echo '<div class="zprava zpravagreen"><b>Success!</b> Data was successfuly saved.</div>';  
 
 ?>
+<script>
+  function delete_room(id){
+    $.ajax({
+      'url': 'ajax/delete_room.php?id='+id,
+      'dataType': "json",
+      'success': function(data) {
+        location.reload();
+      }
+    });
+  }
+  function add_room(){
+      var room = prompt('Room name:');
+      if (room==null || room == '') return false;
+        $.ajax({
+          'url': 'ajax/create_room.php?name='+room,
+          'dataType': "json",
+          'success': function(data) {
+            location.reload();
+          }
+        });
+      }
+</script>
 <h1>Addons</h1>
 <form method="post" action="./?p=addons">
   <input type="hidden" name="addons_form" value="1">
@@ -20,6 +42,22 @@ if (isset($_POST['addons_form']))
     <legend>Chat</legend>
     <input type="checkbox" value="1"<?php if ($settings['chat_enable']==1) echo ' checked="checked"'; ?> id="chat_chckbx" name="chat_enable">
     <label for="chat_chckbx" class="chckbxLabel">Enable</label>
+    <br><br>
+    <a href="javascript:add_room()">Add new</a>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Room</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>0</td><td>Global</td><td></td></tr>
+      <?php
+      $query=db_query("SELECT * FROM `chat_rooms` WHERE `id` != 0");
+      while ($row=db_fetch_array($query)):
+      ?>
+        <tr><td><?php echo $row['id'] ?></td><td><?php echo $row['name'] ?></td><td><a href="javascript:delete_room(<?php echo $row['id'];?>);"><span class="glyphicon glyphicon-trash"></span></a></td></tr>
+      <?php endwhile; ?>
+      </tbody>
+    </table>
   </fieldset>
   <fieldset style="margin-top: 10px;">
     <legend>Free Coins (giveaway)</legend>

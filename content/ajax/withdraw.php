@@ -24,13 +24,19 @@ maintenance();
 
 $address = '';
 
+  $player = db_fetch_array(db_query("SELECT `id`,`balance`,`state` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+
+  if($player['state'] != 'activated'){
+    echo json_encode(array('error'=>'yes', 'message'=>'Please activate your account before making any transactions.'));
+    exit();
+  }
+
   if (!is_numeric($_GET['amount'])) {
     echo json_encode(array('error'=>'yes', 'message'=>'Amount is not a number.'));
     exit();
   }
 
   $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
-  $player = db_fetch_array(db_query("SELECT `id`,`balance` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
   if($_GET['amount'] > $player['balance']) {
     echo json_encode(array('error'=>'yes', 'message'=>'You have insufficient funds.'));

@@ -11,10 +11,16 @@ include __DIR__.'/../../inc/functions.php';
 
 maintenance();
 if(!logged()) exit();
+if(!isset($_GET['c'])) exit();
 
 $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
-if(!isset($_GET['c'])) exit();
 $currency = db_fetch_array(db_query("SELECT * FROM `currencies` WHERE `id`='".$_GET['c']."' LIMIT 1"));
+$player=db_fetch_array(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+
+if($player['state'] != 'activated'){
+    echo json_encode(array('error'=>'yes', 'message'=>'Please activate your account before making any transactions.'));
+    exit();
+}
 
 if($_GET['c'] != 'btc' && (!isset($_GET['amount']) || $_GET['amount'] == 0)){
     echo json_encode(array('error'=>'yes', 'message' => 'Invalid amount'));
@@ -24,7 +30,6 @@ if($_GET['amount'] < $currency['min_deposit']){
     echo json_encode(array('error'=>'yes', 'message' => 'You cannot deposit less than '.$currency['min_deposit'].' Coins'));
     exit();
 }
-$player=db_fetch_array(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 $received = 1;
 if($_GET['c'] == 'btc') {
     $new_addr=walletRequest('getnewaddress');

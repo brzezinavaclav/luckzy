@@ -33,7 +33,7 @@ if (empty($_GET['data'])) {
 
 
 $alone=true;
-$lastTen=db_query("SELECT * FROM `chat` ORDER BY `time` DESC LIMIT 10");
+$lastTen=db_query("SELECT * FROM `chat` ORDER BY `time` DESC LIMIT 10 WHERE `room`=".$_COOKIE['chat_room']);
 if (db_num_rows($lastTen)<10) $alone=false;
 else {
   while ($each=db_fetch_array($lastTen)) {
@@ -50,7 +50,7 @@ if ($alone) {
 }
 
 
-db_query("INSERT INTO `chat` (`sender`,`content`) VALUES ($player[id],'".substr(prot($_GET['data']),0,200)."')");
+db_query("INSERT INTO `chat` (`sender`,`content`,`room`) VALUES ($player[id],'".substr(prot($_GET['data']),0,200)."',".$_COOKIE['chat_room'].")");
 
 echo json_encode(array('error'=>'no'));
 ?>

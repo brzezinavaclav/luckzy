@@ -8,13 +8,13 @@
 
 if (isset($init) && $logged==true) {
 
-  if (!empty($_POST['s_title']) && !empty($_POST['s_url']) && !empty($_POST['s_desc']) && isset($_POST['min_bet']) && is_numeric($_POST['min_bet']) && isset($_POST['min_withdrawal']) && is_numeric((double)$_POST['min_withdrawal']) && isset($_POST['bankroll_maxbet_ratio']) && is_numeric((double)$_POST['bankroll_maxbet_ratio']) && isset($_POST['bj_pays']) && isset($_POST['hits_on_soft']) && isset($_POST['number_of_decks']) && isset($_POST['tie_dealerwon']) && isset($_POST['insurance']) && isset($_POST['house_edge']) && isset($_POST['jackpot'])) {
+  if (!empty($_POST['email']) && !empty($_POST['s_title']) && !empty($_POST['s_url']) && !empty($_POST['s_desc']) && isset($_POST['min_bet']) && is_numeric($_POST['min_bet']) && isset($_POST['min_withdrawal']) && is_numeric((double)$_POST['min_withdrawal']) && isset($_POST['bankroll_maxbet_ratio']) && is_numeric((double)$_POST['bankroll_maxbet_ratio']) && isset($_POST['bj_pays']) && isset($_POST['hits_on_soft']) && isset($_POST['number_of_decks']) && isset($_POST['tie_dealerwon']) && isset($_POST['insurance']) && isset($_POST['house_edge']) && isset($_POST['jackpot'])) {
 
-	
+
     $j = min((int)$_POST['jackpot'], 12339);
     $j = max($j, 1);
     
-    db_query("UPDATE `system` SET `title`='".prot($_POST['s_title'])."',`url`='".prot($_POST['s_url'])."',`min_bet`=".$_POST['min_bet'].",`min_withdrawal`=".(double)$_POST['min_withdrawal'].",`description`='".prot($_POST['s_desc'])."',`bankroll_maxbet_ratio`=".(double)$_POST['bankroll_maxbet_ratio'].",`bj_pays`=".$_POST['bj_pays'].",`hits_on_soft`=".$_POST['hits_on_soft'].",`number_of_decks`=".$_POST['number_of_decks'].",`tie_dealerwon`=".$_POST['tie_dealerwon'].",`insurance`=".$_POST['insurance'].",`house_edge`=".$_POST['house_edge'].", `jackpot`=$j WHERE `id`=1 LIMIT 1");
+    db_query("UPDATE `system` SET `title`='".prot($_POST['s_title'])."',`url`='".prot($_POST['s_url'])."',`min_bet`=".$_POST['min_bet'].",`min_withdrawal`=".(double)$_POST['min_withdrawal'].",`description`='".prot($_POST['s_desc'])."',`bankroll_maxbet_ratio`=".(double)$_POST['bankroll_maxbet_ratio'].",`bj_pays`=".$_POST['bj_pays'].",`hits_on_soft`=".$_POST['hits_on_soft'].",`number_of_decks`=".$_POST['number_of_decks'].",`tie_dealerwon`=".$_POST['tie_dealerwon'].",`insurance`=".$_POST['insurance'].",`house_edge`=".$_POST['house_edge'].", `jackpot`=$j, `email`='".prot($_POST['email'])."', `smtp_enabled`='".prot($_POST['smtp_enabled'])."', `smtp_server`='".prot($_POST['smtp_server'])."', `smtp_password`='".prot($_POST['smtp_password'])."', `smtp_auth`='".prot($_POST['smtp_auth'])."', `smtp_encryption`='".prot($_POST['smtp_encryption'])."' WHERE `id`=1 LIMIT 1");
     $warnStatus='<div class="zprava zpravagreen"><b>Success!</b> Data was successfuly saved.</div>';
   }
   else if (isset($_POST['s_title'])) {

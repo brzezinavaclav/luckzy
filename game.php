@@ -87,7 +87,6 @@
         }
         ?>
     </div>
-    <div class="footer"></div>
 </div>
 <div class="leftCon" id="lc-fair">
     <div class="heading"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;&nbsp;&nbsp;Provably Fair</div>

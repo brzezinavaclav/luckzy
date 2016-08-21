@@ -16,15 +16,18 @@ include __DIR__.'/../../inc/wallet_driver.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
-if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
-
-$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
-
 
 if (!logged())exit();
 maintenance();
 
+$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
+
+
+if($player['state'] != 'activated'){
+  echo json_encode(array('error'=>'yes', 'message'=>'Please activate your account before making any transactions.'));
+  exit();
+}
 
 if ($settings['giveaway']!=1) exit();
 

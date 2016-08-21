@@ -82,12 +82,13 @@ $(document).ready(function (){
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
-  imitateCRON();
+  //imitateCRON();
   setInterval(function(){
-    imitateCRON();
+    //imitateCRON();
     balanceUpdate();
     won_last();
     get_transactions();
+    get_friends();
   },1000);
 
 
@@ -483,6 +484,16 @@ function leftCon(con) {
     chatReceiveUpdates = true;
     $('.chat-input').tooltip();
   }
+  if(con == 'chat-rooms'){
+    $('.chat-users-toggle').removeClass('active');
+    if($('.chat-rooms-toggle').hasClass('active')) $('.chat-rooms-toggle').addClass('active');
+    else $('.chat-rooms-toggle').removeClass('active');
+  }
+  if(con == 'chat-users'){
+    $('.chat-rooms-toggle').removeClass('active');
+    if($('.chat-users-toggle').hasClass('active')) $('.chat-users-toggle').addClass('active');
+    else $('.chat-users-toggle').removeClass('active');
+  }
 
   leftbox.con = con;
 
@@ -647,12 +658,11 @@ function claim_bonus() {
     'dataType': "json",
     'success': function(data) {
       if (data['error']=='yes') {
-        var m_alert = "";
-        if (data['content']=='balance') m_alert='Your balance must be 0 to proceed.';
-        else if (data['content']=='captcha') m_alert='Incorrect captcha solution!';
-        else if (data['content']=='time') m_alert='You must wait '+giveaway_freq()+' seconds.';
-        else if (data['content']=='no_funds') m_alert='We have currently no funds to giveaway.';
-        $('#modals-faucet .m_alert').fadeIn().html('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + m_alert + '</div>');
+        if (data['content']=='balance') m_alert('danger','Your balance must be 0 to proceed.');
+        else if (data['content']=='captcha') m_alert('danger','Incorrect captcha solution!');
+        else if (data['content']=='time') m_alert('danger','You must wait '+giveaway_freq()+' seconds.');
+        else if (data['content']=='no_funds') m_alert('danger','We have currently no funds to giveaway.');
+        else m_alert('danger',data['message']);
       }
       else {
         balanceUpdate();
@@ -784,6 +794,7 @@ function register() {
         if(data['error'] == 'no') {
           m_alert('success', 'Verification link was send to your email');
           $('#modals-sign #username').val('');
+          $('#modals-sign #email').val('');
           $('#modals-sign #passwd').val('');
           $('#modals-sign #re_passwd').val('');
         }
@@ -869,6 +880,94 @@ function get_transactions(){
       if(data['error'] == 'no'){
         $('#deposits tbody').html(data['deposits']);
         $('#withdrawals tbody').html(data['withdrawals']);
+      }
+    }
+  });
+}
+
+function select_room(room){
+  $.ajax({
+    'url': "./content/ajax/select_room.php?id="+room,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        $('.current_room').html(data['name']);
+        leftCon('chat');
+      }
+    }
+  });
+}
+
+function get_friends(){
+  $.ajax({
+    'url': "./content/ajax/get_friends.php",
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        $('.friend_count').html(data['friend_count']);
+        $('.online_count').html(data['online_count']);
+        $('.offline_count').html(data['offline_count']);
+        $('.online_friends').html(data['inline_friends']);
+        $('.offline_friends').html(data['offline_friends']);
+        $('.ignored_friends').html(data['ignored_friends']);
+      }
+    }
+  });
+}
+
+function make_friend(){
+  var friend = prompt('Username: ');
+  $.ajax({
+    'url': "./content/ajax/makeFriend.php?friend="+friend,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        $('.offline_friends').append(data['offline_friends']);
+      }
+    }
+  });
+}
+
+function approve_friend(friend){
+  $.ajax({
+    'url': "./content/ajax/approveFriend.php?friend="+friend,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+
+      }
+    }
+  });
+}
+
+function ignore_friend(friend){
+  $.ajax({
+    'url': "./content/ajax/ignoreFriend.php?friend="+friend,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+      }
+    }
+  });
+}
+
+function remove_friend(friend){
+  $.ajax({
+    'url': "./content/ajax/removeFriend.php?friend="+friend,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+      }
+    }
+  });
+}
+
+function sendPM(friend){
+  $.ajax({
+    'url': "./content/ajax/removeFriend.php?friend="+friend,
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
       }
     }
   });

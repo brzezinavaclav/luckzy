@@ -31,7 +31,9 @@ else {
 
 $content='';
 
-$messages=db_query("SELECT * FROM `chat` WHERE `id`>$lastid ORDER BY `time` DESC,`id` DESC LIMIT $limit");
+$where = "AND `room`=".$_COOKIE['chat_room'];
+
+$messages=db_query("SELECT * FROM `chat` WHERE `id`>$lastid $where ORDER BY `time` DESC,`id` DESC LIMIT $limit");
 $messages_array=array();
 
 while ($message=db_fetch_array($messages)) {

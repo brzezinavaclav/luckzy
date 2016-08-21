@@ -45,7 +45,7 @@ a:focus,a:active {
   display: none;
   position: fixed;
   margin-top: 130px;
-  background-color: rgba(255,255,255,0.8);
+  background-color: #fff;
   padding: 10px 0;
   border-right: 2px solid rgba(0,0,0,0.4);
   overflow: hidden;
@@ -489,7 +489,7 @@ footer{
 .tab-pane .table th{
   border-top: none;
 }
-#lc-chat .heading{
+.leftCon .heading{
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -497,7 +497,13 @@ footer{
   padding: 20px 25px;
   color: #474C6C;
 }
-#lc-chat .footer{
+.leftCon .heading a{
+  color: rgba(71,76,108,0.9)
+}
+.leftCon .heading a:hover, .leftCon .heading a:focus, .leftCon .heading a.active{
+  color: #474C6C;
+}
+.lc-chat .footer{
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;

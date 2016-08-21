@@ -102,7 +102,7 @@ include __DIR__.'/inc/start.php';
         <span class="icon-bar"></span>
       </button>
       <?php if(logged()): ?>
-        <a class="chat-icon" onclick="javascript:leftCon('chat');"><span class="glyphicon glyphicon-comment"></span></a>
+        <a class="chat-icon" onclick="leftCon('chat');"><span class="glyphicon glyphicon-comment"></span></a>
       <?php endif; ?>
       <?php if($game): ?>
       <a class="navbar-brand">You are playing: <?php echo $game; ?></a>
@@ -352,14 +352,69 @@ if(logged()):
 <?php endif; ?>
 <div class="leftblock"></div>
 
-<div class="leftCon" id="lc-chat">
+<div class="leftCon lc-chat" id="lc-chat">
 
-  <div class="heading"><span class="glyphicon glyphicon-align-left"></span> <span class="glyphicon glyphicon-user" style="padding: 0px 10px"></span> <span>English</span></div>
+  <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a> <a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span></div>
   <div class="content"></div>
   <div class="footer">
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send" >
     <div style="height: 5px;"></div>
   </div>
 </div>
+
+  <div class="leftCon lc-chat" id="lc-chat-rooms">
+    <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat');"></a> <a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span></div>
+    <div class="content">
+      <div>Public chat rooms</div>
+      <div><a href="javascript:select_room(0)">Global</div></a>
+      <?php
+      $query=db_query("SELECT * FROM `chat_rooms` WHERE `id` != 0 AND `private`=0");
+      while ($row=db_fetch_array($query)):
+        ?>
+        <div><a href="javascript:select_room(<?php echo $row['id'] ?>)"><?php echo $row['name'] ?></div></a>
+      <?php endwhile; ?>
+      <div>Private messages</div>
+      <?php
+      $query=db_query("SELECT * FROM `chat_rooms` WHERE `private`=1 AND `name`=");
+      while ($row=db_fetch_array($query)):
+        ?>
+        <div><a href="javascript:select_room(<?php echo $row['id'] ?>)"><?php echo $row['name'] ?></div></a>
+      <?php endwhile; ?>
+    </div>
+    <div class="footer">
+      <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send" >
+      <div style="height: 5px;"></div>
+    </div>
+  </div>
+
+  <div class="leftCon lc-chat" id="lc-chat-users">
+    <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a> <a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat');"></a> <span class="current_room"><?php echo $chat_room; ?></span></div>
+    <div class="content">
+      <div>
+        <h5><b>My friends (<span class="friend_count"><?php echo count_friends(); ?></span>)</b> <a href="javascript:make_friend()">+<sapn class="glyphicon glyphicon-user"></sapn></a></h5>
+        <hr>
+      </div>
+      <div>
+        <h5><b>Friend requests (<span class="requests_count"><?php echo count_friends(10); ?></span>)</b></h5>
+        <div class="friend_requests"><?php echo get_friends(10); ?></div>
+      </div>
+      <div>
+        <h5><b>Online (<span class="online_count"><?php echo count_friends(1); ?></span>)</b></h5>
+        <div class="online_friends"><?php echo get_friends(1); ?></div>
+      </div>
+      <div>
+        <h5><b>Offline (<span class="offline_count"><?php echo count_friends(0); ?></span>)</b></h5>
+        <div class="offline_friends"><?php echo get_friends(0); ?></div>
+      </div>
+      <div>
+        <h5><b>Ignored (<span class="ignored_count"><?php echo count_friends(-1); ?></span>)</b></h5>
+        <div class="ignored_friends"><?php echo get_friends(-1); ?></div>
+      </div>
+    </div>
+    <div class="footer">
+      <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send" >
+      <div style="height: 5px;"></div>
+    </div>
+  </div>
 </body>
 </html>

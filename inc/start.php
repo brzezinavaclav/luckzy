@@ -37,6 +37,15 @@ else {
   }
 }
 
+if (!empty($_COOKIE['chat_room'])){
+  $chat_room = db_fetch_array(db_query("SELECT `name` FROM `chat_rooms` WHERE `id`=".$_COOKIE['chat_room']." LIMIT 1"));
+  $chat_room = $chat_room['name'];
+}
+else{
+  setcookie('chat_room', 0,(time()+60*60*24*365*5),'/');
+  $chat_room = db_fetch_array(db_query("SELECT `name` FROM `chat_rooms` WHERE `id`=0 LIMIT 1"));
+  $chat_room = $chat_room['name'];
+}
 
 $playingGame=false;
 $endedOnInit=false;

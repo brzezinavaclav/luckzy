@@ -22,10 +22,10 @@ if (!empty($warnStatus)) {
     width: 219px;
   }
 </style>
+<form action="./?p=configs" method="post">
 <fieldset>
   <legend>Basic Settings</legend>
 
-  <form action="./?p=configs" method="post">
     <table>
       <tr>
         <td>Site Title:</td>
@@ -60,6 +60,46 @@ if (!empty($warnStatus)) {
   </style>
 
 </fieldset>
+
+  <fieldset style="margin-top: 10px">
+    <legend>Email settings</legend>
+    <table>
+      <tr>
+        <td>Email:</td>
+        <td><input type="text" name="email" value="<?php echo $settings['email']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Your email"><span class="glyphicon glyphicon-question-sign"></span></a></td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 10px;">
+          <input type="checkbox" value="1" name="smtp_enabled" id="smtp_enabled" <?php if ($settings['smtp_enabled']==1) echo ' checked="checked"'; ?>>
+          <label for="smtp_enabled" class="chckbxLabel">Use SMTP</label> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Ensures more reaible mail delivery"><span class="glyphicon glyphicon-question-sign"></span></a>
+        </td>
+      </tr>
+      <tr>
+        <td>SMTP server:</td>
+        <td><input type="text" name="smtp_server" value="<?php echo $settings['smtp_server']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="SMTP server"><span class="glyphicon glyphicon-question-sign"></span></a></td>
+      </tr>
+      <tr>
+        <td>SMTP password:</td>
+        <td><input type="password" name="smtp_password" value="<?php echo $settings['smtp_password']; ?>"> <a href="#" style="color: #4F556C;" onclick="javascript:return false;" title="Your email password"><span class="glyphicon glyphicon-question-sign"></span></a></td>
+      </tr>
+      <tr>
+        <td>Encryption:</td>
+        <td>
+          <select name="smtp_encryption">
+            <option value="0"<?php if ($settings['smtp_encryption']==0) echo ' selected="selected"'; ?>> TLS
+            <option value="1"<?php if ($settings['smtp_encryption']==1) echo ' selected="selected"'; ?>> SSL
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 10px;">
+          <input type="checkbox" value="1" name="smtp_auth" id="smtp_auth" <?php if ($settings['smtp_auth']==1) echo ' checked="checked"'; ?>>
+          <label for="smtp_auth" class="chckbxLabel">SMTP Authentication</label>
+        </td>
+      </tr>
+    </table>
+
+  </fieldset>
 
 <fieldset style="margin-top: 10px">
   <legend>Blackjack</legend>
