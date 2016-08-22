@@ -44,25 +44,6 @@ if (!isset($init)) exit();
       });
     }
   }
-  /*function edit_player(p_id,r_id,p_e,p_s) {
-    var p_email=prompt('Email:',p_e);
-    if (p_email==null) return false;
-    var p_state=prompt('Status:',p_s);
-    if (p_state==null) return false;
-
-    if (p_email!='' && p_state!='') {
-      $.ajax({
-        'url': 'ajax/edit_player.php?_player='+p_id+'&s='+p_state+'&e='+p_email,
-        'dataType': "json",
-        'success': function() {
-          $("tr#"+r_id+" td.p__mail").html('<small>'+p_email+'</small>');
-          $("tr#"+r_id+" td.p__state").html('<small>'+p_state+'</small>');
-          $("tr#"+r_id+" a#edit_karos").attr('onclick',"javascript:edit_player("+p_id+",'"+r_id+"'"+p_email+"','"+p_state+"');return false;");
-          message('success','Player has been updated.');
-        }
-      });
-    } else message('error',"One of fields has an incorrect value. Please, try again.");
-  }*/
   function edit_player(id, row, email, status, password, username){
     $('#myModal #username').val(username);
     $('#myModal #email').val(email);
