@@ -562,8 +562,8 @@ function get_friends($type){
                 if($row['friend'] == $_SESSION['user_id']) $id = $row['player'];
                 else $id = $row['friend'];
 
-                if ($type === 1) $where = "AND `time_last_active` > NOW()-INTERVAL 10 MINUTE AND `chat_status`=1";
-                elseif($type === 0) $where = "AND `time_last_active` < NOW()-INTERVAL 10 MINUTE OR `chat_status`=0";
+                if ($type === 1) $where = "AND `time_last_active` > NOW()-INTERVAL 1 MINUTE AND `chat_status`=1";
+                elseif($type === 0) $where = "AND `time_last_active` < NOW()-INTERVAL 1 MINUTE OR `chat_status`=0";
 
                 $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " $where LIMIT 1"));
                 if($friend != false) {
@@ -604,11 +604,11 @@ function count_friends($type = null){
     else{
         if ($type === 1){
             $type = "AND `relation`=1";
-            $where = "AND `time_last_active` > NOW() - INTERVAL 10 MINUTE AND `chat_status`=1";
+            $where = "AND `time_last_active` > NOW() - INTERVAL 1 MINUTE AND `chat_status`=1";
         }
         elseif($type === 0){
             $type = "AND `relation`=1";
-            $where = "AND `time_last_active` < NOW() - INTERVAL 10 MINUTE OR `chat_status`=0";
+            $where = "AND `time_last_active` < NOW() - INTERVAL 1 MINUTE OR `chat_status`=0";
         }
         else{
             $type = "";

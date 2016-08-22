@@ -277,7 +277,7 @@ function setLeftbarH() {
   leftbox.$obj().height( $(window).height() - 130 );
   $('.leftCon').each(function(){
     var footer = $(this).children('.footer').outerHeight();
-    $(this).children('.content').css('height', parseInt($(window).height()) - 130 - 62 - footer );
+    $(this).children('.content').css('height', parseInt($(window).height()) - 130 - 74 - footer );
   });
   
 }

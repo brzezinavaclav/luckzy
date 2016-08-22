@@ -423,7 +423,10 @@ if (logged()):
     <div class="footer">
         <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
                title="Press ENTER to send">
-        <div style="height: 5px;"></div>
+      <div style="padding: 10px 0px">
+        <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+        <button class="btn btn-primary btn-sm" style="float: right">Send</button>
+      </div>
     </div>
 </div>
 
@@ -449,11 +452,14 @@ if (logged()):
         </div>
         </a>
     </div>
-    <div class="footer">
-        <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
-               title="Press ENTER to send">
-        <div style="height: 5px;"></div>
+  <div class="footer">
+    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
+           title="Press ENTER to send">
+    <div style="padding: 10px 0px">
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+      <button class="btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
+  </div>
 </div>
 
 <div class="leftCon lc-chat" id="lc-chat-users">
@@ -486,11 +492,55 @@ if (logged()):
             <div class="ignored_friends"><?php echo get_friends(-1); ?></div>
         </div>
     </div>
-    <div class="footer">
-        <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
-               title="Press ENTER to send">
-        <div style="height: 5px;"></div>
+  <div class="footer">
+    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
+           title="Press ENTER to send">
+    <div style="padding: 10px 0px">
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+      <button class="btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
+  </div>
+</div>
+
+<div class="leftCon lc-chat" id="lc-chat-settings">
+  <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a> <a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span></div>
+  <div class="content">
+    <h5><b><Settings></Settings></b></h5>
+      <div class="row" style="padding: 5px 0px">
+        <div class="col-md-8"><b>Status: </b></div>
+        <div class="btn-group btn-group-xs col-md-4" role="group">
+          <button type="button" class="btn btn-default">On</button>
+          <button type="button" class="btn btn-default">Off</button>
+        </div>
+      </div>
+    <div class="row" style="padding: 5px 0px">
+      <div class="col-md-8"><b>Display timestamps: </b></div>
+      <div class="btn-group btn-group-xs col-md-4" role="group">
+        <button type="button" class="btn btn-default">On</button>
+        <button type="button" class="btn btn-default">Off</button>
+      </div>
+    </div>
+      <div class="row" style="padding: 5px 0px">
+        <div class="col-md-8"><b>Notifications: </b></div>
+        <div class="btn-group btn-group-xs col-md-4" role="group">
+          <button type="button" class="btn btn-default">On</button>
+          <button type="button" class="btn btn-default">Off</button>
+        </div>
+      </div>
+      <div class="row" style="padding: 5px 0px">
+        <div class="col-md-12">
+          <b><a href="#">Chat rules</a></b>
+        </div>
+      </div>
+  </div>
+  <div class="footer">
+    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
+           title="Press ENTER to send">
+    <div style="padding: 10px 0px">
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat');" class="glyphicon glyphicon-cog"></a></span></span>
+      <button class="btn btn-primary btn-sm" style="float: right">Send</button>
+    </div>
+  </div>
 </div>
 </body>
 </html>
