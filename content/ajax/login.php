@@ -18,6 +18,8 @@ if (isset($_GET['logout'])) {
   $_SESSION['logged']=false;
   echo json_encode(array('error' => 'no'));
   setcookie('unique_S_', '', time() - 3600, '/');
+  setcookie('chat_room', '', time() - 3600, '/');
+  setcookie('pm', '', time() - 3600, '/');
   exit();
 }
 

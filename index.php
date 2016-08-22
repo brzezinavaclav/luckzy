@@ -447,7 +447,6 @@ if (logged()):
         <div id="pms">
             <?php echo get_pms(); ?>
         </div>
-        <div><a href="javascript:select_room(<?php echo $row['id'] ?>)"><?php echo $row['name'] ?></div>
         </a>
     </div>
     <div class="footer">

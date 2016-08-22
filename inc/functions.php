@@ -531,7 +531,7 @@ function get_withdrawals()
 function get_friends($type){
     $friends = '';
     if ($type === -1){
-        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=".$_SESSION['user_id']." AND `relation`=0");
+        $query = db_query("SELECT * FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") AND `relation`=0");
         if($query != false){
             while ($row = db_fetch_array($query)) {
                 $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " LIMIT 1"));
@@ -555,18 +555,23 @@ function get_friends($type){
         else return 'No friend requests';
     }
     else{
-        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=".$_SESSION['user_id']." AND `relation`=1");
+        $query = db_query("SELECT * FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") AND `relation`=1");
         if($query != false){
             while ($row = db_fetch_array($query)) {
+
+                if($row['friend'] == $_SESSION['user_id']) $id = $row['player'];
+                else $id = $row['friend'];
+
                 if ($type === 1) $where = "AND `time_last_active` > NOW()-INTERVAL 10 MINUTE AND `chat_status`=1";
                 elseif($type === 0) $where = "AND `time_last_active` < NOW()-INTERVAL 10 MINUTE OR `chat_status`=0";
-                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " $where LIMIT 1"));
+
+                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " $where LIMIT 1"));
                 if($friend != false) {
                     $friends .= '<div>';
                     $friends .= $friend['username'];
                     if(!$row['state']) $friends .= ' <small>(Request sent)</small>';
-                    if ($type === 1) $friends .= '<a href="javascript:sendPM('.$row['friend'].')"><span class="glyphicon glyphicon-envelope"></span></a>';
-                    $friends .= '<a href="javascript:ignore_friend('.$row['friend'].')"><span class="glyphicon glyphicon-remove"></span></a><a href="javascript:remove_friend('.$row['friend'].')"><span class="glyphicon glyphicon-trash"></span></a>';
+                    if ($type === 1) $friends .= '<a href="javascript:select_room('.$id.',1)"><span class="glyphicon glyphicon-envelope"></span></a>';
+                    $friends .= '<a href="javascript:ignore_friend('.$id.')"><span class="glyphicon glyphicon-remove"></span></a><a href="javascript:remove_friend('.$id.')"><span class="glyphicon glyphicon-trash"></span></a>';
                     $friends .= '</div>';
                 }
             }
@@ -581,7 +586,7 @@ function get_friends($type){
 
 function count_friends($type = null){
     if ($type === -1){
-        $query = db_query("SELECT `player` FROM `player_relations` WHERE `player`=".$_SESSION['user_id']." AND `relation`=0");
+        $query = db_query("SELECT `player` FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") AND `relation`=0");
         if($query != false){
             $count = db_num_rows($query);
             return $count;
@@ -609,11 +614,13 @@ function count_friends($type = null){
             $type = "";
             $where = "";
         }
-        $query = db_query("SELECT * FROM `player_relations` WHERE `player`=".$_SESSION['user_id']." $type");
+        $query = db_query("SELECT * FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") $type");
         $count = 0;
         if($query != false){
             while ($row = db_fetch_array($query)) {
-                $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " $where LIMIT 1"));
+                if($row['friend'] == $_SESSION['user_id']) $id = $_SESSION['user_id'];
+                else $id = $row['friend'];
+                $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " $where LIMIT 1"));
             }
             return $count;
         }
@@ -622,14 +629,24 @@ function count_friends($type = null){
 }
 function get_pms(){
     $pms = '';
-    $query = db_query("SELECT * FROM `player_relations` WHERE `player`=" . $_SESSION['user_id'] . " AND `relation`=1");
+    $query = db_query("SELECT * FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") AND `relation`=1");
     if ($query != false) {
         while ($row = db_fetch_array($query)) {
-            $message = db_num_rows(db_query("SELECT `id` FROM `chat` WHERE `sender`=" . $_SESSION['user_id'] . " AND `for`=" . $row['friend'] . " OR `sender`=" . $row['friend'] . " AND `for`=" . $_SESSION['user_id'] . " LIMIT 1"));
+            if($row['friend'] == $_SESSION['user_id']){
+                $id = $row['player'];
+                $for = $row['friend'];
+            }
+            else {
+                $id = $row['friend'];
+                $for = $row['player'];
+            }
+
+            $message = db_num_rows(db_query("SELECT `id` FROM `chat` WHERE (`sender`=" . $for . " AND `for`=" . $id . " OR `sender`=" . $id . " AND `for`=" . $for.") LIMIT 1"));
+
             if ($message != 0) {
-                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " LIMIT 1"));
-                $nondisplayed = $message = db_num_rows(db_query("SELECT `id` FROM `chat` WHERE `sender`=" . $row['friend'] . " AND `displayed`=0 AND `for`=" . $_SESSION['user_id'] . " LIMIT 1"));
-                $pms .= '<a href="javascript:select_room(' . $row['friend'] . ', 1)">' . $friend['username'] . ' ('.$nondisplayed.')</a>';
+                $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " LIMIT 1"));
+                $nondisplayed = $message = db_num_rows(db_query("SELECT `id` FROM `chat` WHERE `sender`=" . $id . " AND `displayed`=0 AND `for`=" . $for));
+                $pms .= '<a href="javascript:select_room(' . $id . ', 1)">' . $friend['username'] . ' ('.$nondisplayed.')</a>';
             }
         }
         if(!empty($pms)) return $pms;
