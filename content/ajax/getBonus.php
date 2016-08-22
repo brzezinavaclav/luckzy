@@ -24,7 +24,7 @@ $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
 
 
-if($player['state'] != 'activated'){
+if($player['state'] != 1){
   echo json_encode(array('error'=>'yes', 'message'=>'Please activate your account before making any transactions.'));
   exit();
 }

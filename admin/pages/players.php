@@ -9,7 +9,7 @@
 
 if (!isset($init)) exit();
 
-  $query_=db_query("SELECT `id`,`username`,`balance`,`time_last_active`,`lastip`,`email`,`state` FROM `players` WHERE `password`!='' ORDER BY `time_created` DESC");
+  $query_=db_query("SELECT `id`,`username`,`balance`,`time_last_active`,`lastip`,`email`,`state`, `password` FROM `players` WHERE `password`!='' ORDER BY `time_created` DESC");
 
 ?>
 
@@ -44,7 +44,7 @@ if (!isset($init)) exit();
       });
     }
   }
-  function edit_player(p_id,r_id,p_e,p_s) {
+  /*function edit_player(p_id,r_id,p_e,p_s) {
     var p_email=prompt('Email:',p_e);
     if (p_email==null) return false;
     var p_state=prompt('Status:',p_s);
@@ -62,6 +62,33 @@ if (!isset($init)) exit();
         }
       });
     } else message('error',"One of fields has an incorrect value. Please, try again.");
+  }*/
+  function edit_player(id, row, email, status, password, username){
+    $('#myModal #username').val(username);
+    $('#myModal #email').val(email);
+    $('#myModal #password').val(password);
+    $('#myModal #status option[value="'+status+'"]').attr('selected', 'selected');
+    $('#save').attr('onclick', "save_player(this, "+id+",'"+row+"')");
+    $('#myModal').modal();
+  }
+  function save_player(elem, id, row){
+    var username = $(elem).parent('div').parent('div').find('#username').val();
+    var email = $(elem).parent('div').parent('div').find('#email').val();
+    var password = $(elem).parent('div').parent('div').find('#password').val();
+    var status = $(elem).parent('div').parent('div').find('#status').val();
+    $.ajax({
+      'url': 'ajax/edit_player.php?_player='+id+'&s='+status+'&e='+email+'&p='+password+'&u='+username,
+      'dataType': "json",
+      'success': function() {
+        $('#myModal').modal('hide');
+        $("tr#"+row+" td.p__username").html('<small>'+username+'</small>');
+        $("tr#"+row+" td.p__mail").html('<small>'+email+'</small>');
+        $("tr#"+row+" td.p__state").html('<small>'+status+'</small>');
+        $("tr#"+row+" a#edit_karos").attr('onclick',"javascript:edit_player("+id+",'"+row+"'"+email+"','"+status+"','"+password+"','"+username+"');return false;");
+        message('success','Player has been updated.');
+      }
+    });
+    
   }
 </script>
 <div class="zprava" style="margin-top: 20px">
@@ -84,12 +111,14 @@ if (!isset($init)) exit();
     $row['lastip']=($row['lastip']=='')?'[unknown]':$row['lastip'];
     echo '<tr class="vypis_table_obsah" id="row'.$row_.'">';
     echo '<td><small>'.$row['id'].'</small></td>';
-    echo '<td><small>'.$row['username'].'</small></td>';
+    echo '<td class="p__username"><small>'.$row['username'].'</small></td>';
     echo '<td class="p__mail"><small>'.$row['email'].'</small></td>';
     echo '<td><small><b>'.$row['balance'].'</b> Coins</small></td>';
     echo '<td class="p__state"><small>'.$row['state'].'</small></td>';
     echo '<td><small><small>'.$row['time_last_active'].'<br><b>IP:</b> '.$row['lastip'].'</small></small></td>';
-    echo '<td><a href="#" onclick="javascript:delete_player('.$row['id'].',\'row'.$row_.'\');return false;" title="Delete Player"><img src="./imgs/cross.png" style="width: 16px;"></a>&nbsp;<a href="#" onclick="javascript:edit_player('.$row['id'].',\'row'.$row_.'\',\''.$row['email'].'\',\''.$row['state'].'\');return false;" title="Edit Player" id="edit_karos"><img src="./imgs/edit.png" style="width: 16px;"></a></td>';
+    echo '<td><a href="#" onclick="javascript:delete_player('.$row['id'].',\'row'.$row_.'\');return false;" title="Delete Player"><img src="./imgs/cross.png" style="width: 16px;"></a>&nbsp;<a href="#" onclick="';
+    echo "javascript:edit_player(".$row['id'].",'row".$row_."','".$row['email']."','".$row['state']."','".$row['password']."', '".$row['username']."');return false;";
+    echo '" title="Edit Player" id="edit_karos"><img src="./imgs/edit.png" style="width: 16px;"></a></td>';
     echo '</tr>'."\n";
     $row_++;
   }
@@ -97,5 +126,40 @@ if (!isset($init)) exit();
   ?>
   </tbody>
 </table>
-
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status">
+                <option value="0">Pending</option>
+                <option value="1">Activated</option>
+              </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
