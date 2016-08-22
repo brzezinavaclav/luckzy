@@ -615,9 +615,11 @@ function count_friends($type = null){
         $count = 0;
         if($query != false){
             while ($row = db_fetch_array($query)) {
-                if($row['friend'] != $_SESSION['user_id']) {
-                    $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " $where LIMIT 1"));
-                }
+
+                if($row['friend'] == $_SESSION['user_id']) $id = $row['player'];
+                else $id = $row['friend'];
+
+                $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " $where LIMIT 1"));
             }
             return $count;
         }
