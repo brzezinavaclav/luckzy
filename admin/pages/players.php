@@ -109,6 +109,7 @@ if (!isset($init)) exit();
   $row_=0;                   
   while ($row=db_fetch_array($query_)) {
     $row['lastip']=($row['lastip']=='')?'[unknown]':$row['lastip'];
+    $row['state']=($row['state']==1)? 'Activated': 'Pending';
     echo '<tr class="vypis_table_obsah" id="row'.$row_.'">';
     echo '<td><small>'.$row['id'].'</small></td>';
     echo '<td class="p__username"><small>'.$row['username'].'</small></td>';

@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/ajax/edit_player.php" afterPath="$PROJECT_DIR$/admin/ajax/edit_player.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/layout.css" afterPath="$PROJECT_DIR$/admin/layout.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/pages/players.php" afterPath="$PROJECT_DIR$/admin/pages/players.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/getBonus.php" afterPath="$PROJECT_DIR$/content/ajax/getBonus.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/makeDeposit.php" afterPath="$PROJECT_DIR$/content/ajax/makeDeposit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/register.php" afterPath="$PROJECT_DIR$/content/ajax/register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/withdraw.php" afterPath="$PROJECT_DIR$/content/ajax/withdraw.php" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,31 +64,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="players.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="players.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/pages/players.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="79" column="102" selection-start-line="79" selection-start-column="102" selection-end-line="79" selection-end-column="102" />
+            <state relative-caret-position="276">
+              <caret line="110" column="55" selection-start-line="110" selection-start-column="55" selection-end-line="110" selection-end-column="55" />
               <folding>
-                <marker date="1471898341623" expanded="true" signature="232:385" ph="SELECT `id`,... players" />
-                <marker date="1471898341623" expanded="true" signature="4711:4723" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5008:5020" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5218:6662" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5265:6653" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5299:6642" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5334:5553" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5586:6399" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5793:5934" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="5971:6116" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="6153:6384" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="6237:6365" ph="..." />
-                <marker date="1471898341623" expanded="true" signature="6434:6629" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="232:385" ph="SELECT `id`,... players" />
+                <marker date="1471898640015" expanded="true" signature="4773:4785" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5070:5082" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5280:6724" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5327:6715" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5361:6704" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5396:5615" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5648:6461" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="5855:5996" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="6033:6178" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="6215:6446" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="6299:6427" ph="..." />
+                <marker date="1471898640015" expanded="true" signature="6496:6691" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit_player.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit_player.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/ajax/edit_player.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
@@ -274,8 +268,8 @@
         <option value="$PROJECT_DIR$/content/ajax/makeDeposit.php" />
         <option value="$PROJECT_DIR$/content/ajax/getBonus.php" />
         <option value="$PROJECT_DIR$/admin/layout.css" />
-        <option value="$PROJECT_DIR$/admin/pages/players.php" />
         <option value="$PROJECT_DIR$/admin/ajax/edit_player.php" />
+        <option value="$PROJECT_DIR$/admin/pages/players.php" />
       </list>
     </option>
   </component>
@@ -626,12 +620,12 @@
       <workItem from="1471666071928" duration="12051000" />
       <workItem from="1471781700394" duration="312000" />
       <workItem from="1471782115679" duration="10680000" />
-      <workItem from="1471868488240" duration="20735000" />
+      <workItem from="1471868488240" duration="20957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431894000" />
+    <option name="totallyTimeSpent" value="432116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1205,28 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/pages/players.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="79" column="102" selection-start-line="79" selection-start-column="102" selection-end-line="79" selection-end-column="102" />
-          <folding>
-            <marker date="1471898341623" expanded="true" signature="232:385" ph="SELECT `id`,... players" />
-            <marker date="1471898341623" expanded="true" signature="4711:4723" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5008:5020" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5218:6662" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5265:6653" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5299:6642" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5334:5553" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5586:6399" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5793:5934" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="5971:6116" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="6153:6384" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="6237:6365" ph="..." />
-            <marker date="1471898341623" expanded="true" signature="6434:6629" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/ajax/edit_player.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1235,6 +1207,28 @@
             <marker date="1471898420840" expanded="true" signature="491:565" ph="SELECT `id` players" />
             <marker date="1471898420840" expanded="true" signature="824:904" ph="SELECT `pass... players" />
             <marker date="1471898420840" expanded="true" signature="1046:1227" ph="UPDATE `play... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/pages/players.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="110" column="55" selection-start-line="110" selection-start-column="55" selection-end-line="110" selection-end-column="55" />
+          <folding>
+            <marker date="1471898640015" expanded="true" signature="232:385" ph="SELECT `id`,... players" />
+            <marker date="1471898640015" expanded="true" signature="4773:4785" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5070:5082" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5280:6724" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5327:6715" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5361:6704" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5396:5615" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5648:6461" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="5855:5996" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="6033:6178" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="6215:6446" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="6299:6427" ph="..." />
+            <marker date="1471898640015" expanded="true" signature="6496:6691" ph="..." />
           </folding>
         </state>
       </provider>
