@@ -425,7 +425,7 @@ if (logged()):
                title="Press ENTER to send">
       <div style="padding: 10px 0px">
         <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
-        <button class="btn btn-primary btn-sm" style="float: right">Send</button>
+        <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
       </div>
     </div>
 </div>
@@ -457,7 +457,7 @@ if (logged()):
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
       <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
-      <button class="btn btn-primary btn-sm" style="float: right">Send</button>
+      <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
 </div>
@@ -497,7 +497,7 @@ if (logged()):
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
       <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
-      <button class="btn btn-primary btn-sm" style="float: right">Send</button>
+      <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
 </div>
@@ -520,11 +520,10 @@ if (logged()):
       </div>
   </div>
   <div class="footer">
-    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
-           title="Press ENTER to send">
+    <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send">
     <div style="padding: 10px 0px">
       <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat');" class="glyphicon glyphicon-cog"></a></span></span>
-      <button class="btn btn-primary btn-sm" style="float: right">Send</button>
+      <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
 </div>

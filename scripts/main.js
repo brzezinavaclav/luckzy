@@ -65,6 +65,10 @@ $(document).ready(function (){
     if (e.which == 13) chatSend($(this).val());
   });
 
+  $('.chat-send').click(function(){
+    chatSend($(this).parent('div').parent('div').find('input').val());
+  });
+
   $(".wager").click(function () {
     $(this).select();
   });

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/ajax/chat_status.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/content/ajax/getOnline.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/login.php" afterPath="$PROJECT_DIR$/content/ajax/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/functions.php" afterPath="$PROJECT_DIR$/inc/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/start.php" afterPath="$PROJECT_DIR$/inc/start.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
     </list>
@@ -97,43 +92,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="525" column="89" selection-start-line="525" selection-start-column="83" selection-end-line="525" selection-end-column="89" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1471883450902" expanded="true" signature="7154:7180" ph="SELECT * FRO... currencies" />
-                <marker date="1471883450902" expanded="true" signature="9582:9608" ph="SELECT * FRO... currencies" />
-                <marker date="1471883450902" expanded="true" signature="12084:12110" ph="SELECT * FRO... currencies" />
-                <marker date="1471883450902" expanded="true" signature="13900:13926" ph="SELECT * FRO... currencies" />
-                <marker date="1471883450902" expanded="false" signature="24245:24262" ph="..." />
-                <marker date="1471883450902" expanded="true" signature="24579:24621" ph="SELECT * FRO... chat_rooms" />
-                <marker date="1471883450902" expanded="false" signature="25831:25848" ph="..." />
-                <marker date="1471883450902" expanded="false" signature="27979:27996" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="start.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/start.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -176,13 +134,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="718">
+              <caret line="459" column="89" selection-start-line="459" selection-start-column="89" selection-end-line="459" selection-end-column="89" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1471884695870" expanded="true" signature="7154:7180" ph="SELECT * FRO... currencies" />
+                <marker date="1471884695870" expanded="true" signature="9582:9608" ph="SELECT * FRO... currencies" />
+                <marker date="1471884695870" expanded="true" signature="12084:12110" ph="SELECT * FRO... currencies" />
+                <marker date="1471884695870" expanded="true" signature="13900:13926" ph="SELECT * FRO... currencies" />
+                <marker date="1471884695870" expanded="false" signature="24255:24272" ph="..." />
+                <marker date="1471884695870" expanded="true" signature="24589:24631" ph="SELECT * FRO... chat_rooms" />
+                <marker date="1471884695870" expanded="false" signature="25851:25868" ph="..." />
+                <marker date="1471884695870" expanded="false" signature="28009:28026" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="913" column="41" selection-start-line="913" selection-start-column="41" selection-end-line="913" selection-end-column="41" />
+            <state relative-caret-position="748">
+              <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
               <folding>
-                <marker date="1471883714693" expanded="true" signature="14546:14560" ph="..." />
+                <marker date="1471892746779" expanded="true" signature="14660:14674" ph="..." />
               </folding>
             </state>
           </provider>
@@ -298,8 +293,8 @@
         <option value="$PROJECT_DIR$/content/ajax/chat_status.php" />
         <option value="$PROJECT_DIR$/inc/start.php" />
         <option value="$PROJECT_DIR$/content/ajax/getOnline.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/inc/functions.php" />
+        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/scripts/main.js" />
       </list>
     </option>
@@ -651,12 +646,12 @@
       <workItem from="1471666071928" duration="12051000" />
       <workItem from="1471781700394" duration="312000" />
       <workItem from="1471782115679" duration="10680000" />
-      <workItem from="1471868488240" duration="12707000" />
+      <workItem from="1471868488240" duration="15272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423866000" />
+    <option name="totallyTimeSpent" value="426431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1051,14 +1046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="494" column="18" selection-start-line="494" selection-start-column="18" selection-end-line="494" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/chat_status.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1074,61 +1061,6 @@
         <state relative-caret-position="187">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/start.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
-          <folding>
-            <marker date="1471881381007" expanded="true" signature="514:549" ph="SELECT * FRO... players" />
-            <marker date="1471881381007" expanded="true" signature="675:754" ph="SELECT `id` players" />
-            <marker date="1471881381007" expanded="true" signature="805:881" ph="SELECT * FRO... players" />
-            <marker date="1471881381007" expanded="true" signature="1033:1036" ph="..." />
-            <marker date="1471881381007" expanded="true" signature="1106:1187" ph="SELECT `user... players" />
-            <marker date="1471881381007" expanded="true" signature="1297:1377" ph="SELECT `name... chat_rooms" />
-            <marker date="1471881381007" expanded="true" signature="1513:1515" ph="..." />
-            <marker date="1471881381007" expanded="true" signature="1583:1656" ph="SELECT `id` games" />
-            <marker date="1471881381007" expanded="true" signature="1711:1810" ph="SELECT `id` games" />
-            <marker date="1471881381007" expanded="true" signature="2227:2316" ph="UPDATE `play... " />
-            <marker date="1471881381007" expanded="true" signature="2799:2842" ph="SELECT * FRO... system" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="525" column="89" selection-start-line="525" selection-start-column="83" selection-end-line="525" selection-end-column="89" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1471883450902" expanded="true" signature="7154:7180" ph="SELECT * FRO... currencies" />
-            <marker date="1471883450902" expanded="true" signature="9582:9608" ph="SELECT * FRO... currencies" />
-            <marker date="1471883450902" expanded="true" signature="12084:12110" ph="SELECT * FRO... currencies" />
-            <marker date="1471883450902" expanded="true" signature="13900:13926" ph="SELECT * FRO... currencies" />
-            <marker date="1471883450902" expanded="false" signature="24245:24262" ph="..." />
-            <marker date="1471883450902" expanded="true" signature="24579:24621" ph="SELECT * FRO... chat_rooms" />
-            <marker date="1471883450902" expanded="false" signature="25831:25848" ph="..." />
-            <marker date="1471883450902" expanded="false" signature="27979:27996" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1201,12 +1133,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inc/start.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+          <folding>
+            <marker date="1471881381007" expanded="true" signature="514:549" ph="SELECT * FRO... players" />
+            <marker date="1471881381007" expanded="true" signature="675:754" ph="SELECT `id` players" />
+            <marker date="1471881381007" expanded="true" signature="805:881" ph="SELECT * FRO... players" />
+            <marker date="1471881381007" expanded="true" signature="1033:1036" ph="..." />
+            <marker date="1471881381007" expanded="true" signature="1106:1187" ph="SELECT `user... players" />
+            <marker date="1471881381007" expanded="true" signature="1297:1377" ph="SELECT `name... chat_rooms" />
+            <marker date="1471881381007" expanded="true" signature="1513:1515" ph="..." />
+            <marker date="1471881381007" expanded="true" signature="1583:1656" ph="SELECT `id` games" />
+            <marker date="1471881381007" expanded="true" signature="1711:1810" ph="SELECT `id` games" />
+            <marker date="1471881381007" expanded="true" signature="2227:2316" ph="UPDATE `play... " />
+            <marker date="1471881381007" expanded="true" signature="2799:2842" ph="SELECT * FRO... system" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="494" column="18" selection-start-line="494" selection-start-column="18" selection-end-line="494" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="913" column="41" selection-start-line="913" selection-start-column="41" selection-end-line="913" selection-end-column="41" />
+        <state relative-caret-position="748">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
           <folding>
-            <marker date="1471883714693" expanded="true" signature="14546:14560" ph="..." />
+            <marker date="1471892746779" expanded="true" signature="14660:14674" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="459" column="89" selection-start-line="459" selection-start-column="89" selection-end-line="459" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#11;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#span#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#12;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1471884695870" expanded="true" signature="7154:7180" ph="SELECT * FRO... currencies" />
+            <marker date="1471884695870" expanded="true" signature="9582:9608" ph="SELECT * FRO... currencies" />
+            <marker date="1471884695870" expanded="true" signature="12084:12110" ph="SELECT * FRO... currencies" />
+            <marker date="1471884695870" expanded="true" signature="13900:13926" ph="SELECT * FRO... currencies" />
+            <marker date="1471884695870" expanded="false" signature="24255:24272" ph="..." />
+            <marker date="1471884695870" expanded="true" signature="24589:24631" ph="SELECT * FRO... chat_rooms" />
+            <marker date="1471884695870" expanded="false" signature="25851:25868" ph="..." />
+            <marker date="1471884695870" expanded="false" signature="28009:28026" ph="..." />
           </folding>
         </state>
       </provider>
