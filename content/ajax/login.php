@@ -15,11 +15,12 @@ include '../../inc/db_functions.php';
 include '../../inc/functions.php';
 
 if (isset($_GET['logout'])) {
-  $_SESSION['logged']=false;
-  echo json_encode(array('error' => 'no'));
+  $_SESSION = array();
+  session_destroy();
   setcookie('unique_S_', '', time() - 3600, '/');
   setcookie('chat_room', '', time() - 3600, '/');
   setcookie('pm', '', time() - 3600, '/');
+  echo json_encode(array('error' => 'no'));
   exit();
 }
 

@@ -90,6 +90,7 @@ $(document).ready(function (){
     get_transactions();
     get_friends();
     get_pms();
+    online_count();
   },1000);
 
 
@@ -910,7 +911,7 @@ function get_friends(){
         $('.offline_count').html(data['offline_count']);
         $('.ignored_count').html(data['ignored_count']);
         $('.requests_count').html(data['requests_count']);
-        $('.online_friends').html(data['inline_friends']);
+        $('.online_friends').html(data['online_friends']);
         $('.offline_friends').html(data['offline_friends']);
         $('.ignored_friends').html(data['ignored_friends']);
         $('.friend_requests').html(data['friend_requests']);
@@ -926,6 +927,18 @@ function get_pms(){
     'success': function(data) {
       if(data['error'] == 'no'){
         $('#pms').html(data['pms']);
+      }
+    }
+  });
+}
+
+function online_count(){
+  $.ajax({
+    'url': "./content/ajax/getOnline.php",
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        $('.online-users').html(data['online_count']);
       }
     }
   });
@@ -975,5 +988,14 @@ function remove_friend(friend){
       if(data['error'] == 'no'){
       }
     }
+  });
+}
+
+function chat_status(elem, status){
+  $('.chat_status').removeClass('active');
+  $(elem).addClass('active');
+  $.ajax({
+    'url': "./content/ajax/chat_status.php?status="+status+"&_unique="+unique(),
+    'dataType': "json"
   });
 }

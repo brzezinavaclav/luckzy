@@ -48,10 +48,9 @@ if (!empty($_COOKIE['chat_room'])){
     }
 }
 else{
-  setcookie('chat_room', 0,(time()+60*60*24*365*5),'/');
+  setcookie('chat_room', 0,(time()+60*60*24*7),'/');
   $chat_room = 'Global';
 }
-
 $playingGame=false;
 $endedOnInit=false;
 if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=0 AND `player`=$player[id] LIMIT 1"))!=0)
@@ -61,7 +60,7 @@ if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `ended`=1 AND `player`=
 
 
 if(!isset($_COOKIE['game'])){
-  setcookie('game', 'blackjack',(time()+60*60*24*365*5),'/');
+  setcookie('game', 'blackjack',(time()+60*60*24*7),'/');
   header('Location: ./');
 }
 

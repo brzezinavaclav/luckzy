@@ -424,7 +424,7 @@ if (logged()):
         <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
                title="Press ENTER to send">
       <div style="padding: 10px 0px">
-        <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+        <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
         <button class="btn btn-primary btn-sm" style="float: right">Send</button>
       </div>
     </div>
@@ -456,7 +456,7 @@ if (logged()):
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
-      <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
       <button class="btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
@@ -496,7 +496,7 @@ if (logged()):
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
-      <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
       <button class="btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
@@ -509,22 +509,8 @@ if (logged()):
       <div class="row" style="padding: 5px 0px">
         <div class="col-md-8"><b>Status: </b></div>
         <div class="btn-group btn-group-xs col-md-4" role="group">
-          <button type="button" class="btn btn-default">On</button>
-          <button type="button" class="btn btn-default">Off</button>
-        </div>
-      </div>
-    <div class="row" style="padding: 5px 0px">
-      <div class="col-md-8"><b>Display timestamps: </b></div>
-      <div class="btn-group btn-group-xs col-md-4" role="group">
-        <button type="button" class="btn btn-default">On</button>
-        <button type="button" class="btn btn-default">Off</button>
-      </div>
-    </div>
-      <div class="row" style="padding: 5px 0px">
-        <div class="col-md-8"><b>Notifications: </b></div>
-        <div class="btn-group btn-group-xs col-md-4" role="group">
-          <button type="button" class="btn btn-default">On</button>
-          <button type="button" class="btn btn-default">Off</button>
+          <button type="button" class="btn btn-default chat_status <?php if($player['chat_status']) echo 'active'; ?>" onclick="chat_status(this, 1)">On</button>
+          <button type="button" class="btn btn-default chat_status <?php if(!$player['chat_status']) echo 'active'; ?>" onclick="chat_status(this,0)">Off</button>
         </div>
       </div>
       <div class="row" style="padding: 5px 0px">
@@ -537,7 +523,7 @@ if (logged()):
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
-      <span style="position: relative; top: 7px;">Online users: <span class="online-users">100</span><span style="padding-left: 5px"><a href="javascript:leftCon('chat');" class="glyphicon glyphicon-cog"></a></span></span>
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat');" class="glyphicon glyphicon-cog"></a></span></span>
       <button class="btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>

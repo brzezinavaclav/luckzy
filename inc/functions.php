@@ -562,8 +562,8 @@ function get_friends($type){
                 if($row['friend'] == $_SESSION['user_id']) $id = $row['player'];
                 else $id = $row['friend'];
 
-                if ($type === 1) $where = "AND `time_last_active` > NOW()-INTERVAL 1 MINUTE AND `chat_status`=1";
-                elseif($type === 0) $where = "AND `time_last_active` < NOW()-INTERVAL 1 MINUTE OR `chat_status`=0";
+                if ($type === 1) $where = "AND `time_last_active` > NOW()-INTERVAL 10 MINUTE AND `chat_status`=1";
+                elseif($type === 0) $where = "AND `time_last_active` < NOW()-INTERVAL 10 MINUTE OR `chat_status`=0";
 
                 $friend = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " $where LIMIT 1"));
                 if($friend != false) {
@@ -603,24 +603,21 @@ function count_friends($type = null){
     }
     else{
         if ($type === 1){
-            $type = "AND `relation`=1";
-            $where = "AND `time_last_active` > NOW() - INTERVAL 1 MINUTE AND `chat_status`=1";
+            $where = "AND `time_last_active` > NOW() - INTERVAL 10 MINUTE AND `chat_status`=1";
         }
         elseif($type === 0){
-            $type = "AND `relation`=1";
-            $where = "AND `time_last_active` < NOW() - INTERVAL 1 MINUTE OR `chat_status`=0";
+            $where = "AND `time_last_active` < NOW() - INTERVAL 10 MINUTE OR `chat_status`=0";
         }
         else{
-            $type = "";
             $where = "";
         }
-        $query = db_query("SELECT * FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") $type");
+        $query = db_query("SELECT * FROM `player_relations` WHERE (`player`=".$_SESSION['user_id']." OR `friend`=".$_SESSION['user_id'].") AND `relation`=1");
         $count = 0;
         if($query != false){
             while ($row = db_fetch_array($query)) {
-                if($row['friend'] == $_SESSION['user_id']) $id = $_SESSION['user_id'];
-                else $id = $row['friend'];
-                $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $id . " $where LIMIT 1"));
+                if($row['friend'] != $_SESSION['user_id']) {
+                    $count += db_num_rows(db_query("SELECT * FROM `players` WHERE `id`=" . $row['friend'] . " $where LIMIT 1"));
+                }
             }
             return $count;
         }
@@ -652,4 +649,8 @@ function get_pms(){
         if(!empty($pms)) return $pms;
         else return 'No private messagess';
     }
+}
+
+function online_count(){
+    return db_num_rows(db_query("SELECT `id` FROM `players` WHERE `time_last_active` > NOW() - INTERVAL 10 MINUTE AND `chat_status`=1 AND `password`!=''"));
 }
