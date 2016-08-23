@@ -488,6 +488,7 @@ footer {
   bottom: 15px;
   right: 10px;
   margin: 0;
+  display: none;
 }
 .tab-pane .table th{
   border-top: none;
