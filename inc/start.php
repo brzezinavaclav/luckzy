@@ -72,7 +72,7 @@ if($page == 'blackjack' || $page == 'slots' || $page == 'dice')  $game = $page;
 else $game = false;
 
 if(isset($_GET['verify']) && !empty($_GET['verify'])){
-  $result = db_query("UPDATE `players` SET state = 'activeted' WHERE `activation_hash`='" . $_GET['verify']. "'");
+  $result = db_query("UPDATE `players` SET state=1 WHERE `activation_hash`='" . $_GET['verify']. "'");
   if(!empty($result)) {
     $p_alert = '<div class="alert p_alert alert-success alert-dismissable fade in">Your account has been activated.<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>';
   } else {

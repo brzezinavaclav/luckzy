@@ -36,6 +36,9 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
       exit();
   }
 
+        do $activation_hash = generateHash(32);
+        while (db_num_rows(db_query("SELECT `activation_hash` FROM `players` WHERE `activation_hash`='$activation_hash' LIMIT 1")) != 0);
+
         $actual_link = "http://".$settings['url']."?verify=" . $activation_hash;
 
         $mail = new PHPMailer;
@@ -61,22 +64,20 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
         $mail->CharSet = 'UTF-8';
         $mail->IsHTML(true);
         $mail->Subject = 'Registration activation email';
-        $mail->Body    = 'Click this link to activate your account. <a href="'.$actual_link.'">"'.$actual_link .'"</a>';
+        $mail->Body    = 'Click this link to activate your account. <a href="'.$actual_link.'">'.$actual_link .'</a>';
 
         if(!$mail->send()) {
             echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent'));
         }
-        else {
-            echo json_encode(array('error' => 'no'));
-            exit();
-        }
 
 
-    do $activation_hash = generateHash(32);
-    while (db_num_rows(db_query("SELECT `activation_hash` FROM `players` WHERE `hash`='$activation_hash' LIMIT 1")) != 0);
 
     if (db_query("UPDATE `players` SET `username`='" . prot($_POST['username']) . "', `email`='" . prot($_POST['email']) . "',`password`='" . hash('sha256', $_POST['passwd']) . "', `state`=0, `activation_hash`='$activation_hash' WHERE `hash`='" . $_COOKIE['unique_S_'] . "'") == false) {
         echo json_encode(array('error' => 'yes', 'message' => 'Mysql error'));
+        exit();
+    }
+    else {
+        echo json_encode(array('error' => 'no'));
         exit();
     }
 }
