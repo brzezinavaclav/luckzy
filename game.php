@@ -1,5 +1,3 @@
-<div class="leftblock"></div>
-    <a href="#" class="closeLeft" onclick="javascript:leftbox.toggle();return false;"><span class="glyphicon glyphicon-remove"></span></a>
     <div class="leftbuttons">
         <!--<button data-toggle="tooltip" data-placement="right" title="My&nbsp;Account" onclick="javascript:leftCon('profile');"><span class="glyphicon glyphicon-user"></span></button>-->
         <button data-toggle="tooltip" data-placement="right" title="Provably&nbsp;Fair" onclick="javascript:leftCon('fair');"><span class="glyphicon glyphicon-ok"></span></button>
@@ -15,7 +13,6 @@
     <div class="game" id="<?php echo $page; ?>">
         <?php include './games/'.$page.'/index.php'; ?>
     </div>
-
 <!--  BLOCKS HIDDEN BY DEFAULT  -->
 <div class="leftCon" id="lc-stats">
     <div class="heading"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;&nbsp;Stats</div>
