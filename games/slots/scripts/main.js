@@ -184,3 +184,24 @@ function bet() {
         }
     });
 }
+
+function wagerDiv() {
+    var repaired=(parseFloat($(".wager").val())/2);
+    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".wager").val('0');
+    else $(".wager").val(repaired);
+}
+function wagerMultip() {
+    var repaired=(parseFloat($(".wager").val())*2);
+    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".wager").val('0');
+    else $(".wager").val(repaired);
+}
+function wagerMax() {
+    $(".wager").val($(".balance").html()).change();
+    formatWager();
+}
+
+function formatWager() {
+    var repaired=parseFloat($(".wager").val());
+    if (isNaN(repaired)==true || parseFloat(repaired)<0) $(".wager").val('0');
+    else $(".wager").val(repaired);
+}

@@ -8,7 +8,9 @@
 if(!logged()) header("Location: ./");
 include __DIR__.'/inc/ga_class.php';
 ?>
-    <div class="container">
+    <div class="container content">
+        <div class="row">
+        <div class="col-md-12">
         <h1>Two factor authentication setup</h1>
         <?php
         if ($player['ga_token']=='') {
@@ -30,5 +32,7 @@ include __DIR__.'/inc/ga_class.php';
         <?php } else { ?>
         <br>Two factor authentication is <b>active</b> for this account. <a href="./?p=set_ga&rem">Disable</a>
         <?php } ?>
+        </div>
+        </div>
     </div>
 <?php include __DIR__.'/inc/end.php'; ?>

@@ -396,6 +396,7 @@ a:focus,a:active {
 .navbar-second{
   height: 60px;
   top: 70px;
+  z-index: 100;
 }
 .navbar-first .navbar-brand{
   padding: 23px 15px;
@@ -447,6 +448,12 @@ a:focus,a:active {
 .navbar-second .btn{
   padding: 8px 20px;
   margin: 7px 5px;
+}
+.navbar .dropdown-menu > li > a, .navbar .dropdown-menu > li > a:focus {
+  background-color: #272727;
+}
+.navbar .dropdown-menu > li > a:hover,.navbar .dropdown-menu > li > a:focus {
+  background-color: #202020;
 }
 .game{
   margin-top: 70px;
@@ -531,4 +538,7 @@ footer a:hover, footer a:focus, footer a:active{
 .chat-input{
   border: 1px solid rgba(71,76,108,0.4);
   color: #474C6C;
+}
+.page .content{
+  padding: 50px 0px;
 }

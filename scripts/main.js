@@ -247,26 +247,6 @@ function balanceUpdate() {
 }
 
 
-function wagerDiv() {
-  var repaired=$(".wager").val();
-  $(".wager").val(repaired);
-}
-function wagerMultip() {
-  var repaired=$(".wager").val();
-  $(".wager").val(repaired);
-}
-function wagerMax() {
-  $(".wager").val($(".balance").html()).change();
-}
-
-function formatWager() {
-  var repaired=$(".wager").val();
-  $(".wager").val(repaired);
-}
-
-
-
-
 function imitateCRON() {
   $.ajax({
     'url': './content/ajax/getDeposits.php',
@@ -618,44 +598,6 @@ var stats = {
   }  
   
 };
-
-function saveAlias() {
-  $.ajax({
-    'url': './content/ajax/saveAlias.php?_unique='+unique()+'&alias='+$('#input-alias').val(),
-    'dataType': "json",
-    'success': function(data) {
-      alert(data['content']);
-      if (data['repaired']!=null) $('#input-alias').val(data['repaired']);      
-    }
-  });
-}
-function enablePass() {
-  var pass = CryptoJS.SHA256($('#input-pass').val());
-  $.ajax({
-    'url': './content/ajax/enablePassword.php?_unique='+unique()+'&pass='+pass,
-    'dataType': "json",
-    'success': function(data) {
-      alert(data['content']);
-      if (data['color']=='green') location.reload();
-    }
-  });
-}
-function disablePass() {
-  var pass = CryptoJS.SHA256($('#input-pass').val());
-  $.ajax({
-    'url': './content/ajax/disablePassword.php?_unique='+unique()+'&pass='+pass,
-    'dataType': "json",
-    'success': function(data) {
-      alert(data['content']);
-      if (data['color']=='green') {
-        $('.pass-en_dis').html('Disabled');
-        $('.savePass').attr('onclick',"javascript:enablePass();return false;");
-        $('.savePass').html('Enable');
-        $('#input-pass').val('');
-      }
-    }
-  });
-}
 function claim_bonus() {
   var sol = $('#input-captcha').val();
   $('#input-captcha').val('');

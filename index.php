@@ -85,7 +85,12 @@ include __DIR__ . '/inc/start.php';
                 <li><a href="?p=slots">Slots</a></li>
                 <li><a href="?p=dice">Dice</a></li>
                 <li><a href="?p=support">Support</a></li>
-                <li><a href="?p=more">More</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?p=more">More</a></li>
+                    </ul>
+                </li>
                 <?php if (logged()): ?>
                     <li><a href="?p=account">Account</a></li>
                     <li><a onclick="logout()">Sign out</a></li>

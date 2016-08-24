@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="./games/slots/styles/main.css">
 <script type="text/javascript" src="./games/slots/scripts/main.js"></script>
+<script>
+
+</script>
     <div class="slots">
         <div class="slot slot1"><div class="slotCon"></div></div>
         <div class="slot slot2"><div class="slotCon"></div></div>
