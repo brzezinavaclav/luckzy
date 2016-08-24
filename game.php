@@ -95,9 +95,9 @@
             <label>Client seed:</label><br>
             <div class="input-group">
                 <input type="text" class="_fair_client_seed rightact" value="<?php echo $client_seed; ?>">
-          <span class="input-group-btn">
-          <a href="#" class="btn btn-sm btn-primary" style="padding: 9px 13px 8px 13px">Save</a><br>
-          </span>
+                  <span class="input-group-btn">
+                  <a href="#" class="btn btn-sm btn-primary" style="padding: 9px 13px 8px 13px" id="saveClientSeed">Save</a><br>
+                  </span>
             </div>
         </div>
         <div class="_heading">Last Shuffle</div>

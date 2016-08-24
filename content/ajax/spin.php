@@ -48,8 +48,7 @@ $server_seed = unserialize($player['slots_seed']);
 $client_seed = (int)$player['client_seed'];
 
 $r_win = 0; $r_lose = 0; $r_tie = 0;$multiplier = 0;$newSeed = 0; $newCSeed = 0; $result = '';
-
-  $index = ($server_seed['seed_num'] + $client_seed) % 128;
+$index = bcmod(bcadd($server_seed['seed_num'],$client_seed),128);
 
   (int)$result1 = $server_seed['wheel1'][$index];
   (int)$result2 = $server_seed['wheel2'][$index];
@@ -81,7 +80,7 @@ $r_win = 0; $r_lose = 0; $r_tie = 0;$multiplier = 0;$newSeed = 0; $newCSeed = 0;
   else $r_tie = 1;
   //new seed
   $newSeed    = serialize( generateSlotsSeed());
-  $newCSeed   = random_num(8);
+  $newCSeed   = random_num(32);
 
 $payout = $wager * $multiplier;
 $profit = ($wager * -1) + $payout;

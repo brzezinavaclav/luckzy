@@ -51,7 +51,7 @@ if ($wager > $settings['bankroll_maxbet_ratio']) {
   $chance['under']=floor((1/($multiplier/100)*((100-$settings['house_edge'])/100))*100)/100;
   $chance['over']=100-$chance['under'];
 
-  $result = (double)(($server_seed + $client_seed) % 10000)/100;
+  $result = (bcmod(bcadd($server_seed,$client_seed),10000))/100;
   if(($under_over==0 && $result<=$chance['under']) || ($under_over==1 && $result>=$chance['over'])) {
     $win_lose = 1;
   }
@@ -61,8 +61,8 @@ if ($wager > $settings['bankroll_maxbet_ratio']) {
   }
 
   //new seed
-  $newSeed    = random_num(8);
-  $newCSeed   = random_num(8);
+  $newSeed    = random_num(32);
+  $newCSeed   = random_num(32);
 
 
 $payout = $wager * $multiplier;

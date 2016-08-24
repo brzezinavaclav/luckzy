@@ -42,7 +42,7 @@ function generateSlotsSeed()
         'wheel1' => getInitial(),
         'wheel2' => getInitial(),
         'wheel3' => getInitial(),
-        'seed_num' => random_num(8),
+        'seed_num' => random_num(32),
         'salt' => generateHash(36)
     );
 
@@ -283,6 +283,7 @@ function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blac
     $gameData = db_fetch_array(db_query("SELECT * FROM `games` WHERE `id`=$game_id LIMIT 1"));
     /*$mysqlerr=db_error();*/
     $player = db_fetch_array(db_query("SELECT `client_seed` FROM `users`  WHERE `id`=$player_id LIMIT 1"));
+    $newCSeed   = random_num(32);
     $wager = $gameData['bet_amount'];
 
     $first_won_second_lose = false;
@@ -317,7 +318,8 @@ function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blac
         $endGame = ",`last_client_seed`=`client_seed`"
             . ",`last_final_shuffle`='$final_shuffle'"
             . ",`last_initial_shuffle`=`initial_shuffle`"
-            . ",`initial_shuffle`='" . generateInitialShuffle($player['client_seed']) . "'";
+            . ",`initial_shuffle`='" . generateInitialShuffle($player['client_seed']) . "'"
+            . ",`client_seed`='$newCSeed'";
 
         db_query("UPDATE `games` SET `multiplier`=$multip WHERE `id`=$game_id LIMIT 1");
     } else $endGame = "";

@@ -17,19 +17,19 @@ include __DIR__.'/../../inc/functions.php';
 
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
 
-$player=db_fetch_array(db_query("SELECT `id`,`client_seed` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
-
-
 maintenance();
 
 if (empty($_GET['seed']) || (int)$_GET['seed']==0) {
-  echo json_encode(array('color'=>'red','content'=>'This must be a number.','repaired'=>$player['client_seed']));
+  echo json_encode(array('error'=>'yes','message'=>'This must be a number.'));
+  exit();
+}
+if(strlen((string)$_GET['seed']) > 32){
+  echo json_encode(array('error'=>'yes','message'=>'Number can\'t be longer than 32 characters'));
   exit();
 }
 
 $repaired=(int)$_GET['seed'];
 
-db_query("UPDATE `players` SET `client_seed`='".substr((string)$repaired,0,8)."' WHERE `id`=$player[id] LIMIT 1");
+db_query("UPDATE `players` SET `client_seed`=".$repaired." WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1");
 
-echo json_encode(array('color'=>'green','content'=>'Client seed has been set.','repaired'=>substr((string)$repaired,0,8)));
-?>
+echo json_encode(array('error'=>'no'));

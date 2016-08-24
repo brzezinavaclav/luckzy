@@ -68,6 +68,16 @@ $(document).ready(function (){
   $('.chat-send').click(function(){
     chatSend($(this).parent('div').parent('div').find('input').val());
   });
+  $('#saveClientSeed').click(function () {
+    var seed = $(this).parent('span').parent('div').find('input').val();
+    $.ajax({
+      'url': './content/ajax/saveClientSeed.php?_unique='+unique()+'&seed='+seed,
+      'dataType': "json",
+      'success': function (data) {
+        if(data['error']=='yes') alert(data['message']);
+      }
+    });
+  });
 
   $(".wager").click(function () {
     $(this).select();
