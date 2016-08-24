@@ -110,8 +110,8 @@ function newPlayer()
     do $hash = generateHash(32);
     while (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='$hash' LIMIT 1")) != 0);
 
-    $client_seed = random_num(8);
-    db_query("INSERT INTO `players` (`hash`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','" . serialize(generateSlotsSeed()) . "','" . random_num(8) . "','" . generateInitialShuffle($client_seed) . "', '" . $client_seed . "')");
+    $client_seed = random_num(32);
+    db_query("INSERT INTO `players` (`hash`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','" . serialize(generateSlotsSeed()) . "','" . random_num(32) . "','" . generateInitialShuffle($client_seed) . "', '" . $client_seed . "')");
 
     setcookie('unique_S_', $hash, (time() + 60 * 60 * 24), '/');
     setcookie('unique_S_', $hash, (time() + 60 * 60 * 24), '/');

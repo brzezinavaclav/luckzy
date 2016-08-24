@@ -8,7 +8,6 @@
 if(!logged()) header("Location: ./");
 include __DIR__.'/inc/ga_class.php';
 ?>
-<div class="page">
     <div class="container">
         <h1>Two factor authentication setup</h1>
         <?php
@@ -32,5 +31,4 @@ include __DIR__.'/inc/ga_class.php';
         <br>Two factor authentication is <b>active</b> for this account. <a href="./?p=set_ga&rem">Disable</a>
         <?php } ?>
     </div>
-</div>
 <?php include __DIR__.'/inc/end.php'; ?>

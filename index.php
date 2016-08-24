@@ -132,9 +132,56 @@ include __DIR__ . '/inc/start.php';
         </div>
     </div>
 </div>
+<div class="page">
 <?php
 if ($game != false) include 'game.php';
-else include $page . '.php';
+else include $page . '.php'; ?>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h1 class="title">Winter white</h1>
+                <p><a href="#">About us</a></p>
+                <p><a href="#">Meet the team</a></p>
+                <p><a href="#">Our blog</a></p>
+                <p><a href="#">Get in touch</a></p>
+                <p><a href="#">Feedback</a></p>
+            </div>
+            <div class="col-md-3">
+                <h1 class="title">Support</h1>
+                <p><a href="#">Need some help?</a></p>
+                <p><a href="#">Call us</a></p>
+                <p><a href="#">Live chat</a></p>
+                <p><a href="#">Frequently asked questions</a></p>
+                <p><a href="#">Get in touch</a></p>
+            </div>
+            <div class="col-md-3">
+                <h1 class="title">Store</h1>
+                <p><a href="#">Shipping & prices</a></p>
+                <p><a href="#">International shipping</a></p>
+                <p><a href="#">Payment options</a></p>
+                <p><a href="#">Credit cards</a></p>
+                <p><a href="#">Privacy policy</a></p>
+            </div>
+            <div class="col-md-3">
+                <h1 class="title">Winter white</h1>
+                <p><a href="#">About us</a></p>
+                <p><a href="#">Meet the team</a></p>
+                <p><a href="#">Our blog</a></p>
+                <p><a href="#">Get in touch</a></p>
+                <p><a href="#">Feedback</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-md-12 text-center">
+                <hr>
+                &copy; <?php echo date("Y"); ?> Luckzy
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<?php
 include __DIR__ . '/inc/end.php';
 if (logged()):
     ?>

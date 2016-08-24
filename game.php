@@ -1,5 +1,4 @@
 <div class="leftblock"></div>
-<div class="page">
     <a href="#" class="closeLeft" onclick="javascript:leftbox.toggle();return false;"><span class="glyphicon glyphicon-remove"></span></a>
     <div class="leftbuttons">
         <!--<button data-toggle="tooltip" data-placement="right" title="My&nbsp;Account" onclick="javascript:leftCon('profile');"><span class="glyphicon glyphicon-user"></span></button>-->
@@ -16,12 +15,6 @@
     <div class="game" id="<?php echo $page; ?>">
         <?php include './games/'.$page.'/index.php'; ?>
     </div>
-
-    <footer>
-        &copy; <?php echo date("Y"); ?> Luckzy
-    </footer>
-
-</div>
 
 <!--  BLOCKS HIDDEN BY DEFAULT  -->
 <div class="leftCon" id="lc-stats">
