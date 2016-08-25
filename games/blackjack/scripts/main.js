@@ -84,7 +84,7 @@ function gameAction(action) {
                 if (data['data']['mark']==2) decks.player_2.setMark();
             });
             else gameUpdate(data['data']);
-            fairUpdate(data['data']['fair']);
+            if(data['data']['fair'] != undefined) fairUpdate(data['data']['fair']);
         }
     });
 }

@@ -10,10 +10,6 @@
 
 $ver = '1.0';    // Version Number
 
-
-
-
-
 function protect() {
   
   $conf_c = false;
@@ -76,7 +72,7 @@ if (isset($_GET['checkCons'])) {
 
 if (isset($_GET['saveB'])) {
   include __DIR__.'/../inc/db-conf.php';
-  mysqli_query($db,"UPDATE `system` SET `title`='$_POST[s_title]',`url`='$_POST[s_url]',`currency`='$_POST[s_cur]',`currency_sign`='$_POST[s_cur_sign]',`description`='$_POST[s_desc]',`installed`=1 WHERE `id`=1");
+  mysqli_query($db,"UPDATE `system` SET `title`='".$_POST['s_title']."',`url`='".$_POST['s_url']."',`description`='".$_POST['s_desc']."',`installed`=1 WHERE `id`=1");
   header('Location: ./?step=5');
   exit();
 }
@@ -104,7 +100,7 @@ if ($step==3 && (!is_writable(__DIR__.'/../inc/db-conf.php') || !is_writable(__D
   <body>
     <div class="allbody">
       <div class="alls" style="text-align: center;">
-        <h1>CoinSlots <?php echo $ver; ?> Installation</h1>
+        <h1>Luckzy <?php echo $ver; ?> Installation</h1>
       </div>
     </div>
     <?php
@@ -255,15 +251,6 @@ if ($step==3 && (!is_writable(__DIR__.'/../inc/db-conf.php') || !is_writable(__D
                   <td>URL:</td>
                   <td><input type="text" name="s_url"></td>
                   <td>(<b>without <i>http://</i></b>)</td>
-                </tr>
-                <tr>
-                  <td>Currency:</td>
-                  <td><input type="text" name="s_cur" placeholder="e.g. Bitcoin, Litecoin, etc."></td>
-                </tr>
-                <tr>
-                  <td>Currency sign:</td>
-                  <td><input type="text" name="s_cur_sign" placeholder="e.g. BTC, LTC, etc."></td>
-                </tr>
               </table>
             </form>
           </div>

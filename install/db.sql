@@ -30,8 +30,11 @@ DROP TABLE IF EXISTS `chat`;
 CREATE TABLE `chat` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `sender` int(255) NOT NULL,
+  `for` int(255) NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `room` int(11) NOT NULL,
+  `displayed` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -43,8 +46,93 @@ CREATE TABLE `deposits` (
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `received` int(1) NOT NULL DEFAULT '0',
   `amount` double NOT NULL DEFAULT '0',
+  `coins_amount` int(255) NOT NULL,
+  `currency` text NOT NULL,
   `txid` text COLLATE utf8_unicode_ci NOT NULL,
+  `confirmed` int(11) NOT NULL,
   `time_generated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `withdrawals`;
+CREATE TABLE `withdrawals` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `player_id` int(255) NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `withdrawned` int(11) NOT NULL DEFAULT '0',
+  `amount` double NOT NULL DEFAULT '0',
+  `coins_amount` int(255) NOT NULL,
+  `currency` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `chat_rooms`;
+CREATE TABLE `chat_rooms` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `player_relations`;
+CREATE TABLE `player_relations` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `player` int(11) NOT NULL,
+  `friend` int(11) NOT NULL,
+  `relation` int(11) NOT NULL,
+  `state` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `screenshots`;
+CREATE TABLE `screenshots` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `tid` int(255) NOT NULL,
+  `name` text NOT NULL,
+  `path` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `games`;
+CREATE TABLE `games` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `player` int(255) NOT NULL,
+  `player_deck` text COLLATE utf8_unicode_ci NOT NULL,
+  `player_deck_stand` int(1) NOT NULL DEFAULT '0',
+  `player_deck_2` text COLLATE utf8_unicode_ci NOT NULL,
+  `player_deck_2_stand` int(1) NOT NULL DEFAULT '0',
+  `dealer_deck` text COLLATE utf8_unicode_ci NOT NULL,
+  `ended` int(1) NOT NULL DEFAULT '0',
+  `bet_amount` double NOT NULL,
+  `winner` text COLLATE utf8_unicode_ci NOT NULL,
+  `multiplier` double NOT NULL DEFAULT '0',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `initial_shuffle` text COLLATE utf8_unicode_ci NOT NULL,
+  `client_seed` text COLLATE utf8_unicode_ci NOT NULL,
+  `final_shuffle` text COLLATE utf8_unicode_ci NOT NULL,
+  `used_cards` int(255) NOT NULL,
+  `accessable_actions` int(1) NOT NULL,
+  `canhit` int(1) NOT NULL DEFAULT '1',
+  `insurance_process` int(1) NOT NULL DEFAULT '0',
+  `note` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `currencies`;
+CREATE TABLE `currencies` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `currency` text NOT NULL,
+  `enabled` int(11) NOT NULL DEFAULT '0',
+  `min_deposit` int(11) NOT NULL DEFAULT '0',
+  `rate` int(11) NOT NULL DEFAULT '0',
+  `instructions` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -83,7 +171,7 @@ CREATE TABLE `players` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `hash` text COLLATE utf8_unicode_ci NOT NULL,
   `balance` double NOT NULL DEFAULT '0',
-  `alias` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `time_last_active` datetime NOT NULL,
   `password` text COLLATE utf8_unicode_ci NOT NULL,
@@ -94,12 +182,16 @@ CREATE TABLE `players` (
   `last_slots_seed` text COLLATE utf8_unicode_ci NOT NULL,
   `last_dice_seed` text COLLATE utf8_unicode_ci NOT NULL,
   `last_client_seed` text COLLATE utf8_unicode_ci NOT NULL,
-  `last_slots_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `last_dice_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `t_bets` int(255) NOT NULL DEFAULT '0',
-  `t_wagered` double NOT NULL DEFAULT '0',
-  `t_wins` int(255) NOT NULL DEFAULT '0',
-  `t_profit` double NOT NULL DEFAULT '0',
+  `slots_last_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `dice_last_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `initial_shuffle` text COLLATE utf8_unicode_ci NOT NULL,
+  `last_initial_shuffle` text COLLATE utf8_unicode_ci NOT NULL,
+  `last_final_shuffle` text COLLATE utf8_unicode_ci NOT NULL,
+  `ga_token` text COLLATE utf8_unicode_ci NOT NULL,
+  `email` text COLLATE utf8_unicode_ci NOT NULL,
+  `activation_hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `state` int(11) NOT NULL,
+  `chat_status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -128,21 +220,14 @@ CREATE TABLE `system` (
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `url` text COLLATE utf8_unicode_ci NOT NULL,
   `currency` text COLLATE utf8_unicode_ci NOT NULL,
-  `currency_sign` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `giveaway` int(1) NOT NULL DEFAULT '0',
   `giveaway_amount` double NOT NULL DEFAULT '0',
   `chat_enable` int(1) NOT NULL DEFAULT '1',
-  `t_bets` int(255) NOT NULL DEFAULT '0',
-  `t_wagered` double NOT NULL DEFAULT '0',
-  `t_wins` int(255) NOT NULL DEFAULT '0',
-  `t_loses` int(255) NOT NULL DEFAULT '0',
-  `t_ties` int(255) NOT NULL DEFAULT '0',
-  `t_player_profit` double NOT NULL DEFAULT '0',
   `giveaway_freq` int(255) NOT NULL DEFAULT '30',
   `min_bet` double NOT NULL DEFAULT '0.00000001',
   `min_withdrawal` double NOT NULL DEFAULT '0.001',
-  `min_deposit` double NOT NULL DEFAULT '0.00000001',
+  `btc_min_deposit` double NOT NULL DEFAULT '0.00000001',
   `min_confirmations` int(255) NOT NULL DEFAULT '1',
   `bankroll_maxbet_ratio` double NOT NULL DEFAULT '25',
   `jackpot` double NOT NULL DEFAULT '12339',
@@ -151,11 +236,22 @@ CREATE TABLE `system` (
   `inv_min` double NOT NULL DEFAULT '0.0001',
   `inv_casproit` double NOT NULL DEFAULT '0',
   `deposits_last_round` datetime NOT NULL,
-  `active_theme` text COLLATE utf8_unicode_ci NOT NULL,
-  `usertheme` int(1) NOT NULL DEFAULT '1',
   `installed` int(1) NOT NULL DEFAULT '0',
   `maintenance` int(1) NOT NULL DEFAULT '0',
   `withdrawal_mode` int(1) NOT NULL DEFAULT '1',
+  `number_of_decks` int(11) NOT NULL DEFAULT '4',
+  `bj_pays` int(11) NOT NULL DEFAULT '1',
+  `btc_rate` int(11) NOT NULL,
+  `insurance` int(11) NOT NULL DEFAULT '1',
+  `tie_dealerwon` int(11) NOT NULL DEFAULT '1',
+  `hits_on_soft` int(11) NOT NULL DEFAULT '1',
+  `house_edge` int(11) NOT NULL DEFAULT '1',
+  `smtp_enabled` int(11) NOT NULL DEFAULT '0',
+  `smtp_encryption` int(11) NOT NULL DEFAULT '0',
+  `smtp_auth` int(11) NOT NULL DEFAULT '0',
+  `smtp_server` text NOT NULL,
+  `smtp_password` text NOT NULL,
+  `email` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

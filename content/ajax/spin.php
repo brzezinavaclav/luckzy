@@ -14,7 +14,8 @@ include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/wallet_driver.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
-db_query('BEGIN TRANSACTION');
+
+db_query('START TRANSACTION');
 
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"))==0) exit();
 
@@ -87,7 +88,7 @@ $profit = ($wager * -1) + $payout;
 
 
 
-$player_q = db_query("SELECT * FROM `players` WHERE `id`=$player[id] AND `balance` >= $wager LIMIT 1");
+$player_q = db_query("SELECT * FROM `players` WHERE `id`=$player[id] AND `balance` >= $wager LIMIT 1 FOR UPDATE");
 if (db_num_rows($player_q) == 0) {
   echo json_encode(array('error' => 'Invalid bet'));
   exit();
@@ -151,4 +152,5 @@ db_query("UPDATE `players` SET `last_slots_seed`=`slots_seed`,`slots_seed`='$new
 
   ));
 
-db_query('COMMIT TRANSACTION');
+
+db_query('COMMIT');

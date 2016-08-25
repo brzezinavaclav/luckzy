@@ -16,6 +16,7 @@ include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 include __DIR__.'/../../inc/wallet_driver.php';
 
+db_query('START TRANSACTION');
 
 $interval = 5;   // The minimal number of seconds between deposit checks.. 
 
@@ -78,4 +79,5 @@ if ($settings['maintenance']) $mt = 'yes'; else $mt = 'no';
 
 echo json_encode(array('maintenance' => $mt));
 
-?>
+
+db_query('COMMIT');

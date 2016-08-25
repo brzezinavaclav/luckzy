@@ -19,7 +19,7 @@ include __DIR__.'/../../inc/functions.php';
 db_query('START TRANSACTION');
 
 
-if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"))==0) exit();
+if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
 
 
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
@@ -33,7 +33,7 @@ if ($wager>$settings['bankroll_maxbet_ratio']) {
 
 
 
-$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"));
 
 
 if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `player`=$player[id] AND `ended`=0 LIMIT 1"))!=0) {

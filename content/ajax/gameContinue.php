@@ -15,11 +15,12 @@ include '../../inc/db-conf.php';
 include '../../inc/functions.php';
 include __DIR__.'/../../inc/db_functions.php';
 
+db_query('START TRANSACTION');
 
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
 
 
-$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"));
 
 
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
@@ -65,5 +66,5 @@ else $playerSums2='-';
 
 echo json_encode(array('bet_amount'=>$gameData['bet_amount'],'dealer'=>$dealer,'player'=>$player_,'accessable'=>$gameData['accessable_actions'],'sums'=>array('player'=>$playerSums,'player2'=>$playerSums2), 'data'=>array('mark' => $data['mark'])));
 
+db_query('COMMIT');
 
-?>
