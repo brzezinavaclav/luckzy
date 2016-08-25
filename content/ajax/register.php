@@ -68,6 +68,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
 
         if(!$mail->send()) {
             echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent'));
+            exit();
         }
 
 
