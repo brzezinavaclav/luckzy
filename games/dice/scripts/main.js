@@ -15,16 +15,20 @@ $(document).ready(function () {
     });
     $('#betTb_multiplier').change(function () {
         recountChance();
+        recountProfit();
     });
     $('#betTb_chance').change(function () {
         recountPayout();
+        recountProfit();
     });
     $('#bt_wager').change(function () {
         recountProfit();
     });
     $('#bt_profit').change(function () {
+        var wager=$("#bt_wager").val();
+        var val = $("#bt_profit").val();
+        $("#betTb_multiplier").val((val*1000000000+1000000000*wager)/1000000000*wager-1);
         recountChance();
-        recountPayout();
     });
 });
 

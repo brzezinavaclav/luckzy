@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/gameAction.php" afterPath="$PROJECT_DIR$/content/ajax/gameAction.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/gameContinue.php" afterPath="$PROJECT_DIR$/content/ajax/gameContinue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/gameCreate.php" afterPath="$PROJECT_DIR$/content/ajax/gameCreate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/getAddress.php" afterPath="$PROJECT_DIR$/content/ajax/getAddress.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/getDeposits.php" afterPath="$PROJECT_DIR$/content/ajax/getDeposits.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/insure.php" afterPath="$PROJECT_DIR$/content/ajax/insure.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/place.php" afterPath="$PROJECT_DIR$/content/ajax/place.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/spin.php" afterPath="$PROJECT_DIR$/content/ajax/spin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/blackjack/scripts/main.js" afterPath="$PROJECT_DIR$/games/blackjack/scripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install/db.sql" afterPath="$PROJECT_DIR$/install/db.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install/index.php" afterPath="$PROJECT_DIR$/install/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/games/dice/scripts/main.js" afterPath="$PROJECT_DIR$/games/dice/scripts/main.js" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,22 +28,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gameContinue.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/ajax/gameContinue.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <marker date="1472133304277" expanded="true" signature="450:526" ph="SELECT `id` players" />
-                <marker date="1472133304277" expanded="true" signature="577:661" ph="SELECT * FRO... players" />
-                <marker date="1472133304277" expanded="true" signature="703:746" ph="SELECT * FRO... system" />
-                <marker date="1472133304277" expanded="true" signature="768:838" ph="SELECT * FRO... games" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameCreate.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gameCreate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/ajax/gameCreate.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -73,6 +49,47 @@
                 <marker date="1472133318769" expanded="true" signature="4352:4425" ph="UPDATE `game... " />
                 <marker date="1472133318769" expanded="true" signature="4634:4804" ph="SELECT `clie... players" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="includer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dice/js/includer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="514" column="14" selection-start-line="514" selection-start-column="14" selection-end-line="514" selection-end-column="14" />
+              <folding>
+                <marker date="1456777559474" expanded="true" signature="20041:20059" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="21802:21815" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="22164:22182" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="22229:22242" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="22279:22356" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="22623:22649" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="25325:25355" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="25453:25483" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="25601:25631" ph="..." />
+                <marker date="1456777559474" expanded="true" signature="28122:28135" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/games/dice/scripts/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="frontpage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dice/themes/ClassicPurple/frontpage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,18 +179,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getBalance.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/ajax/getBalance.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-              <folding>
-                <marker date="1470237086271" expanded="true" signature="441:527" ph="SELECT `bala... players" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="insure.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/ajax/insure.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -216,7 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/ajax/delete_room.php" />
         <option value="$PROJECT_DIR$/admin/pages/addons.php" />
         <option value="$PROJECT_DIR$/inc/end.php" />
         <option value="$PROJECT_DIR$/content/ajax/get_transactions.php" />
@@ -267,6 +271,7 @@
         <option value="$PROJECT_DIR$/content/ajax/getDeposits.php" />
         <option value="$PROJECT_DIR$/content/ajax/place.php" />
         <option value="$PROJECT_DIR$/content/ajax/spin.php" />
+        <option value="$PROJECT_DIR$/games/dice/scripts/main.js" />
       </list>
     </option>
   </component>
@@ -354,6 +359,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="luckzy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="luckzy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dice" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="luckzy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="luckzy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="games" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dice" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -501,12 +546,12 @@
       <workItem from="1471782115679" duration="10680000" />
       <workItem from="1471868488240" duration="22207000" />
       <workItem from="1471955164940" duration="1554000" />
-      <workItem from="1472021418972" duration="19587000" />
+      <workItem from="1472021418972" duration="23000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="454507000" />
+    <option name="totallyTimeSpent" value="457920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -568,28 +613,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/content/ajax/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/chat_settings.php" />
-    <entry file="file://$PROJECT_DIR$/content/ajax/select_room.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/getPms.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1074,14 +1097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/get_transactions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/insure.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1203,6 +1218,57 @@
             <marker date="1472133318769" expanded="true" signature="4352:4425" ph="UPDATE `game... " />
             <marker date="1472133318769" expanded="true" signature="4634:4804" ph="SELECT `clie... players" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dice/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dice/js/includer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="514" column="14" selection-start-line="514" selection-start-column="14" selection-end-line="514" selection-end-column="14" />
+          <folding>
+            <marker date="1456777559474" expanded="true" signature="20041:20059" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="21802:21815" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="22164:22182" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="22229:22242" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="22279:22356" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="22623:22649" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="25325:25355" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="25453:25483" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="25601:25631" ph="..." />
+            <marker date="1456777559474" expanded="true" signature="28122:28135" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/ajax/get_transactions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dice/themes/ClassicPurple/frontpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/games/dice/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
