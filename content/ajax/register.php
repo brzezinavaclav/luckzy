@@ -67,7 +67,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
         $mail->Body    = 'Click this link to activate your account. <a href="'.$actual_link.'">'.$actual_link .'</a>';
 
         if(!$mail->send()) {
-            echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent'));
+            echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent. Mail error: '.$mail->ErrorInfo));
             exit();
         }
 
