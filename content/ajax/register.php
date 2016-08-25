@@ -50,13 +50,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
             $mail->SMTPAuth = (bool)$settings['smtp_auth'];
             $mail->Username = $settings['email'];
             $mail->Password = $settings['smtp_password'];
-            $mail->SMTPOptions = array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            );
+
             if($settings['smtp_encryption'] == 0){
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
@@ -75,7 +69,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
         $mail->Body    = 'Click this link to activate your account. <a href="'.$actual_link.'">'.$actual_link .'</a>';
 
         if(!$mail->send()) {
-            echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent.'));
+            echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent.'.$settings['smtp_encryption']));
             exit();
         }
 
