@@ -46,19 +46,12 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
         if($settings['smtp_enabled']){
             $mail->isSMTP();
             $mail->SMTPDebug = 2;
-            $mail->SMTPOptions = array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            );
-            $mail->Host = $settings['smtp_server'];
-            $mail->Username = $settings['email'];
-            $mail->Password = $settings['smtp_password'];
-            $mail->SMTPAuth   = true;
-            $mail->SMTPSecure = "tls";
-            $mail->Port = 587;
+            $mail->Host = 'smtp-mail.outlook.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'brzezina.vaclav@outlook.cz';
+            $mail->Password = 'Sierra-bravo-6';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
         }
 
         $mail->setFrom($settings['email'], 'Luckzy online casino');
