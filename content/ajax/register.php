@@ -71,8 +71,6 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
             exit();
         }
 
-
-
     if (db_query("UPDATE `players` SET `username`='" . prot($_POST['username']) . "', `email`='" . prot($_POST['email']) . "',`password`='" . hash('sha256', $_POST['passwd']) . "', `state`=0, `activation_hash`='$activation_hash' WHERE `hash`='" . $_COOKIE['unique_S_'] . "'") == false) {
         echo json_encode(array('error' => 'yes', 'message' => 'Mysql error'));
         exit();
