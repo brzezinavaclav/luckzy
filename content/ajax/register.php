@@ -54,17 +54,11 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
                 )
             );
             $mail->Host = $settings['smtp_server'];
-            $mail->SMTPAuth = (bool)$settings['smtp_auth'];
             $mail->Username = $settings['email'];
             $mail->Password = $settings['smtp_password'];
-            if($settings['smtp_encryption'] == 0){
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-            }
-            else{
-                $mail->SMTPSecure = 'ssl';
-                $mail->Port = 25;
-            }
+            $mail->SMTPAuth   = true;
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
         }
 
         $mail->setFrom($settings['email'], 'Luckzy online casino');
