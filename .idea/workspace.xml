@@ -106,14 +106,14 @@
       <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+            <state relative-caret-position="374">
+              <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
               <folding>
-                <marker date="1472205055511" expanded="true" signature="445:475" ph="SELECT * FRO... system" />
-                <marker date="1472205055511" expanded="true" signature="628:710" ph="SELECT `id` players" />
-                <marker date="1472205055511" expanded="true" signature="1020:1096" ph="SELECT `id` players" />
-                <marker date="1472205055511" expanded="true" signature="1456:1546" ph="SELECT `acti... players" />
-                <marker date="1472205055511" expanded="true" signature="2827:3082" ph="UPDATE `play... " />
+                <marker date="1472205198016" expanded="true" signature="445:475" ph="SELECT * FRO... system" />
+                <marker date="1472205198016" expanded="true" signature="628:710" ph="SELECT `id` players" />
+                <marker date="1472205198016" expanded="true" signature="1020:1096" ph="SELECT `id` players" />
+                <marker date="1472205198016" expanded="true" signature="1456:1546" ph="SELECT `acti... players" />
+                <marker date="1472205198016" expanded="true" signature="3073:3328" ph="UPDATE `play... " />
               </folding>
             </state>
           </provider>
@@ -495,12 +495,12 @@
       <workItem from="1471868488240" duration="22207000" />
       <workItem from="1471955164940" duration="1554000" />
       <workItem from="1472021418972" duration="27575000" />
-      <workItem from="1472199489216" duration="1349000" />
+      <workItem from="1472199489216" duration="1491000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="463844000" />
+    <option name="totallyTimeSpent" value="463986000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1044,14 +1044,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        <state relative-caret-position="374">
+          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
           <folding>
-            <marker date="1472205055511" expanded="true" signature="445:475" ph="SELECT * FRO... system" />
-            <marker date="1472205055511" expanded="true" signature="628:710" ph="SELECT `id` players" />
-            <marker date="1472205055511" expanded="true" signature="1020:1096" ph="SELECT `id` players" />
-            <marker date="1472205055511" expanded="true" signature="1456:1546" ph="SELECT `acti... players" />
-            <marker date="1472205055511" expanded="true" signature="2827:3082" ph="UPDATE `play... " />
+            <marker date="1472205198016" expanded="true" signature="445:475" ph="SELECT * FRO... system" />
+            <marker date="1472205198016" expanded="true" signature="628:710" ph="SELECT `id` players" />
+            <marker date="1472205198016" expanded="true" signature="1020:1096" ph="SELECT `id` players" />
+            <marker date="1472205198016" expanded="true" signature="1456:1546" ph="SELECT `acti... players" />
+            <marker date="1472205198016" expanded="true" signature="3073:3328" ph="UPDATE `play... " />
           </folding>
         </state>
       </provider>

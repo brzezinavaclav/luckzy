@@ -46,6 +46,13 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
         if($settings['smtp_enabled']){
             $mail->isSMTP();
             $mail->SMTPDebug = 2;
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
             $mail->Host = $settings['smtp_server'];
             $mail->SMTPAuth = (bool)$settings['smtp_auth'];
             $mail->Username = $settings['email'];
