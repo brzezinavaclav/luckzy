@@ -136,3 +136,7 @@
 .bRegul button:hover {
     border: 1px solid rgba(72, 153, 50, 0.8);
 }
+.item.item0 {
+    background-color: inherit;
+    height: 4px;
+}
