@@ -28,29 +28,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="201" column="96" selection-start-line="201" selection-start-column="96" selection-end-line="201" selection-end-column="96" />
+            <state relative-caret-position="296">
+              <caret line="192" column="6" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
               <folding>
-                <marker date="1472408232383" expanded="true" signature="9544:9570" ph="SELECT * FRO... currencies" />
-                <marker date="1472408232383" expanded="true" signature="11972:11998" ph="SELECT * FRO... currencies" />
-                <marker date="1472408232383" expanded="true" signature="14474:14500" ph="SELECT * FRO... currencies" />
-                <marker date="1472408232383" expanded="true" signature="16290:16316" ph="SELECT * FRO... currencies" />
-                <marker date="1472408232383" expanded="true" signature="27272:27314" ph="SELECT * FRO... chat_rooms" />
+                <marker date="1472408285909" expanded="true" signature="9206:9232" ph="SELECT * FRO... currencies" />
+                <marker date="1472408285909" expanded="true" signature="11634:11660" ph="SELECT * FRO... currencies" />
+                <marker date="1472408285909" expanded="true" signature="14136:14162" ph="SELECT * FRO... currencies" />
+                <marker date="1472408285909" expanded="true" signature="15952:15978" ph="SELECT * FRO... currencies" />
+                <marker date="1472408285909" expanded="true" signature="26934:26976" ph="SELECT * FRO... chat_rooms" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="789" column="32" selection-start-line="789" selection-start-column="32" selection-end-line="789" selection-end-column="227" />
+            <state relative-caret-position="555">
+              <caret line="161" column="13" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
               <folding>
-                <marker date="1472407821151" expanded="true" signature="14762:14776" ph="..." />
+                <marker date="1472408686739" expanded="true" signature="14822:14836" ph="..." />
               </folding>
             </state>
           </provider>
@@ -219,8 +219,8 @@
         <option value="$PROJECT_DIR$/more.php" />
         <option value="$PROJECT_DIR$/support.php" />
         <option value="$PROJECT_DIR$/styles/main.css" />
-        <option value="$PROJECT_DIR$/scripts/main.js" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/scripts/main.js" />
       </list>
     </option>
   </component>
@@ -624,12 +624,12 @@
       <workItem from="1472021418972" duration="27575000" />
       <workItem from="1472199489216" duration="2055000" />
       <workItem from="1472322523289" duration="773000" />
-      <workItem from="1472387016629" duration="11727000" />
+      <workItem from="1472387016629" duration="12173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="477050000" />
+    <option name="totallyTimeSpent" value="477496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1167,37 +1167,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/start.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
-          <folding>
-            <marker date="1471956620085" expanded="true" signature="514:549" ph="SELECT * FRO... players" />
-            <marker date="1471956620085" expanded="true" signature="675:754" ph="SELECT `id` players" />
-            <marker date="1471956620085" expanded="true" signature="805:881" ph="SELECT * FRO... players" />
-            <marker date="1471956620085" expanded="true" signature="1106:1187" ph="SELECT `user... players" />
-            <marker date="1471956620085" expanded="true" signature="1297:1377" ph="SELECT `name... chat_rooms" />
-            <marker date="1471956620085" expanded="true" signature="1583:1656" ph="SELECT `id` games" />
-            <marker date="1471956620085" expanded="true" signature="1711:1810" ph="SELECT `id` games" />
-            <marker date="1471956620085" expanded="true" signature="2227:2304" ph="UPDATE `play... " />
-            <marker date="1471956620085" expanded="true" signature="2922:2965" ph="SELECT * FRO... system" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding>
-            <marker date="1472049312839" expanded="true" signature="3939:3980" ph="SELECT * FRO... news" />
-            <marker date="1472049312839" expanded="true" signature="4074:4123" ph="..." />
-            <marker date="1472049312839" expanded="true" signature="4137:4167" ph="..." />
-            <marker date="1472049312839" expanded="true" signature="4214:4242" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/pages/withdrawals.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -1218,16 +1187,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="789" column="32" selection-start-line="789" selection-start-column="32" selection-end-line="789" selection-end-column="227" />
-          <folding>
-            <marker date="1472407821151" expanded="true" signature="14762:14776" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/makeDeposit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1244,14 +1203,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="201" column="96" selection-start-line="201" selection-start-column="96" selection-end-line="201" selection-end-column="96" />
+        <state relative-caret-position="296">
+          <caret line="192" column="6" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
           <folding>
-            <marker date="1472408232383" expanded="true" signature="9544:9570" ph="SELECT * FRO... currencies" />
-            <marker date="1472408232383" expanded="true" signature="11972:11998" ph="SELECT * FRO... currencies" />
-            <marker date="1472408232383" expanded="true" signature="14474:14500" ph="SELECT * FRO... currencies" />
-            <marker date="1472408232383" expanded="true" signature="16290:16316" ph="SELECT * FRO... currencies" />
-            <marker date="1472408232383" expanded="true" signature="27272:27314" ph="SELECT * FRO... chat_rooms" />
+            <marker date="1472408285909" expanded="true" signature="9206:9232" ph="SELECT * FRO... currencies" />
+            <marker date="1472408285909" expanded="true" signature="11634:11660" ph="SELECT * FRO... currencies" />
+            <marker date="1472408285909" expanded="true" signature="14136:14162" ph="SELECT * FRO... currencies" />
+            <marker date="1472408285909" expanded="true" signature="15952:15978" ph="SELECT * FRO... currencies" />
+            <marker date="1472408285909" expanded="true" signature="26934:26976" ph="SELECT * FRO... chat_rooms" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding>
+            <marker date="1472049312839" expanded="true" signature="3939:3980" ph="SELECT * FRO... news" />
+            <marker date="1472049312839" expanded="true" signature="4074:4123" ph="..." />
+            <marker date="1472049312839" expanded="true" signature="4137:4167" ph="..." />
+            <marker date="1472049312839" expanded="true" signature="4214:4242" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/start.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+          <folding>
+            <marker date="1471956620085" expanded="true" signature="514:549" ph="SELECT * FRO... players" />
+            <marker date="1471956620085" expanded="true" signature="675:754" ph="SELECT `id` players" />
+            <marker date="1471956620085" expanded="true" signature="805:881" ph="SELECT * FRO... players" />
+            <marker date="1471956620085" expanded="true" signature="1106:1187" ph="SELECT `user... players" />
+            <marker date="1471956620085" expanded="true" signature="1297:1377" ph="SELECT `name... chat_rooms" />
+            <marker date="1471956620085" expanded="true" signature="1583:1656" ph="SELECT `id` games" />
+            <marker date="1471956620085" expanded="true" signature="1711:1810" ph="SELECT `id` games" />
+            <marker date="1471956620085" expanded="true" signature="2227:2304" ph="UPDATE `play... " />
+            <marker date="1471956620085" expanded="true" signature="2922:2965" ph="SELECT * FRO... system" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="161" column="13" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
+          <folding>
+            <marker date="1472408686739" expanded="true" signature="14822:14836" ph="..." />
           </folding>
         </state>
       </provider>

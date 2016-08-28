@@ -156,7 +156,10 @@ $(document).ready(function (){
   });
 
   $('#modals-deposit').on('show.bs.modal',function(){
-    _genNewAddress();
+    setTimeout(
+        function() {
+          _genNewAddress();
+        }, 150);
   });
   $('#faucet_btn').click(function(){
     $('#modals-faucet').modal();

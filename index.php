@@ -199,7 +199,7 @@ if (logged()):
                     <h4 class="modal-title" id="mlabels-deposit">Deposit Funds</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="m_alert" <?php if(!$player['state']) echo 'style="display: block"'?>><?php if(!$player['state']) echo'<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Please activate your account before making any transactions.</div>'; ?></div>
+                    <div class="m_alert"></div>
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a aria-controls="d_btc" role="tab" href="#d_btc"
                                                                   data-toggle="tab">Bitcoin</a></li>
