@@ -59,19 +59,19 @@ if($game == 'slots') {
 
 foreach ( $stats as $key => $load ) {  
   
-  $order = "time";
+  $order = "`time` DESC";
   if($game == 'blackjack') $where = "WHERE `id` > $load[lastid] AND `ended`=1";
   else $where = "WHERE `id` > $load[lastid] AND `game` = '$game'";
   if ($key == 'high') {
-    $order = "multiplier";
-      if($game == 'blackjack') $where = "WHERE `multiplier` > $load[lastid]";
+    $order = "`multiplier` DESC, `bet_amount` DESC";
+      if($game == 'blackjack') $where = "WHERE `multiplier` >= $load[lastid]";
       else $where = "WHERE `multiplier` > $load[lastid] AND `game` = '$game'";
   }
   if ($key == 'my_bets')  $where .= " AND `player` = $player[id]";
   else                    $where .= " AND `bet_amount` != 0";
 
-  if($game == 'blackjack')  $q = db_query("SELECT * FROM `games` $where ORDER BY `$order` DESC LIMIT $limit");
-  else $q = db_query("SELECT * FROM `spins` $where ORDER BY `$order` DESC LIMIT $limit");
+  if($game == 'blackjack')  $q = db_query("SELECT * FROM `games` $where ORDER BY $order LIMIT $limit");
+  else $q = db_query("SELECT * FROM `spins` $where ORDER BY $order LIMIT $limit");
     
 
   $stats[$key]['contents'] = '';
@@ -99,7 +99,9 @@ foreach ( $stats as $key => $load ) {
     $stats[$key]['contents'].= '<td>'.$username.'</td>';
     $stats[$key]['contents'].= '<td>'.date('H:i', strtotime($row['time'])).'</td>';
     $stats[$key]['contents'].= '<td>'.$row['bet_amount'].' Coins</td>';
-    if($game == 'blackjack') $stats[$key]['contents'].=  '<td>'.get_cards($row['player_deck']).'</td><td>'.get_cards($row['dealer_deck']).'</td>';
+    if($game == 'blackjack') $stats[$key]['contents'].=  '<td>'.get_cards($row['player_deck']);
+    if($game == 'blackjack' && $row['player_deck_2'] != '') $stats[$key]['contents'].=  '<span style="margin-left: 20px">'.get_cards($row['player_deck_2']).'</span>';
+    if($game == 'blackjack') $stats[$key]['contents'] .= '</td><td>'.get_cards($row['dealer_deck']).'</td>';
     else $stats[$key]['contents'].= '<td>'.$spin.'</td>';
     $stats[$key]['contents'].= '<td>x'.$row['multiplier'].'</td>';
     $stats[$key]['contents'].= '<td>'.profit( $row['bet_amount']*-1 + ($row['bet_amount'] * $row['multiplier']) ).'</td>';

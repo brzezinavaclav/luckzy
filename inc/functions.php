@@ -508,7 +508,7 @@ function get_deposits()
             $name = 'Bitcoin';
         } else {
             $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='" . $row['currency'] . "' LIMIT 1"));
-            $name = $currency['currency'];
+            $currency['currency']!= '' ? $name = $currency['currency']: $name = '[unknown]';
         }
 
         if($row['confirmed'])$status = 'Confirmed';
