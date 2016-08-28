@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/makeDeposit.php" afterPath="$PROJECT_DIR$/content/ajax/makeDeposit.php" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,13 +43,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="161" column="13" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
+            <state relative-caret-position="453">
+              <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
               <folding>
                 <marker date="1472408686739" expanded="true" signature="14822:14836" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="makeDeposit.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/content/ajax/makeDeposit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <marker date="1472409169750" expanded="true" signature="361:404" ph="SELECT * FRO... system" />
+                <marker date="1472409169750" expanded="true" signature="446:485" ph="SELECT * FRO... currencies" />
+                <marker date="1472409169750" expanded="true" signature="446:514" ph="SELECT * FRO... currencies" />
+                <marker date="1472409169750" expanded="true" signature="552:637" ph="SELECT `id` players" />
+                <marker date="1472409169750" expanded="true" signature="1280:1445" ph="INSERT INTO `deposits`... " />
+                <marker date="1472409169750" expanded="true" signature="1548:1820" ph="INSERT INTO `deposits`... " />
               </folding>
             </state>
           </provider>
@@ -205,7 +221,6 @@
         <option value="$PROJECT_DIR$/content/ajax/gameCreate.php" />
         <option value="$PROJECT_DIR$/content/ajax/getAddress.php" />
         <option value="$PROJECT_DIR$/content/ajax/insure.php" />
-        <option value="$PROJECT_DIR$/content/ajax/makeDeposit.php" />
         <option value="$PROJECT_DIR$/content/ajax/getDeposits.php" />
         <option value="$PROJECT_DIR$/content/ajax/place.php" />
         <option value="$PROJECT_DIR$/content/ajax/spin.php" />
@@ -221,6 +236,7 @@
         <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/scripts/main.js" />
+        <option value="$PROJECT_DIR$/content/ajax/makeDeposit.php" />
       </list>
     </option>
   </component>
@@ -624,12 +640,12 @@
       <workItem from="1472021418972" duration="27575000" />
       <workItem from="1472199489216" duration="2055000" />
       <workItem from="1472322523289" duration="773000" />
-      <workItem from="1472387016629" duration="12173000" />
+      <workItem from="1472387016629" duration="12645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="477496000" />
+    <option name="totallyTimeSpent" value="477968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1187,20 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/makeDeposit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="115" />
-          <folding>
-            <marker date="1471894616300" expanded="true" signature="361:404" ph="SELECT * FRO... system" />
-            <marker date="1471894616300" expanded="true" signature="446:508" ph="SELECT * FRO... currencies" />
-            <marker date="1471894616300" expanded="true" signature="546:622" ph="SELECT `id` players" />
-            <marker date="1471894616300" expanded="true" signature="1270:1435" ph="INSERT INTO `deposits`... " />
-            <marker date="1471894616300" expanded="true" signature="1538:1810" ph="INSERT INTO `deposits`... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -1248,10 +1250,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="161" column="13" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
+        <state relative-caret-position="453">
+          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
           <folding>
             <marker date="1472408686739" expanded="true" signature="14822:14836" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/ajax/makeDeposit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <marker date="1472409169750" expanded="true" signature="361:404" ph="SELECT * FRO... system" />
+            <marker date="1472409169750" expanded="true" signature="446:485" ph="SELECT * FRO... currencies" />
+            <marker date="1472409169750" expanded="true" signature="446:514" ph="SELECT * FRO... currencies" />
+            <marker date="1472409169750" expanded="true" signature="552:637" ph="SELECT `id` players" />
+            <marker date="1472409169750" expanded="true" signature="1280:1445" ph="INSERT INTO `deposits`... " />
+            <marker date="1472409169750" expanded="true" signature="1548:1820" ph="INSERT INTO `deposits`... " />
           </folding>
         </state>
       </provider>
