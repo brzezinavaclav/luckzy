@@ -360,7 +360,7 @@ function leftbox() {
     if (self.opened) {
 
       self.con = '';
-      $.cookie('chat', '', { expires: 7, path: '/' });
+      $.cookie('chat', '', { expires: 1, path: '/' });
 
       self.$obj().animate({
         'width': 0,
