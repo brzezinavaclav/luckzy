@@ -96,9 +96,9 @@ $(document).ready(function (){
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
-  //imitateCRON();
+  imitateCRON();
   setInterval(function(){
-    //imitateCRON();
+    imitateCRON();
     balanceUpdate();
     won_last();
     get_transactions();
@@ -121,7 +121,7 @@ $(document).ready(function (){
 
     });
   });
-  $('.st-switches a').eq(1).click();
+  $('.st-switches a').eq(2).click();
 
 
 
@@ -210,9 +210,12 @@ function _genNewAddress() {
     'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c=btc',
     'dataType': "json",
     'success': function (data) {
-      $('.addr-p').html(data['confirmed']);
-      $('.addr-qr').empty();
-      $('.addr-qr').qrcode(data['confirmed']);
+      if(data['error'] == 'yes') m_alert('danger','<b>Error!</b> '+data['message']);
+      else {
+        $('.addr-p').html(data['confirmed']);
+        $('.addr-qr').empty();
+        $('.addr-qr').qrcode(data['confirmed']);
+      }
     }
   });
 }

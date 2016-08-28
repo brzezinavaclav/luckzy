@@ -58,7 +58,7 @@ include __DIR__ . '/inc/start.php';
 <div class="navbar navbar-default navbar-fixed-top navbar-first">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-nav"
                     aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -67,19 +67,19 @@ include __DIR__ . '/inc/start.php';
             </button>
             <a class="navbar-brand logo" href="./"><?php echo $settings['title']; ?></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <?php if (logged()): ?>
-                <ul class="nav navbar-nav navbar-right">
-                    <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?>
-                            Coins</span></div>
-                </ul>
-            <?php else: ?>
-                <ul class="nav navbar-form navbar-right">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#modals-sign"><b>New?</b> Sign up
-                        to play!
-                    </button>
-                </ul>
-            <?php endif; ?>
+        <?php if (logged()): ?>
+        <ul class="nav navbar-right">
+            <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?>
+                    Coins</span></div>
+        </ul>
+        <?php else: ?>
+            <ul class="nav navbar-right">
+                <button class="btn btn-primary signin_btn" data-toggle="modal" data-target="#modals-sign"><b>New?</b> Sign up
+                    to play!
+                </button>
+            </ul>
+        <?php endif; ?>
+        <div id="primary-nav" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="?p=blackjack">Blackjack</a></li>
                 <li><a href="?p=slots">Slots</a></li>
@@ -104,7 +104,7 @@ include __DIR__ . '/inc/start.php';
 <div class="navbar navbar-default navbar-fixed-top navbar-second">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#second-nav"
                     aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -118,9 +118,9 @@ include __DIR__ . '/inc/start.php';
                 <a class="navbar-brand">You are playing: <?php echo $game; ?></a>
             <?php endif; ?>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="second-nav" class="navbar-collapse collapse">
+            <?php if (logged()): ?>
             <ul class="navbar-form navbar-right">
-                <?php if (logged()): ?>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modals-withdraw">Withdraw</button>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modals-deposit">Deposit</button>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modals-transactions">
@@ -128,8 +128,9 @@ include __DIR__ . '/inc/start.php';
                     </button>
                     <?php if ($settings['giveaway']) : ?>
                         <button class="btn btn-primary" id="faucet_btn">Faucet</button>
-                    <?php endif;endif; ?>
+                    <?php endif; ?>
             </ul>
+            <?php endif; ?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a id="won_last">Won last 24h: <?php echo last_won('1 DAY'); ?> Coins</a></li>
                 <li><a id="biggest">Biggest win: <?php echo biggest_win(); ?> Coins</a></li>
@@ -144,7 +145,7 @@ else include $page . '.php'; ?>
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <h1 class="title">Winter white</h1>
                 <p><a href="#">About us</a></p>
                 <p><a href="#">Meet the team</a></p>
@@ -152,7 +153,7 @@ else include $page . '.php'; ?>
                 <p><a href="#">Get in touch</a></p>
                 <p><a href="#">Feedback</a></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <h1 class="title">Support</h1>
                 <p><a href="#">Need some help?</a></p>
                 <p><a href="#">Call us</a></p>
@@ -160,7 +161,7 @@ else include $page . '.php'; ?>
                 <p><a href="#">Frequently asked questions</a></p>
                 <p><a href="#">Get in touch</a></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <h1 class="title">Store</h1>
                 <p><a href="#">Shipping & prices</a></p>
                 <p><a href="#">International shipping</a></p>
@@ -168,7 +169,7 @@ else include $page . '.php'; ?>
                 <p><a href="#">Credit cards</a></p>
                 <p><a href="#">Privacy policy</a></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <h1 class="title">Winter white</h1>
                 <p><a href="#">About us</a></p>
                 <p><a href="#">Meet the team</a></p>
@@ -369,6 +370,7 @@ if (logged()):
                                     <th>Amount</th>
                                     <th>Coins</th>
                                     <th>Address/ID</th>
+                                    <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -384,6 +386,7 @@ if (logged()):
                                     <th>Amount</th>
                                     <th>Coins</th>
                                     <th>Address/ID</th>
+                                    <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>

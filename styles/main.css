@@ -340,7 +340,7 @@ a:focus,a:active {
   font-size: 15px;
   text-transform: uppercase;
   background: #278C0B;
-  margin: 15px 0px 15px 40px;
+  margin: 14px 0px 15px 40px;
 }
 .gray_a,.gray_a:active,.gray_a:focus {
   color: #278C0B;
@@ -391,7 +391,7 @@ a:focus,a:active {
 }
 .navbar-first{
   height: 70px;
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(30, 30, 30);
 }
 .navbar-second{
   height: 60px;
@@ -421,8 +421,8 @@ a:focus,a:active {
 .navbar-first .navbar-nav > li > a.active:hover, .navbar-first .navbar-nav > li.active > a:focus{
   background-color: inherit;
 }
-.navbar-first.navbar .btn{
-  margin: 14px 0px;
+.navbar-first.navbar .signin_btn{
+  margin: 19px 0px 15px 40px;
 }
 .navbar-second .navbar-nav > li > a, .navbar-second .navbar-brand{
   padding: 20px;
@@ -435,11 +435,15 @@ a:focus,a:active {
 .navbar-second .navbar-form{
   padding-right: 0px;
 }
-.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{
-  margin-left: 0px;
+@media (min-width: 1200px) {
+  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: 0px;
+  }
+  .navbar-second .navbar-brand, .navbar-second .navbar-brand:hover, .navbar-second .navbar-brand:focus {
+    margin: 15px 0px;
+  }
 }
-.navbar-second .navbar-brand, .navbar-second .navbar-brand:hover, .navbar-second .navbar-brand:focus{
-  height: 60px;
+.navbar-second .navbar-brand, .navbar-second .navbar-brand:hover, .navbar-second .navbar-brand:focus {
   background: #278C0B;
   padding: 5px 10px;
   height: auto;
@@ -454,6 +458,47 @@ a:focus,a:active {
 }
 .navbar .dropdown-menu > li > a:hover,.navbar .dropdown-menu > li > a:focus {
   background-color: #202020;
+}
+
+@media (max-width: 1199px){
+  .navbar-first .container{
+    background: rgb(30, 30, 30);
+    width: 100%;
+  }
+  .navbar-first .navbar-toggle{
+    margin-top: 15px;
+  }
+  .navbar-first .navbar-nav > li > a,.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    max-width: 150px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .navbar .dropdown-menu > li > a, .navbar .dropdown-menu > li > a:focus{
+    background: rgb(30, 30, 30);
+  }
+}
+
+@media (max-width: 1199px){
+  .navbar-second .container{
+    width: 100%;
+    background: #333;
+  }
+  .navbar-second .navbar-toggle{
+    margin-top: 12px;
+  }
+  .bal_status, .signin_btn{
+    position: fixed;
+    right: 80px;
+    top: 0px;
+  }
+  .navbar-default .navbar-form{
+    border-top: none;
+    margin-top: 0px;
+    text-align: center;
+  }
+  .navbar-default .navbar-brand, .navbar-second .chat-icon{
+    margin-left: 15px;
+  }
 }
 .game{
   margin-top: 70px;

@@ -502,7 +502,7 @@ function biggest_win($interval = ''){
 function get_deposits()
 {
     $deposits = '';
-    $query = db_query("SELECT * FROM `deposits` WHERE `confirmed`=1");
+    $query = db_query("SELECT * FROM `deposits` WHERE `player_id`=".$_SESSION['user_id']);
     while ($row = db_fetch_array($query)) {
         if ($row['currency'] == 'btc') {
             $name = 'Bitcoin';
@@ -510,14 +510,18 @@ function get_deposits()
             $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='" . $row['currency'] . "' LIMIT 1"));
             $name = $currency['currency'];
         }
-        $deposits .= '<tr><td>' . $name . '</td><td>' . $row['amount'] . '</td><td>' . $row['coins_amount'] . '</td><td>' . $row['address'] . '</td></tr>';
+
+        if($row['confirmed'])$status = 'Confirmed';
+        else $status = 'Initiated';
+
+        $deposits .= '<tr><td>' . $name . '</td><td>' . $row['amount'] . '</td><td>' . $row['coins_amount'] . '</td><td>' . $row['address'] . '</td><td>'.$status.'</td></tr>';
     }
     return $deposits;
 }
 function get_withdrawals()
 {
     $withdrawals = '';
-    $query = db_query("SELECT * FROM `withdrawals` WHERE `withdrawned`=1");
+    $query = db_query("SELECT * FROM `withdrawals`  WHERE `player_id`=".$_SESSION['user_id']);
     while ($row = db_fetch_array($query)) {
         if ($row['currency'] == 'btc') {
             $name = 'Bitcoin';
@@ -525,7 +529,11 @@ function get_withdrawals()
             $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`='" . $row['currency'] . "' LIMIT 1"));
             $name = $currency['currency'];
         }
-        $withdrawals .= '<tr><td>' . $name . '</td><td>' . $row['amount'] . '</td><td>' . $row['coins_amount'] . '</td><td>' . $row['address'] . '</td></tr>';
+
+        if($row['withdrawned'])$status = 'Confirmed';
+        else $status = 'Initiated';
+
+        $withdrawals .= '<tr><td>' . $name . '</td><td>' . $row['amount'] . '</td><td>' . $row['coins_amount'] . '</td><td>' . $row['address'] . '</td><td>'.$status.'</td></tr>';
     }
     return $withdrawals;
 }

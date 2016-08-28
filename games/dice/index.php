@@ -9,13 +9,13 @@
                 <button class="btn btn-sm btn-default" data-toggle="b_bet"><i class="glyphicon glyphicon-refresh"></i></button>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label id="under_over_txt">Roll under to win</label>
                         <span id="under_over_num" class="under_over_num" onclick="javascript:inverse();">49.50</span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label>Multiplier</label>
                         <div class="input-group">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label>Win chance</label>
                         <div class="input-group">
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="row" id="m_bet">
-                <div class="col-md-6">
+                <div class="col-xs-6">
                     <div class="form-group">
                         <label>Bet amount</label>
                         <div class="input-group">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-xs-6">
                     <div class="form-group">
                         <label>Profit on win</label>
                         <div class="input-group">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="row" id="b_bet">
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label>Operate</label>
                         <div class="radio">
@@ -80,7 +80,7 @@
                             <input id="bt_wager_bB" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                         </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label>On lose</label>
                         <div class="radio">
@@ -102,7 +102,7 @@
                         <input id="bB_max_loss_val" type="text" class="form-control" value="0" <?php if(!logged()) echo 'disabled'; ?>>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label>On win</label>
                         <div class="radio">
