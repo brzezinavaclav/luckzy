@@ -476,9 +476,6 @@ a:focus,a:active {
   .navbar .dropdown-menu > li > a, .navbar .dropdown-menu > li > a:focus{
     background: rgb(30, 30, 30);
   }
-}
-
-@media (max-width: 1199px){
   .navbar-second .container{
     width: 100%;
     background: #333;
@@ -498,6 +495,9 @@ a:focus,a:active {
   }
   .navbar-default .navbar-brand, .navbar-second .chat-icon{
     margin-left: 15px;
+  }
+  .navbar-second .navbar-nav{
+    text-align: center;
   }
 }
 .game{
