@@ -465,7 +465,15 @@ if (logged()):
         </div>
     </div>
 <?php endif; ?>
-<div class="leftblock"></div>
+<div class="leftblock">
+    <?php if($_COOKIE['chat'] != ''): ?>
+    <script>
+       $(window).load(function(){
+           leftCon('<?php echo $_COOKIE['chat']; ?>');
+       });
+    </script>
+    <?php endif; ?>
+</div>
 
 <div class="leftCon lc-chat" id="lc-chat">
 

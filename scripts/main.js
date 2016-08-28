@@ -360,6 +360,7 @@ function leftbox() {
     if (self.opened) {
 
       self.con = '';
+      $.cookie('chat', '', { expires: 7, path: '/' });
 
       self.$obj().animate({
         'width': 0,
@@ -479,13 +480,16 @@ function leftCon(con) {
   if (con == 'chat') {
     chatReceiveUpdates = true;
     $('.chat-input').tooltip();
+    $.cookie('chat', 'chat', { expires: 7, path: '/' });
   }
   if(con == 'chat-rooms'){
+    $.cookie('chat', 'chat-rooms', { expires: 7, path: '/' });
     $('.chat-users-toggle').removeClass('active');
     if($('.chat-rooms-toggle').hasClass('active')) $('.chat-rooms-toggle').addClass('active');
     else $('.chat-rooms-toggle').removeClass('active');
   }
   if(con == 'chat-users'){
+    $.cookie('chat', 'chat-users', { expires: 7, path: '/' });
     $('.chat-rooms-toggle').removeClass('active');
     if($('.chat-users-toggle').hasClass('active')) $('.chat-users-toggle').addClass('active');
     else $('.chat-users-toggle').removeClass('active');
