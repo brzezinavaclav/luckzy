@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/main.css" afterPath="$PROJECT_DIR$/styles/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="495" column="105" selection-start-line="495" selection-start-column="105" selection-end-line="495" selection-end-column="105" />
+            <state relative-caret-position="560">
+              <caret line="500" column="3" selection-start-line="500" selection-start-column="3" selection-end-line="500" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -143,13 +143,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="123" column="26" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
+            <state relative-caret-position="204">
+              <caret line="378" column="94" selection-start-line="378" selection-start-column="94" selection-end-line="378" selection-end-column="94" />
               <folding>
-                <marker date="1472397466577" expanded="true" signature="14773:14787" ph="..." />
+                <marker date="1472398843872" expanded="true" signature="14524:14538" ph="..." />
               </folding>
             </state>
           </provider>
@@ -220,9 +220,9 @@
         <option value="$PROJECT_DIR$/games/dice/index.php" />
         <option value="$PROJECT_DIR$/more.php" />
         <option value="$PROJECT_DIR$/support.php" />
-        <option value="$PROJECT_DIR$/scripts/main.js" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/styles/main.css" />
+        <option value="$PROJECT_DIR$/scripts/main.js" />
       </list>
     </option>
   </component>
@@ -626,12 +626,12 @@
       <workItem from="1472021418972" duration="27575000" />
       <workItem from="1472199489216" duration="2055000" />
       <workItem from="1472322523289" duration="773000" />
-      <workItem from="1472387016629" duration="8037000" />
+      <workItem from="1472387016629" duration="8866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="473360000" />
+    <option name="totallyTimeSpent" value="474189000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1202,16 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="123" column="26" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
-          <folding>
-            <marker date="1472397466577" expanded="true" signature="14773:14787" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="668">
@@ -1241,9 +1231,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="495" column="105" selection-start-line="495" selection-start-column="105" selection-end-line="495" selection-end-column="105" />
+        <state relative-caret-position="560">
+          <caret line="500" column="3" selection-start-line="500" selection-start-column="3" selection-end-line="500" selection-end-column="3" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="378" column="94" selection-start-line="378" selection-start-column="94" selection-end-line="378" selection-end-column="94" />
+          <folding>
+            <marker date="1472398843872" expanded="true" signature="14524:14538" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

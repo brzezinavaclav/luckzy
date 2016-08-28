@@ -376,9 +376,7 @@ function leftbox() {
 
         },
         'progress': function() {
-          $('.page').width($(window).width() - ( (self.$obj().outerWidth() -2 )  ));
-          $('.page').css('margin-left',self.$obj().width() + parseFloat(self.$obj().css('padding-left')) + parseFloat(self.$obj().css('padding-right')) );
-
+          $('.leftbuttons').css('left', self.$obj().outerWidth() + $('.lefbuttons').width() -2);
         }
       });
       $('.st-stats table').animate({
@@ -402,8 +400,7 @@ function leftbox() {
           self.scrollbar();
         },
         'progress': function() {
-          $('.page').width($(window).width() - ( self.$obj().outerWidth() + $('.lefbuttons').width() ));
-          $('.page').css('margin-left',self.$obj().outerWidth() + $('.lefbuttons').width());
+          $('.leftbuttons').css('left',self.$obj().outerWidth() + $('.lefbuttons').width());
         }
       });
 
