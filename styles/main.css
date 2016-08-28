@@ -493,7 +493,7 @@ a:focus,a:active {
     margin-top: 0px;
     text-align: center;
   }
-  .navbar-default .navbar-brand, .navbar-second .chat-icon{
+  .navbar-default .navbar-brand, .navbar-second .chat-icon, .navbar-default .navbar-brand:hover, .navbar-second .chat-icon{
     margin-left: 15px;
   }
   .navbar-second .navbar-nav{
