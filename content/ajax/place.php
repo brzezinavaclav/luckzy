@@ -44,7 +44,7 @@ if ($wager > $settings['bankroll_maxbet_ratio']) {
 }
 
   $server_seed = $player['dice_seed'];
-  $client_seed = (int)$player['client_seed'];
+  $client_seed = $player['client_seed'];
 
   $multiplier=round((double)$_GET['m'],2);
   $under_over=(int)$_GET['hl'];

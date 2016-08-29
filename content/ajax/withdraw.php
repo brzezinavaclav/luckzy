@@ -72,7 +72,7 @@ $address = '';
       else echo json_encode(array('error'=>'half'));
     }
     else{
-    $currency = db_fetch_array(db_query("SELECT `rate`, `instructions` FROM `currencies` WHERE `id`='".$_GET['c']."' LIMIT 1"));
+    $currency = db_fetch_array(db_query("SELECT `rate`, `instructions` FROM `currencies` WHERE `id`='".prot($_GET['c'])."' LIMIT 1"));
     $rate = $currency['rate'];
     }
     db_query("INSERT INTO `withdrawals` (`player_id`,`amount`,`coins_amount`,`currency`,`address`,`withdrawned`) VALUES ($player[id]," . $amount / $rate . ",$amount,'".prot($_GET['c'])."','$address', $withdrawned)");

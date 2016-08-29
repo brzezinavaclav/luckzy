@@ -25,8 +25,8 @@ if (isset($_GET['logout'])) {
 }
 
 if (!empty($_POST['username']) && !empty($_POST['passwd'])) {
-    if (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `username`='".prot($_POST['username'])."' AND `password`='".hash('sha256',$_POST['passwd'])."' LIMIT 1"))!=0) {
-      $user = db_fetch_array(db_query("SELECT * FROM `players` WHERE `username`='" . prot($_POST['username']) . "' AND `password`='" . hash('sha256', $_POST['passwd']) . "' LIMIT 1"));
+    if (db_num_rows(db_query("SELECT `id` FROM `players` WHERE `username`='".prot($_POST['username'])."' AND `password`='".hash('sha256',prot($_POST['passwd']))."' LIMIT 1"))!=0) {
+      $user = db_fetch_array(db_query("SELECT * FROM `players` WHERE `username`='" . prot($_POST['username']) . "' AND `password`='" . hash('sha256', prot($_POST['passwd'])) . "' LIMIT 1"));
       if (!empty($_POST['totp'])) {
         include '../../inc/ga_class.php';
         $verify = Google2FA::verify_key($user['ga_token'], $_POST['totp'], 0);

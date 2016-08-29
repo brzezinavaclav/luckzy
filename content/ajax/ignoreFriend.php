@@ -14,7 +14,7 @@ if(!isset($_GET['friend']) || db_num_rows(db_query("SELECT `id` FROM `players` W
     exit();
 }
 
-if(db_query("UPDATE `player_relations` SET `relation`=0 WHERE `player`=".$_SESSION['user_id']." AND `friend`=".$_GET['friend']) == false){
+if(db_query("UPDATE `player_relations` SET `relation`=0 WHERE `player`=".$_SESSION['user_id']." AND `friend`=".prot($_GET['friend'])) == false){
     echo json_encode(array('error'=>'yes', 'message'=>'MySQL error'));
     exit();
 }
