@@ -112,7 +112,7 @@ include __DIR__ . '/inc/start.php';
                 <span class="icon-bar"></span>
             </button>
             <?php if (logged()): ?>
-                <a class="chat-icon" onclick="leftCon('chat');"><span class="glyphicon glyphicon-comment"></span></a>
+                <a class="chat-icon" onclick="leftCon('<?php echo $_COOKIE['chat']; ?>');"><span class="glyphicon glyphicon-comment"></span></a>
             <?php endif; ?>
             <?php if ($game): ?>
                 <a class="navbar-brand">You are playing: <?php echo $game; ?></a>
@@ -466,7 +466,7 @@ if (logged()):
     </div>
 <?php endif; ?>
 <div class="leftblock">
-    <?php if($_COOKIE['chat'] != ''): ?>
+    <?php if($_COOKIE['chat'] != '' && logged()): ?>
     <script>
        $(window).load(function(){
            leftCon('<?php echo $_COOKIE['chat']; ?>');

@@ -235,6 +235,7 @@ a:focus,a:active {
   background-color: rgb(255,255,255);
   padding-top: 40px;
   min-height: 240px;
+  padding-bottom: 40px;
 }
 .st-stats table {
   margin-top: -80px;
