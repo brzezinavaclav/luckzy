@@ -84,12 +84,12 @@ a:focus,a:active {
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 .leftbuttons button:hover {
-  color: #278C0B;
+  color: #599b47;
   background-color: #333333;
   border-bottom: 1px solid rgba(0,0,0,0);
 }
 .leftbuttons button.active {
-  color: #278C0B;
+  color: #599b47;
   background-color: #333333;
   border-bottom: 1px solid rgba(0,0,0,0);
 }

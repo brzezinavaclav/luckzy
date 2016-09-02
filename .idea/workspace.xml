@@ -5,14 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/stats_load.php" afterPath="$PROJECT_DIR$/content/ajax/stats_load.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/bootstrap-coingames.css" afterPath="$PROJECT_DIR$/styles/bootstrap-coingames.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/styles/fonts/glyphicons-halflings-regular.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/main.css" afterPath="$PROJECT_DIR$/styles/main.css" />
     </list>
     <ignored path="matthew_vitale.iws" />
@@ -168,8 +160,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="447" column="35" selection-start-line="447" selection-start-column="35" selection-end-line="447" selection-end-column="35" />
+            <state relative-caret-position="207">
+              <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -651,12 +643,12 @@
       <workItem from="1472473156552" duration="1014000" />
       <workItem from="1472484018179" duration="5399000" />
       <workItem from="1472652375199" duration="1491000" />
-      <workItem from="1472802822190" duration="5606000" />
+      <workItem from="1472802822190" duration="6214000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="494621000" />
+    <option name="totallyTimeSpent" value="495229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1218,8 +1210,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="447" column="35" selection-start-line="447" selection-start-column="35" selection-end-line="447" selection-end-column="35" />
+        <state relative-caret-position="207">
+          <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
           <folding />
         </state>
       </provider>
