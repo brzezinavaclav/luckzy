@@ -18,6 +18,7 @@ include __DIR__ . '/inc/start.php';
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="./styles/jquery-ui.min.css">
     <link type="text/css" rel="stylesheet" href="./styles/bootstrap-coingames.css">
+    <link type="text/css" rel="stylesheet" href="./styles/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="./styles/mcs.css">
     <link type="text/css" rel="stylesheet" href="./styles/main.css">
     <link type="text/css" rel="stylesheet" href="./styles/themes/Basic/style.css" class="themeLinker">
@@ -88,7 +89,14 @@ include __DIR__ . '/inc/start.php';
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?p=more">More</a></li>
+                        <li><a href="?p=more"><span class="glyphicon glyphicon-user nav-icon"></span> Hall of fame</a></li>
+                        <li><a href="?p=more"><span class="glyphicon glyphicon-question-sign nav-icon"></span> FAQ</a></li>
+                        <li><a href="?p=more"><span class="glyphicon glyphicon-eye-open nav-icon"></span> Verification</a></li>
+                        <li><a href="?p=more"><span class="glyphicon glyphicon-piggy-bank nav-icon"></span> Affiliate</a></li>
+                        <li><a href="?p=more"><span class="fa fa-facebook nav-icon"></span> Facebook</a></li>
+                        <li><a href="?p=more"><span class="fa fa-twitter nav-icon"></span> Twitter</a></li>
+                        <li><a href="?p=more"><span class="fa fa-reddit nav-icon"></span> Reddit</a></li>
+                        <li><a href="?p=more"><span class="fa fa-bitcoin nav-icon"></span> Bitcoin talk</a></li>
                     </ul>
                 </li>
                 <?php if (logged()): ?>
@@ -112,7 +120,7 @@ include __DIR__ . '/inc/start.php';
                 <span class="icon-bar"></span>
             </button>
             <?php if (logged()): ?>
-                <a class="chat-icon" onclick="leftCon('<?php echo $_COOKIE['chat']; ?>');"><span class="glyphicon glyphicon-comment"></span></a>
+                <a class="chat-icon" onclick="leftCon('<?php if($_COOKIE['chat'] != '') echo $_COOKIE['chat']; else echo 'chat' ?>');"><span class="glyphicon glyphicon-comment"></span></a>
             <?php endif; ?>
             <?php if ($game): ?>
                 <a class="navbar-brand">You are playing: <?php echo $game; ?></a>

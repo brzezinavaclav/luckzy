@@ -81,7 +81,7 @@ foreach ( $stats as $key => $load ) {
     $person_q = db_query("SELECT `username` FROM `players` WHERE `id`=$row[player] LIMIT 1");
     $person = db_fetch_array($person_q);
     $username = $person['username'];
-    if ($username == '') $username = '[unknown]';
+    if ($username == '') $username = '[unregistered]';
     
     $isHidden = ($row['player'] == $player['id']) ? 1 : 0;
     if($game == 'slots') {
