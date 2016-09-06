@@ -293,7 +293,7 @@ function chatSend(val) {
     'url': './content/ajax/chatSend.php?_unique='+unique()+'&data='+dataToSend,
     'dataType': "json",
     'success': function(data) {
-      if (data['error']=='yes' && data['content']=='max_in_row') alert('You can\'t post more than 10 messages in a row.');
+      if(data['error']=='yes') alert(data['message']);    
       else {
         chatUpdate();
         $('.chat-input').val('');

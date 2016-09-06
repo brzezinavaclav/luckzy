@@ -119,9 +119,7 @@ include __DIR__ . '/inc/start.php';
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?php if (logged()): ?>
                 <a class="chat-icon" onclick="leftCon('<?php if($_COOKIE['chat'] != '') echo $_COOKIE['chat']; else echo 'chat' ?>');"><span class="glyphicon glyphicon-comment"></span></a>
-            <?php endif; ?>
             <?php if ($game): ?>
                 <a class="navbar-brand">You are playing: <?php echo $game; ?></a>
             <?php endif; ?>
@@ -474,7 +472,7 @@ if (logged()):
     </div>
 <?php endif; ?>
 <div class="leftblock">
-    <?php if($_COOKIE['chat'] != '' && logged()): ?>
+    <?php if($_COOKIE['chat'] != ''): ?>
     <script>
        $(window).load(function(){
            leftCon('<?php echo $_COOKIE['chat']; ?>');
@@ -485,10 +483,10 @@ if (logged()):
 
 <div class="leftCon lc-chat" id="lc-chat">
 
-    <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle"
-                            href="javascript:leftCon('chat-rooms');"></a> <a
-            class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px"
-            href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span>
+    <div class="heading">
+        <a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a>
+        <?php if(logged()): ?><a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a><?php endif; ?>
+        <span class="current_room"><?php echo $chat_room; ?></span>
     </div>
     <div class="content"></div>
     <div class="footer">
@@ -502,10 +500,10 @@ if (logged()):
 </div>
 
 <div class="leftCon lc-chat" id="lc-chat-rooms">
-    <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle"
-                            href="javascript:leftCon('chat');"></a> <a
-            class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px"
-            href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span>
+    <div class="heading">
+        <a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat');"></a>
+        <?php if(logged()): ?><a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a><?php endif; ?>
+        <span class="current_room"><?php echo $chat_room; ?></span>
     </div>
     <div class="content">
         <h5><b>Public chat rooms</b></h5>
@@ -517,10 +515,12 @@ if (logged()):
             ?>
             <div><a href="javascript:select_room(<?php echo $row['id'] ?>,0)"><?php echo $row['name'] ?></div></a>
         <?php endwhile; ?>
+        <?php if(logged()): ?>
         <h5><b>Private messages</b></h5>
         <div id="pms">
             <?php echo get_pms(); ?>
         </div>
+        <?php endif; ?>
         </a>
     </div>
   <div class="footer">
@@ -534,10 +534,10 @@ if (logged()):
 </div>
 
 <div class="leftCon lc-chat" id="lc-chat-users">
-    <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle"
-                            href="javascript:leftCon('chat-rooms');"></a> <a
-            class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px"
-            href="javascript:leftCon('chat');"></a> <span class="current_room"><?php echo $chat_room; ?></span></div>
+    <div class="heading">
+        <a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a>
+        <?php if(logged()): ?><a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat');"></a><?php endif; ?>
+        <span class="current_room"><?php echo $chat_room; ?></span></div>
     <div class="content">
         <div>
             <h5><b>My friends (<span class="friend_count"><?php echo count_friends(); ?></span>)</b> <a
@@ -574,7 +574,11 @@ if (logged()):
 </div>
 
 <div class="leftCon lc-chat" id="lc-chat-settings">
-  <div class="heading"><a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a> <a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a> <span class="current_room"><?php echo $chat_room; ?></span></div>
+  <div class="heading">
+      <a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a>
+      <?php if(logged()): ?><a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a><?php endif; ?>
+      <span class="current_room"><?php echo $chat_room; ?></span>
+  </div>
   <div class="content">
     <h5><b><Settings></Settings></b></h5>
       <div class="row" style="padding: 5px 0px">

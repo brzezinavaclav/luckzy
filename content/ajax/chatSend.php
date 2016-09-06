@@ -15,7 +15,10 @@ include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
 maintenance();
-if (!logged()) exit();
+if (!logged()){
+  echo json_encode(array('error'=>'yes','message'=>'Please sign in to send messages'));
+  exit();
+}
 if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
 $player=db_fetch_array(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
@@ -45,7 +48,7 @@ else {
 }
 
 if ($alone) {
-  echo json_encode(array('error'=>'yes','content'=>'max_in_row'));
+  echo json_encode(array('error'=>'yes','message'=>'You can\'t post more than 10 messages in a row .'));
   exit();
 }
 

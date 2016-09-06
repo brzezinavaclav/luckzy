@@ -15,7 +15,6 @@ include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
-if (!logged())exit();
 maintenance();
 $chat_room = '';
 if($_GET['pm'] == 1){
