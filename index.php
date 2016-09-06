@@ -493,7 +493,8 @@ if (logged()):
         <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
                title="Press ENTER to send">
       <div style="padding: 10px 0px">
-        <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+        <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span>
+        <?php if(logged()): ?><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span><?php endif; ?>
         <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
       </div>
     </div>
@@ -527,7 +528,8 @@ if (logged()):
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
-      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span>
+      <?php if(logged()): ?><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span><?php endif; ?>
       <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
@@ -567,16 +569,17 @@ if (logged()):
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
            title="Press ENTER to send">
     <div style="padding: 10px 0px">
-      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span>
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span>
+      <?php if(logged()): ?><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span><?php endif; ?>
       <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
 </div>
-
+<?php if(logged()): ?>
 <div class="leftCon lc-chat" id="lc-chat-settings">
   <div class="heading">
       <a class="glyphicon glyphicon-align-left chat-rooms-toggle" href="javascript:leftCon('chat-rooms');"></a>
-      <?php if(logged()): ?><a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a><?php endif; ?>
+      <a class="glyphicon glyphicon-user chat-users-toggle" style="padding: 0px 10px" href="javascript:leftCon('chat-users');"></a>
       <span class="current_room"><?php echo $chat_room; ?></span>
   </div>
   <div class="content">
@@ -597,10 +600,12 @@ if (logged()):
   <div class="footer">
     <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top" title="Press ENTER to send">
     <div style="padding: 10px 0px">
-      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span><span style="padding-left: 5px"><a href="javascript:leftCon('chat');" class="glyphicon glyphicon-cog"></a></span></span>
+      <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span>
+      <span style="padding-left: 5px"><a href="javascript:leftCon('chat');" class="glyphicon glyphicon-cog"></a></span></span>
       <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
     </div>
   </div>
 </div>
+<?php endif; ?>
 </body>
 </html>

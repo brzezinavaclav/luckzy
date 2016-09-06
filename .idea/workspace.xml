@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/chatSend.php" afterPath="$PROJECT_DIR$/content/ajax/chatSend.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/chatUpdate.php" afterPath="$PROJECT_DIR$/content/ajax/chatUpdate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/select_room.php" afterPath="$PROJECT_DIR$/content/ajax/select_room.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,15 +76,15 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="471" column="10" selection-start-line="471" selection-start-column="10" selection-end-line="471" selection-end-column="10" />
+            <state relative-caret-position="286">
+              <caret line="577" column="22" selection-start-line="577" selection-start-column="22" selection-end-line="577" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#a#1;n#div#0;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1473153723536" expanded="true" signature="10174:10200" ph="SELECT * FRO... currencies" />
-                <marker date="1473153723536" expanded="true" signature="12602:12628" ph="SELECT * FRO... currencies" />
-                <marker date="1473153723536" expanded="true" signature="15104:15130" ph="SELECT * FRO... currencies" />
-                <marker date="1473153723536" expanded="true" signature="16920:16946" ph="SELECT * FRO... currencies" />
-                <marker date="1473153723536" expanded="true" signature="27922:27964" ph="SELECT * FRO... chat_rooms" />
+                <marker date="1473154098933" expanded="true" signature="10174:10200" ph="SELECT * FRO... currencies" />
+                <marker date="1473154098933" expanded="true" signature="12602:12628" ph="SELECT * FRO... currencies" />
+                <marker date="1473154098933" expanded="true" signature="15104:15130" ph="SELECT * FRO... currencies" />
+                <marker date="1473154098933" expanded="true" signature="16920:16946" ph="SELECT * FRO... currencies" />
+                <marker date="1473154098933" expanded="true" signature="27968:28010" ph="SELECT * FRO... chat_rooms" />
               </folding>
             </state>
           </provider>
@@ -609,12 +604,12 @@
       <workItem from="1472484018179" duration="5399000" />
       <workItem from="1472652375199" duration="1491000" />
       <workItem from="1472802822190" duration="7159000" />
-      <workItem from="1473153137794" duration="587000" />
+      <workItem from="1473153137794" duration="954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="496761000" />
+    <option name="totallyTimeSpent" value="497128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1094,15 +1089,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="471" column="10" selection-start-line="471" selection-start-column="10" selection-end-line="471" selection-end-column="10" />
+        <state relative-caret-position="286">
+          <caret line="577" column="22" selection-start-line="577" selection-start-column="22" selection-end-line="577" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#a#1;n#div#0;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1473153723536" expanded="true" signature="10174:10200" ph="SELECT * FRO... currencies" />
-            <marker date="1473153723536" expanded="true" signature="12602:12628" ph="SELECT * FRO... currencies" />
-            <marker date="1473153723536" expanded="true" signature="15104:15130" ph="SELECT * FRO... currencies" />
-            <marker date="1473153723536" expanded="true" signature="16920:16946" ph="SELECT * FRO... currencies" />
-            <marker date="1473153723536" expanded="true" signature="27922:27964" ph="SELECT * FRO... chat_rooms" />
+            <marker date="1473154098933" expanded="true" signature="10174:10200" ph="SELECT * FRO... currencies" />
+            <marker date="1473154098933" expanded="true" signature="12602:12628" ph="SELECT * FRO... currencies" />
+            <marker date="1473154098933" expanded="true" signature="15104:15130" ph="SELECT * FRO... currencies" />
+            <marker date="1473154098933" expanded="true" signature="16920:16946" ph="SELECT * FRO... currencies" />
+            <marker date="1473154098933" expanded="true" signature="27968:28010" ph="SELECT * FRO... chat_rooms" />
           </folding>
         </state>
       </provider>
