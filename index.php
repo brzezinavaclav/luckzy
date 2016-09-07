@@ -16,6 +16,7 @@ include __DIR__ . '/inc/start.php';
 <head>
     <title><?php echo $settings['title'] . ' - ' . $settings['description']; ?></title>
     <meta charset="utf-8">
+    <meta name="google-site-verification" content="YtW9dYTSdjAityBVUQn_7gc84QMkGA7l63cg7qeM-50" />
     <link type="text/css" rel="stylesheet" href="./styles/jquery-ui.min.css">
     <link type="text/css" rel="stylesheet" href="./styles/bootstrap-coingames.css">
     <link type="text/css" rel="stylesheet" href="./styles/font-awesome.min.css">

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <ignored path="matthew_vitale.iws" />
@@ -30,7 +31,7 @@
       <file leaf-file-name="stats_load.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/ajax/stats_load.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
+            <state relative-caret-position="1581">
               <caret line="98" column="56" selection-start-line="98" selection-start-column="56" selection-end-line="98" selection-end-column="56" />
               <folding>
                 <marker date="1472807690561" expanded="true" signature="442:518" ph="SELECT `id` players" />
@@ -48,7 +49,7 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+            <state relative-caret-position="4879">
               <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
               <folding>
                 <marker date="1473153682758" expanded="true" signature="15194:15208" ph="..." />
@@ -76,15 +77,14 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="577" column="22" selection-start-line="577" selection-start-column="22" selection-end-line="577" selection-end-column="22" />
+            <state relative-caret-position="221">
+              <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
               <folding>
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1473154098933" expanded="true" signature="10174:10200" ph="SELECT * FRO... currencies" />
-                <marker date="1473154098933" expanded="true" signature="12602:12628" ph="SELECT * FRO... currencies" />
-                <marker date="1473154098933" expanded="true" signature="15104:15130" ph="SELECT * FRO... currencies" />
-                <marker date="1473154098933" expanded="true" signature="16920:16946" ph="SELECT * FRO... currencies" />
-                <marker date="1473154098933" expanded="true" signature="27968:28010" ph="SELECT * FRO... chat_rooms" />
+                <marker date="1473253953819" expanded="true" signature="10273:10299" ph="SELECT * FRO... currencies" />
+                <marker date="1473253953819" expanded="true" signature="12701:12727" ph="SELECT * FRO... currencies" />
+                <marker date="1473253953819" expanded="true" signature="15203:15229" ph="SELECT * FRO... currencies" />
+                <marker date="1473253953819" expanded="true" signature="17019:17045" ph="SELECT * FRO... currencies" />
+                <marker date="1473253953819" expanded="true" signature="28067:28109" ph="SELECT * FRO... chat_rooms" />
               </folding>
             </state>
           </provider>
@@ -152,7 +152,7 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
+            <state relative-caret-position="1462">
               <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
               <folding />
             </state>
@@ -271,7 +271,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -487,6 +486,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,7 +494,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../roulette_game" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../travel" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="insure&#9;null&#9;null" />
@@ -604,18 +604,19 @@
       <workItem from="1472484018179" duration="5399000" />
       <workItem from="1472652375199" duration="1491000" />
       <workItem from="1472802822190" duration="7159000" />
-      <workItem from="1473153137794" duration="954000" />
+      <workItem from="1473153137794" duration="1234000" />
+      <workItem from="1473253935565" duration="34000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="497128000" />
+    <option name="totallyTimeSpent" value="497442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21770833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -966,15 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="74" column="119" selection-start-line="74" selection-start-column="119" selection-end-line="74" selection-end-column="119" />
-          <folding>
-            <marker date="1472497864802" expanded="true" signature="538:632" ph="SELECT `id`,... players" />
-            <marker date="1472497864802" expanded="true" signature="981:1024" ph="SELECT * FRO... system" />
-            <marker date="1472497864802" expanded="true" signature="1733:1812" ph="UPDATE `play... " />
-            <marker date="1472497864802" expanded="true" signature="2086:2201" ph="INSERT INTO `transactions`... " />
-            <marker date="1472497864802" expanded="true" signature="2386:2446" ph="SELECT `rate... currencies" />
-            <marker date="1472497864802" expanded="true" signature="2386:2475" ph="SELECT `rate... currencies" />
-            <marker date="1472497864802" expanded="true" signature="2531:2730" ph="INSERT INTO `withdrawals`... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,7 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="3" column="593" selection-start-line="3" selection-start-column="593" selection-end-line="3" selection-end-column="593" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,7 +1007,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="1462">
           <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
           <folding />
         </state>
@@ -1049,7 +1040,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/stats_load.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
+        <state relative-caret-position="1581">
           <caret line="98" column="56" selection-start-line="98" selection-start-column="56" selection-end-line="98" selection-end-column="56" />
           <folding>
             <marker date="1472807690561" expanded="true" signature="442:518" ph="SELECT `id` players" />
@@ -1065,7 +1056,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="4879">
           <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
           <folding>
             <marker date="1473153682758" expanded="true" signature="15194:15208" ph="..." />
@@ -1089,15 +1080,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="577" column="22" selection-start-line="577" selection-start-column="22" selection-end-line="577" selection-end-column="22" />
+        <state relative-caret-position="221">
+          <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
           <folding>
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#10;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1473154098933" expanded="true" signature="10174:10200" ph="SELECT * FRO... currencies" />
-            <marker date="1473154098933" expanded="true" signature="12602:12628" ph="SELECT * FRO... currencies" />
-            <marker date="1473154098933" expanded="true" signature="15104:15130" ph="SELECT * FRO... currencies" />
-            <marker date="1473154098933" expanded="true" signature="16920:16946" ph="SELECT * FRO... currencies" />
-            <marker date="1473154098933" expanded="true" signature="27968:28010" ph="SELECT * FRO... chat_rooms" />
+            <marker date="1473253953819" expanded="true" signature="10273:10299" ph="SELECT * FRO... currencies" />
+            <marker date="1473253953819" expanded="true" signature="12701:12727" ph="SELECT * FRO... currencies" />
+            <marker date="1473253953819" expanded="true" signature="15203:15229" ph="SELECT * FRO... currencies" />
+            <marker date="1473253953819" expanded="true" signature="17019:17045" ph="SELECT * FRO... currencies" />
+            <marker date="1473253953819" expanded="true" signature="28067:28109" ph="SELECT * FRO... chat_rooms" />
           </folding>
         </state>
       </provider>
