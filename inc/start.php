@@ -72,13 +72,13 @@ if($page == 'blackjack' || $page == 'slots' || $page == 'dice')  $game = $page;
 else $game = false;
 
 if(isset($_GET['verify']) && !empty($_GET['verify'])){
-  $result = db_query("UPDATE `players` SET state=1 WHERE `activation_hash`='" . $_GET['verify']. "'");
+  $result = db_query("UPDATE `players` SET state=1 WHERE `activation_hash`='" . $_GET['verify']. "' AND `state`=0");
   if(!empty($result)) {
     $p_alert = '<div class="alert p_alert alert-success alert-dismissable">Your account has been activated.<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>';
   } else {
     $p_alert = '<div class="alert p_alert alert-danger alert-dismissable">Problem in account activation.<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>';
   }
-  $p_alert .= '<script>$(document).ready(function(){$(".p_alert").fadeTo(2000,500).slideUp(500,function(){$(".p_alert").slideUp(500);});});</script>';
+  $p_alert .= '<script>$(document).ready(function(){$(".p_alert").fadeTo(10000,500).slideUp(500,function(){$(".p_alert").slideUp(500);});});</script>';
 };
 
 $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
