@@ -44,6 +44,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
         $mail = new PHPMailer;
 
         if($settings['smtp_enabled']){
+            $mail->SMTPDebug  = 1;
             $mail->isSMTP();
             $mail->Host = $settings['smtp_server'];
             $mail->SMTPAuth = (bool)$settings['smtp_auth'];
