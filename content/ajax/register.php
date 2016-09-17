@@ -6,15 +6,13 @@
  *  More licences we sell, more products we develop in the future.  
 */
 
-
 header('X-Frame-Options: DENY');
-
 error_reporting(0);
+
 $init=true;
 include '../../inc/db-conf.php';
 include '../../inc/db_functions.php';
 include '../../inc/functions.php';
-include '../../inc/phpmailer/PHPMailerAutoload.php';
 
 $settings=db_fetch_array(db_query("SELECT * FROM `system` LIMIT 1"));
 
@@ -41,32 +39,7 @@ if (!empty($_POST['username']) && !empty($_POST['passwd']) && !empty($_POST['re_
 
         $actual_link = "http://".$settings['url']."?verify=" . $activation_hash;
 
-        $mail = new PHPMailer;
-
-        if($settings['smtp_enabled']){
-            $mail->isSMTP();
-            $mail->Host = $settings['smtp_server'];
-            $mail->SMTPAuth = (bool)$settings['smtp_auth'];
-            $mail->Username = $settings['email'];
-            $mail->Password = $settings['smtp_password'];
-            if($settings['smtp_encryption'] == 0){
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-            }
-            else{
-                $mail->SMTPSecure = 'ssl';
-                $mail->Port = 25;
-            }
-        }
-
-        $mail->setFrom($settings['email'], 'Luckzy online casino');
-        $mail->addAddress($_POST['email']);
-        $mail->CharSet = 'UTF-8';
-        $mail->IsHTML(true);
-        $mail->Subject = 'Registration activation email';
-        $mail->Body    = 'Click this link to activate your account. <a href="'.$actual_link.'">'.$actual_link .'</a>';
-
-        if(!$mail->send()) {
+        if(!send_mail($_POST['email'], 'Registration activation email', 'Click this link to activate your account. <a href="'.$actual_link.'">'.$actual_link .'</a>')) {
             echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent. Mail error: '.$mail->ErrorInfo));
             exit();
         }

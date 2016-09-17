@@ -10,11 +10,15 @@ include __DIR__.'/../../inc/functions.php';
 if (!isset($_SESSION['logged_']) || $_SESSION['logged_']!==true) exit();
 
 $settings = db_fetch_array(db_query("SELECT * FROM `system` LIMIT 1"));
+$allowed =  array('gif','png' ,'jpg', 'JPG', 'JPEG');
+$ext_error = false;
 
 if(!is_array($_FILES) || !isset($_GET['tid'])) exit();
-    $files = array();
-    for ($i = 0; $i < count($_FILES['file']['name']); $i++){
-        if(is_uploaded_file($_FILES['file']['tmp_name'][$i])) {
+
+$files = array();
+for ($i = 0; $i < count($_FILES['file']['name']); $i++){
+    if(is_uploaded_file($_FILES['file']['tmp_name'][$i])) {
+        if(in_array(pathinfo($_FILES['file']['name'][$i], PATHINFO_EXTENSION), $allowed)){
             $sourcePath = $_FILES['file']['tmp_name'][$i];
             $name = substr($_FILES['file']['name'][$i], 0, strpos($_FILES['file']['name'][$i], '.')) . substr($_FILES['file']['name'][$i],strpos($_FILES['file']['name'][$i], '.'));
             $count = 0;
@@ -28,7 +32,10 @@ if(!is_array($_FILES) || !isset($_GET['tid'])) exit();
                 exit();
             }
             $path = "http://".$settings['url']."/admin/screenshots/".$name;
-            db_query("INSERT INTO `screenshots` (`tid`, `name`, `path`) VALUES(".$_GET['tid'].", '$name', '$path')");
+            db_query("INSERT INTO `screenshots` (`tid`, `name`, `path`, `type`) VALUES(".$_GET['tid'].", '$name', '$path', '".$_GET['type']."')");
         }
+        else $ext_error = true;
     }
-echo json_encode(array('error' => 'no'));
+}
+if($ext_error) echo json_encode(array('error' => 'yes', 'message' => 'You can upload pictures only.'));
+else echo json_encode(array('error' => 'no'));

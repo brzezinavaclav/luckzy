@@ -1,4 +1,5 @@
 var ajaxBetLock = false;
+var loginModal;
 
 function spinLock() {
   this.spinning = 0;
@@ -45,6 +46,9 @@ function spinLock() {
 var lock = new spinLock();
 
 $(document).ready(function (){
+
+  loginModal = $('#modals-login .modal-body').html();
+
   var selected = false;
   $('.navbar-first .navbar-nav > li > a').each(function (){
     if(location.href.indexOf($(this).attr('href')) != -1){
@@ -169,6 +173,10 @@ $(document).ready(function (){
     $('.m_alert').hide();
   });
 
+  $('#modals-login').on('show.bs.modal',function(){
+    $('#modals-login .modal-body').html(loginModal);
+  });
+
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     $('.m_alert').hide();
   });
@@ -278,7 +286,7 @@ function setLeftbarH() {
   leftbox.$obj().height( $(window).height() - 130 );
   $('.leftCon').each(function(){
     var footer = $(this).children('.footer').outerHeight();
-    $(this).children('.content').css('height', parseInt($(window).height()) - 130 - 74 - footer );
+    $(this).children('.content').css('height', parseInt($(window).height()) - 130 - 68         - footer );
   });
   
 }
@@ -965,5 +973,69 @@ function chat_status(elem, status){
   $.ajax({
     'url': "./content/ajax/chat_status.php?status="+status+"&_unique="+unique(),
     'dataType': "json"
+  });
+}
+function forgot_password(){
+  $('#modals-login .modal-body').html('<div class="m_alert"></div><div class="form-group"><label for="email">Email:</label><input type="email" id="email" class="form-control" onkeydown="if (event.keyCode == 13) reset_password();"></div><button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="reset_password();">Send reset link </button>');
+}
+function reset_password(){
+  $.ajax({
+    'url': "./content/ajax/reset_password.php?email="+$('#modals-login #email').val(),
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no'){
+        m_alert('success', 'The password reset link has been sent to your email.');
+      }
+      else if(data['error'] == 'yes') m_alert('danger', data['message']);;
+    }
+  });
+}
+function save_password(player) {
+  $.ajax({
+    'url': './content/ajax/save_password.php',
+    'dataType': "json",
+    'method': 'POST',
+    'data': {id: player, passwd: $('#modals-reset #passwd').val(), re_passwd: $('#modals-reset #re_passwd').val()},
+    'success': function(data) {
+      if(data['error'] == 'no') {
+        m_alert('success', 'Password has been saved');
+        $('#modals-reset #passwd').val('');
+        $('#modals-reset #re_passwd').val('');
+      }
+      else m_alert('danger',data['message']);
+    }
+  });
+}
+function p_alert(status, message){
+  $('#p_alert').html('<div class="alert p_alert alert-'+status+' alert-dismissable"><b>'+message+'</b><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>');
+  $(".p_alert").fadeTo(10000,500).slideUp(500,function(){$(".p_alert").slideUp(500);});
+}
+function save_account_settings(){
+  $.ajax({
+    'url': './content/ajax/save_account_settings.php',
+    'dataType': "json",
+    'method': 'POST',
+    'data': {username: $('#account_settings #username').val(),email: $('#account_settings #email').val(),  passwd: $('#account_settings #passwd').val(), re_passwd: $('#account_settings #re_passwd').val()},
+    'success': function(data) {
+      if(data['error'] == 'no') {
+        $('#account_settings #passwd').val('');
+        $('#account_settings #re_passwd').val('');
+        p_alert('success', 'Settings has been saved');
+      }
+      else p_alert('danger',data['message']);
+    }
+  });
+}
+
+function resend_activation(){
+  $.ajax({
+    'url': './content/ajax/resend_activation.php',
+    'dataType': "json",
+    'success': function(data) {
+      if(data['error'] == 'no') {
+        p_alert('success', 'Verification link was send to your email');
+      }
+      else p_alert('danger',data['message']);
+    }
   });
 }

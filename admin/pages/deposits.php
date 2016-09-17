@@ -13,9 +13,17 @@ if (!empty($_GET['confirmDP']) || !empty($_GET['deleteDP'])) {
     if (db_num_rows($dp_q) != 0) {
 
         $dp = db_fetch_array($dp_q);
-
+        $currency = '';
         if ($m == 'confirm' && $dp['confirmed'] == 0) {
-            db_query("UPDATE `players` SET `balance`=`balance`+" . $dp['coins_amount'] . " WHERE `id`=$dp[player_id] LIMIT 1");
+            if($dp['currency'] == 'btc'){
+                $currency = 'btc_balance';
+            }
+            else{
+                $currency = db_fetch_array(db_query("SELECT `currency` FROM `currencies` WHERE `id`=".$dp['currency']." LIMIT 1"));
+                $currency = $currency['currency'].'_balance';
+            }
+
+            db_query("UPDATE `players` SET `balance`=`balance`+" . $dp['coins_amount'] . ", `$currency`=`$currency`+" . $dp['amount'] . " WHERE `id`=$dp[player_id] LIMIT 1");
             db_query("UPDATE `deposits` SET `confirmed`=1 WHERE `id`=$dp[id] LIMIT 1");
 
             echo '<div class="zprava zpravagreen"><b>Success:</b> Deposit confirmed.</div>';
@@ -31,6 +39,7 @@ if(isset($_GET['c'])) $where = " AND `currency`='".$_GET['c']."'";
 $query=db_query("SELECT * FROM `deposits` WHERE `received`=1 $where ORDER BY `time_generated`");
 
 if(isset($_GET['uploaded'])) echo '<div class="zprava zpravagreen"><b>Success!</b> Data was successfuly saved.</div>';
+if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.$_GET['message'].'</div>';
 ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
@@ -55,7 +64,7 @@ if(isset($_GET['uploaded'])) echo '<div class="zprava zpravagreen"><b>Success!</
                 formData.append('file[]', $(this).get(0).files[i]);
             }
             $.ajax({
-                url: "ajax/upload_screenshot.php?tid="+id,
+                url: "ajax/upload_screenshot.php?tid="+id+"&type=deposit",
                 type: "POST",
                 data:  formData,
                 xhr: function() {
@@ -73,6 +82,7 @@ if(isset($_GET['uploaded'])) echo '<div class="zprava zpravagreen"><b>Success!</
                     if(data['error'] == 'no'){
                         window.location.href = '?p=deposits&uploaded';
                     }
+                    else window.location.href = '?p=deposits&error&message='+data['message'];
                 }
             });
         });
@@ -157,7 +167,7 @@ if(isset($_GET['uploaded'])) echo '<div class="zprava zpravagreen"><b>Success!</
 
                     $actions = '<a style="margin-right: 10px" title="Upload screenshot" href="#" onclick="upload_screenshot('.$dp['id'].')"><span class="glyphicon glyphicon-upload"></a>';
 
-                    $screenshots = db_query("SELECT * FROM `screenshots` WHERE `tid`=".$dp['id']);
+                    $screenshots = db_query("SELECT * FROM `screenshots` WHERE `tid`=".$dp['id']." AND `type`='deposit'");
                     if(db_num_rows($screenshots) != 0){
                         while ($screenshot = db_fetch_array($screenshots)) {
                                 $shots .= '<a style="margin-right: 10px" data-title="'.$screenshot['name'].'" href="'.$screenshot['path'].'" data-lightbox="'.$dp['id'].'"><img src="'.$screenshot['path'].'" height="10" width="10"></a>';

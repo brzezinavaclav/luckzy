@@ -47,6 +47,7 @@ if (isset($init) && $logged==true) {
     if (isset($_POST['new_currency'])) {
         $enable=(isset($_POST['enabled']))?1:0;
         db_query("INSERT INTO `currencies` (`currency`, `enabled`, `rate`, `min_deposit`,`instructions`) VALUES('".$_POST['currency']."', $enable, ".$_POST['rate'].", ".$_POST['min_deposit'].", '".$_POST['instructions']."')");
+        db_query("ALTER TABLE `players` ADD `".$_POST['currency']."_balance` int(255) NOT NULL");
     }
 
   if (isset($_POST['theme'])) {

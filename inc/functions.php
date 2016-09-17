@@ -7,8 +7,9 @@
 */
 
 if (!isset($init)) exit();
-
 session_start();
+
+include 'phpmailer/PHPMailerAutoload.php';
 
 function prot($hodnota, $max_delka = 0)
 {
@@ -665,4 +666,35 @@ function get_pms(){
 
 function online_count(){
     return db_num_rows(db_query("SELECT `id` FROM `players` WHERE `time_last_active` > NOW() - INTERVAL 10 MINUTE AND `chat_status`=1 AND `password`!=''"));
+}
+
+function send_mail($to, $subject, $body){
+    $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1"));
+    $mail = new PHPMailer;
+
+    if($settings['smtp_enabled']){
+        $mail->isSMTP();
+        $mail->Host = $settings['smtp_server'];
+        $mail->SMTPAuth = (bool)$settings['smtp_auth'];
+        $mail->Username = $settings['email'];
+        $mail->Password = $settings['smtp_password'];
+        if($settings['smtp_encryption'] == 0){
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+        }
+        else{
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 25;
+        }
+    }
+
+    $mail->setFrom($settings['email'], 'Luckzy online casino');
+    $mail->addAddress($to);
+    $mail->CharSet = 'UTF-8';
+    $mail->IsHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = $body;
+    
+    return $mail->send();
+
 }

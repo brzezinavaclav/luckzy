@@ -55,6 +55,7 @@ include __DIR__ . '/inc/start.php';
     </script>
 </head>
 <body>
+<div id="p_alert">
 <?php echo $p_alert; ?>
 </div>
 <div class="navbar navbar-default navbar-fixed-top navbar-first">
@@ -248,17 +249,19 @@ if (logged()):
                                 ?>
                                 <div role="tabpanel" class="tab-pane" id="d_<?php echo $row['id']; ?>">
                                     <div class="form-group">
-                                        <label for="input-am">Enter the amount of coins you want to deposit
-                                            (min. <?php echo $row['min_deposit'] . ' ' . $row['currency']; ?>):</label>
-                                        <input type="text" class="form-control" id="d_amount_<?php echo $row['id']; ?>"
-                                               onkeydown="if (event.keyCode == 13) deposit('<?php echo $row['id']; ?>');">
-                                        <small><i>(1 <?php echo $row['currency']; ?> = <?php echo $row['rate']; ?>
-                                                Coins)</i></small>
+                                        <label for="input-am">Enter the amount you want to deposit (min. <?php echo $row['min_deposit'] . ' ' . $row['currency']; ?>):</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label><b><?php echo $row['currency']; ?></b></label>
+                                                <input type="text" class="form-control" id="d_amount_<?php echo $row['id']; ?>" onkeydown="if (event.keyCode == 13) deposit('<?php echo $row['id']; ?>');" onkeyup="$('#d_amount_<?php echo $row['id']; ?>_coins').val($(this).val()*<?php echo $row['rate']; ?>)">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label><b>Luckzy coins</b></label>
+                                                <b style="position: absolute;top: 32px;left: -3px;">=</b><input type="text" class="form-control" id="d_amount_<?php echo $row['id']; ?>_coins" onkeydown="if (event.keyCode == 13) deposit('<?php echo $row['id']; ?>');" onkeyup="$('#d_amount_<?php echo $row['id']; ?>').val($(this).val()/<?php echo $row['rate']; ?>)">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <button class="btn  btn-primary"
-                                            style="height: 39px;line-height:39px; padding: 0 20px;"
-                                            onclick="deposit('<?php echo $row['id']; ?>');">Deposit
-                                    </button>
+                                    <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;" onclick="deposit('<?php echo $row['id']; ?>');">Deposit </button>
                                 </div>
                             <?php endif;endwhile; ?>
                     </div>
@@ -291,6 +294,7 @@ if (logged()):
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="w_btc">
+                            <div><small><b>Your Bitcoin Balance:</b> <?php echo $player['btc_balance']; ?> <b>| Coin value: </b><?php echo round(bcmul($player['btc_balance'],$settings['btc_rate']),2); ?> (<?php echo round(bcmul(bcdiv(bcmul($player['btc_balance'],$settings['btc_rate']),$player['balance']),100),2); ?>% of your balance)</small></div>
                             <div class="form-group">
                                 <label for="input-address">Enter valid BTC address:</label>
                                 <input type="text" class="form-control" id="w_btc_address">
@@ -311,6 +315,7 @@ if (logged()):
                             if ($row['enabled']):
                                 ?>
                                 <div role="tabpanel" class="tab-pane" id="w_<?php echo $row['id']; ?>">
+                                    <div><small><b>Your <?php echo $row['currency']; ?> Balance:</b> <?php echo $player[$row['currency'].'_balance']; ?> <b>| Coin value: </b><?php echo round(bcmul($player[$row['currency'].'_balance'],$row['rate']),2); ?> (<?php echo round(bcmul(bcdiv(bcmul($player[$row['currency'].'_balance'],$row['rate']),$player['balance']),100),2); ?>% of your balance)</small></div>
                                     <div class="form-group">
                                         <label for="input-am">Enter the amount of coins you want to withdraw
                                             (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
@@ -431,6 +436,7 @@ if (logged()):
                         <label for="input-username">Google authentication code:</label>
                         <input type="text" id="totp" class="form-control" onkeydown="if (event.keyCode == 13) login();">
                     </div>
+                    <div style="margin-bottom: 10px"><a href="javascript:forgot_password();">Forgot password?</a></div>
                     <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;"
                             onclick="login();">Login
                     </button>
@@ -464,14 +470,45 @@ if (logged()):
                         <input id="re_passwd" type="password" class="form-control"
                                onkeydown="if (event.keyCode == 13) register();">
                     </div>
-                    <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;"
+                    <button class="btn btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;"
                             onclick="register();">Sign up
                     </button>
                 </div>
             </div>
         </div>
     </div>
-<?php endif; ?>
+    <?php if(isset($_GET['reset']) && db_num_rows(db_query("SELECT `id` FROM `players` WHERE `password_reset_hash`='".$_GET['teset']."' LIMIT 1")) != 0){
+        $player = db_fetch_array(db_query("SELECT `id` FROM `players` WHERE `password_reset_hash`='".$_GET['reset']."' LIMIT 1"));
+     ?>
+    <div class="modal fade" id="modals-reset" aria-labelledby="mlabels-reset" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="mlabels-teset">Reset password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="m_alert"></div>
+                    <div class="form-group">
+                        <label for="input-password">Password</label>
+                        <input id="passwd" type="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-password">Re-type password</label>
+                        <input id="re_passwd" type="password" class="form-control"
+                               onkeydown="if (event.keyCode == 13) save_password(<?php echo $player['id'] ?>);">
+                    </div>
+                    <button class="btn  btn-primary" style="height: 39px;line-height:39px; padding: 0 20px;"
+                            onclick="save_password(<?php echo $player['id'] ?>);">Save password
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#modals-reset').modal('show');
+    </script>
+<?php } endif; ?>
 <div class="leftblock">
     <?php if($_COOKIE['chat'] != ''): ?>
     <script>
@@ -493,10 +530,12 @@ if (logged()):
     <div class="footer">
         <input type="text" class="chat-input" placeholder="Type your message" data-toggle="tooltip" data-placement="top"
                title="Press ENTER to send">
-      <div style="padding: 10px 0px">
-        <span style="position: relative; top: 7px;">Online users: <span class="online-users"><?php echo online_count(); ?></span>
-        <?php if(logged()): ?><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span></span><?php endif; ?>
+      <div style="padding: 15px 0px 0px;display: inline-block;width: 100%;">
+        <div style="float: left; padding-top: 7px">Online users: <span class="online-users"><?php echo online_count(); ?></span>
+            <?php if(logged()): ?><span style="padding-left: 5px"><a href="javascript:leftCon('chat-settings');" class="glyphicon glyphicon-cog"></a></span><?php endif; ?>
+        </div>
         <button class="chat-send btn btn-primary btn-sm" style="float: right">Send</button>
+      </div>
       </div>
     </div>
 </div>
