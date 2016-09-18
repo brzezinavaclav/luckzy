@@ -185,7 +185,7 @@ $(document).ready(function (){
 });
 
 function withdraw(currency) {
-  var amount = $('#w_amount_'+currency).val();
+  var amount = $('#w_amount_'+currency).val().trim();
   $.ajax({
     'url': './content/ajax/withdraw.php?_unique='+unique()+'&valid_addr='+$('#w_btc_address').val()+'&amount='+amount+'&c='+currency,
     'dataType': "json",

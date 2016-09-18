@@ -50,12 +50,6 @@ if (isset($init) && $logged==true) {
         db_query("ALTER TABLE `players` ADD `".$_POST['currency']."_balance` int(255) NOT NULL");
     }
 
-  if (isset($_POST['theme'])) {
-    $theme=prot($_POST['theme']);
-    $usertheme=(isset($_POST['usertheme']))?1:0;
-    
-    db_query("UPDATE `system` SET `usertheme`=$usertheme,`active_theme`='".$theme."' LIMIT 1");
-  }
 
   if (isset($_GET['maintenance'])) {
     db_query("UPDATE `system` SET `maintenance`=1-`maintenance` LIMIT 1");    

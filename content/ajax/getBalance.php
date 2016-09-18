@@ -22,6 +22,5 @@ $player=db_fetch_array(db_query("SELECT `balance`,`id` FROM `players` WHERE `has
 maintenance();
 
 
-
 echo json_encode(array('balance'=>$player['balance']));
-?>
+

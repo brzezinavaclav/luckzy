@@ -275,7 +275,7 @@ if (logged()):
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="mlabels-withdraw">Withdraw Funds - Your Coin
-                        Balance: <?php echo $player['balance']; ?></h4>
+                        Balance: <span class="balance"><?php echo $player['balance']; ?></span></h4>
                 </div>
                 <div class="modal-body">
                     <div class="m_alert"></div>
@@ -294,13 +294,13 @@ if (logged()):
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="w_btc">
-                            <div><small><b>Your Bitcoin Balance:</b> <?php echo $player['btc_balance']; ?> <b>| Coin value: </b><?php echo round(bcmul($player['btc_balance'],$settings['btc_rate']),2); ?> (<?php echo round(bcmul(bcdiv(bcmul($player['btc_balance'],$settings['btc_rate']),$player['balance']),100),2); ?>% of your balance)</small></div>
+                            <div><small><b>Your Bitcoin Balance:</b> <span class="btc_balance"><?php echo $player['btc_balance']; ?></span> <b>| Coin value: </b><span class="btc_value"><?php echo round(bcmul($player['btc_balance'],$settings['btc_rate']),2); ?></span> (<span class="btc_mod"><?php echo round(bcmul(bcdiv(bcmul($player['btc_balance'],$settings['btc_rate']),$player['balance']),100),2); ?></span>% of your balance)</small></div>
                             <div class="form-group">
                                 <label for="input-address">Enter valid BTC address:</label>
                                 <input type="text" class="form-control" id="w_btc_address">
                             </div>
                             <div class="form-group">
-                                <label for="input-am">Enter the amount of coins you want to withdraw
+                                <label for="input-am">Enter the amount of <b>coins</b> you want to withdraw
                                     (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
                                 <input type="text" class="form-control" id="w_amount_btc" style="width:150px;"
                                        onkeydown="if (event.keyCode == 13) withdraw('btc');">
@@ -315,9 +315,9 @@ if (logged()):
                             if ($row['enabled']):
                                 ?>
                                 <div role="tabpanel" class="tab-pane" id="w_<?php echo $row['id']; ?>">
-                                    <div><small><b>Your <?php echo $row['currency']; ?> Balance:</b> <?php echo $player[$row['currency'].'_balance']; ?> <b>| Coin value: </b><?php echo round(bcmul($player[$row['currency'].'_balance'],$row['rate']),2); ?> (<?php echo round(bcmul(bcdiv(bcmul($player[$row['currency'].'_balance'],$row['rate']),$player['balance']),100),2); ?>% of your balance)</small></div>
+                                    <div><small><b>Your <?php echo $row['currency']; ?> Balance:</b> <span class="<?php echo $row['currency']; ?>_balance"><?php echo $player[$row['currency'].'_balance']; ?></span> <b>| Coin value: </b><span class="<?php echo $row['currency']; ?>_value"><?php echo round(bcmul($player[$row['currency'].'_balance'],$row['rate']),2); ?></span> (<span class="<?php echo $row['currency']; ?>_mod"><?php echo round(bcmul(bcdiv(bcmul($player[$row['currency'].'_balance'],$row['rate']),$player['balance']),100),2); ?></span>% of your balance)</small></div>
                                     <div class="form-group">
-                                        <label for="input-am">Enter the amount of coins you want to withdraw
+                                        <label for="input-am">Enter the amount of <b>coins</b> you want to withdraw
                                             (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>
                                         <input type="text" class="form-control" id="w_amount_<?php echo $row['id']; ?>"
                                                onkeydown="if (event.keyCode == 13) withdraw('<?php echo $row['id']; ?>');">
