@@ -102,10 +102,10 @@ $(document).ready(function (){
   },10000);
   imitateCRON();
   setInterval(function(){
-    imitateCRON();
+    //imitateCRON();
     balanceUpdate();
     won_last();
-    get_transactions();
+    //get_transactions();
     get_friends();
     get_pms();
     online_count();
@@ -260,12 +260,12 @@ function balanceUpdate() {
     'url': './content/ajax/getBalance.php?_unique='+unique(),
     'dataType': "json",
     'success': function (data) {
-        
-      $('.balance').each(function(){
-        $(this).text(data['balance'] + ' Coins');
-        $(this).text(data['balance'] + ' Coins');
-      });
-        
+
+      for (var selector in data){
+        if (data.hasOwnProperty(selector)) {
+          $('.'+selector).text(data[selector]);
+        }
+      }
     }
   });
 }
@@ -1015,7 +1015,7 @@ function save_account_settings(){
     'url': './content/ajax/save_account_settings.php',
     'dataType': "json",
     'method': 'POST',
-    'data': {username: $('#account_settings #username').val(),email: $('#account_settings #email').val(),  passwd: $('#account_settings #passwd').val(), re_passwd: $('#account_settings #re_passwd').val()},
+    'data': {username: $('#account_settings #username').val(),email: $('#account_settings #email').val(),  passwd: $('#account_settings #passwd').val(), re_passwd: $('#account_settings #re_passwd').val(), currency_preference: $('#account_settings #currency_preference').val()},
     'success': function(data) {
       if(data['error'] == 'no') {
         $('#account_settings #passwd').val('');

@@ -44,7 +44,7 @@ if($_POST['passwd'] != ''){
         $password = hash('sha256', prot($_POST['passwd']));
     }
 }
-if (db_query("UPDATE `players` SET `password`='$password', `email`='".prot($_POST['email'])."', `username`='".prot($_POST['username'])."' WHERE `id`=" . $_SESSION['user_id']) == false) {
+if (db_query("UPDATE `players` SET `password`='$password', `email`='".prot($_POST['email'])."', `username`='".prot($_POST['username'])."', `currency_preference`=".prot($_POST['currency_preference'])." WHERE `id`=" . $_SESSION['user_id']) == false) {
     echo json_encode(array('error' => 'yes', 'message' => 'Mysql error'));
 }
 else echo json_encode(array('error' => 'no'));

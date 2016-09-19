@@ -61,6 +61,14 @@ include __DIR__ . '/inc/ga_class.php';
                             <input type="password" id="re_passwd" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label>Currency settings</label>
+                            <select class="form-control" id="currency_preference">
+                                <option <?php if($player['currency_preference'] == 0) echo 'selected'; ?> value="0">Take from other currencies balance first over Bitcoin</option>
+                                <option <?php if($player['currency_preference'] == 1) echo 'selected'; ?> value="1">Take from Bitcoin balance first over other currencies</option>
+                                <option <?php if($player['currency_preference'] == 2) echo 'selected'; ?> value="2">Take from any currency at random</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <button class="btn btn-primary">Save</button>
                         </div>
                     </form>

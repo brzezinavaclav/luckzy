@@ -72,8 +72,7 @@ include __DIR__ . '/inc/start.php';
         </div>
         <?php if (logged()): ?>
         <ul class="nav navbar-right">
-            <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?>
-                    Coins</span></div>
+            <div class="bal_status">Balance: <span class="balance"><?php echo $player['balance']; ?></span> Coins</div>
         </ul>
         <?php else: ?>
             <ul class="nav navbar-right">
