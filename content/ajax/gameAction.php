@@ -7,7 +7,7 @@
 */
 
 
-error_reporting(0); 
+error_reporting(0);
 header('X-Frame-Options: DENY'); 
 
 $init=true;

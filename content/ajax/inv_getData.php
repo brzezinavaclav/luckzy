@@ -29,17 +29,17 @@ if (db_num_rows(db_query("SELECT `id` FROM `investors` WHERE `player_id`=$player
 
 $investor=db_fetch_array(db_query("SELECT * FROM `investors` WHERE `player_id`=$player[id]"));
 
-$reservedBalance=db_fetch_array(db_query("SELECT SUM(`balance`) AS `sum` FROM `players`"));
-$reservedWaitingBalance=db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `deposits`"));
+$reservedBalance=db_fetch_array(db_query("SELECT SUM(`btc_balance`) AS `sum` FROM `players`"));
+$reservedWaitingBalance=db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `deposits` WHERE `currency`='btc'"));
 $serverBalance=walletRequest('getbalance');
-$serverFreeBalance=($serverBalance-$reservedBalance['sum']/$settings['btc_rate']-$reservedWaitingBalance['sum']/$settings['btc_rate']);
+$serverFreeBalance=($serverBalance-$reservedBalance['sum']-$reservedWaitingBalance['sum']/$settings['btc_rate']);
 
 $invested=$investor['amount'];
-$share=(($serverFreeBalance)==0)?0:(($invested/$settings['btc_rate']/$serverFreeBalance)*(100-$settings['inv_perc']));
+$share=(($serverFreeBalance)==0)?0:(($invested/$serverFreeBalance)*(100-$settings['inv_perc']));
 
 $return = array(
-  'canInv'      =>  '<b>'.$player['balance'].'</b> Coins',
-  'invested'    =>  '<b>'.$invested.'</b> Coins',
+  'canInv'      =>  '<b>'.$player['btc_balance']*$settings['btc_rate'].'</b> Coins ('.$player['btc_balance'].' <span class="fa fa-btc"></span>)',
+  'invested'    =>  '<b>'.$invested*$settings['btc_rate'].'</b> Coins ('.$invested.' <span class="fa fa-btc"></span>)',
   'share'       =>  '<b>'.n_num($share).'</b> %' 
 );
 echo json_encode($return);

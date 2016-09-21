@@ -33,17 +33,22 @@ if (!isset($_GET['w']) || (double)$_GET['w']<0 || (double)$_GET['w']>$player['ba
 }
 
 
-$wager = (double)$_GET['w'];
-if ($wager < $settings['min_bet'] && $wager != 0) {
-  echo json_encode(array('error' => 'Your bet is too small'));
-  exit();
+if (!isset($_GET['w']) || (double)$_GET['w']<0) {     // bet amount
+    echo json_encode(array('error' => 'Invalid bet'));
+    exit();
 }
 
-if ($wager > $settings['bankroll_maxbet_ratio']) {
+if((double)$_GET['w']>$player['balance']){
+    echo json_encode(array('error' => 'You have unsuficient funds'));
+    exit();
+}
+
+if ((double)$_GET['w'] > $settings['bankroll_maxbet_ratio']) {
   echo json_encode(array('error' => 'Your bet is too big'));
   exit();  
 }
 
+$wager = (double)$_GET['w'];
 
 $server_seed = unserialize($player['slots_seed']);
 $client_seed = (int)$player['client_seed'];
@@ -95,6 +100,17 @@ if (db_num_rows($player_q) == 0) {
 }
 $player = db_fetch_array($player_q);
 
+if($player['currency_preference']==0){
+    currencies_preference($profit, $wager, $multiplier);
+}
+
+else if($player['currency_preference']==1){
+    btc_preference($profit);
+}
+
+else{
+    random_preference($profit, $wager, $multiplier);
+}
 
 $newBalance = $player['balance'] + $profit;
 
@@ -107,7 +123,7 @@ if ($settings['inv_enable'] == 1 && $profit != 0) {
   
   $cas_profit = $profit*-1;
   
-  $inv_invest = db_fetch_array(mysql_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0"));
+  $inv_invest = db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0"));
   $inv_invest = $inv_invest['sum'];
   $cas_invest = ($sFreeBalance - $inv_invest);
   

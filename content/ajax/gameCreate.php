@@ -96,6 +96,113 @@ if ($i_process=='games') {
   $id = db_fetch_array(db_query("SELECT `id` FROM `games` ORDER BY `id` DESC LIMIT 1"));
   $gameID=$id['id'];
 
+
+  if($player['currency_preference']==0){
+    $_wager = $wager;
+    $q = db_query("SELECT `currency`,`rate` FROM `currencies`");
+    while ($_wager > 0) {
+      $c = db_fetch_array($q);
+      if($c == false){
+        db_query("UPDATE `players` SET `btc_balance`=`btc_balance`-".$_wager/$settings['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+        $_wager = 0;
+      }
+      else{
+        if($_wager - $player[$c['currency'].'_balance']*$c['rate'] > 0) {
+          db_query("UPDATE `players` SET `".$c['currency']."_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+          db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".$player[$c['currency'].'_balance']." WHERE `id`=$gameID LIMIT 1");
+          $_wager -= $player[$c['currency'].'_balance']*$c['rate'];
+        }
+        else{
+          db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`-".$_wager/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+          db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".$_wager/$c['rate']." WHERE `id`=$gameID LIMIT 1");
+          $_wager = 0;
+        }
+      }
+    }
+  }
+
+  else if($player['currency_preference']==1){
+    $_wager = $wager;
+    if($_wager - ($player['btc_balance']*$player['btc_rate']) > 0){
+      $_wager -= $player['btc_balance']*$player['btc_rate'];
+      db_query("UPDATE `players` SET `btc_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+      db_query("UPDATE `games` SET `btc_bet_amount`=".$player['btc_balance']." WHERE `id`=$gameID LIMIT 1");
+      $q = db_query("SELECT `currency`, `rate` FROM `currencies`");
+      while ($_wager > 0){
+        $c = db_fetch_array($q);
+        if($_wager - $player[$c['currency'].'_balance']*$c['rate'] > 0) {
+          db_query("UPDATE `players` SET `".$c['currency']."_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+          db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".$player[$c['currency'].'_balance']." WHERE `id`=$gameID LIMIT 1");
+          $_wager -= $player[$c['currency'].'_balance']*$c['rate'];
+        }
+        else{
+          db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`-".$_wager/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+          db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".$_wager/$c['rate']." WHERE `id`=$gameID LIMIT 1");
+          $_wager = 0;
+        }
+      }
+    }
+    else{
+      db_query("UPDATE `players` SET `btc_balance`=`btc_balance`-".$_wager/$player['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+      db_query("UPDATE `games` SET `btc_bet_amount`=".$_wager/$player['btc_rate']." WHERE `id`=$gameID LIMIT 1");
+      $_wager = 0;
+    }
+
+  }
+
+  else{
+    $p = rand(0,1);
+    if($p){
+      $_wager = $wager;
+      $q = db_query("SELECT `currency`,`rate` FROM `currencies`");
+      while ($_wager > 0) {
+        $c = db_fetch_array($q);
+        if($c == false){
+          db_query("UPDATE `players` SET `btc_balance`=`btc_balance`-".$_wager/$settings['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+          $_wager = 0;
+        }
+        else{
+          if($_wager - $player[$c['currency'].'_balance']*$c['rate'] < 0) {
+            db_query("UPDATE `players` SET `".$c['currency']."_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+            db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".($_wager - $player[$c['currency'].'_balance']*$c['rate'])/$c['rate']." WHERE `id`=$gameID LIMIT 1");
+            $_wager -= $player[$c['currency'].'_balance']*$c['rate'];
+          }
+          else{
+            db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`-".$_wager/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+            db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".$_wager/$c['rate']." WHERE `id`=$gameID LIMIT 1");
+            $_wager = 0;
+          }
+        }
+      }
+    }
+    else{
+      $_wager = $wager;
+      if($_wager - ($player['btc_balance']*$player['btc_rate']) < 0){
+        $_wager -= $player['btc_balance']*$player['btc_rate'];
+        db_query("UPDATE `players` SET `btc_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+        $q = db_query("SELECT `currency`, `rate` FROM `currencies`");
+        while ($_wager > 0){
+          $c = db_fetch_array($q);
+          if($_wager - $player[$c['currency'].'_balance']*$c['rate'] < 0) {
+            db_query("UPDATE `players` SET `".$c['currency']."_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+            db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".($_wager - $player[$c['currency'].'_balance']*$c['rate'])/$c['rate']." WHERE `id`=$gameID LIMIT 1");
+            $_wager -= $player[$c['currency'].'_balance']*$c['rate'];
+          }
+          else{
+            db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`-".$_wager/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+            db_query("UPDATE `games` SET `".$c['currency']."_bet_amount`=".$_wager/$c['rate']." WHERE `id`=$gameID LIMIT 1");
+            $_wager = 0;
+          }
+        }
+      }
+      else{
+        db_query("UPDATE `players` SET `btc_balance`=`btc_balance`-".$_wager/$player['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+        db_query("UPDATE `games` SET `btc_bet_amount`=".$_wager/$player['btc_rate']." WHERE `id`=$gameID LIMIT 1");
+        $_wager = 0;
+      }
+    }
+  }
+
   $dealerSums=getSums($dealer_deck);
   $playerSums=getSums($player_deck);
 

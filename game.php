@@ -38,7 +38,7 @@
     </div>
 </div>
 <div class="leftCon" id="lc-invest">
-    <div class="heading"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;&nbsp;&nbsp;Invest</div>
+    <div class="heading"><span class="fa fa-briefcase"></span>&nbsp;&nbsp;&nbsp;&nbsp;Invest <span class="fa fa-btc"></span></div>
     <div class="content">
         <div class="form-group" style="margin-top: 10px;">
             <label>You can invest:</label><br>

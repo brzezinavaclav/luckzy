@@ -102,10 +102,10 @@ $(document).ready(function (){
   },10000);
   imitateCRON();
   setInterval(function(){
-    //imitateCRON();
+    imitateCRON();
     balanceUpdate();
     won_last();
-    //get_transactions();
+    get_transactions();
     get_friends();
     get_pms();
     online_count();
@@ -653,15 +653,18 @@ function claim_bonus() {
   });
 }
 function invest() {
-  alert($('.leftblock #lc-invest.leftCon #input-invest').val());
   var amount = $('.leftblock #input-invest').val();
   $.ajax({
     'url': './content/ajax/inv_invest.php?_unique='+unique()+'&amount='+amount,
     'dataType': "json",
     'success': function (data) {
-      if (data['error']=='yes') alert('Invalid amount!');
-      if (data['error']=='min') alert('Minimum amount is '+min_inv()+' Coins');
-      if (data['error']=='no') investUpdate();
+      if(data['error'] == 'yes') p_alert('danger', data['message']);
+      else{
+        p_alert('success', 'You have invested '+amount+' Coins');
+        $('.leftblock #input-invest').val(0);
+        investUpdate();
+      }
+
     }
   });
 }
@@ -671,8 +674,12 @@ function divest() {
     'url': './content/ajax/inv_divest.php?_unique='+unique()+'&amount='+amount,
     'dataType': "json",
     'success': function (data) {
-      if (data['error']=='yes') alert('Invalid amount!');
-      if (data['error']=='no') investUpdate();        
+      if (data['error']=='yes') p_alert('danger', data['message']);
+      if (data['error']=='no'){
+        p_alert('success', 'You have divested '+amount+' Coins');
+        $('.leftblock #input-divest').val(0);
+        investUpdate();
+      }
     }
   });    
 }
@@ -816,7 +823,7 @@ function fairUpdate(data) {
 }
 
 function deposit(currency){
-  var amount = $('#d_amount_'+currency).val();
+  var amount = $('#d_amount_'+currency).val().trim();
   $.ajax({
     'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c='+currency+'&amount='+amount,
     'dataType': "json",
@@ -833,6 +840,7 @@ function deposit(currency){
           }
         }
       $('#d_amount_'+currency).val('');
+      $('#d_amount_'+currency+'_coins').val('');
     }
   });
 }

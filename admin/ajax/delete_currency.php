@@ -18,5 +18,6 @@ $currency = $currency['currency'].'_balance';
 
 db_query("DELETE FROM `currencies` WHERE `id`='".prot($_GET['currency'])."' LIMIT 1");
 db_query("ALTER TABLE `players` DROP COLUMN `$currency`");
+db_query("ALTER TABLE `games` DROP COLUMN `".$currency['currency']."_bet_amount`");
 
 echo json_encode(array('error'=>'no'));

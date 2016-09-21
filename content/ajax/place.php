@@ -6,7 +6,6 @@
  *  More licences we sell, more products we develop in the future.  
 */
 
-error_reporting(0);
 header('X-Frame-Options: DENY');
 
 $init=true;
@@ -26,10 +25,14 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` LIMIT 1"));
 
 $player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
 
-
-if (!isset($_GET['w']) || (double)$_GET['w']<0 || (double)$_GET['w']>$player['balance']) {     // bet amount
+if (!isset($_GET['w']) || (double)$_GET['w']<0) {     // bet amount
   echo json_encode(array('error' => 'Invalid bet'));
   exit();
+}
+
+if((double)$_GET['w']>$player['balance']){
+    echo json_encode(array('error' => 'You have unsuficient funds'));
+    exit();
 }
 
 $wager = (double)$_GET['w'];
@@ -77,18 +80,26 @@ if (db_num_rows($player_q) == 0) {
   exit();
 }
 $player = db_fetch_array($player_q);
-
-
 $newBalance = $player['balance'] + $profit;
+$btc_profit = false;
+    if($player['currency_preference']==0){
+        $btc_profit = currencies_preference($profit, $wager, $multiplier);
+    }
 
+    else if($player['currency_preference']==1){
+        $btc_profit = btc_preference($profit);
+    }
 
+    else{
+        $btc_profit = random_preference($profit, $wager, $multiplier);
+    }
 
-if ($settings['inv_enable'] == 1 && $profit != 0) {
+if ($settings['inv_enable'] == 1 && $btc_profit != false) {
 
   $sFreeBalance = db_fetch_array(db_query("SELECT SUM(`balance`) AS `sum` FROM `players`"));
   $sFreeBalance = $sFreeBalance['sum'];
 
-  $cas_profit = $profit*-1;
+  $cas_profit = $btc_profit*-1;
 
   $inv_invest = db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0"));
   $inv_invest = $inv_invest['sum'];
@@ -106,8 +117,9 @@ if ($settings['inv_enable'] == 1 && $profit != 0) {
   db_query("UPDATE `system` SET `inv_casprofit`=(`inv_casprofit`+(($cas_profit/100)*(($cas_invest/$sFreeBalance)*(100)))+$cas_percprofit) LIMIT 1");
 }
 
-
 db_query("UPDATE `players` SET `balance`=$newBalance WHERE `id`=$player[id] LIMIT 1");
+
+
 db_query("INSERT INTO `spins` (`player`,`bet_amount`,`server_seed`,`client_seed`,`result`,`multiplier`,`payout`, `game`) VALUES ($player[id],$wager,'".$player['dice_seed']."','$client_seed','".$result."',$multiplier,$payout, 'dice')");
 
 

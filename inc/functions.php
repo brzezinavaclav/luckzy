@@ -311,6 +311,7 @@ function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blac
 
     if ($blackjack == true) $regularWin = $bj_pays;
     else $regularWin = 2;
+    $multip = 0;
     if ($regular_or_tie == 'tie') $multip = ($settings['tie_dealerwon'] == 1) ? 0 : 1;
     else if ($regular_or_tie == 'lose') $multip = ($first_won_second_lose) ? 1 : 0;
     else if ($regular_or_tie == 'regular') $multip = ($first_won_second_lose) ? 1 : $regularWin;
@@ -325,10 +326,15 @@ function playerWon($player_id, $game_id, $wager, $d_deck, $regular_or_tie, $blac
         db_query("UPDATE `games` SET `multiplier`=$multip WHERE `id`=$game_id LIMIT 1");
     } else $endGame = "";
 
-    if ($regular_or_tie == 'tie') {
-        if ($settings['tie_dealerwon'] != 1) $multip = 1;
+
+    $currencies = ", `btc_balance`=`btc_balance`+".$gameData['btc_bet_amount']*$multip;
+    $q = db_query("SELECT `currency` FROM `currencies`");
+    while($c = db_fetch_array($q)){
+        $currency = $c['currency'];
+        $currencies .= ", `".$currency."_balance`=`".$currency."_balance`+".$gameData[$currency.'_bet_amount']*$multip;
     }
-    db_query("UPDATE `players` SET `balance`=`balance`+" . ($wager * $multip) . " $endGame WHERE `id`=$player_id LIMIT 1");
+
+    db_query("UPDATE `players` SET `balance`=`balance`+" . ($wager * $multip) . "$currencies $endGame WHERE `id`=$player_id LIMIT 1");
 
 }
 
@@ -697,4 +703,96 @@ function send_mail($to, $subject, $body){
     
     return $mail->send();
 
+}
+function btc_preference($profit){
+    $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']));
+    $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
+    $btc_prfit = false;
+    if($profit > 0){
+        db_query("UPDATE `players` SET `btc_balance`=`btc_balance`+".$profit/$settings['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+        $btc_prfit = $profit/$settings['btc_rate'];
+    }
+    else{
+        if($profit + ($player['btc_balance']*$player['btc_rate']) < 0){
+            $profit += $player['btc_balance']*$player['btc_rate'];
+            $btc_prfit = $player['btc_balance'];
+                db_query("UPDATE `players` SET `btc_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+            $q = db_query("SELECT `currency`, `rate` FROM `currencies`");
+            while ($profit < 0){
+                $c = db_fetch_array($q);
+                if($profit + $player[$c['currency'].'_balance']*$c['rate'] < 0) {
+                    $profit += $player[$c['currency'].'_balance']*$c['rate'];
+                    db_query("UPDATE `players` SET `".$c['currency']."_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+                }
+                else{
+                    db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`+".$profit/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+                    $profit = 0;
+                }
+            }
+        }
+        else{
+            db_query("UPDATE `players` SET `btc_balance`=`btc_balance`+".$profit/$player['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+            $btc_prfit = $profit/$settings['btc_rate'];
+        }
+    }
+    return $btc_prfit;
+}
+
+function currencies_preference($profit, $wager, $multiplier){
+    $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']));
+    $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
+
+    $btc_profit = false;
+
+    if($profit > 0){
+        $query = db_query("SELECT `currency`,`rate` FROM `currencies`");
+        while ($profit > 0){
+            $c = db_fetch_array($query);
+            if($c == false){
+                db_query("UPDATE `players` SET `btc_balance`=`btc_balance`+".$profit/$settings['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+                $btc_profit = $profit/$settings['btc_rate'];
+                $profit = 0;
+            }
+            else{
+                if($player[$c['currency'].'_balance'] < $wager){
+                    $profit -= $player[$c['currency'].'_balance']*$c['rate'];
+                    db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`*".$multiplier." WHERE `id`=$player[id] LIMIT 1");
+                }
+                else{
+                    db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`+".$profit/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+                }
+            }
+        }
+
+    }
+    else{
+        $q = db_query("SELECT `currency`,`rate` FROM `currencies`");
+        while ($profit < 0) {
+            $c = db_fetch_array($q);
+            if($c == false){
+                db_query("UPDATE `players` SET `btc_balance`=`btc_balance`+".$profit/$settings['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
+                $btc_profit = $profit/$settings['btc_rate'];
+                $profit = 0;
+            }
+            else{
+                if($profit + $player[$c['currency'].'_balance']*$c['rate'] < 0) {
+                    $profit += $player[$c['currency'].'_balance']*$c['rate'];
+                    db_query("UPDATE `players` SET `".$c['currency']."_balance`=0 WHERE `id`=$player[id] LIMIT 1");
+                }
+                else{
+                    db_query("UPDATE `players` SET `".$c['currency']."_balance`=`".$c['currency']."_balance`+".$profit/$c['rate']." WHERE `id`=$player[id] LIMIT 1");
+                    $profit = 0;
+                }
+            }
+        }
+    }
+    return $btc_profit;
+}
+
+
+function random_preference($profit, $wager, $multiplier){
+    $p = rand(0,1);
+
+    if($p) return currencies_preference($profit, $wager, $multiplier);
+    else return btc_preference($profit);
 }
