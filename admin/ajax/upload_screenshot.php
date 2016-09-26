@@ -20,10 +20,10 @@ for ($i = 0; $i < count($_FILES['file']['name']); $i++){
     if(is_uploaded_file($_FILES['file']['tmp_name'][$i])) {
         if(in_array(pathinfo($_FILES['file']['name'][$i], PATHINFO_EXTENSION), $allowed)){
             $sourcePath = $_FILES['file']['tmp_name'][$i];
-            $name = substr($_FILES['file']['name'][$i], 0, strpos($_FILES['file']['name'][$i], '.')) . substr($_FILES['file']['name'][$i],strpos($_FILES['file']['name'][$i], '.'));
+            $name = preg_replace("/[^a-zA-Z0-9.]/", "", substr($_FILES['file']['name'][$i], 0, strpos($_FILES['file']['name'][$i], '.'))) . substr($_FILES['file']['name'][$i],strpos($_FILES['file']['name'][$i], '.'));
             $count = 0;
             while(db_num_rows(db_query("SELECT `name` FROM `screenshots` WHERE `name`='$name'")) != 0){
-                $name = substr($_FILES['file']['name'][$i], 0, strpos($_FILES['file']['name'][$i], '.')) . "($count)" . substr($_FILES['file']['name'][$i],strpos($_FILES['file']['name'][$i], '.'));
+                $name = preg_replace("/[^a-zA-Z0-9.]/", "", substr($_FILES['file']['name'][$i], 0, strpos($_FILES['file']['name'][$i], '.'))) . "($count)" . substr($_FILES['file']['name'][$i],strpos($_FILES['file']['name'][$i], '.'));
                 $count++;
             }
             $targetPath = "../screenshots/$name";

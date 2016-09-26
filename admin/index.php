@@ -50,7 +50,7 @@ $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1")
       }
       $(document).ready(function(){
         setInterval(function(){
-          imitateCRON();
+          //imitateCRON();
         },1000);
       });
       function imitateCRON() {

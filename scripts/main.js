@@ -100,9 +100,9 @@ $(document).ready(function (){
   setInterval(function(){
     $.ajax({'url':'./content/ajax/refreshSession.php'});
   },10000);
-  imitateCRON();
+  //imitateCRON();
   setInterval(function(){
-    imitateCRON();
+    //imitateCRON();
     balanceUpdate();
     won_last();
     get_transactions();

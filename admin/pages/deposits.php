@@ -140,7 +140,6 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
             <th>Amount</th>
             <th>Coins</th>
             <th><?php if(isset($_GET['c']) && $_GET['c'] == 'btc') echo'Address'; elseif(!isset($_GET['c'])) echo 'Address/ID'; else echo 'Deposit ID'; ?></th>
-            <th>Screens</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -169,9 +168,7 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
 
                     $screenshots = db_query("SELECT * FROM `screenshots` WHERE `tid`=".$dp['id']." AND `type`='deposit'");
                     if(db_num_rows($screenshots) != 0){
-                        while ($screenshot = db_fetch_array($screenshots)) {
-                                $shots .= '<a style="margin-right: 10px" data-title="'.$screenshot['name'].'" href="'.$screenshot['path'].'" data-lightbox="'.$dp['id'].'"><img src="'.$screenshot['path'].'" height="10" width="10"></a>';
-                        }
+                        $actions .= '<a style="margin-right: 10px" title="Screenshots" href="?p=screenshots&tid='.$dp['id'].'&type=deposit"><span class="glyphicon glyphicon-camera"></a>';
                     }
                     if($dp['confirmed'] == 1) {
                         $status = 'Confirmed';
@@ -190,7 +187,6 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
             echo '<td><small>'.$dp['amount'].'</small></td>';
             echo '<td><small>'.$dp['coins_amount'].'</small></td>';
             echo '<td><small><small>'.$dp['address'].'</small></small></td>';
-            echo '<td class="shots">'.$shots.'</td>';
             echo '<td><small>'.$status.'</small></td>';
             echo '<td>'.$actions.'</td>';
             echo '</tr>';

@@ -158,7 +158,6 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
             <th>Amount</th>
             <th>Coins</th>
             <th>Address/ID</th>
-            <th>Screens</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -184,9 +183,7 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
 
             $screenshots = db_query("SELECT * FROM `screenshots` WHERE `tid`=".$tx['id']." AND `type`='withdrawal'");
             if(db_num_rows($screenshots) != 0){
-                while ($screenshot = db_fetch_array($screenshots)) {
-                    $shots .= '<a style="margin-right: 10px" data-title="'.$screenshot['name'].'" href="'.$screenshot['path'].'" data-lightbox="'.$tx['id'].'"><img src="'.$screenshot['path'].'" height="10" width="10"></a>';
-                }
+                $actions .= '<a style="margin-right: 10px" title="Screenshots" href="?p=screenshots&tid='.$tx['id'].'&type=withdrawal"><span class="glyphicon glyphicon-camera"></a>';
             }
         }
 
@@ -205,7 +202,6 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
             echo '<td><small>' . $tx['amount'] . '</small></td>';
             echo '<td><small>' . $tx['coins_amount'] . '</small></td>';
             echo '<td><small><small>' . $tx['address'] . '</small></small></td>';
-            echo '<td class="shots">'.$shots.'</td>';
             echo '<td><small>' . $status . '</small></td>';
             echo '<td>' . $actions . '</td>';
             echo '</tr>';
