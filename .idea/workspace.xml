@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/pages/screenshots.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/ajax/upload_screenshot.php" afterPath="$PROJECT_DIR$/admin/ajax/upload_screenshot.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php" afterPath="$PROJECT_DIR$/admin/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/pages/deposits.php" afterPath="$PROJECT_DIR$/admin/pages/deposits.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/pages/withdrawals.php" afterPath="$PROJECT_DIR$/admin/pages/withdrawals.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/pages/home.php" afterPath="$PROJECT_DIR$/admin/pages/home.php" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,7 +59,7 @@
       <file leaf-file-name="withdrawals.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/pages/withdrawals.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
+            <state relative-caret-position="3128">
               <caret line="184" column="47" selection-start-line="184" selection-start-column="47" selection-end-line="185" selection-end-column="182" />
               <folding>
                 <marker date="1474880189821" expanded="true" signature="405:455" ph="SELECT * FRO... withdrawals" />
@@ -88,7 +82,7 @@
       <file leaf-file-name="deposits.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/pages/deposits.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
+            <state relative-caret-position="1105">
               <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
               <folding>
                 <marker date="1474892654746" expanded="true" signature="270:317" ph="SELECT * FRO... deposits" />
@@ -121,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="screenshots.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="screenshots.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/pages/screenshots.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="175" selection-start-line="16" selection-start-column="175" selection-end-line="16" selection-end-column="175" />
+            <state relative-caret-position="323">
+              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
               <folding>
                 <marker date="1474893762670" expanded="true" signature="240:280" ph="SELECT * FRO... screenshots" />
                 <marker date="1474893762670" expanded="true" signature="240:315" ph="SELECT * FRO... screenshots" />
@@ -136,10 +130,32 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="home.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/pages/home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="94" column="15" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
+              <folding>
+                <marker date="1474903601612" expanded="true" signature="2795:2841" ph="SELECT `id` investors" />
+                <marker date="1474903601612" expanded="true" signature="3028:3091" ph="SELECT SUM(`... investors" />
+                <marker date="1474903601612" expanded="true" signature="3369:3433" ph="SELECT SUM(`... investors" />
+                <marker date="1474903601612" expanded="true" signature="3579:3624" ph="SELECT SUM(`... deposits" />
+                <marker date="1474903601612" expanded="true" signature="3579:3647" ph="SELECT SUM(`... deposits" />
+                <marker date="1474903601612" expanded="true" signature="3763:3812" ph="SELECT SUM(`... players" />
+                <marker date="1474903601612" expanded="true" signature="4214:4277" ph="SELECT SUM(`... investors" />
+                <marker date="1474903601612" expanded="true" signature="4320:4335" ph="..." />
+                <marker date="1474903601612" expanded="true" signature="4402:4415" ph="..." />
+                <marker date="1474903601612" expanded="true" signature="4722:4737" ph="..." />
+                <marker date="1474903601612" expanded="true" signature="4819:4832" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="527">
               <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
               <folding>
                 <marker date="1474471585275" expanded="true" signature="675:718" ph="SELECT * FRO... system" />
@@ -165,7 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/more.php" />
         <option value="$PROJECT_DIR$/support.php" />
         <option value="$PROJECT_DIR$/content/ajax/makeDeposit.php" />
         <option value="$PROJECT_DIR$/../slots/inc/driver-conf.php" />
@@ -216,6 +231,7 @@
         <option value="$PROJECT_DIR$/admin/pages/deposits.php" />
         <option value="$PROJECT_DIR$/admin/ajax/upload_screenshot.php" />
         <option value="$PROJECT_DIR$/admin/pages/screenshots.php" />
+        <option value="$PROJECT_DIR$/admin/pages/home.php" />
       </list>
     </option>
   </component>
@@ -230,10 +246,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="542" />
+    <option name="width" value="831" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -261,7 +276,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -540,6 +554,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -691,17 +706,18 @@
       <workItem from="1474463764661" duration="3588000" />
       <workItem from="1474877927750" duration="2071000" />
       <workItem from="1474892367407" duration="1395000" />
+      <workItem from="1474902615935" duration="987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="583145000" />
+    <option name="totallyTimeSpent" value="584132000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="542" y="0" width="831" height="775" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21522693" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3607362" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -757,7 +773,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.109/bootstrap.css" />
     <entry file="file://$PROJECT_DIR$/styles/bootstrap-coingames.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4539">
@@ -1195,7 +1210,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="527">
           <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
           <folding>
             <marker date="1474471585275" expanded="true" signature="675:718" ph="SELECT * FRO... system" />
@@ -1205,7 +1220,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/pages/deposits.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
+        <state relative-caret-position="1105">
           <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
           <folding>
             <marker date="1474892654746" expanded="true" signature="270:317" ph="SELECT * FRO... deposits" />
@@ -1225,7 +1240,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/pages/withdrawals.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
+        <state relative-caret-position="3128">
           <caret line="184" column="47" selection-start-line="184" selection-start-column="47" selection-end-line="185" selection-end-column="182" />
           <folding>
             <marker date="1474880189821" expanded="true" signature="405:455" ph="SELECT * FRO... withdrawals" />
@@ -1258,13 +1273,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/pages/screenshots.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="175" selection-start-line="16" selection-start-column="175" selection-end-line="16" selection-end-column="175" />
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
           <folding>
             <marker date="1474893762670" expanded="true" signature="240:280" ph="SELECT * FRO... screenshots" />
             <marker date="1474893762670" expanded="true" signature="240:315" ph="SELECT * FRO... screenshots" />
             <marker date="1474893762670" expanded="true" signature="240:322" ph="SELECT * FRO... screenshots" />
             <marker date="1474893762670" expanded="true" signature="240:339" ph="SELECT * FRO... screenshots" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/pages/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="94" column="15" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
+          <folding>
+            <marker date="1474903601612" expanded="true" signature="2795:2841" ph="SELECT `id` investors" />
+            <marker date="1474903601612" expanded="true" signature="3028:3091" ph="SELECT SUM(`... investors" />
+            <marker date="1474903601612" expanded="true" signature="3369:3433" ph="SELECT SUM(`... investors" />
+            <marker date="1474903601612" expanded="true" signature="3579:3624" ph="SELECT SUM(`... deposits" />
+            <marker date="1474903601612" expanded="true" signature="3579:3647" ph="SELECT SUM(`... deposits" />
+            <marker date="1474903601612" expanded="true" signature="3763:3812" ph="SELECT SUM(`... players" />
+            <marker date="1474903601612" expanded="true" signature="4214:4277" ph="SELECT SUM(`... investors" />
+            <marker date="1474903601612" expanded="true" signature="4320:4335" ph="..." />
+            <marker date="1474903601612" expanded="true" signature="4402:4415" ph="..." />
+            <marker date="1474903601612" expanded="true" signature="4722:4737" ph="..." />
+            <marker date="1474903601612" expanded="true" signature="4819:4832" ph="..." />
           </folding>
         </state>
       </provider>

@@ -92,7 +92,7 @@ if (!isset($init)) exit();
 </fieldset>
 <?php if ($settings['inv_enable']==1) { ?>
   <fieldset style="margin-top: 10px;">
-    <legend>Invest Stats</legend>
+    <legend>BTC Invest Stats</legend>
     <table class="vypis_table" style="width: 50%;">
       <tr class="vypis_table_obsah">
         <td>Total Investors:</td>
@@ -104,7 +104,17 @@ if (!isset($init)) exit();
       </tr>
       <tr class="vypis_table_obsah">
         <td title="= free balance">House Investment:</td>
-        <td><b><?php $usersinv_=db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0")); $usersinv_['sum']=($settings['inv_enable']==1)?(0+(double)$usersinv_['sum']):0; $usersdeps_=db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `deposits`")); $usersdeps_['sum']=(0+(double)$usersdeps_['sum']);  $usersbal_=db_fetch_array(db_query("SELECT SUM(`balance`) AS `sum` FROM `players`")); $usersbal_['sum']=(0+(double)$usersbal_['sum']); echo sprintf("%.8f",walletRequest('getbalance')-$usersbal_['sum']-$usersdeps_['sum']-$usersinv_['sum']); ?></b> <?php echo $settings['currency_sign']; ?></td>
+        <td><b>
+        <?php
+            $usersinv_=db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `investors` WHERE `amount`!=0"));
+            $usersinv_['sum']=($settings['inv_enable']==1)?(0+(double)$usersinv_['sum']):0;
+            $usersdeps_=db_fetch_array(db_query("SELECT SUM(`amount`) AS `sum` FROM `deposits` WHERE `currency`='btc'"));
+            $usersdeps_['sum']=(0+(double)$usersdeps_['sum']);
+            $usersbal_=db_fetch_array(db_query("SELECT SUM(`btc_balance`) AS `sum` FROM `players`"));
+            $usersbal_['sum']=(0+(double)$usersbal_['sum']);
+            echo sprintf("%.8f",walletRequest('getbalance')-$usersbal_['sum']-$usersdeps_['sum']-$usersinv_['sum']);
+            ?>
+          </b><?php echo $settings['currency_sign']; ?></td>
       </tr>
       <tr class="vypis_table_obsah">
         <td>Total Investor's Profit:</td>
