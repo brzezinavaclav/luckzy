@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/inc/functions.php" line="596" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/main.css" afterPath="$PROJECT_DIR$/styles/main.css" />
-    </list>
+    <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="" />
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -60,8 +57,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="376" column="41" selection-start-line="376" selection-start-column="41" selection-end-line="376" selection-end-column="41" />
+            <state relative-caret-position="367">
+              <caret line="369" column="14" selection-start-line="369" selection-start-column="14" selection-end-line="369" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -771,12 +768,12 @@
       <workItem from="1474902615935" duration="1031000" />
       <workItem from="1474905715495" duration="26000" />
       <workItem from="1474957835436" duration="49000" />
-      <workItem from="1475496425894" duration="2731000" />
+      <workItem from="1475496425894" duration="2794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="586982000" />
+    <option name="totallyTimeSpent" value="587045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -1360,8 +1357,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="376" column="41" selection-start-line="376" selection-start-column="41" selection-end-line="376" selection-end-column="41" />
+        <state relative-caret-position="367">
+          <caret line="369" column="14" selection-start-line="369" selection-start-column="14" selection-end-line="369" selection-end-column="14" />
           <folding />
         </state>
       </provider>
