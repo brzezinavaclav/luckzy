@@ -643,6 +643,7 @@ function claim_bonus() {
         else m_alert('danger',data['message']);
       }
       else {
+        m_alert('success', 'You obtained a bonus');
         balanceUpdate();
       }
       var $img = $('.captchadiv img').eq(0);

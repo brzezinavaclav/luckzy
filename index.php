@@ -293,7 +293,7 @@ if (logged()):
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="w_btc">
-                            <div><small><b>Your Bitcoin Balance:</b> <span class="btc_balance"><?php echo $player['btc_balance']; ?></span> <b>| Coin value: </b><span class="btc_value"><?php echo round(bcmul($player['btc_balance'],$settings['btc_rate']),2); ?></span> (<span class="btc_mod"><?php echo round(bcmul(bcdiv(bcmul($player['btc_balance'],$settings['btc_rate']),$player['balance']),100),2); ?></span>% of your balance)</small></div>
+                            <div><small><b>Your Bitcoin Balance:</b> <span class="btc_balance"><?php echo $player['btc_balance']; ?></span> <b>| Coin value: </b><span class="btc_value"><?php echo round(bcmul($player['btc_balance'],$settings['btc_rate']),2); ?></span> (<span class="btc_mod"><?php echo round(bcmul(bc_div(bcmul($player['btc_balance'],$settings['btc_rate']),$player['balance']),100),2); ?></span>% of your balance)</small></div>
                             <div class="form-group">
                                 <label for="input-address">Enter valid BTC address:</label>
                                 <input type="text" class="form-control" id="w_btc_address">
@@ -314,7 +314,7 @@ if (logged()):
                             if ($row['enabled']):
                                 ?>
                                 <div role="tabpanel" class="tab-pane" id="w_<?php echo $row['id']; ?>">
-                                    <div><small><b>Your <?php echo $row['currency']; ?> Balance:</b> <span class="<?php echo $row['currency']; ?>_balance"><?php echo $player[$row['currency'].'_balance']; ?></span> <b>| Coin value: </b><span class="<?php echo $row['currency']; ?>_value"><?php echo bcmul($player[$row['currency'].'_balance'],$row['rate']); ?></span> (<span class="<?php echo $row['currency']; ?>_mod"><?php echo round(bcmul($player[$row['currency'].'_balance'],$row['rate'])/$player['balance']*100,2); ?></span>% of your balance)</small></div>
+                                    <div><small><b>Your <?php echo $row['currency']; ?> Balance:</b> <span class="<?php echo $row['currency']; ?>_balance"><?php echo $player[$row['currency'].'_balance']; ?></span> <b>| Coin value: </b><span class="<?php echo $row['currency']; ?>_value"><?php echo bcmul($player[$row['currency'].'_balance'],$row['rate']); ?></span> (<span class="<?php echo $row['currency']; ?>_mod"><?php echo round(bc_div(bcmul($player[$row['currency'].'_balance'],$row['rate']),$player['balance'])*100,2); ?></span>% of your balance)</small></div>
                                     <div class="form-group">
                                         <label for="input-am">Enter the amount of <b>coins</b> you want to withdraw
                                             (min. <?php echo n_num($settings['min_withdrawal']); ?> Coins):</label>

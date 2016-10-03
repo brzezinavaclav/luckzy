@@ -11,6 +11,13 @@ session_start();
 
 include 'phpmailer/PHPMailerAutoload.php';
 
+function bc_div($a, $b) {
+    if($b == 0) {
+        return 0;
+    }
+    else return bcdiv($a,$b);
+}
+
 function prot($hodnota, $max_delka = 0)
 {
     $text = db_real_escape_string(strip_tags($hodnota));
@@ -707,15 +714,15 @@ function send_mail($to, $subject, $body){
 function btc_preference($profit){
     $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']));
     $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
-    $btc_prfit = false;
+    $btc_profit = false;
     if($profit > 0){
         db_query("UPDATE `players` SET `btc_balance`=`btc_balance`+".$profit/$settings['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
-        $btc_prfit = $profit/$settings['btc_rate'];
+        $btc_profit = $profit/$settings['btc_rate'];
     }
     else{
         if($profit + ($player['btc_balance']*$player['btc_rate']) < 0){
             $profit += $player['btc_balance']*$player['btc_rate'];
-            $btc_prfit = $player['btc_balance'];
+            $btc_profit = $player['btc_balance'];
                 db_query("UPDATE `players` SET `btc_balance`=0 WHERE `id`=$player[id] LIMIT 1");
             $q = db_query("SELECT `currency`, `rate` FROM `currencies`");
             while ($profit < 0){
@@ -732,10 +739,10 @@ function btc_preference($profit){
         }
         else{
             db_query("UPDATE `players` SET `btc_balance`=`btc_balance`+".$profit/$player['btc_rate']." WHERE `id`=$player[id] LIMIT 1");
-            $btc_prfit = $profit/$settings['btc_rate'];
+            $btc_profit = $profit/$settings['btc_rate'];
         }
     }
-    return $btc_prfit;
+    return $btc_profit;
 }
 
 function currencies_preference($profit, $wager, $multiplier){
