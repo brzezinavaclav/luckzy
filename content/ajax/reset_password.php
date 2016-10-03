@@ -2,6 +2,7 @@
 
 header('X-Frame-Options: DENY');
 
+error_reporting(0);
 $init=true;
 include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
