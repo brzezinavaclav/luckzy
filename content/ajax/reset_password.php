@@ -2,12 +2,10 @@
 
 header('X-Frame-Options: DENY');
 
-error_reporting(0);
 $init=true;
 include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
-include '../../inc/phpmailer/PHPMailerAutoload.php';
 
 
 if(db_num_rows(db_query("SELECT `id` FROM `players` WHERE `email`='".prot($_GET['email'])."' LIMIT 1"))==0){
