@@ -57,7 +57,7 @@
     height: 60px;
     line-height: 60px;
     font-size: 16px;
-    right: 350px;
+    right: 400px;
 }
 .bRegul{
     position: absolute;
@@ -102,7 +102,7 @@
     line-height: 60px;
     color: #278C0B;
     font-size: 16px;
-    padding-left: 100px;
+    padding-left: 120px;
 
 }
 .control .btn-primary{
@@ -112,6 +112,7 @@
     font-size: 20px;
     float: left;
     text-transform: uppercase;
+    padding: 16px;
 }
 .btn-primary.spinbtn {
     display: block;
@@ -121,6 +122,7 @@
     border-right: none;
     border-left: none;
     font-weight: bold;
+    padding: 16px;
 }
 .gamblingTable{
     position: absolute;

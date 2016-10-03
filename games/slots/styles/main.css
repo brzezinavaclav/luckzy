@@ -85,6 +85,7 @@
     border-right: none;
     border-left: none;
     font-weight: bold;
+    padding: 15px;
 }
 #slots .wager {
     display: block;
