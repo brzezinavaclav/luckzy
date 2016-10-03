@@ -778,7 +778,7 @@ function register() {
     'data': {username: $('#modals-sign #username').val(), passwd: $('#modals-sign #passwd').val(), re_passwd: $('#modals-sign #re_passwd').val(), email: $('#modals-sign #email').val()},
     'success': function(data) {
         if(data['error'] == 'no') {
-          m_alert('success', 'Verification link was send to your email');
+          m_alert('success', 'Verification link was send to your email (please check your spam folder)');
           $('#modals-sign #username').val('');
           $('#modals-sign #email').val('');
           $('#modals-sign #passwd').val('');
@@ -1042,7 +1042,7 @@ function resend_activation(){
     'dataType': "json",
     'success': function(data) {
       if(data['error'] == 'no') {
-        p_alert('success', 'Verification link was send to your email');
+        p_alert('success', 'Verification link was send to your email (please check your spam folder)');
       }
       else p_alert('danger',data['message']);
     }

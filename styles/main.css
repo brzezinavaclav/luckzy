@@ -375,8 +375,7 @@ a:focus,a:active {
   border-bottom: 2px solid #278C0B;
   font-size: 13px;
   background: #599b47; /* Old browsers */
-  font-size: 13px;
-  padding: 14px 25px;
+  padding: 8px 20px;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary{
   border-bottom: 2px solid #278C0B;
