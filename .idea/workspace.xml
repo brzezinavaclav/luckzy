@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activation.php" afterPath="$PROJECT_DIR$/activation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/functions.php" afterPath="$PROJECT_DIR$/inc/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/reset_password.php" afterPath="$PROJECT_DIR$/content/ajax/reset_password.php" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -108,8 +107,8 @@
       <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+            <state relative-caret-position="280">
+              <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="558" />
               <folding>
                 <marker date="1475589295771" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
                 <marker date="1475589295771" expanded="true" signature="574:656" ph="SELECT `id` players" />
@@ -132,16 +131,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reset_password.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reset_password.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+            <state relative-caret-position="331">
+              <caret line="21" column="139" selection-start-line="21" selection-start-column="139" selection-end-line="21" selection-end-column="139" />
               <folding>
-                <marker date="1475499618007" expanded="true" signature="233:308" ph="SELECT `id` players" />
-                <marker date="1475499618007" expanded="true" signature="484:586" ph="SELECT `pass... players" />
-                <marker date="1475499618007" expanded="true" signature="977:1052" ph="SELECT `id` players" />
-                <marker date="1475499618007" expanded="true" signature="1072:1149" ph="UPDATE `play... " />
+                <marker date="1475590354131" expanded="true" signature="233:308" ph="SELECT `id` players" />
+                <marker date="1475590354131" expanded="true" signature="484:586" ph="SELECT `pass... players" />
+                <marker date="1475590354131" expanded="true" signature="856:1118" ph="..." />
+                <marker date="1475590354131" expanded="true" signature="1300:1375" ph="SELECT `id` players" />
+                <marker date="1475590354131" expanded="true" signature="1395:1472" ph="UPDATE `play... " />
               </folding>
             </state>
           </provider>
@@ -184,7 +184,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/functions.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -376,12 +376,12 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/scripts/main.js" />
         <option value="$PROJECT_DIR$/styles/main.css" />
-        <option value="$PROJECT_DIR$/content/ajax/reset_password.php" />
         <option value="$PROJECT_DIR$/games/slots/styles/main.css" />
         <option value="$PROJECT_DIR$/games/blackjack/styles/main.css" />
         <option value="$PROJECT_DIR$/content/ajax/register.php" />
         <option value="$PROJECT_DIR$/activation.php" />
         <option value="$PROJECT_DIR$/inc/functions.php" />
+        <option value="$PROJECT_DIR$/content/ajax/reset_password.php" />
       </list>
     </option>
   </component>
@@ -861,12 +861,12 @@
       <workItem from="1474905715495" duration="26000" />
       <workItem from="1474957835436" duration="49000" />
       <workItem from="1475496425894" duration="3771000" />
-      <workItem from="1475586872323" duration="3328000" />
+      <workItem from="1475586872323" duration="3564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="591350000" />
+    <option name="totallyTimeSpent" value="591586000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -1359,19 +1359,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-          <folding>
-            <marker date="1475499618007" expanded="true" signature="233:308" ph="SELECT `id` players" />
-            <marker date="1475499618007" expanded="true" signature="484:586" ph="SELECT `pass... players" />
-            <marker date="1475499618007" expanded="true" signature="977:1052" ph="SELECT `id` players" />
-            <marker date="1475499618007" expanded="true" signature="1072:1149" ph="UPDATE `play... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/activation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1409,21 +1396,6 @@
             <element signature="e#6050#6056#0#HTML" expanded="true" />
             <element signature="e#6056#6062#0#HTML" expanded="true" />
             <element signature="n#style#0;n#a#3;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-          <folding>
-            <marker date="1475589295771" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
-            <marker date="1475589295771" expanded="true" signature="574:656" ph="SELECT `id` players" />
-            <marker date="1475589295771" expanded="true" signature="966:1042" ph="SELECT `id` players" />
-            <marker date="1475589295771" expanded="true" signature="1402:1492" ph="SELECT `acti... players" />
-            <marker date="1475589295771" expanded="true" signature="1858:2120" ph="..." />
-            <marker date="1475589295771" expanded="true" signature="2337:2598" ph="UPDATE `play... " />
           </folding>
         </state>
       </provider>
@@ -1534,6 +1506,35 @@
             <marker date="1475590202215" expanded="true" signature="34323:34436" ph="UPDATE `play... " />
             <marker date="1475590202215" expanded="true" signature="34752:34834" ph="UPDATE `play... " />
             <marker date="1475590202215" expanded="true" signature="34908:35040" ph="UPDATE `play... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="558" />
+          <folding>
+            <marker date="1475589295771" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
+            <marker date="1475589295771" expanded="true" signature="574:656" ph="SELECT `id` players" />
+            <marker date="1475589295771" expanded="true" signature="966:1042" ph="SELECT `id` players" />
+            <marker date="1475589295771" expanded="true" signature="1402:1492" ph="SELECT `acti... players" />
+            <marker date="1475589295771" expanded="true" signature="1858:2120" ph="..." />
+            <marker date="1475589295771" expanded="true" signature="2337:2598" ph="UPDATE `play... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="21" column="139" selection-start-line="21" selection-start-column="139" selection-end-line="21" selection-end-column="139" />
+          <folding>
+            <marker date="1475590354131" expanded="true" signature="233:308" ph="SELECT `id` players" />
+            <marker date="1475590354131" expanded="true" signature="484:586" ph="SELECT `pass... players" />
+            <marker date="1475590354131" expanded="true" signature="856:1118" ph="..." />
+            <marker date="1475590354131" expanded="true" signature="1300:1375" ph="SELECT `id` players" />
+            <marker date="1475590354131" expanded="true" signature="1395:1472" ph="UPDATE `play... " />
           </folding>
         </state>
       </provider>
