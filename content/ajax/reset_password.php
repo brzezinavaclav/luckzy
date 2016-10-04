@@ -19,7 +19,7 @@ while (db_num_rows(db_query("SELECT `password_reset_hash` FROM `players` WHERE `
 
 $actual_link = "http://".$settings['url']."?reset=" . $password_reset_hash;
 
-if(!send_mail($_GET['email'], 'Reset password email', '<h1>Welcome to Luckzy.com</h1><br>Reset your password by clicking the button bellow.<br><br><a href="#" style="border-bottom: 2px solid #278C0B; border-radius: 3px; background: #599b47;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:33px;text-align:center;text-decoration:none;width:130px;-webkit-text-size-adjust:none;">Activate!</a><br><br>')) {
+if(!send_mail($_GET['email'], 'Reset password email', '<h1>Welcome to Luckzy.com</h1><br>Reset your password by clicking the button bellow.<br><br><a href="'.$actual_link.'" style="border-bottom: 2px solid #278C0B; border-radius: 3px; background: #599b47;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:33px;text-align:center;text-decoration:none;width:130px;-webkit-text-size-adjust:none;">Activate!</a><br><br>')) {
     echo json_encode(array('error' => 'yes', 'message' => 'Password reset email couldn\'t be sent.'));
     exit();
 }

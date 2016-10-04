@@ -135,13 +135,13 @@
         <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="331">
-              <caret line="21" column="157" selection-start-line="21" selection-start-column="157" selection-end-line="21" selection-end-column="157" />
+              <caret line="21" column="156" selection-start-line="21" selection-start-column="156" selection-end-line="21" selection-end-column="172" />
               <folding>
-                <marker date="1475590702706" expanded="true" signature="233:308" ph="SELECT `id` players" />
-                <marker date="1475590702706" expanded="true" signature="484:586" ph="SELECT `pass... players" />
-                <marker date="1475590702706" expanded="true" signature="841:1103" ph="..." />
-                <marker date="1475590702706" expanded="true" signature="1285:1360" ph="SELECT `id` players" />
-                <marker date="1475590702706" expanded="true" signature="1380:1457" ph="UPDATE `play... " />
+                <marker date="1475590761774" expanded="true" signature="233:308" ph="SELECT `id` players" />
+                <marker date="1475590761774" expanded="true" signature="484:586" ph="SELECT `pass... players" />
+                <marker date="1475590761774" expanded="true" signature="856:1118" ph="..." />
+                <marker date="1475590761774" expanded="true" signature="1300:1375" ph="SELECT `id` players" />
+                <marker date="1475590761774" expanded="true" signature="1395:1472" ph="UPDATE `play... " />
               </folding>
             </state>
           </provider>
@@ -861,12 +861,12 @@
       <workItem from="1474905715495" duration="26000" />
       <workItem from="1474957835436" duration="49000" />
       <workItem from="1475496425894" duration="3771000" />
-      <workItem from="1475586872323" duration="3828000" />
+      <workItem from="1475586872323" duration="3887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="591850000" />
+    <option name="totallyTimeSpent" value="591909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -1528,13 +1528,13 @@
     <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
-          <caret line="21" column="157" selection-start-line="21" selection-start-column="157" selection-end-line="21" selection-end-column="157" />
+          <caret line="21" column="156" selection-start-line="21" selection-start-column="156" selection-end-line="21" selection-end-column="172" />
           <folding>
-            <marker date="1475590702706" expanded="true" signature="233:308" ph="SELECT `id` players" />
-            <marker date="1475590702706" expanded="true" signature="484:586" ph="SELECT `pass... players" />
-            <marker date="1475590702706" expanded="true" signature="841:1103" ph="..." />
-            <marker date="1475590702706" expanded="true" signature="1285:1360" ph="SELECT `id` players" />
-            <marker date="1475590702706" expanded="true" signature="1380:1457" ph="UPDATE `play... " />
+            <marker date="1475590761774" expanded="true" signature="233:308" ph="SELECT `id` players" />
+            <marker date="1475590761774" expanded="true" signature="484:586" ph="SELECT `pass... players" />
+            <marker date="1475590761774" expanded="true" signature="856:1118" ph="..." />
+            <marker date="1475590761774" expanded="true" signature="1300:1375" ph="SELECT `id` players" />
+            <marker date="1475590761774" expanded="true" signature="1395:1472" ph="UPDATE `play... " />
           </folding>
         </state>
       </provider>
