@@ -21,7 +21,19 @@ if (!empty($_GET['approveTX']) || !empty($_GET['denyTX']) || !empty($_GET['delet
         $tx = db_fetch_array($tx_q);
 
         if ($m == 'deny') {
-            db_query("UPDATE `players` SET `balance`=`balance`+" . $tx['coins_amount'] . " WHERE `id`=$tx[player_id] LIMIT 1");
+
+            if($_GET['currency'] != 'btc'){
+                $currency = db_fetch_array(db_query("SELECT * FROM `currencies` WHERE `id`=". $_GET['currency'] ." LIMIT 1"));
+                $rate = $currency['rate'];
+                $currency = $currency['currency'].'_balance';
+            }
+            else{
+                $rate = db_fetch_array(db_query("SELECT `btc_rate` FROM `syste` WHERE `id`=1 LIMIT 1"));
+                $rate = $rate['btc_rate'];
+                $currency = "btc_balance";
+            }
+
+            db_query("UPDATE `players` SET `balance`=`balance`+" . $tx['coins_amount'] . ", `$currency`=`$currency`+". $tx['coins_amount']/$rate ." WHERE `id`=$tx[player_id] LIMIT 1");
             db_query("DELETE FROM `withdrawals` WHERE `id`=$tx[id] LIMIT 1");
 
             echo '<div class="zprava zpravagreen"><b>Success:</b> Withdrawal rejected.</div>';
@@ -125,8 +137,8 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
         if (!confirm('Do you really want to make this payment?')) return;
         location.href = './?p=withdrawals&approveTX=' + tid;
     }
-    function wr_deny(tid) {
-        location.href = './?p=withdrawals&denyTX=' + tid;
+    function wr_deny(tid, currency) {
+        location.href = './?p=withdrawals&denyTX=' + tid + '&currency=' + currency;
     }
     function wr_delete(tid) {
         if (!confirm('Do you really want to erase this record?')) return;
@@ -192,7 +204,7 @@ if(isset($_GET['error'])) echo '<div class="zprava zpravagreen"><b>Error!</b> '.
                 $actions .= '<a title="Delete" href="#" onclick="wr_delete(' . $tx['id'] . ');"><span class="glyphicon glyphicon-trash"></a>';
             } else {
                 $status = "Initiated";
-                $actions .= '<a title="Approve" href="#" onclick="wr_approve(' . $tx['id'] . ');"><span class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;<a title="Disapprove (return coins to player)" href="#" onclick="wr_deny(' . $tx['id'] . ');"><span class="glyphicon glyphicon-remove"></a>';
+                $actions .= '<a title="Approve" href="#" onclick="wr_approve(' . $tx['id'] . ');"><span class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;<a title="Disapprove (return coins to player)" href="#" onclick="wr_deny(' . $tx['id'] . ', '. $tx['currency'] .');"><span class="glyphicon glyphicon-remove"></a>';
             }
 
             echo '<tr class="vypis_table_obsah" id="row_'.$tx['id'].'">';
