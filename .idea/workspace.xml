@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b08d11b3-fb7e-4ad5-9f44-bce4cd293c9b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/register.php" afterPath="$PROJECT_DIR$/content/ajax/register.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content/ajax/reset_password.php" afterPath="$PROJECT_DIR$/content/ajax/reset_password.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/db-conf.php" afterPath="$PROJECT_DIR$/inc/db-conf.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/functions.php" afterPath="$PROJECT_DIR$/inc/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.js" afterPath="$PROJECT_DIR$/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/main.css" afterPath="$PROJECT_DIR$/styles/main.css" />
     </list>
     <ignored path="matthew_vitale.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,6 +25,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -29,268 +38,11 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17748">
-              <caret line="1044" column="71" selection-start-line="1044" selection-start-column="71" selection-end-line="1044" selection-end-column="71" />
+            <state relative-caret-position="509">
+              <caret line="780" column="110" selection-start-line="780" selection-start-column="110" selection-end-line="780" selection-end-column="110" />
               <folding>
-                <marker date="1475498968906" expanded="true" signature="15378:15392" ph="..." />
-                <marker date="1475498968906" expanded="true" signature="21072:21079" ph="×" />
-                <marker date="1475498968906" expanded="true" signature="25861:25908" ph="..." />
-                <marker date="1475498968906" expanded="true" signature="27100:27107" ph="×" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5882">
-              <caret line="346" column="38" selection-start-line="346" selection-start-column="38" selection-end-line="346" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/games/blackjack/styles/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activation.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="1372" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="6191" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#4;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#5892#5898#0#HTML" expanded="true" />
-                <element signature="e#5898#5904#0#HTML" expanded="true" />
-                <element signature="e#5905#5911#0#HTML" expanded="true" />
-                <element signature="e#5911#5917#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#5965#5971#0#HTML" expanded="true" />
-                <element signature="e#5971#5977#0#HTML" expanded="true" />
-                <element signature="e#5978#5984#0#HTML" expanded="true" />
-                <element signature="e#5984#5990#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#a#2;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#6037#6043#0#HTML" expanded="true" />
-                <element signature="e#6043#6049#0#HTML" expanded="true" />
-                <element signature="e#6050#6056#0#HTML" expanded="true" />
-                <element signature="e#6056#6062#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#a#3;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="558" />
-              <folding>
-                <marker date="1475589295771" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
-                <marker date="1475589295771" expanded="true" signature="574:656" ph="SELECT `id` players" />
-                <marker date="1475589295771" expanded="true" signature="966:1042" ph="SELECT `id` players" />
-                <marker date="1475589295771" expanded="true" signature="1402:1492" ph="SELECT `acti... players" />
-                <marker date="1475589295771" expanded="true" signature="1858:2120" ph="..." />
-                <marker date="1475589295771" expanded="true" signature="2337:2598" ph="UPDATE `play... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/games/slots/styles/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="87" column="15" selection-start-line="87" selection-start-column="15" selection-end-line="87" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reset_password.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="21" column="156" selection-start-line="21" selection-start-column="156" selection-end-line="21" selection-end-column="172" />
-              <folding>
-                <marker date="1475590761774" expanded="true" signature="233:308" ph="SELECT `id` players" />
-                <marker date="1475590761774" expanded="true" signature="484:586" ph="SELECT `pass... players" />
-                <marker date="1475590761774" expanded="true" signature="856:1118" ph="..." />
-                <marker date="1475590761774" expanded="true" signature="1300:1375" ph="SELECT `id` players" />
-                <marker date="1475590761774" expanded="true" signature="1395:1472" ph="UPDATE `play... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getBonus.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content/ajax/getBonus.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
-              <folding>
-                <marker date="1475497132854" expanded="true" signature="505:578" ph="SELECT * FRO... players" />
-                <marker date="1475497132854" expanded="true" signature="618:661" ph="SELECT * FRO... system" />
-                <marker date="1475497132854" expanded="true" signature="1127:1260" ph="DELETE FROM " />
-                <marker date="1475497132854" expanded="true" signature="1290:1375" ph="SELECT `id` giveaway_ip_limit" />
-                <marker date="1475497132854" expanded="true" signature="1645:1680" ph="SELECT * FRO... players" />
-                <marker date="1475497132854" expanded="true" signature="1745:1788" ph="SELECT * FRO... system" />
-                <marker date="1475497132854" expanded="true" signature="1833:1875" ph="SELECT `curr... currencies" />
-                <marker date="1475497132854" expanded="true" signature="1892:1914" ph="UPDATE `play... " />
-                <marker date="1475497132854" expanded="true" signature="1892:2066" ph="UPDATE `play... " />
-                <marker date="1475497132854" expanded="true" signature="2154:2189" ph="SELECT * FRO... players" />
-                <marker date="1475497132854" expanded="true" signature="2254:2297" ph="SELECT * FRO... system" />
-                <marker date="1475497132854" expanded="true" signature="2342:2385" ph="SELECT SUM(`... users" />
-                <marker date="1475497132854" expanded="true" signature="2427:2472" ph="SELECT SUM(`... deposits" />
-                <marker date="1475497132854" expanded="true" signature="2699:2748" ph="UPDATE `play... " />
-                <marker date="1475497132854" expanded="true" signature="2699:2833" ph="UPDATE `play... " />
-                <marker date="1475497132854" expanded="true" signature="2915:2950" ph="SELECT * FRO... players" />
-                <marker date="1475497132854" expanded="true" signature="3017:3060" ph="SELECT * FRO... system" />
-                <marker date="1475497132854" expanded="true" signature="3107:3149" ph="SELECT `curr... currencies" />
-                <marker date="1475497132854" expanded="true" signature="3168:3342" ph="UPDATE `play... " />
-                <marker date="1475497132854" expanded="true" signature="3398:3433" ph="SELECT * FRO... players" />
-                <marker date="1475497132854" expanded="true" signature="3500:3543" ph="SELECT * FRO... system" />
-                <marker date="1475497132854" expanded="true" signature="3590:3633" ph="SELECT SUM(`... users" />
-                <marker date="1475497132854" expanded="true" signature="3677:3722" ph="SELECT SUM(`... deposits" />
-                <marker date="1475497132854" expanded="true" signature="3961:4095" ph="UPDATE `play... " />
-                <marker date="1475497132854" expanded="true" signature="4117:4194" ph="INSERT INTO `giveaway_ip_limit`... " />
-                <marker date="1475497132854" expanded="true" signature="4208:4296" ph="UPDATE `play... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/inc/functions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="708" column="6212" selection-start-line="708" selection-start-column="6212" selection-end-line="708" selection-end-column="6212" />
-              <folding>
-                <marker date="1475590202215" expanded="true" signature="2651:2706" ph="SELECT `id` players" />
-                <marker date="1475590202215" expanded="true" signature="2767:3009" ph="INSERT INTO `players`... " />
-                <marker date="1475590202215" expanded="true" signature="4782:4817" ph="SELECT * FRO... system" />
-                <marker date="1475590202215" expanded="true" signature="5135:5177" ph="SELECT `main... system" />
-                <marker date="1475590202215" expanded="true" signature="5587:5630" ph="SELECT * FRO... system" />
-                <marker date="1475590202215" expanded="true" signature="6925:6968" ph="SELECT * FRO... system" />
-                <marker date="1475590202215" expanded="true" signature="7015:7064" ph="SELECT * FRO... games" />
-                <marker date="1475590202215" expanded="true" signature="7138:7202" ph="SELECT `clie... users" />
-                <marker date="1475590202215" expanded="true" signature="8957:9024" ph="UPDATE `game... " />
-                <marker date="1475590202215" expanded="true" signature="9163:9198" ph="SELECT `curr... currencies" />
-                <marker date="1475590202215" expanded="true" signature="9415:9532" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="9629:9675" ph="SELECT `numb... system" />
-                <marker date="1475590202215" expanded="true" signature="12227:12252" ph="SELECT `id` games" />
-                <marker date="1475590202215" expanded="true" signature="12473:12498" ph="SELECT `id` spins" />
-                <marker date="1475590202215" expanded="true" signature="12566:12591" ph="SELECT `id` spins" />
-                <marker date="1475590202215" expanded="true" signature="12642:12667" ph="SELECT `id` games" />
-                <marker date="1475590202215" expanded="true" signature="12915:12948" ph="SELECT `bet_... games" />
-                <marker date="1475590202215" expanded="true" signature="13246:13279" ph="SELECT `bet_... spins" />
-                <marker date="1475590202215" expanded="true" signature="13424:13457" ph="SELECT `bet_... spins" />
-                <marker date="1475590202215" expanded="true" signature="13585:13618" ph="SELECT `bet_... games" />
-                <marker date="1475590202215" expanded="true" signature="14243:14360" ph="SELECT SUM(-... " />
-                <marker date="1475590202215" expanded="true" signature="14428:14545" ph="SELECT SUM(-... " />
-                <marker date="1475590202215" expanded="true" signature="14642:14759" ph="SELECT SUM(-... " />
-                <marker date="1475590202215" expanded="true" signature="14921:14934" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="15002:15017" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="15123:15136" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="15214:15229" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="15358:15419" ph="SELECT `payo... spins" />
-                <marker date="1475590202215" expanded="true" signature="15530:15609" ph="SELECT `bet_... games" />
-                <marker date="1475590202215" expanded="true" signature="15923:15989" ph="SELECT `payo... spins" />
-                <marker date="1475590202215" expanded="true" signature="16039:16134" ph="SELECT `bet_... games" />
-                <marker date="1475590202215" expanded="true" signature="16350:16393" ph="SELECT * FRO... deposits" />
-                <marker date="1475590202215" expanded="true" signature="16600:16681" ph="SELECT `curr... currencies" />
-                <marker date="1475590202215" expanded="true" signature="17160:17207" ph="SELECT * FRO... withdrawals" />
-                <marker date="1475590202215" expanded="true" signature="17414:17495" ph="SELECT `curr... currencies" />
-                <marker date="1475590202215" expanded="true" signature="17956:18084" ph="SELECT * FRO... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="18220:18285" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="18662:18765" ph="SELECT * FRO... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="18901:18966" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="19464:19592" ph="SELECT * FRO... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="20087:20148" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="21137:21272" ph="SELECT `play... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="21466:21569" ph="SELECT * FRO... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="22062:22190" ph="SELECT * FRO... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="22469:22530" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="22675:22803" ph="SELECT * FRO... player_relations" />
-                <marker date="1475590202215" expanded="true" signature="23185:23313" ph="SELECT `id` chat" />
-                <marker date="1475590202215" expanded="true" signature="23403:23457" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="23527:23606" ph="SELECT `id` chat" />
-                <marker date="1475590202215" expanded="true" signature="23919:24038" ph="SELECT `id` players" />
-                <marker date="1475590202215" expanded="true" signature="24129:24164" ph="SELECT * FRO... system" />
-                <marker date="1475590202215" expanded="true" signature="27713:27798" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="28038:28056" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="28247:28294" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="28343:28364" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="28557:28603" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="28919:28935" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="29133:29149" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="29350:29366" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="29565:29581" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="29819:29851" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="29980:29999" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30048:30103" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30217:30277" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30367:30424" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30509:30549" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30640:30727" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30740:30754" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30779:30785" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30785:30791" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30792:30798" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30798:30804" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30815:30829" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30852:30858" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30858:30864" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30865:30871" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30871:30877" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30888:30902" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="30924:30930" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30930:30936" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30937:30943" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30943:30949" ph=" " />
-                <marker date="1475590202215" expanded="true" signature="30960:30974" ph="..." />
-                <marker date="1475590202215" expanded="true" signature="31187:31222" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="31289:31332" ph="SELECT * FRO... system" />
-                <marker date="1475590202215" expanded="true" signature="31401:31514" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="31802:31869" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="31900:31943" ph="SELECT `curr... currencies" />
-                <marker date="1475590202215" expanded="true" signature="32211:32293" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="32367:32499" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="32614:32725" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="32930:32965" ph="SELECT * FRO... players" />
-                <marker date="1475590202215" expanded="true" signature="33032:33075" ph="SELECT * FRO... system" />
-                <marker date="1475590202215" expanded="true" signature="33155:33197" ph="SELECT `curr... currencies" />
-                <marker date="1475590202215" expanded="true" signature="33326:33439" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="33738:33863" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="33937:34069" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="34155:34197" ph="SELECT `curr... currencies" />
-                <marker date="1475590202215" expanded="true" signature="34323:34436" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="34752:34834" ph="UPDATE `play... " />
-                <marker date="1475590202215" expanded="true" signature="34908:35040" ph="UPDATE `play... " />
+                <marker date="1480253508420" expanded="true" signature="15378:15392" ph="..." />
+                <marker date="1480253508420" expanded="true" signature="25869:25916" ph="..." />
               </folding>
             </state>
           </provider>
@@ -299,16 +51,206 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+            <state relative-caret-position="506">
+              <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
               <folding>
-                <marker date="1475497558180" expanded="true" signature="10272:10298" ph="SELECT * FRO... currencies" />
-                <marker date="1475497558180" expanded="true" signature="12700:12726" ph="SELECT * FRO... currencies" />
-                <marker date="1475497558180" expanded="true" signature="15828:15854" ph="SELECT * FRO... currencies" />
-                <marker date="1475497558180" expanded="true" signature="18095:18121" ph="SELECT * FRO... currencies" />
-                <marker date="1475497558180" expanded="true" signature="27919:28002" ph="SELECT `id` players" />
-                <marker date="1475497558180" expanded="true" signature="28056:28139" ph="SELECT `id` players" />
-                <marker date="1475497558180" expanded="true" signature="31658:31700" ph="SELECT * FRO... chat_rooms" />
+                <marker date="1480254015583" expanded="true" signature="10351:10377" ph="SELECT * FRO... currencies" />
+                <marker date="1480254015583" expanded="true" signature="12779:12805" ph="SELECT * FRO... currencies" />
+                <marker date="1480254015583" expanded="true" signature="15907:15933" ph="SELECT * FRO... currencies" />
+                <marker date="1480254015583" expanded="true" signature="18174:18200" ph="SELECT * FRO... currencies" />
+                <marker date="1480254015583" expanded="true" signature="27998:28081" ph="SELECT `id` players" />
+                <marker date="1480254015583" expanded="true" signature="28135:28218" ph="SELECT `id` players" />
+                <marker date="1480254015583" expanded="true" signature="31737:31779" ph="SELECT * FRO... chat_rooms" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/styles/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="405" column="13" selection-start-line="405" selection-start-column="12" selection-end-line="405" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reset_password.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="481" selection-start-line="21" selection-start-column="481" selection-end-line="21" selection-end-column="481" />
+              <folding>
+                <marker date="1480254990514" expanded="true" signature="233:308" ph="SELECT `id` players" />
+                <marker date="1480254990514" expanded="true" signature="484:586" ph="SELECT `pass... players" />
+                <marker date="1480254990514" expanded="true" signature="856:1118" ph="..." />
+                <marker date="1480254990514" expanded="true" signature="1327:1402" ph="SELECT `id` players" />
+                <marker date="1480254990514" expanded="true" signature="1422:1499" ph="UPDATE `play... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="39" column="80" selection-start-line="39" selection-start-column="80" selection-end-line="39" selection-end-column="80" />
+              <folding>
+                <marker date="1480255014840" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
+                <marker date="1480255014840" expanded="true" signature="574:656" ph="SELECT `id` players" />
+                <marker date="1480255014840" expanded="true" signature="966:1042" ph="SELECT `id` players" />
+                <marker date="1480255014840" expanded="true" signature="1402:1492" ph="SELECT `acti... players" />
+                <marker date="1480255014840" expanded="true" signature="1858:2120" ph="..." />
+                <marker date="1480255014840" expanded="true" signature="2364:2625" ph="UPDATE `play... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="703" column="51" selection-start-line="703" selection-start-column="51" selection-end-line="703" selection-end-column="51" />
+              <folding>
+                <marker date="1480254644623" expanded="true" signature="2651:2706" ph="SELECT `id` players" />
+                <marker date="1480254644623" expanded="true" signature="2767:3009" ph="INSERT INTO `players`... " />
+                <marker date="1480254644623" expanded="true" signature="4782:4817" ph="SELECT * FRO... system" />
+                <marker date="1480254644623" expanded="true" signature="5135:5177" ph="SELECT `main... system" />
+                <marker date="1480254644623" expanded="true" signature="5587:5630" ph="SELECT * FRO... system" />
+                <marker date="1480254644623" expanded="true" signature="6925:6968" ph="SELECT * FRO... system" />
+                <marker date="1480254644623" expanded="true" signature="7015:7064" ph="SELECT * FRO... games" />
+                <marker date="1480254644623" expanded="true" signature="7138:7202" ph="SELECT `clie... users" />
+                <marker date="1480254644623" expanded="true" signature="8957:9024" ph="UPDATE `game... " />
+                <marker date="1480254644623" expanded="true" signature="9163:9198" ph="SELECT `curr... currencies" />
+                <marker date="1480254644623" expanded="true" signature="9415:9532" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="9629:9675" ph="SELECT `numb... system" />
+                <marker date="1480254644623" expanded="true" signature="12227:12252" ph="SELECT `id` games" />
+                <marker date="1480254644623" expanded="true" signature="12473:12498" ph="SELECT `id` spins" />
+                <marker date="1480254644623" expanded="true" signature="12566:12591" ph="SELECT `id` spins" />
+                <marker date="1480254644623" expanded="true" signature="12642:12667" ph="SELECT `id` games" />
+                <marker date="1480254644623" expanded="true" signature="12915:12948" ph="SELECT `bet_... games" />
+                <marker date="1480254644623" expanded="true" signature="13246:13279" ph="SELECT `bet_... spins" />
+                <marker date="1480254644623" expanded="true" signature="13424:13457" ph="SELECT `bet_... spins" />
+                <marker date="1480254644623" expanded="true" signature="13585:13618" ph="SELECT `bet_... games" />
+                <marker date="1480254644623" expanded="true" signature="14243:14360" ph="SELECT SUM(-... " />
+                <marker date="1480254644623" expanded="true" signature="14428:14545" ph="SELECT SUM(-... " />
+                <marker date="1480254644623" expanded="true" signature="14642:14759" ph="SELECT SUM(-... " />
+                <marker date="1480254644623" expanded="true" signature="14921:14934" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="15002:15017" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="15123:15136" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="15214:15229" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="15358:15419" ph="SELECT `payo... spins" />
+                <marker date="1480254644623" expanded="true" signature="15530:15609" ph="SELECT `bet_... games" />
+                <marker date="1480254644623" expanded="true" signature="15923:15989" ph="SELECT `payo... spins" />
+                <marker date="1480254644623" expanded="true" signature="16039:16134" ph="SELECT `bet_... games" />
+                <marker date="1480254644623" expanded="true" signature="16350:16393" ph="SELECT * FRO... deposits" />
+                <marker date="1480254644623" expanded="true" signature="16600:16681" ph="SELECT `curr... currencies" />
+                <marker date="1480254644623" expanded="true" signature="17160:17207" ph="SELECT * FRO... withdrawals" />
+                <marker date="1480254644623" expanded="true" signature="17414:17495" ph="SELECT `curr... currencies" />
+                <marker date="1480254644623" expanded="true" signature="17956:18084" ph="SELECT * FRO... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="18220:18285" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="18662:18765" ph="SELECT * FRO... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="18901:18966" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="19464:19592" ph="SELECT * FRO... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="20087:20148" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="21137:21272" ph="SELECT `play... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="21466:21569" ph="SELECT * FRO... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="22062:22190" ph="SELECT * FRO... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="22469:22530" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="22675:22803" ph="SELECT * FRO... player_relations" />
+                <marker date="1480254644623" expanded="true" signature="23185:23313" ph="SELECT `id` chat" />
+                <marker date="1480254644623" expanded="true" signature="23403:23457" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="23527:23606" ph="SELECT `id` chat" />
+                <marker date="1480254644623" expanded="true" signature="23919:24038" ph="SELECT `id` players" />
+                <marker date="1480254644623" expanded="true" signature="24129:24164" ph="SELECT * FRO... system" />
+                <marker date="1480254644623" expanded="true" signature="27704:27789" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="28029:28047" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="28238:28285" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="28334:28355" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="28568:28614" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29000:29016" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29286:29318" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29447:29466" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29515:29570" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29684:29744" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29834:29891" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="29976:30016" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="30107:30194" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="30207:30221" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="30303:30317" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="30424:30438" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="30524:30538" ph="..." />
+                <marker date="1480254644623" expanded="true" signature="30787:30822" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="30889:30932" ph="SELECT * FRO... system" />
+                <marker date="1480254644623" expanded="true" signature="31001:31114" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="31402:31469" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="31500:31543" ph="SELECT `curr... currencies" />
+                <marker date="1480254644623" expanded="true" signature="31811:31893" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="31967:32099" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="32214:32325" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="32530:32565" ph="SELECT * FRO... players" />
+                <marker date="1480254644623" expanded="true" signature="32632:32675" ph="SELECT * FRO... system" />
+                <marker date="1480254644623" expanded="true" signature="32755:32797" ph="SELECT `curr... currencies" />
+                <marker date="1480254644623" expanded="true" signature="32926:33039" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="33338:33463" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="33537:33669" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="33755:33797" ph="SELECT `curr... currencies" />
+                <marker date="1480254644623" expanded="true" signature="33923:34036" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="34352:34434" ph="UPDATE `play... " />
+                <marker date="1480254644623" expanded="true" signature="34508:34640" ph="UPDATE `play... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="driver-conf.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/driver-conf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db-conf.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/db-conf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/db_functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/start.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="34" selection-end-column="27" />
+              <folding>
+                <marker date="1480253788675" expanded="true" signature="514:549" ph="SELECT * FRO... players" />
+                <marker date="1480253788675" expanded="true" signature="675:754" ph="SELECT `id` players" />
+                <marker date="1480253788675" expanded="true" signature="805:881" ph="SELECT * FRO... players" />
+                <marker date="1480253788675" expanded="true" signature="1106:1187" ph="SELECT `user... players" />
+                <marker date="1480253788675" expanded="true" signature="1297:1377" ph="SELECT `name... chat_rooms" />
+                <marker date="1480253788675" expanded="true" signature="1583:1656" ph="SELECT `id` games" />
+                <marker date="1480253788675" expanded="true" signature="1711:1810" ph="SELECT `id` games" />
+                <marker date="1480253788675" expanded="true" signature="2227:2319" ph="UPDATE `play... " />
+                <marker date="1480253788675" expanded="true" signature="2580:2623" ph="SELECT * FRO... system" />
               </folding>
             </state>
           </provider>
@@ -331,8 +273,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../slots/inc/db-conf.php" />
-        <option value="$PROJECT_DIR$/content/ajax/approveFriend.php" />
         <option value="$PROJECT_DIR$/content/ajax/ignoreFriend.php" />
         <option value="$PROJECT_DIR$/content/ajax/login.php" />
         <option value="$PROJECT_DIR$/games/blackjack/index.php" />
@@ -345,7 +285,6 @@
         <option value="$PROJECT_DIR$/content/ajax/chatSend.php" />
         <option value="$PROJECT_DIR$/content/ajax/reser_password.php" />
         <option value="$PROJECT_DIR$/content/ajax/save_password.php" />
-        <option value="$PROJECT_DIR$/inc/start.php" />
         <option value="$PROJECT_DIR$/content/ajax/resend_activation.php" />
         <option value="$USER_HOME$/Desktop/index.html" />
         <option value="$PROJECT_DIR$/../test/index.html" />
@@ -373,15 +312,18 @@
         <option value="$PROJECT_DIR$/admin/pages/screenshots.php" />
         <option value="$PROJECT_DIR$/admin/pages/home.php" />
         <option value="$PROJECT_DIR$/content/ajax/getBonus.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/scripts/main.js" />
-        <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/games/slots/styles/main.css" />
         <option value="$PROJECT_DIR$/games/blackjack/styles/main.css" />
-        <option value="$PROJECT_DIR$/content/ajax/register.php" />
         <option value="$PROJECT_DIR$/activation.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/scripts/main.js" />
+        <option value="$PROJECT_DIR$/inc/start.php" />
+        <option value="$PROJECT_DIR$/inc/db-conf.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/inc/functions.php" />
         <option value="$PROJECT_DIR$/content/ajax/reset_password.php" />
+        <option value="$PROJECT_DIR$/content/ajax/register.php" />
       </list>
     </option>
   </component>
@@ -398,8 +340,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -426,6 +368,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -704,8 +648,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -738,9 +680,6 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
       <method />
@@ -766,19 +705,6 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
       <method />
     </configuration>
   </component>
@@ -862,17 +788,18 @@
       <workItem from="1474957835436" duration="49000" />
       <workItem from="1475496425894" duration="3771000" />
       <workItem from="1475586872323" duration="3887000" />
+      <workItem from="1480253078842" duration="2154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="591909000" />
+    <option name="totallyTimeSpent" value="594063000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20424597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20362474" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -928,28 +855,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/content/ajax/chatUpdate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/chatSend.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/stats_load.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="98" column="56" selection-start-line="98" selection-start-column="56" selection-end-line="98" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/reser_password.php" />
     <entry file="file://$PROJECT_DIR$/admin/pages/configs.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1026,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/start.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/gameContinue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
@@ -1044,7 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,14 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-          <folding>
-            <marker date="1474394288570" expanded="true" signature="316:392" ph="SELECT `id` currencies" />
-            <marker date="1474394288570" expanded="true" signature="446:528" ph="SELECT `curr... currencies" />
-            <marker date="1474394288570" expanded="true" signature="591:664" ph="DELETE FROM " />
-            <marker date="1474394288570" expanded="true" signature="678:723" ph="ALTER TABLE `players`... " />
-            <marker date="1474394288570" expanded="true" signature="737:770" ph="ALTER TABLE `games`... " />
-            <marker date="1474394288570" expanded="true" signature="737:807" ph="ALTER TABLE `games`... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1082,20 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="50" column="96" selection-start-line="50" selection-start-column="96" selection-end-line="50" selection-end-column="96" />
-          <folding>
-            <element signature="e#6#181#0#PHP" expanded="false" />
-            <marker date="1474394281409" expanded="true" signature="886:1741" ph="UPDATE `syst... " />
-            <marker date="1474394281409" expanded="true" signature="2194:2501" ph="UPDATE `syst... " />
-            <marker date="1474394281409" expanded="true" signature="2579:2605" ph="SELECT * FRO... currencies" />
-            <marker date="1474394281409" expanded="true" signature="2776:3042" ph="UPDATE `curr... " />
-            <marker date="1474394281409" expanded="true" signature="3373:3521" ph="UPDATE `syst... " />
-            <marker date="1474394281409" expanded="true" signature="3639:3844" ph="INSERT INTO `currencies`... " />
-            <marker date="1474394281409" expanded="true" signature="3866:3940" ph="ALTER TABLE `players`... " />
-            <marker date="1474394281409" expanded="true" signature="3962:4037" ph="ALTER TABLE `games`... " />
-            <marker date="1474394281409" expanded="true" signature="4100:4157" ph="UPDATE `syst... " />
-            <marker date="1474394281409" expanded="true" signature="4208:4250" ph="SELECT `main... system" />
-            <marker date="1474394281409" expanded="true" signature="4519:4560" ph="UPDATE `syst... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1145,12 +1020,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="40" column="92" selection-start-line="40" selection-start-column="92" selection-end-line="40" selection-end-column="92" />
-          <folding>
-            <marker date="1474398949701" expanded="true" signature="3957:3998" ph="SELECT * FRO... news" />
-            <marker date="1474398949701" expanded="true" signature="4092:4141" ph="..." />
-            <marker date="1474398949701" expanded="true" signature="4155:4185" ph="..." />
-            <marker date="1474398949701" expanded="true" signature="4232:4260" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,11 +1028,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <marker date="1474893264517" expanded="true" signature="298:328" ph="SELECT * FRO... system" />
-            <marker date="1474893264517" expanded="true" signature="1031:1084" ph="SELECT `name... screenshots" />
-            <marker date="1474893264517" expanded="true" signature="1678:1799" ph="INSERT INTO `screenshots`... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,12 +1036,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-          <folding>
-            <marker date="1474893762670" expanded="true" signature="240:280" ph="SELECT * FRO... screenshots" />
-            <marker date="1474893762670" expanded="true" signature="240:315" ph="SELECT * FRO... screenshots" />
-            <marker date="1474893762670" expanded="true" signature="240:322" ph="SELECT * FRO... screenshots" />
-            <marker date="1474893762670" expanded="true" signature="240:339" ph="SELECT * FRO... screenshots" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1183,19 +1044,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102">
           <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
-          <folding>
-            <marker date="1474903601612" expanded="true" signature="2795:2841" ph="SELECT `id` investors" />
-            <marker date="1474903601612" expanded="true" signature="3028:3091" ph="SELECT SUM(`... investors" />
-            <marker date="1474903601612" expanded="true" signature="3369:3433" ph="SELECT SUM(`... investors" />
-            <marker date="1474903601612" expanded="true" signature="3579:3624" ph="SELECT SUM(`... deposits" />
-            <marker date="1474903601612" expanded="true" signature="3579:3647" ph="SELECT SUM(`... deposits" />
-            <marker date="1474903601612" expanded="true" signature="3763:3812" ph="SELECT SUM(`... players" />
-            <marker date="1474903601612" expanded="true" signature="4214:4277" ph="SELECT SUM(`... investors" />
-            <marker date="1474903601612" expanded="true" signature="4320:4335" ph="..." />
-            <marker date="1474903601612" expanded="true" signature="4402:4415" ph="..." />
-            <marker date="1474903601612" expanded="true" signature="4722:4737" ph="..." />
-            <marker date="1474903601612" expanded="true" signature="4819:4832" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1203,19 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-841">
           <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-          <folding>
-            <marker date="1474892654746" expanded="true" signature="270:317" ph="SELECT * FRO... deposits" />
-            <marker date="1474892654746" expanded="true" signature="645:719" ph="SELECT `curr... currencies" />
-            <marker date="1474892654746" expanded="true" signature="823:972" ph="UPDATE `play... " />
-            <marker date="1474892654746" expanded="true" signature="998:1060" ph="UPDATE `depo... " />
-            <marker date="1474892654746" expanded="true" signature="1204:1253" ph="DELETE FROM " />
-            <marker date="1474892654746" expanded="true" signature="1450:1526" ph="SELECT * FRO... deposits" />
-            <marker date="1474892654746" expanded="true" signature="4595:4621" ph="SELECT * FRO... currencies" />
-            <marker date="1474892654746" expanded="true" signature="5593:5659" ph="SELECT `user... players" />
-            <marker date="1474892654746" expanded="true" signature="5716:5782" ph="SELECT `user... players" />
-            <marker date="1474892654746" expanded="true" signature="6346:6422" ph="SELECT `curr... currencies" />
-            <marker date="1474892654746" expanded="true" signature="6713:6787" ph="SELECT * FRO... screenshots" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1223,20 +1059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="184" column="47" selection-start-line="184" selection-start-column="47" selection-end-line="185" selection-end-column="182" />
-          <folding>
-            <marker date="1474880189821" expanded="true" signature="405:455" ph="SELECT * FRO... withdrawals" />
-            <marker date="1474880189821" expanded="true" signature="584:686" ph="UPDATE `play... " />
-            <marker date="1474880189821" expanded="true" signature="712:764" ph="DELETE FROM " />
-            <marker date="1474880189821" expanded="true" signature="930:997" ph="UPDATE `with... " />
-            <marker date="1474880189821" expanded="true" signature="1241:1342" ph="INSERT INTO `transactions`... " />
-            <marker date="1474880189821" expanded="true" signature="1641:1693" ph="DELETE FROM " />
-            <marker date="1474880189821" expanded="true" signature="1900:1955" ph="SELECT * FRO... withdrawals" />
-            <marker date="1474880189821" expanded="true" signature="5222:5248" ph="SELECT * FRO... currencies" />
-            <marker date="1474880189821" expanded="true" signature="6099:6165" ph="SELECT `user... players" />
-            <marker date="1474880189821" expanded="true" signature="6226:6292" ph="SELECT `user... players" />
-            <marker date="1474880189821" expanded="true" signature="6520:6596" ph="SELECT `curr... currencies" />
-            <marker date="1474880189821" expanded="true" signature="6863:6940" ph="SELECT * FRO... screenshots" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1244,9 +1066,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="128" column="38" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="38" />
-          <folding>
-            <marker date="1474471585275" expanded="true" signature="675:718" ph="SELECT * FRO... system" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1254,98 +1074,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1632">
           <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="112" selection-end-column="1" />
-          <folding>
-            <marker date="1474394842486" expanded="true" signature="517:604" ph="SELECT `id` players" />
-            <marker date="1474394842486" expanded="true" signature="673:703" ph="SELECT * FRO... system" />
-            <marker date="1474394842486" expanded="true" signature="742:815" ph="SELECT * FRO... players" />
-            <marker date="1474394842486" expanded="true" signature="2927:3016" ph="SELECT * FRO... players" />
-            <marker date="1474394842486" expanded="true" signature="3540:3585" ph="SELECT SUM(`... players" />
-            <marker date="1474394842486" expanded="true" signature="3705:3769" ph="SELECT SUM(`... investors" />
-            <marker date="1474394842486" expanded="true" signature="3872:4098" ph="UPDATE `inve... " />
-            <marker date="1474394842486" expanded="true" signature="4150:4193" ph="SELECT * FRO... investors" />
-            <marker date="1474394842486" expanded="true" signature="4355:4488" ph="UPDATE `syst... " />
-            <marker date="1474394842486" expanded="true" signature="4516:4589" ph="UPDATE `play... " />
-            <marker date="1474394842486" expanded="true" signature="4603:4827" ph="INSERT INTO `spins`... " />
-            <marker date="1474394842486" expanded="true" signature="4843:5038" ph="UPDATE `play... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/getBonus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
-          <folding>
-            <marker date="1475497132854" expanded="true" signature="505:578" ph="SELECT * FRO... players" />
-            <marker date="1475497132854" expanded="true" signature="618:661" ph="SELECT * FRO... system" />
-            <marker date="1475497132854" expanded="true" signature="1127:1260" ph="DELETE FROM " />
-            <marker date="1475497132854" expanded="true" signature="1290:1375" ph="SELECT `id` giveaway_ip_limit" />
-            <marker date="1475497132854" expanded="true" signature="1645:1680" ph="SELECT * FRO... players" />
-            <marker date="1475497132854" expanded="true" signature="1745:1788" ph="SELECT * FRO... system" />
-            <marker date="1475497132854" expanded="true" signature="1833:1875" ph="SELECT `curr... currencies" />
-            <marker date="1475497132854" expanded="true" signature="1892:1914" ph="UPDATE `play... " />
-            <marker date="1475497132854" expanded="true" signature="1892:2066" ph="UPDATE `play... " />
-            <marker date="1475497132854" expanded="true" signature="2154:2189" ph="SELECT * FRO... players" />
-            <marker date="1475497132854" expanded="true" signature="2254:2297" ph="SELECT * FRO... system" />
-            <marker date="1475497132854" expanded="true" signature="2342:2385" ph="SELECT SUM(`... users" />
-            <marker date="1475497132854" expanded="true" signature="2427:2472" ph="SELECT SUM(`... deposits" />
-            <marker date="1475497132854" expanded="true" signature="2699:2748" ph="UPDATE `play... " />
-            <marker date="1475497132854" expanded="true" signature="2699:2833" ph="UPDATE `play... " />
-            <marker date="1475497132854" expanded="true" signature="2915:2950" ph="SELECT * FRO... players" />
-            <marker date="1475497132854" expanded="true" signature="3017:3060" ph="SELECT * FRO... system" />
-            <marker date="1475497132854" expanded="true" signature="3107:3149" ph="SELECT `curr... currencies" />
-            <marker date="1475497132854" expanded="true" signature="3168:3342" ph="UPDATE `play... " />
-            <marker date="1475497132854" expanded="true" signature="3398:3433" ph="SELECT * FRO... players" />
-            <marker date="1475497132854" expanded="true" signature="3500:3543" ph="SELECT * FRO... system" />
-            <marker date="1475497132854" expanded="true" signature="3590:3633" ph="SELECT SUM(`... users" />
-            <marker date="1475497132854" expanded="true" signature="3677:3722" ph="SELECT SUM(`... deposits" />
-            <marker date="1475497132854" expanded="true" signature="3961:4095" ph="UPDATE `play... " />
-            <marker date="1475497132854" expanded="true" signature="4117:4194" ph="INSERT INTO `giveaway_ip_limit`... " />
-            <marker date="1475497132854" expanded="true" signature="4208:4296" ph="UPDATE `play... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17748">
-          <caret line="1044" column="71" selection-start-line="1044" selection-start-column="71" selection-end-line="1044" selection-end-column="71" />
-          <folding>
-            <marker date="1475498968906" expanded="true" signature="15378:15392" ph="..." />
-            <marker date="1475498968906" expanded="true" signature="21072:21079" ph="×" />
-            <marker date="1475498968906" expanded="true" signature="25861:25908" ph="..." />
-            <marker date="1475498968906" expanded="true" signature="27100:27107" ph="×" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5882">
-          <caret line="346" column="38" selection-start-line="346" selection-start-column="38" selection-end-line="346" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
-          <folding>
-            <marker date="1475497558180" expanded="true" signature="10272:10298" ph="SELECT * FRO... currencies" />
-            <marker date="1475497558180" expanded="true" signature="12700:12726" ph="SELECT * FRO... currencies" />
-            <marker date="1475497558180" expanded="true" signature="15828:15854" ph="SELECT * FRO... currencies" />
-            <marker date="1475497558180" expanded="true" signature="18095:18121" ph="SELECT * FRO... currencies" />
-            <marker date="1475497558180" expanded="true" signature="27919:28002" ph="SELECT `id` players" />
-            <marker date="1475497558180" expanded="true" signature="28056:28139" ph="SELECT `id` players" />
-            <marker date="1475497558180" expanded="true" signature="31658:31700" ph="SELECT * FRO... chat_rooms" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/games/blackjack/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1700">
           <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
           <folding />
         </state>
@@ -1353,7 +1088,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/games/slots/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="1479">
           <caret line="87" column="15" selection-start-line="87" selection-start-column="15" selection-end-line="87" selection-end-column="15" />
           <folding />
         </state>
@@ -1363,178 +1098,223 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="1372" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="6191" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/ajax/getBonus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/driver-conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/start.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="34" selection-end-column="27" />
           <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#1;n#tr#0;n#table#0;n#center#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#5892#5898#0#HTML" expanded="true" />
-            <element signature="e#5898#5904#0#HTML" expanded="true" />
-            <element signature="e#5905#5911#0#HTML" expanded="true" />
-            <element signature="e#5911#5917#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#5965#5971#0#HTML" expanded="true" />
-            <element signature="e#5971#5977#0#HTML" expanded="true" />
-            <element signature="e#5978#5984#0#HTML" expanded="true" />
-            <element signature="e#5984#5990#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6037#6043#0#HTML" expanded="true" />
-            <element signature="e#6043#6049#0#HTML" expanded="true" />
-            <element signature="e#6050#6056#0#HTML" expanded="true" />
-            <element signature="e#6056#6062#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#a#3;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1480253788675" expanded="true" signature="514:549" ph="SELECT * FRO... players" />
+            <marker date="1480253788675" expanded="true" signature="675:754" ph="SELECT `id` players" />
+            <marker date="1480253788675" expanded="true" signature="805:881" ph="SELECT * FRO... players" />
+            <marker date="1480253788675" expanded="true" signature="1106:1187" ph="SELECT `user... players" />
+            <marker date="1480253788675" expanded="true" signature="1297:1377" ph="SELECT `name... chat_rooms" />
+            <marker date="1480253788675" expanded="true" signature="1583:1656" ph="SELECT `id` games" />
+            <marker date="1480253788675" expanded="true" signature="1711:1810" ph="SELECT `id` games" />
+            <marker date="1480253788675" expanded="true" signature="2227:2319" ph="UPDATE `play... " />
+            <marker date="1480253788675" expanded="true" signature="2580:2623" ph="SELECT * FRO... system" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/db_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="405" column="13" selection-start-line="405" selection-start-column="12" selection-end-line="405" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+          <folding>
+            <marker date="1480254015583" expanded="true" signature="10351:10377" ph="SELECT * FRO... currencies" />
+            <marker date="1480254015583" expanded="true" signature="12779:12805" ph="SELECT * FRO... currencies" />
+            <marker date="1480254015583" expanded="true" signature="15907:15933" ph="SELECT * FRO... currencies" />
+            <marker date="1480254015583" expanded="true" signature="18174:18200" ph="SELECT * FRO... currencies" />
+            <marker date="1480254015583" expanded="true" signature="27998:28081" ph="SELECT `id` players" />
+            <marker date="1480254015583" expanded="true" signature="28135:28218" ph="SELECT `id` players" />
+            <marker date="1480254015583" expanded="true" signature="31737:31779" ph="SELECT * FRO... chat_rooms" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/db-conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="780" column="110" selection-start-line="780" selection-start-column="110" selection-end-line="780" selection-end-column="110" />
+          <folding>
+            <marker date="1480253508420" expanded="true" signature="15378:15392" ph="..." />
+            <marker date="1480253508420" expanded="true" signature="25869:25916" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inc/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="708" column="6212" selection-start-line="708" selection-start-column="6212" selection-end-line="708" selection-end-column="6212" />
+        <state relative-caret-position="238">
+          <caret line="703" column="51" selection-start-line="703" selection-start-column="51" selection-end-line="703" selection-end-column="51" />
           <folding>
-            <marker date="1475590202215" expanded="true" signature="2651:2706" ph="SELECT `id` players" />
-            <marker date="1475590202215" expanded="true" signature="2767:3009" ph="INSERT INTO `players`... " />
-            <marker date="1475590202215" expanded="true" signature="4782:4817" ph="SELECT * FRO... system" />
-            <marker date="1475590202215" expanded="true" signature="5135:5177" ph="SELECT `main... system" />
-            <marker date="1475590202215" expanded="true" signature="5587:5630" ph="SELECT * FRO... system" />
-            <marker date="1475590202215" expanded="true" signature="6925:6968" ph="SELECT * FRO... system" />
-            <marker date="1475590202215" expanded="true" signature="7015:7064" ph="SELECT * FRO... games" />
-            <marker date="1475590202215" expanded="true" signature="7138:7202" ph="SELECT `clie... users" />
-            <marker date="1475590202215" expanded="true" signature="8957:9024" ph="UPDATE `game... " />
-            <marker date="1475590202215" expanded="true" signature="9163:9198" ph="SELECT `curr... currencies" />
-            <marker date="1475590202215" expanded="true" signature="9415:9532" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="9629:9675" ph="SELECT `numb... system" />
-            <marker date="1475590202215" expanded="true" signature="12227:12252" ph="SELECT `id` games" />
-            <marker date="1475590202215" expanded="true" signature="12473:12498" ph="SELECT `id` spins" />
-            <marker date="1475590202215" expanded="true" signature="12566:12591" ph="SELECT `id` spins" />
-            <marker date="1475590202215" expanded="true" signature="12642:12667" ph="SELECT `id` games" />
-            <marker date="1475590202215" expanded="true" signature="12915:12948" ph="SELECT `bet_... games" />
-            <marker date="1475590202215" expanded="true" signature="13246:13279" ph="SELECT `bet_... spins" />
-            <marker date="1475590202215" expanded="true" signature="13424:13457" ph="SELECT `bet_... spins" />
-            <marker date="1475590202215" expanded="true" signature="13585:13618" ph="SELECT `bet_... games" />
-            <marker date="1475590202215" expanded="true" signature="14243:14360" ph="SELECT SUM(-... " />
-            <marker date="1475590202215" expanded="true" signature="14428:14545" ph="SELECT SUM(-... " />
-            <marker date="1475590202215" expanded="true" signature="14642:14759" ph="SELECT SUM(-... " />
-            <marker date="1475590202215" expanded="true" signature="14921:14934" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="15002:15017" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="15123:15136" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="15214:15229" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="15358:15419" ph="SELECT `payo... spins" />
-            <marker date="1475590202215" expanded="true" signature="15530:15609" ph="SELECT `bet_... games" />
-            <marker date="1475590202215" expanded="true" signature="15923:15989" ph="SELECT `payo... spins" />
-            <marker date="1475590202215" expanded="true" signature="16039:16134" ph="SELECT `bet_... games" />
-            <marker date="1475590202215" expanded="true" signature="16350:16393" ph="SELECT * FRO... deposits" />
-            <marker date="1475590202215" expanded="true" signature="16600:16681" ph="SELECT `curr... currencies" />
-            <marker date="1475590202215" expanded="true" signature="17160:17207" ph="SELECT * FRO... withdrawals" />
-            <marker date="1475590202215" expanded="true" signature="17414:17495" ph="SELECT `curr... currencies" />
-            <marker date="1475590202215" expanded="true" signature="17956:18084" ph="SELECT * FRO... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="18220:18285" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="18662:18765" ph="SELECT * FRO... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="18901:18966" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="19464:19592" ph="SELECT * FRO... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="20087:20148" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="21137:21272" ph="SELECT `play... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="21466:21569" ph="SELECT * FRO... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="22062:22190" ph="SELECT * FRO... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="22469:22530" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="22675:22803" ph="SELECT * FRO... player_relations" />
-            <marker date="1475590202215" expanded="true" signature="23185:23313" ph="SELECT `id` chat" />
-            <marker date="1475590202215" expanded="true" signature="23403:23457" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="23527:23606" ph="SELECT `id` chat" />
-            <marker date="1475590202215" expanded="true" signature="23919:24038" ph="SELECT `id` players" />
-            <marker date="1475590202215" expanded="true" signature="24129:24164" ph="SELECT * FRO... system" />
-            <marker date="1475590202215" expanded="true" signature="27713:27798" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="28038:28056" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="28247:28294" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="28343:28364" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="28557:28603" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="28919:28935" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="29133:29149" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="29350:29366" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="29565:29581" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="29819:29851" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="29980:29999" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30048:30103" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30217:30277" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30367:30424" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30509:30549" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30640:30727" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30740:30754" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30779:30785" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30785:30791" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30792:30798" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30798:30804" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30815:30829" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30852:30858" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30858:30864" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30865:30871" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30871:30877" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30888:30902" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="30924:30930" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30930:30936" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30937:30943" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30943:30949" ph=" " />
-            <marker date="1475590202215" expanded="true" signature="30960:30974" ph="..." />
-            <marker date="1475590202215" expanded="true" signature="31187:31222" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="31289:31332" ph="SELECT * FRO... system" />
-            <marker date="1475590202215" expanded="true" signature="31401:31514" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="31802:31869" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="31900:31943" ph="SELECT `curr... currencies" />
-            <marker date="1475590202215" expanded="true" signature="32211:32293" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="32367:32499" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="32614:32725" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="32930:32965" ph="SELECT * FRO... players" />
-            <marker date="1475590202215" expanded="true" signature="33032:33075" ph="SELECT * FRO... system" />
-            <marker date="1475590202215" expanded="true" signature="33155:33197" ph="SELECT `curr... currencies" />
-            <marker date="1475590202215" expanded="true" signature="33326:33439" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="33738:33863" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="33937:34069" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="34155:34197" ph="SELECT `curr... currencies" />
-            <marker date="1475590202215" expanded="true" signature="34323:34436" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="34752:34834" ph="UPDATE `play... " />
-            <marker date="1475590202215" expanded="true" signature="34908:35040" ph="UPDATE `play... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="558" />
-          <folding>
-            <marker date="1475589295771" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
-            <marker date="1475589295771" expanded="true" signature="574:656" ph="SELECT `id` players" />
-            <marker date="1475589295771" expanded="true" signature="966:1042" ph="SELECT `id` players" />
-            <marker date="1475589295771" expanded="true" signature="1402:1492" ph="SELECT `acti... players" />
-            <marker date="1475589295771" expanded="true" signature="1858:2120" ph="..." />
-            <marker date="1475589295771" expanded="true" signature="2337:2598" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="2651:2706" ph="SELECT `id` players" />
+            <marker date="1480254644623" expanded="true" signature="2767:3009" ph="INSERT INTO `players`... " />
+            <marker date="1480254644623" expanded="true" signature="4782:4817" ph="SELECT * FRO... system" />
+            <marker date="1480254644623" expanded="true" signature="5135:5177" ph="SELECT `main... system" />
+            <marker date="1480254644623" expanded="true" signature="5587:5630" ph="SELECT * FRO... system" />
+            <marker date="1480254644623" expanded="true" signature="6925:6968" ph="SELECT * FRO... system" />
+            <marker date="1480254644623" expanded="true" signature="7015:7064" ph="SELECT * FRO... games" />
+            <marker date="1480254644623" expanded="true" signature="7138:7202" ph="SELECT `clie... users" />
+            <marker date="1480254644623" expanded="true" signature="8957:9024" ph="UPDATE `game... " />
+            <marker date="1480254644623" expanded="true" signature="9163:9198" ph="SELECT `curr... currencies" />
+            <marker date="1480254644623" expanded="true" signature="9415:9532" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="9629:9675" ph="SELECT `numb... system" />
+            <marker date="1480254644623" expanded="true" signature="12227:12252" ph="SELECT `id` games" />
+            <marker date="1480254644623" expanded="true" signature="12473:12498" ph="SELECT `id` spins" />
+            <marker date="1480254644623" expanded="true" signature="12566:12591" ph="SELECT `id` spins" />
+            <marker date="1480254644623" expanded="true" signature="12642:12667" ph="SELECT `id` games" />
+            <marker date="1480254644623" expanded="true" signature="12915:12948" ph="SELECT `bet_... games" />
+            <marker date="1480254644623" expanded="true" signature="13246:13279" ph="SELECT `bet_... spins" />
+            <marker date="1480254644623" expanded="true" signature="13424:13457" ph="SELECT `bet_... spins" />
+            <marker date="1480254644623" expanded="true" signature="13585:13618" ph="SELECT `bet_... games" />
+            <marker date="1480254644623" expanded="true" signature="14243:14360" ph="SELECT SUM(-... " />
+            <marker date="1480254644623" expanded="true" signature="14428:14545" ph="SELECT SUM(-... " />
+            <marker date="1480254644623" expanded="true" signature="14642:14759" ph="SELECT SUM(-... " />
+            <marker date="1480254644623" expanded="true" signature="14921:14934" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="15002:15017" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="15123:15136" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="15214:15229" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="15358:15419" ph="SELECT `payo... spins" />
+            <marker date="1480254644623" expanded="true" signature="15530:15609" ph="SELECT `bet_... games" />
+            <marker date="1480254644623" expanded="true" signature="15923:15989" ph="SELECT `payo... spins" />
+            <marker date="1480254644623" expanded="true" signature="16039:16134" ph="SELECT `bet_... games" />
+            <marker date="1480254644623" expanded="true" signature="16350:16393" ph="SELECT * FRO... deposits" />
+            <marker date="1480254644623" expanded="true" signature="16600:16681" ph="SELECT `curr... currencies" />
+            <marker date="1480254644623" expanded="true" signature="17160:17207" ph="SELECT * FRO... withdrawals" />
+            <marker date="1480254644623" expanded="true" signature="17414:17495" ph="SELECT `curr... currencies" />
+            <marker date="1480254644623" expanded="true" signature="17956:18084" ph="SELECT * FRO... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="18220:18285" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="18662:18765" ph="SELECT * FRO... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="18901:18966" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="19464:19592" ph="SELECT * FRO... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="20087:20148" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="21137:21272" ph="SELECT `play... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="21466:21569" ph="SELECT * FRO... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="22062:22190" ph="SELECT * FRO... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="22469:22530" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="22675:22803" ph="SELECT * FRO... player_relations" />
+            <marker date="1480254644623" expanded="true" signature="23185:23313" ph="SELECT `id` chat" />
+            <marker date="1480254644623" expanded="true" signature="23403:23457" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="23527:23606" ph="SELECT `id` chat" />
+            <marker date="1480254644623" expanded="true" signature="23919:24038" ph="SELECT `id` players" />
+            <marker date="1480254644623" expanded="true" signature="24129:24164" ph="SELECT * FRO... system" />
+            <marker date="1480254644623" expanded="true" signature="27704:27789" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="28029:28047" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="28238:28285" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="28334:28355" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="28568:28614" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29000:29016" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29286:29318" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29447:29466" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29515:29570" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29684:29744" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29834:29891" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="29976:30016" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="30107:30194" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="30207:30221" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="30303:30317" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="30424:30438" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="30524:30538" ph="..." />
+            <marker date="1480254644623" expanded="true" signature="30787:30822" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="30889:30932" ph="SELECT * FRO... system" />
+            <marker date="1480254644623" expanded="true" signature="31001:31114" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="31402:31469" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="31500:31543" ph="SELECT `curr... currencies" />
+            <marker date="1480254644623" expanded="true" signature="31811:31893" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="31967:32099" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="32214:32325" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="32530:32565" ph="SELECT * FRO... players" />
+            <marker date="1480254644623" expanded="true" signature="32632:32675" ph="SELECT * FRO... system" />
+            <marker date="1480254644623" expanded="true" signature="32755:32797" ph="SELECT `curr... currencies" />
+            <marker date="1480254644623" expanded="true" signature="32926:33039" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="33338:33463" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="33537:33669" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="33755:33797" ph="SELECT `curr... currencies" />
+            <marker date="1480254644623" expanded="true" signature="33923:34036" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="34352:34434" ph="UPDATE `play... " />
+            <marker date="1480254644623" expanded="true" signature="34508:34640" ph="UPDATE `play... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content/ajax/reset_password.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="21" column="156" selection-start-line="21" selection-start-column="156" selection-end-line="21" selection-end-column="172" />
+        <state relative-caret-position="357">
+          <caret line="21" column="481" selection-start-line="21" selection-start-column="481" selection-end-line="21" selection-end-column="481" />
           <folding>
-            <marker date="1475590761774" expanded="true" signature="233:308" ph="SELECT `id` players" />
-            <marker date="1475590761774" expanded="true" signature="484:586" ph="SELECT `pass... players" />
-            <marker date="1475590761774" expanded="true" signature="856:1118" ph="..." />
-            <marker date="1475590761774" expanded="true" signature="1300:1375" ph="SELECT `id` players" />
-            <marker date="1475590761774" expanded="true" signature="1395:1472" ph="UPDATE `play... " />
+            <marker date="1480254990514" expanded="true" signature="233:308" ph="SELECT `id` players" />
+            <marker date="1480254990514" expanded="true" signature="484:586" ph="SELECT `pass... players" />
+            <marker date="1480254990514" expanded="true" signature="856:1118" ph="..." />
+            <marker date="1480254990514" expanded="true" signature="1327:1402" ph="SELECT `id` players" />
+            <marker date="1480254990514" expanded="true" signature="1422:1499" ph="UPDATE `play... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/ajax/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="39" column="80" selection-start-line="39" selection-start-column="80" selection-end-line="39" selection-end-column="80" />
+          <folding>
+            <marker date="1480255014840" expanded="true" signature="391:421" ph="SELECT * FRO... system" />
+            <marker date="1480255014840" expanded="true" signature="574:656" ph="SELECT `id` players" />
+            <marker date="1480255014840" expanded="true" signature="966:1042" ph="SELECT `id` players" />
+            <marker date="1480255014840" expanded="true" signature="1402:1492" ph="SELECT `acti... players" />
+            <marker date="1480255014840" expanded="true" signature="1858:2120" ph="..." />
+            <marker date="1480255014840" expanded="true" signature="2364:2625" ph="UPDATE `play... " />
           </folding>
         </state>
       </provider>

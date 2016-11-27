@@ -408,6 +408,9 @@ a:focus,a:active {
   padding-left: 0px;
   font-weight: 600;
 }
+.navbar-first .navbar-brand .logo{
+  height: 20px;
+}
 .navbar-nav > li > a{
   cursor: pointer;
 }

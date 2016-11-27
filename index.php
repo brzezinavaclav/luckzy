@@ -68,7 +68,7 @@ include __DIR__ . '/inc/start.php';
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo" href="./"><?php echo $settings['title']; ?></a>
+            <a class="navbar-brand" href="./"><img src="images/luckzy_logo_1c_by_irianwhitefox-danbh7a.png" class="logo" alt="<?php echo $settings['title']; ?>" /></a>
         </div>
         <?php if (logged()): ?>
         <ul class="nav navbar-right">
