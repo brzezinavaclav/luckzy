@@ -25,7 +25,7 @@ while (db_num_rows(db_query("SELECT `activation_hash` FROM `players` WHERE `acti
 
 $actual_link = "http://".$settings['url']."?verify=" . $activation_hash;
 
-if(!send_mail($player['email'], 'Registration activation email', '<h1>Welcome to Luckzy.com</h1><br>We\'re excited you are here! You are one step from accessing Luckzy casino. Active your account by clicking the link below!<br><br><a href="'.$actual_link.'" style="border-bottom: 2px solid #278C0B; border-radius: 3px; background: #599b47;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:33px;text-align:center;text-decoration:none;width:130px;-webkit-text-size-adjust:none;">Click Here To Activate Your Account </a><br><br>')) {
+if(!send_mail($player['email'], 'Registration activation email', '<h1>Welcome to Luckzy.com</h1><br>We\'re excited you are here! You are one step from accessing Luckzy casino. Active your account by clicking the link below!<br><br><a href="'.$actual_link.'" style="border-bottom: 2px solid #278C0B; border-radius: 3px; background: #599b47;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:33px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;">Click Here To Activate Your Account </a><br><br>')) {
     echo json_encode(array('error' => 'yes', 'message' => 'Verification email couldn\'t be sent.'));
     exit();
 }
