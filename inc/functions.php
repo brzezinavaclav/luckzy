@@ -142,7 +142,9 @@ function n_num($num, $showall = false)
 
 function logged()
 {
-    if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) return true;
+    $player = 0;
+    if(isset($_SESSION['user_id'])) $player = db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' AND `id`=".$_SESSION['user_id']." LIMIT 1"));
+    if (isset($_SESSION['logged']) && $_SESSION['logged'] == true && $player) return true;
     else return false;
 }
 

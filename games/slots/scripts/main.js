@@ -171,7 +171,7 @@ function bet() {
     if (lock.locked || ajaxBetLock) return;
     ajaxBetLock = true;
     $.ajax({
-        'url': "./content/ajax/spin.php?_unique="+unique()+"&w="+$('.wager').val(),
+        'url': "./content/ajax/spin.php?w="+$('.wager').val(),
         'dataType': "json",
         'success': function (data) {
 

@@ -17,7 +17,7 @@ include __DIR__.'/../../inc/functions.php';
 
 if (!logged())exit();
 
-$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"));
 
 maintenance();
 $balance = array('balance'=>$player['balance'], 'btc_balance' => $player['btc_balance'], 'btc_value' => bcmul($player['btc_balance'], $player['btc_rate']), 'btc_mod' => round(bcmul($player['btc_balance'], $player['btc_rate']/$player['balance']*100,2)));

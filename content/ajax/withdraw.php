@@ -24,7 +24,7 @@ maintenance();
 
 $address = '';
 
-  $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+  $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"));
 
   if($player['state'] != 1){
     echo json_encode(array('error'=>'yes', 'message'=>'Please activate your account before making any transactions.'));

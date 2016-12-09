@@ -19,7 +19,7 @@ include __DIR__.'/../../inc/functions.php';
 db_query('START TRANSACTION');
 
 
-if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
+if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"))==0) exit();
 
 
 $settings=db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
@@ -33,7 +33,7 @@ if ($wager>$settings['bankroll_maxbet_ratio']) {
 
 
 
-$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1 FOR UPDATE"));
+$player=db_fetch_array(db_query("SELECT * FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1 FOR UPDATE"));
 
 
 if (db_num_rows(db_query("SELECT `id` FROM `games` WHERE `player`=$player[id] AND `ended`=0 LIMIT 1"))!=0) {
@@ -221,7 +221,7 @@ if ($i_process=='games') {
       $winner='dealer';
       $data['winner']='dealer';
       playerWon($player['id'],$gameID,$wager,$dealer_deck,'lose',true,serialize($final_shuffle));
-      $fair=db_fetch_array(db_query("SELECT `client_seed`, `last_client_seed`, `initial_shuffle`, `last_initial_shuffle`, `last_final_shuffle` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+      $fair=db_fetch_array(db_query("SELECT `client_seed`, `last_client_seed`, `initial_shuffle`, `last_initial_shuffle`, `last_final_shuffle` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"));
       $data['fair'] = array(
           'newSeed'           => hash( 'sha256', stringify_shuffle($fair['initial_shuffle']) ),
           'newCSeed'          => $fair['client_seed'],
@@ -238,7 +238,7 @@ if ($i_process=='games') {
     $winner='player';
     $data['winner']='player';
     playerWon($player['id'],$gameID,$wager,$dealer_deck,'regular',true,serialize($final_shuffle));
-    $fair=db_fetch_array(db_query("SELECT `client_seed`, `last_client_seed`, `initial_shuffle`, `last_initial_shuffle`, `last_final_shuffle` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+    $fair=db_fetch_array(db_query("SELECT `client_seed`, `last_client_seed`, `initial_shuffle`, `last_initial_shuffle`, `last_final_shuffle` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"));
     $data['fair'] = array(
         'newSeed'           => hash( 'sha256', stringify_shuffle($fair['initial_shuffle']) ),
         'newCSeed'          => $fair['client_seed'],

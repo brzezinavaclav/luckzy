@@ -69,7 +69,7 @@ function bet_error(con) {
 function gameAction(action) {
     buttons.disableAll();
     $.ajax({
-        'url': './content/ajax/gameAction.php?_unique='+unique()+'&action='+action,
+        'url': './content/ajax/gameAction.php?action='+action,
         'dataType': "json",
         'success': function (data) {
             if (data['error']=='balance') {
@@ -283,7 +283,7 @@ function bet() {
     //ajax call (success: initGame())
     buttons.disableAll();
     $.ajax({
-        'url': './content/ajax/gameCreate.php?wager='+$('.wager').val()+'&_unique='+unique(),
+        'url': './content/ajax/gameCreate.php?wager='+$('.wager').val(),
         'dataType': "json",
         'success': function (data) {
             if (data['error']=='yes') {
@@ -354,7 +354,7 @@ function insuranceQ() {
 
 function insure(a) {
     $.ajax({
-        'url': './content/ajax/insure.php?_unique='+unique()+'&ans='+a,
+        'url': './content/ajax/insure.php?ans='+a,
         'dataType': 'json',
         'success': function (data) {
             location.reload();
@@ -426,7 +426,7 @@ function enablePerms() {
 function playingOnInit() {
     buttons.disableAll();
     $.ajax({
-        'url': './content/ajax/gameContinue.php?_unique='+unique(),
+        'url': './content/ajax/gameContinue.php',
         'dataType': "json",
         'success': function (data) {
             $('.betAmount .betInput').val((parseFloat(data['bet_amount'])*2));br_div();
@@ -482,7 +482,7 @@ function playingOnInit() {
 
 function endedOnInit() {
     $.ajax({
-        'url': './content/ajax/showEnded.php?_unique='+unique(),
+        'url': './content/ajax/showEnded.php',
         'dataType': "json",
         'success': function (data) {
             $('.betAmount .betInput').val((parseFloat(data['bet_amount'])*2));br_div();

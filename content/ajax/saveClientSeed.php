@@ -15,7 +15,7 @@ include __DIR__.'/../../inc/db-conf.php';
 include __DIR__.'/../../inc/db_functions.php';
 include __DIR__.'/../../inc/functions.php';
 
-if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"))==0) exit();
+if (empty($_GET['_unique']) || db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"))==0) exit();
 
 maintenance();
 
@@ -30,6 +30,6 @@ if(strlen((string)$_GET['seed']) > 32){
 
 $repaired=(int)$_GET['seed'];
 
-db_query("UPDATE `players` SET `client_seed`=".$repaired." WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1");
+db_query("UPDATE `players` SET `client_seed`=".$repaired." WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1");
 
 echo json_encode(array('error'=>'no'));

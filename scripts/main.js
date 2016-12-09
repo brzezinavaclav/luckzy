@@ -75,7 +75,7 @@ $(document).ready(function (){
   $('#saveClientSeed').click(function () {
     var seed = $(this).parent('span').parent('div').find('input').val();
     $.ajax({
-      'url': './content/ajax/saveClientSeed.php?_unique='+unique()+'&seed='+seed,
+      'url': './content/ajax/saveClientSeed.php?seed='+seed,
       'dataType': "json",
       'success': function (data) {
         if(data['error']=='yes') alert(data['message']);
@@ -149,7 +149,7 @@ $(document).ready(function (){
     var input = $('#_fair_client_seed');
 
     $.ajax({
-      'url': './content/ajax/saveClientSeed.php?_unique='+unique()+'&seed='+input.val(),
+      'url': './content/ajax/saveClientSeed.php?_unique_unique='+unique()+'&seed='+input.val(),
       'dataType': 'json',
       'success': function(data) {
         input.val(data['repaired']);
@@ -187,7 +187,7 @@ $(document).ready(function (){
 function withdraw(currency) {
   var amount = $('#w_amount_'+currency).val().trim();
   $.ajax({
-    'url': './content/ajax/withdraw.php?_unique='+unique()+'&valid_addr='+$('#w_btc_address').val()+'&amount='+amount+'&c='+currency,
+    'url': './content/ajax/withdraw.php?valid_addr='+$('#w_btc_address').val()+'&amount='+amount+'&c='+currency,
     'dataType': "json",
     'success': function (data) {
       if(currency == 'btc') {
@@ -218,7 +218,7 @@ function withdraw(currency) {
 
 function _genNewAddress() {
   $.ajax({
-    'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c=btc',
+    'url': './content/ajax/makeDeposit.php?c=btc',
     'dataType': "json",
     'success': function (data) {
       if(data['error'] == 'yes') m_alert('danger','<b>Error!</b> '+data['message']);
@@ -236,7 +236,7 @@ function clickPending() {
 }                    
 function showPending() {
   $.ajax({
-    'url': './content/ajax/getPending.php?_unique='+unique(),
+    'url': './content/ajax/getPending.php',
     'dataType': "json",
     'success': function (data) {
       $('.pendingDeposits').html(data['content']);
@@ -257,7 +257,7 @@ function balanceUpdate() {
   if (lock.locked) return;
   
   $.ajax({
-    'url': './content/ajax/getBalance.php?_unique='+unique(),
+    'url': './content/ajax/getBalance.php',
     'dataType': "json",
     'success': function (data) {
 
@@ -298,7 +298,7 @@ var chatUpdating = false;
 function chatSend(val) {
   var dataToSend = encodeURIComponent(val);
   $.ajax({
-    'url': './content/ajax/chatSend.php?_unique='+unique()+'&data='+dataToSend,
+    'url': './content/ajax/chatSend.php?data='+dataToSend,
     'dataType': "json",
     'success': function(data) {
       if(data['error']=='yes') alert(data['message']);    
@@ -325,7 +325,7 @@ function chatUpdate(first) {
   chatUpdating = true;  
 
   $.ajax({
-    'url': './content/ajax/chatUpdate.php?_unique='+unique()+'&lastId='+lastID,
+    'url': './content/ajax/chatUpdate.php?lastId='+lastID,
     'dataType': "json",
     'success': function(data) {
       
@@ -575,7 +575,7 @@ var stats = {
   
     $.ajax({
       
-      'url': './content/ajax/stats_load.php?_unique='+unique()+'&last=' + last1 + ',' + last2 + ',' + last3 + '&game='+get_active_game(),
+      'url': './content/ajax/stats_load.php?last=' + last1 + ',' + last2 + ',' + last3 + '&game='+get_active_game(),
       'dataType': "json",
       'success': function (data) {
         
@@ -632,7 +632,7 @@ function claim_bonus() {
   var sol = $('#input-captcha').val();
   $('#input-captcha').val('');
   $.ajax({
-    'url': './content/ajax/getBonus.php?_unique='+unique()+'&sol='+sol,
+    'url': './content/ajax/getBonus.php?sol='+sol,
     'dataType': "json",
     'success': function(data) {
       if (data['error']=='yes') {
@@ -656,7 +656,7 @@ function claim_bonus() {
 function invest() {
   var amount = $('.leftblock #input-invest').val();
   $.ajax({
-    'url': './content/ajax/inv_invest.php?_unique='+unique()+'&amount='+amount,
+    'url': './content/ajax/inv_invest.php?amount='+amount,
     'dataType': "json",
     'success': function (data) {
       if(data['error'] == 'yes') p_alert('danger', data['message']);
@@ -672,7 +672,7 @@ function invest() {
 function divest() {
   var amount = $('.leftblock #input-divest').val();
   $.ajax({
-    'url': './content/ajax/inv_divest.php?_unique='+unique()+'&amount='+amount,
+    'url': './content/ajax/inv_divest.php?amount='+amount,
     'dataType': "json",
     'success': function (data) {
       if (data['error']=='yes') p_alert('danger', data['message']);
@@ -689,7 +689,7 @@ function investUpdate() {
 
 
   $.ajax({
-    'url': './content/ajax/inv_getData.php?_unique='+unique(),
+    'url': './content/ajax/inv_getData.php',
     'dataType': "json",
     'success': function(data) {
       
@@ -706,7 +706,7 @@ function investUpdate() {
 function statsUpdate() {
   $.ajax({
   
-    'url': './content/ajax/getStats.php?_unique='+unique(),
+    'url': './content/ajax/getStats.php',
     'dataType': "json",
     'success': function (data) {
     
@@ -826,7 +826,7 @@ function fairUpdate(data) {
 function deposit(currency){
   var amount = $('#d_amount_'+currency).val().trim();
   $.ajax({
-    'url': './content/ajax/makeDeposit.php?_unique='+unique()+'&c='+currency+'&amount='+amount,
+    'url': './content/ajax/makeDeposit.phpc='+currency+'&amount='+amount,
     'dataType': "json",
     'success': function(data) {
         if (data['error']=='yes') {
@@ -980,7 +980,7 @@ function chat_status(elem, status){
   $('.chat_status').removeClass('active');
   $(elem).addClass('active');
   $.ajax({
-    'url': "./content/ajax/chat_status.php?status="+status+"&_unique="+unique(),
+    'url': "./content/ajax/chat_status.php?status="+status,
     'dataType': "json"
   });
 }

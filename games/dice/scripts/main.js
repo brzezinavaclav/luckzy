@@ -103,7 +103,7 @@ function place(wager,multiplier,bot) {
         $("#betBtn").html('Rolling');
         ajaxBetLock=true;
         $.ajax({
-            'url': './content/ajax/place.php?w='+wager+'&m='+multiplier+'&hl='+under_over+'&_unique='+unique(),
+            'url': './content/ajax/place.php?w='+wager+'&m='+multiplier+'&hl='+under_over,
             'dataType': "json",
             'success': function(data) {
                 ajaxBetLock=false;

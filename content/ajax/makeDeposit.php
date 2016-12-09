@@ -15,7 +15,7 @@ if(!isset($_GET['c'])) exit();
 
 $settings = db_fetch_array(db_query("SELECT * FROM `system` WHERE `id`=1 LIMIT 1"));
 $currency = db_fetch_array(db_query("SELECT * FROM `currencies` WHERE `id`='".prot($_GET['c'])."' LIMIT 1"));
-$player=db_fetch_array(db_query("SELECT `id`, `state` FROM `players` WHERE `hash`='".prot($_GET['_unique'])."' LIMIT 1"));
+$player=db_fetch_array(db_query("SELECT `id`, `state` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' LIMIT 1"));
 if(!$player['state']){
     echo json_encode(array('error'=>'yes', 'message'=>'Please activate your account before making any transactions.'));
     exit();
