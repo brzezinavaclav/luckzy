@@ -30,6 +30,9 @@ a:hover {
 a:focus,a:active {
   color: inherit;
 }
+a.active{
+  text-decoration: underline;
+}
 .all {
   width: 100%;
 }
