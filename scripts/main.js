@@ -51,12 +51,16 @@ $(document).ready(function (){
 
   var selected = false;
   $('.navbar-first .navbar-nav > li > a').each(function (){
+    if($(this).attr('href')=='/authentication' && location.href.indexOf('/account') != -1){
+      $(this).addClass('active');
+      selected = true;
+    }
     if(location.href.indexOf($(this).attr('href')) != -1){
       $(this).addClass('active');
       selected = true;
     }
   });
-  if(!selected) $('.navbar-first .navbar-nav > li > a[href^="?p=blackjack"]').addClass('active');
+  if(!selected) $('.navbar-first .navbar-nav > li > a[href^="/blackjack"]').addClass('active');
 
   $('.leftbuttons button').each(function(){
     $(this).tooltip();
