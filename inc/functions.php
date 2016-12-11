@@ -122,7 +122,6 @@ function newPlayer()
     db_query("INSERT INTO `players` (`hash`,`slots_seed`,`dice_seed`,`initial_shuffle`, `client_seed`) VALUES ('$hash','" . serialize(generateSlotsSeed()) . "','" . random_num(32) . "','" . generateInitialShuffle($client_seed) . "', '" . $client_seed . "')");
 
     setcookie('unique_S_', $hash, (time() + 60 * 60 * 24), '/');
-    setcookie('unique_S_', $hash, (time() + 60 * 60 * 24), '/');
 }
 
 function zkrat($str, $max, $iflonger)
@@ -142,9 +141,7 @@ function n_num($num, $showall = false)
 
 function logged()
 {
-    $player = 0;
-    if(isset($_SESSION['user_id'])) $player = db_num_rows(db_query("SELECT `id` FROM `players` WHERE `hash`='".$_COOKIE['unique_S_']."' AND `id`=".$_SESSION['user_id']." LIMIT 1"));
-    if (isset($_SESSION['logged']) && $_SESSION['logged'] == true && $player) return true;
+    if (isset($_SESSION['logged']) ) return true;
     else return false;
 }
 
