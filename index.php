@@ -147,6 +147,7 @@ include __DIR__ . '/inc/start.php';
 </div>
 <div class="page">
 <?php
+echo $_SESSION['user_id'];
 if ($game != false) include 'game.php';
 else include $page . '.php'; ?>
 <footer>
