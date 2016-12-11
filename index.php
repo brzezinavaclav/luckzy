@@ -83,25 +83,25 @@ include __DIR__ . '/inc/start.php';
         <?php endif; ?>
         <div id="primary-nav" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?p=blackjack">Blackjack</a></li>
-                <li><a href="?p=slots">Slots</a></li>
-                <li><a href="?p=dice">Dice</a></li>
-                <li><a href="?p=support">Support</a></li>
+                <li><a href="/blackjack">Blackjack</a></li>
+                <li><a href="/slots">Slots</a></li>
+                <li><a href="/dice">Dice</a></li>
+                <li><a href="/support">Support</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="?p=more"><span class="glyphicon glyphicon-user nav-icon"></span> Hall of fame</a></li>
-                        <li><a href="?p=more"><span class="glyphicon glyphicon-question-sign nav-icon"></span> FAQ</a></li>
-                        <li><a href="?p=more"><span class="glyphicon glyphicon-eye-open nav-icon"></span> Verification</a></li>
-                        <li><a href="?p=more"><span class="glyphicon glyphicon-piggy-bank nav-icon"></span> Affiliate</a></li>
-                        <li><a href="?p=more"><span class="fa fa-facebook nav-icon"></span> Facebook</a></li>
-                        <li><a href="?p=more"><span class="fa fa-twitter nav-icon"></span> Twitter</a></li>
-                        <li><a href="?p=more"><span class="fa fa-reddit nav-icon"></span> Reddit</a></li>
-                        <li><a href="?p=more"><span class="fa fa-bitcoin nav-icon"></span> Bitcoin talk</a></li>
+                        <li><a href="/more"><span class="glyphicon glyphicon-user nav-icon"></span> Hall of fame</a></li>
+                        <li><a href="/more"><span class="glyphicon glyphicon-question-sign nav-icon"></span> FAQ</a></li>
+                        <li><a href="/more"><span class="glyphicon glyphicon-eye-open nav-icon"></span> Verification</a></li>
+                        <li><a href="/more"><span class="glyphicon glyphicon-piggy-bank nav-icon"></span> Affiliate</a></li>
+                        <li><a href="/more"><span class="fa fa-facebook nav-icon"></span> Facebook</a></li>
+                        <li><a href="/more"><span class="fa fa-twitter nav-icon"></span> Twitter</a></li>
+                        <li><a href="/more"><span class="fa fa-reddit nav-icon"></span> Reddit</a></li>
+                        <li><a href="/more"><span class="fa fa-bitcoin nav-icon"></span> Bitcoin talk</a></li>
                     </ul>
                 </li>
                 <?php if (logged()): ?>
-                    <li><a href="?p=account">Account</a></li>
+                    <li><a href="/account">Account</a></li>
                     <li><a onclick="logout()">Sign out</a></li>
                 <?php else: ?>
                     <li><a data-toggle="modal" data-target="#modals-login">Login</a></li>

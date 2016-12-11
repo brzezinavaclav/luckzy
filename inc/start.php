@@ -8,6 +8,13 @@
 
 if (!isset($init)) exit();
 
+if (isset($_GET['params']))
+{
+  $params = explode( "/", $_GET['p'] );
+  print_r($params);
+  exit("YUP!");
+}
+
 include __DIR__.'/wallet_driver.php';
 include __DIR__.'/db-conf.php';
 include __DIR__.'/db_functions.php';
