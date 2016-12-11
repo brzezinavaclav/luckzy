@@ -1,3 +1,2 @@
 RewriteEngine On
-RewriteBase /
-RewriteRule ^(.*)$ index.php?$1 [NC]
+RewriteRule ^(.*)$ index.php?params=$1 [NC]
