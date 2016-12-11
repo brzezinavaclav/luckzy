@@ -141,7 +141,7 @@ function n_num($num, $showall = false)
 
 function logged()
 {
-    if (isset($_SESSION['logged']) ) return true;
+    if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) return true;
     else return false;
 }
 

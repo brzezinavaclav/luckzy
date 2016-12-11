@@ -33,8 +33,6 @@ if (!empty($_POST['username']) && !empty($_POST['passwd'])) {
         if ($verify == true) {
           $_SESSION['logged'] = true;
           $_SESSION['user_id'] = $user['id'];
-          setcookie('unique_S_', '', time() - 3600, '/');
-          setcookie('unique_S_', 'adad', 60 * 60 * 24, '/');
           echo json_encode(array('error' => 'no'));
           exit();
         }
@@ -46,8 +44,6 @@ if (!empty($_POST['username']) && !empty($_POST['passwd'])) {
       if ($user['ga_token'] == '') {
         $_SESSION['logged'] = true;
         $_SESSION['user_id'] = $user['id'];
-        setcookie('unique_S_', '', time() - 3600, '/');
-        setcookie('unique_S_', 'adad', 60 * 60 * 24, '/');
         echo json_encode(array('error' => 'no'));
         exit();
       }

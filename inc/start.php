@@ -24,6 +24,7 @@ if (!isset($conf_c)) {
 if (logged()) {
   $player = db_fetch_array(db_query("SELECT * FROM `players` WHERE `id`=".$_SESSION['user_id']));
   $unique = $player['hash'];
+  setcookie('unique_S_', $unique, (time() + 60 * 60 * 24), '/');
 }
 
 else {
