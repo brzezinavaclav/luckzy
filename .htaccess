@@ -1,2 +1,3 @@
+Options +FollowSymLinks
 RewriteEngine On
 RewriteRule ^(.*?\.php)/([^/]*)/([^/]*)(/.+)? $1$4?$2=$3 [NC,N,QSA]
