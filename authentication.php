@@ -11,8 +11,8 @@ include __DIR__ . '/inc/ga_class.php';
 <div class="container content">
     <div class="row">
         <div class="col-md-12">
-            <a href="?p=account" style="margin-right: 15px;">Account settings</a>
-            <a href="?p=authentication">Authentication settings</a>
+            <a href="/account" style="margin-right: 15px;">Account settings</a>
+            <a href="/authentication">Authentication settings</a>
             <h1>Two factor authentication setup</h1>
             <?php
             if ($player['ga_token'] == '') {
