@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^(.*)$ index.php?params=$1 [NC]
+RewriteRule ^(.*?\.php)/([^/]*)/([^/]*)(/.+)? $1$4?$2=$3 [NC,N,QSA]
