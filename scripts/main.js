@@ -55,7 +55,7 @@ $(document).ready(function (){
       $(this).addClass('active');
       selected = true;
     }
-    if(location.href.indexOf($(this).attr('href')) != -1){
+    else if(location.href.indexOf($(this).attr('href')) != -1){
       $(this).addClass('active');
       selected = true;
     }
