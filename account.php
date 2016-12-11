@@ -11,7 +11,7 @@ include __DIR__ . '/inc/ga_class.php';
     <div class="container content">
         <div class="row">
             <div class="col-md-12">
-                <a href="/account" style="margin-right: 15px;">Account settings</a>
+                <a href="/account" style="margin-right: 15px;" class="active">Account settings</a>
                 <a href="/authentication">Authentication settings</a>
                 <?php if(!$player['state']): ?>
                 <h1>Activation</h1>
