@@ -60,6 +60,13 @@ $(document).ready(function (){
       selected = true;
     }
   });
+  $('.navbar-first .navbar-nav .dropdown-menu > li > a').each(function (){
+    if(location.href.indexOf($(this).attr('href')) != -1){
+      $(this).parent().addClass('active');
+      $(this).parents('.dropdown').children('.dropdown-toggle').addClass('active');
+      selected = true;
+    }
+  });
   if(!selected) $('.navbar-first .navbar-nav > li > a[href^="/blackjack"]').addClass('active');
 
   $('.leftbuttons button').each(function(){
@@ -393,7 +400,7 @@ function leftbox() {
         },
         'progress': function() {
           $('.leftbuttons').css('left', self.$obj().outerWidth() + $('.lefbuttons').width() -2);
-          if($( document ).width() > 1200)$('.page').css('padding-left', self.$obj().outerWidth() + $('.lefbuttons').width()-2);
+          if($( document ).width() > 1200)$('.game').css('margin-left', self.$obj().outerWidth() + $('.lefbuttons').width()-2);
         }
       });
       $('.st-stats table').animate({
@@ -418,7 +425,7 @@ function leftbox() {
         },
         'progress': function() {
           $('.leftbuttons').css('left',self.$obj().outerWidth() + $('.lefbuttons').width());
-          if($( document ).width() > 1200)$('.page').css('padding-left', self.$obj().outerWidth() + $('.lefbuttons').width());
+          if($( document ).width() > 1200)$('.game').css('margin-left', self.$obj().outerWidth() + $('.lefbuttons').width());
         }
       });
 

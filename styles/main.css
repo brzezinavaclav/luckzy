@@ -426,6 +426,7 @@ a.active{
 }
 .navbar-first .navbar-nav > li > a.active{
   background: #272727;
+  text-decoration: none;
 }
 .navbar-first.navbar .signin_btn{
   margin: 19px 0px 15px 40px;
@@ -481,8 +482,10 @@ a.active{
 .navbar .dropdown-menu > li > a {
   background-color: #272727;
 }
-.navbar .dropdown-menu > li:hover,.navbar .dropdown-menu > li:focus, .navbar .dropdown-menu > li > a:hover,.navbar .dropdown-menu > li > a:focus {
+.navbar .dropdown-menu > li:hover,.navbar .dropdown-menu > li:focus, .navbar .dropdown-menu > li > a:hover,.navbar .dropdown-menu > li > a:focus, .navbar .dropdown-menu > li.active, .navbar .dropdown-menu > li.active a, .navbar .dropdown-menu > li.active a, .navbar .dropdown-menu > li.active:hover a, .navbar .dropdown-menu > li.active a:focus {
   background-color: #202020;
+  text-decoration: none;
+  font-weight:600;
 }
 .navbar-first .dropdown-menu{
   top: 52px;
