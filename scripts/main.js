@@ -837,7 +837,7 @@ function fairUpdate(data) {
 function deposit(currency){
   var amount = $('#d_amount_'+currency).val().trim();
   $.ajax({
-    'url': './content/ajax/makeDeposit.phpc='+currency+'&amount='+amount,
+    'url': './content/ajax/makeDeposit.php?c='+currency+'&amount='+amount,
     'dataType': "json",
     'success': function(data) {
         if (data['error']=='yes') {
